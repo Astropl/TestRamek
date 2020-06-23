@@ -23,7 +23,9 @@ SOURCES += \
     pierwsza.cpp \
     trzecia.cpp \
     urzadzenia.cpp \
-    urzadzeniadodajmodel.cpp
+    urzadzeniadodajmodel.cpp \
+    urzadzeniadodajnrseryjny.cpp \
+    urzadzeniadodajproducenta.cpp
 
 HEADERS += \
     druga.h \
@@ -32,7 +34,9 @@ HEADERS += \
     pierwsza.h \
     trzecia.h \
     urzadzenia.h \
-    urzadzeniadodajmodel.h
+    urzadzeniadodajmodel.h \
+    urzadzeniadodajnrseryjny.h \
+    urzadzeniadodajproducenta.h
 
 FORMS += \
     druga.ui \
@@ -41,7 +45,9 @@ FORMS += \
     pierwsza.ui \
     trzecia.ui \
     urzadzenia.ui \
-    urzadzeniadodajmodel.ui
+    urzadzeniadodajmodel.ui \
+    urzadzeniadodajnrseryjny.ui \
+    urzadzeniadodajproducenta.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

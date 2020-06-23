@@ -40,6 +40,8 @@ private slots:
 
     void on_actionDodaj_Producenta_triggered();
 
+    void on_actionDodaj_Numer_Seryjny_triggered();
+
 private:
     Ui::Urzadzenia *ui;
 };

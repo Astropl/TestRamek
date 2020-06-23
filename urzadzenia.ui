@@ -266,26 +266,6 @@
       <height>22</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Nowy element</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Stary</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Jutro</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Dzis</string>
-     </property>
-    </item>
    </widget>
    <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
@@ -332,6 +312,7 @@
     </property>
     <addaction name="actionDodaj_Producenta"/>
     <addaction name="actionDodaj_Model"/>
+    <addaction name="actionDodaj_Numer_Seryjny"/>
    </widget>
    <widget class="QMenu" name="menuInfo">
     <property name="title">
@@ -367,6 +348,11 @@
   <action name="actionDodaj_Producenta">
    <property name="text">
     <string>Dodaj Producenta</string>
+   </property>
+  </action>
+  <action name="actionDodaj_Numer_Seryjny">
+   <property name="text">
+    <string>Dodaj Numer Seryjny</string>
    </property>
   </action>
  </widget>
