@@ -9,19 +9,18 @@
 using namespace std;
 
 string stringLabela4 = ("Producent: , Model: , Nr. Seryjny: ");
+QString zaznaczono;
 fstream plik;
-//fstream plikOdczyt;
 
 Urzadzenia::Urzadzenia(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Urzadzenia)
 {
     ui->setupUi(this);
-    //    ui->comboBox->addItem("1");
-    //    ui->comboBox_2->addItem("2");
-    //    ui->comboBox_3->addItem("3");
+    ui->comboBox->addItem("");
+    ui->comboBox_2->addItem("");
+    ui->comboBox_3->addItem("");
 
-    //---------------------------
     //Wczytuje modele z pliku
     plik.open("C:/Qt/Pliki/ZapisModel.txt", ios::in);
     if (plik.good() == false) {
@@ -33,7 +32,6 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     while (getline(plik, linia)) {
         ui->comboBox_2->addItem(linia.c_str());
         cout << linia.c_str() << endl;
-
         nr_lini++;
     }
 
@@ -66,8 +64,6 @@ Urzadzenia::Urzadzenia(QWidget *parent)
         nr_lini2++;
     }
     plik.close();
-    //
-
 
     countriesListModel = new QStringListModel(this);
     //    countriesListModel->setStringList({"Polska", "Czechy", "Słowacja"}
@@ -110,26 +106,34 @@ todo:
     "Musze dodoać to co zaznacze do Labela 4";
 
     // Do combo boxa
-    QString zaznaczono;
+
     ui->label_4->setText(zaznaczono + " " + ui->comboBox->currentText());
 }
 
 void Urzadzenia::on_comboBox_textActivated(const QString &arg1)
 {
     //QString zaznaczono =ui->label_4->text();
-    ui->label_4->setText(ui->comboBox->currentText());
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
+                         + ", Model: " + ui->comboBox_2->currentText()
+                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
 }
 
 void Urzadzenia::on_comboBox_2_textActivated(const QString &arg1)
 {
-    ui->label_4->setText(ui->comboBox->currentText());
+    //ui->label_4->setText(ui->comboBox->currentText());
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
+                         + ", Model: " + ui->comboBox_2->currentText()
+                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
     // Drugi Combo dla modelu
 }
 
 void Urzadzenia::on_comboBox_3_textActivated(const QString &arg1)
 {
-    ui->label_4->setText(ui->comboBox->currentText());
+    //ui->label_4->setText(ui->comboBox->currentText());
     // Trzeci combo dla nr seryjnego
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
+                         + ", Model: " + ui->comboBox_2->currentText()
+                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
 }
 
 void Urzadzenia::on_actionDodaj_Model_triggered()

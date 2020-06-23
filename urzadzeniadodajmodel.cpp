@@ -98,5 +98,7 @@ void UrzadzeniaDodajModel::on_pushButton_2_clicked()
        plikOdczyt << ui->comboBoxDodajModel->itemText(i).toStdString() << endl;
     }
     plikOdczyt.close();
+    //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
+
     destroy();
 }
