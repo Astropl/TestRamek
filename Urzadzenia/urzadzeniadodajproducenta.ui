@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Pierwsza</class>
- <widget class="QMainWindow" name="Pierwsza">
+ <class>UrzadzeniaDodajProducenta</class>
+ <widget class="QMainWindow" name="UrzadzeniaDodajProducenta">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>525</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>80</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Pierwsza</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>210</y>
+      <x>190</x>
+      <y>90</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Dodaj</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>120</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -40,37 +40,24 @@
      <string>Zamknij</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelZegara">
+   <widget class="QComboBox" name="comboBoxDodajProdcuenta">
     <property name="geometry">
      <rect>
-      <x>486</x>
-      <y>20</y>
-      <width>101</width>
-      <height>41</height>
+      <x>268</x>
+      <y>60</y>
+      <width>241</width>
+      <height>22</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLineEdit" name="lineEditDodajProducenta">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>30</x>
       <y>60</y>
-      <width>47</width>
-      <height>13</height>
+      <width>231</width>
+      <height>20</height>
      </rect>
-    </property>
-    <property name="text">
-     <string>22ewd</string>
     </property>
    </widget>
   </widget>
@@ -79,7 +66,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>525</width>
      <height>21</height>
     </rect>
    </property>

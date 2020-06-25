@@ -5,8 +5,12 @@
 #include <pierwsza.h>
 #include <druga.h>
 #include <trzecia.h>
-#include <kontrahent.h>
-#include <urzadzenia.h>
+
+#include <Kontrahent/kontrahent.h>
+#include <Urzadzenia/urzadzenia.h>
+#include <iostream>
+
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,18 +28,12 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     Pierwsza *pierwsza = new Pierwsza(this);
-
     pierwsza->show();
-
-
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
     Pierwsza *druga = new Pierwsza(this);
-
     druga->show();
 }
 
@@ -48,7 +46,8 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
- //   tr
+    cout << "Zamknij" << endl;
+    destroy();
 }
 
 void MainWindow::on_pushButton_5_clicked()

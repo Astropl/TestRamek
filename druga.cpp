@@ -15,5 +15,5 @@ Druga::~Druga()
 
 void Druga::on_pushButton_clicked()
 {
-        destroy(this);
+        destroy();
 }

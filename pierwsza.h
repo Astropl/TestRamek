@@ -15,11 +15,18 @@ public:
     explicit Pierwsza(QWidget *parent = nullptr);
     ~Pierwsza();
 
-private slots:
+public slots:
     void on_pushButton_clicked();
+int zmianaLabela(int sekunda);
+    //void on_labelZegara_linkActivated(const QString &link);
 
-private:
+signals:
+
+    void intZegary();
+
+public:
     Ui::Pierwsza *ui;
+   // Ui::labelZegara *ui;
 };
 
 #endif // PIERWSZA_H
