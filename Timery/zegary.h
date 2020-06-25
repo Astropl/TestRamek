@@ -12,7 +12,7 @@ public:
 
 public slots:
      int myfunctiontimer();
-     int zmianaLabela(int sekunda);
+     //int zmianaLabela(int sekunda);
 signals:
     void textChanged(QString);
 

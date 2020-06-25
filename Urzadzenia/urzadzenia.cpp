@@ -102,7 +102,7 @@ void Urzadzenia::on_countriesList_clicked(const QModelIndex &index)
     countriesListModel->setData(index, QVariant("Cos innego")); // i ustawiam tekst na "*"
 
     // Musze dodoać to co zaznacze do Labela 4
-todo: "Musze dodoać to co zaznacze do Labela 4";
+//todo: "Musze dodoać to co zaznacze do Labela 4";
 
     // Do combo boxa
 

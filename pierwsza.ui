@@ -40,13 +40,13 @@
      <string>Zamknij</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelZegara">
+   <widget class="QLabel" name="labelDaty">
     <property name="geometry">
      <rect>
-      <x>486</x>
+      <x>580</x>
       <y>20</y>
-      <width>101</width>
-      <height>41</height>
+      <width>81</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -56,23 +56,123 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>1900:01:01</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>60</y>
-      <width>47</width>
-      <height>13</height>
+      <x>480</x>
+      <y>10</y>
+      <width>190</width>
+      <height>70</height>
      </rect>
     </property>
-    <property name="text">
-     <string>22ewd</string>
+    <property name="widgetResizable">
+     <bool>true</bool>
     </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>188</width>
+       <height>68</height>
+      </rect>
+     </property>
+     <widget class="QLabel" name="labelDzien">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="text">
+       <string>Poniedziałek</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QScrollArea" name="scrollArea_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>190</width>
+        <height>35</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>188</width>
+         <height>33</height>
+        </rect>
+       </property>
+       <widget class="QLabel" name="labelZegara">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>8</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="text">
+         <string>12:00:00</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <zorder>scrollArea_2</zorder>
+     <zorder>labelDzien</zorder>
+    </widget>
    </widget>
+   <zorder>scrollArea</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>labelDaty</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

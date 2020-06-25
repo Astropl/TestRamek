@@ -17,16 +17,20 @@ public:
 
 public slots:
     void on_pushButton_clicked();
-int zmianaLabela(int sekunda);
-    //void on_labelZegara_linkActivated(const QString &link);
+    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    void myfunctiontimer();
+    void DataiCzas();
 
 signals:
 
-    void intZegary();
+    //void intZegary();
 
 public:
     Ui::Pierwsza *ui;
-   // Ui::labelZegara *ui;
+
+private:
+    QTimer *timer;
+    // Ui::labelZegara *ui;
 };
 
 #endif // PIERWSZA_H
