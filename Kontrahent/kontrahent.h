@@ -15,6 +15,12 @@ public:
     explicit Kontrahent(QWidget *parent = nullptr);
     ~Kontrahent();
 
+public slots:
+
+    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    void myfunctiontimer();
+    //void DataiCzas();
+
 private slots:
     void on_pushButton_clicked();
 
@@ -22,6 +28,7 @@ private slots:
 
 private:
     Ui::Kontrahent *ui;
+    QTimer *timer;
 };
 
 #endif // KONTRAHENT_H

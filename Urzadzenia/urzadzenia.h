@@ -23,6 +23,11 @@ public:
     explicit Urzadzenia(QWidget *parent = nullptr);
     ~Urzadzenia();
 
+public slots:
+    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    void myfunctiontimer();
+    //void DataiCzas();
+
 private slots:
     void on_BtnUrzaZapisz_clicked();
 
@@ -44,6 +49,7 @@ private slots:
 
 private:
     Ui::Urzadzenia *ui;
+    QTimer *timer;
 };
 
 #endif // URZADZENIA_H

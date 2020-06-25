@@ -11,7 +11,8 @@
 #include <iostream>
 
 using namespace std;
-
+//time_t czas;
+//tm timeinfo;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -28,6 +29,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     Pierwsza *pierwsza = new Pierwsza(this);
+
     pierwsza->show();
 }
 
@@ -42,6 +44,7 @@ void MainWindow::on_pushButton_3_clicked()
     //trzecia
     Trzecia *trzecia = new Trzecia(this);
     trzecia->show();
+
 }
 
 void MainWindow::on_pushButton_4_clicked()

@@ -1,25 +1,25 @@
 #include "pierwsza.h"
 //#include "Timery/zegary.h"
+#include "QApplication"
 #include "time.h"
 #include "ui_pierwsza.h"
 #include <ctime>
 #include <iostream>
 #include <stdio.h>
 #include <QString>
-#include "QApplication"
 #include <QTimer>
 
 using namespace std;
-time_t czas;
-tm timeinfo;
+time_t czasPierwsza;
+tm timeinfoPierwsza;
 
-int labelGodzina;
-int labelData;
-int wynik;
-int godzina, minuta, sekunda, dzien, miesiac, rok;
-int dzienTygodnia;
-string stringDzienTygodnia;
-string zmiennas;
+int labelGodzinaPierwsza;
+int labelDataPierwsza;
+int wynikPierwsza;
+int godzinaPierwsza, minutaPierwsza, sekundaPierwsza, dzienPierwsza, miesiacPierwsza, rokPierwsza;
+int dzienTygodniaPierwsza;
+string stringDzienTygodniaPierwsza;
+string zmiennasPierwsza;
 
 Pierwsza::Pierwsza(QWidget *parent)
     : QMainWindow(parent)
@@ -27,87 +27,66 @@ Pierwsza::Pierwsza(QWidget *parent)
 {
     ui->setupUi(this);
     ui->labelZegara->setText(" cos tam");
-
+    //---------Sekcja generacji timera
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
     timer->start(1000);
-
     //===================
-    cout << "zmienamaiay zegar" << endl;
-
-    cout << wynik << endl;
-    //labelZegara labelDaty
-
 }
 void Pierwsza::myfunctiontimer()
 {
     cout << "Jestem w myfunction" << endl;
-    time(&czas);
-    timeinfo = *localtime(&czas);
-
-    godzina = timeinfo.tm_hour;
-    minuta = timeinfo.tm_min;
-    sekunda = timeinfo.tm_sec;
-    dzien = timeinfo.tm_mday;
-    miesiac = timeinfo.tm_mon;
-    rok = timeinfo.tm_year;
-    dzienTygodnia = timeinfo.tm_wday;
-    miesiac = miesiac + 1;
-    rok = rok + 1900;
-
-    cout << godzina << endl;
-    cout << minuta << endl;
-    cout << sekunda << endl;
-    cout << dzien << endl;
-    cout << miesiac << endl;
-    cout << rok << endl;
-    cout<< dzienTygodnia<<endl;
-
-    //pier->zmianaLabela(sekunda);
-    //return ( sekunda);
-    zmianaLabela(godzina, minuta, sekunda, dzien, miesiac, rok, dzienTygodnia);
+    time(&czasPierwsza);
+    timeinfoPierwsza = *localtime(&czasPierwsza);
+    godzinaPierwsza = timeinfoPierwsza.tm_hour;
+    minutaPierwsza = timeinfoPierwsza.tm_min;
+    sekundaPierwsza = timeinfoPierwsza.tm_sec;
+    dzienPierwsza = timeinfoPierwsza.tm_mday;
+    miesiacPierwsza = timeinfoPierwsza.tm_mon;
+    rokPierwsza = timeinfoPierwsza.tm_year;
+    dzienTygodniaPierwsza = timeinfoPierwsza.tm_wday;
+    miesiacPierwsza = miesiacPierwsza + 1;
+    rokPierwsza = rokPierwsza + 1900;
+    cout << godzinaPierwsza << endl;
+    cout << minutaPierwsza << endl;
+    cout << sekundaPierwsza << endl;
+    cout << dzienPierwsza << endl;
+    cout << miesiacPierwsza << endl;
+    cout << rokPierwsza << endl;
+    cout << dzienTygodniaPierwsza << endl;
+    zmianaLabela(godzinaPierwsza, minutaPierwsza, sekundaPierwsza, dzienPierwsza, miesiacPierwsza, rokPierwsza, dzienTygodniaPierwsza);
 }
-
-int Pierwsza::zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
-
+int Pierwsza::zmianaLabela(
+    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
 {
-    cout << "wzlasł" << endl;
-    //labelGodzina = QString(godzina) + ":" + QString(minuta) + ":" + QString(sekunda);
-
-
-    ui->labelZegara->setText(QString::number(godzina) + ":" + QString::number(minuta) + ":" + QString::number(sekunda));
-
-    ui->labelDaty->setText(QString::number(rok) + "." + QString::number(miesiac) + "." + QString::number(dzien));
-    switch (dzienTygodnia)
-    {
+    ui->labelZegara->setText(QString::number(godzina) + ":" + QString::number(minuta) + ":"
+                             + QString::number(sekunda));
+    ui->labelDaty->setText(QString::number(rok) + "." + QString::number(miesiac) + "."
+                           + QString::number(dzien));
+    switch (dzienTygodnia) {
     case 1:
-        stringDzienTygodnia="Poniedziałek";
+        stringDzienTygodniaPierwsza = "Poniedziałek";
         break;
     case 2:
-        stringDzienTygodnia="Wtorek";
+        stringDzienTygodniaPierwsza = "Wtorek";
         break;
     case 3:
-        stringDzienTygodnia="Środa";
+        stringDzienTygodniaPierwsza = "Środa";
         break;
     case 4:
-        stringDzienTygodnia="Czwartek";
+        stringDzienTygodniaPierwsza = "Czwartek";
         break;
     case 5:
-        stringDzienTygodnia="Piątek";
+        stringDzienTygodniaPierwsza = "Piątek";
         break;
     case 6:
-        stringDzienTygodnia="Sobota";
+        stringDzienTygodniaPierwsza = "Sobota";
         break;
     case 7:
-        stringDzienTygodnia="Niedziela";
+        stringDzienTygodniaPierwsza = "Niedziela";
         break;
-
     }
-
-
-    ui->labelDzien->setText((stringDzienTygodnia).c_str());
-
-    //return sekunda ;
+    ui->labelDzien->setText((stringDzienTygodniaPierwsza).c_str());
 }
 Pierwsza::~Pierwsza()
 {
