@@ -5,21 +5,8 @@
 #include <QMessageBox>
 #include <QFile>
 
-
-
-//#include <fstream>
-//#include <iostream>
-//#include <cstdlib>
-//#include <QApplication>
-//#include <QFile>
-//#include <QTextStream>
-//#include <QDebug>
-//#include <string>
-//#include <QString>
-
 using namespace std;
 
-//fstream plik;
 fstream plikOdczyt;
 
 UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
@@ -31,12 +18,7 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
 
     //---------------------------------------------------------
 
-
-
     plikOdczyt.open("C:/Qt/Pliki/ZapisModel.txt",ios::in);
-
-
-
     if(plikOdczyt.good()==false)
     {
         cout<<"Plik nie istnieje !!!!!";
@@ -49,14 +31,8 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
 
          ui->comboBoxDodajModel->addItem(linia.c_str()) ;
             cout<<linia.c_str()<<endl;
-
-
-
-        nr_lini ++;
-
+       nr_lini ++;
     }
-
-
     plikOdczyt.close();
 
     //--------------------------------------------------------
@@ -92,7 +68,7 @@ void UrzadzeniaDodajModel::on_pushButton_2_clicked()
     int iloscElementowWcombo;
 
     iloscElementowWcombo = ui->comboBoxDodajModel->count();
-    for (int i = 0; i <= iloscElementowWcombo; i++) {
+    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
        plikOdczyt << ui->comboBoxDodajModel->itemText(i).toStdString() << endl;

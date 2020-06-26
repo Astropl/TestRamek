@@ -1,12 +1,19 @@
 #include "kontrahent.h"
+#include "mainwindow.h"
+#include "time.h"
 #include "ui_kontrahent.h"
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
-#include <iostream>
-#include "time.h"
 #include <ctime>
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
 #include <QString>
 #include <QTimer>
+
+
+
+
 
 using namespace std;
 
@@ -20,6 +27,7 @@ int dzienTygodniaKontrahent;
 string stringDzienTygodniaKontrahent;
 string zmiennasKontrahent;
 
+fstream plikKontrahent;
 
 Kontrahent::Kontrahent(QWidget *parent) :
     QMainWindow(parent),
@@ -31,6 +39,8 @@ Kontrahent::Kontrahent(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
     timer->start(1000);
     //===================
+    wczytajMiasta();
+    wczytajWojewodztwa();
 }
 
 Kontrahent::~Kontrahent()
@@ -114,10 +124,78 @@ ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
     ui->labelDzien->setText((stringDzienTygodniaKontrahent).c_str());
 }
 
+void Kontrahent::wczytajMiasta()
+{
+    //Wczytuje miasta z pliku
+    plikKontrahent.open("C:/Qt/Pliki/ZapisMiasta.txt", ios::in);
+    if (plikKontrahent.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        exit(0);
+    }
+    string linia;
+    int nr_lini = 1;
+    while (getline(plikKontrahent, linia)) {
+        ui->comboBoxWczytajMiasta->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+
+    plikKontrahent.close();
+}
+void Kontrahent::wczytajWojewodztwa()
+{
+    //Wczytuje miasta z pliku
+    plikKontrahent.open("C:/Qt/Pliki/ZapisWojewodztwa.txt", ios::in);
+    if (plikKontrahent.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        exit(0);
+    }
+    string linia;
+    int nr_lini = 1;
+    while (getline(plikKontrahent, linia)) {
+        ui->comboBoxWczytajWojewodztwa->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+
+    plikKontrahent.close();
+}
+
 void Kontrahent::on_pushButton_clicked()
 {
+    string kontrahent;
     //Zapisz
     cout<<"Zapisuje"<<endl;
+
+    plikKontrahent.open("C:/Qt/Pliki/Kontrahent.txt", ios::out | ios::app);
+
+    // musze teraz zrobic petle i zapisac itemy z comboboxa
+    int iloscElementowWcombo;
+
+
+    //tymczasowo
+    ui->lineEditWczytajNumer->setText("1");
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_2->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_3->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajUlica->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajKraj->text()) ;
+
+
+    //lineEditWczytaj
+iloscElementowWcombo = ui->comboBoxPomoc->count();
+
+    //iloscElementowWcombo = ui->comboBoxDodajMiasto->count();
+    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+        //  petla wczytująca liste z combo
+        cout << iloscElementowWcombo << endl;
+        //plikKontrahent << ui->comboBoxDodajMiasto->itemText(i).toStdString() << endl;
+    }
+    plikKontrahent.close();
+    //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
+    //ui->comboBoxDodajMiasto->rep
+    destroy();
 }
 
 void Kontrahent::on_pushButton_2_clicked()

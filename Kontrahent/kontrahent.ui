@@ -255,7 +255,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEditWczytajKraj">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -265,7 +265,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEditWczytajUlica">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -275,7 +275,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEditWczytajTelefon">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -285,7 +285,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="lineEditWczytajTelefonDod">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -295,7 +295,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
+   <widget class="QLineEdit" name="lineEditWczytajEmail">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -305,7 +305,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_6">
+   <widget class="QLineEdit" name="lineEditWczytajUrl">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -315,7 +315,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="comboBoxWczytajMiasta">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -348,7 +348,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_7">
+   <widget class="QLineEdit" name="lineEditWczytajNazwa_1">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -358,7 +358,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
+   <widget class="QLineEdit" name="lineEditWczytajNazwa_2">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -368,7 +368,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_9">
+   <widget class="QLineEdit" name="lineEditWczytajNazwa_3">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -378,7 +378,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_10">
+   <widget class="QLineEdit" name="lineEditWczytajNumer">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -391,7 +391,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="comboBoxWczytajWojewodztwa">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -401,7 +401,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_11">
+   <widget class="QLineEdit" name="lineEditWczytajKodPocztowy">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -411,7 +411,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_12">
+   <widget class="QLineEdit" name="lineEditWczytajNrDomu">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -642,6 +642,16 @@
      <zorder>labelDzien</zorder>
     </widget>
    </widget>
+   <widget class="QComboBox" name="comboBoxPomoc">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>320</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>scrollArea_7</zorder>
    <zorder>scrollArea_6</zorder>
    <zorder>scrollArea_5</zorder>
@@ -663,22 +673,23 @@
    <zorder>label_10</zorder>
    <zorder>label_11</zorder>
    <zorder>label_12</zorder>
-   <zorder>lineEdit</zorder>
-   <zorder>lineEdit_2</zorder>
-   <zorder>lineEdit_3</zorder>
-   <zorder>lineEdit_4</zorder>
-   <zorder>lineEdit_5</zorder>
-   <zorder>lineEdit_6</zorder>
-   <zorder>comboBox</zorder>
-   <zorder>lineEdit_7</zorder>
-   <zorder>lineEdit_8</zorder>
-   <zorder>lineEdit_9</zorder>
-   <zorder>lineEdit_10</zorder>
-   <zorder>comboBox_2</zorder>
-   <zorder>lineEdit_11</zorder>
-   <zorder>lineEdit_12</zorder>
+   <zorder>lineEditWczytajKraj</zorder>
+   <zorder>lineEditWczytajUlica</zorder>
+   <zorder>lineEditWczytajTelefon</zorder>
+   <zorder>lineEditWczytajTelefonDod</zorder>
+   <zorder>lineEditWczytajEmail</zorder>
+   <zorder>lineEditWczytajUrl</zorder>
+   <zorder>comboBoxWczytajMiasta</zorder>
+   <zorder>lineEditWczytajNazwa_1</zorder>
+   <zorder>lineEditWczytajNazwa_2</zorder>
+   <zorder>lineEditWczytajNazwa_3</zorder>
+   <zorder>lineEditWczytajNumer</zorder>
+   <zorder>comboBoxWczytajWojewodztwa</zorder>
+   <zorder>lineEditWczytajKodPocztowy</zorder>
+   <zorder>lineEditWczytajNrDomu</zorder>
    <zorder>scrollArea_8</zorder>
    <zorder>labelDaty</zorder>
+   <zorder>comboBoxPomoc</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -45,7 +45,7 @@ void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajProdcuenta->count();
-    for (int i = 0; i <= iloscElementowWcombo; i++) {
+    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
         plikProducent << ui->comboBoxDodajProdcuenta->itemText(i).toStdString() << endl;

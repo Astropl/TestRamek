@@ -61,7 +61,7 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajNrSeryjny->count();
-    for (int i = 0; i <= iloscElementowWcombo; i++) {
+    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
         plikNrSeryjny << ui->comboBoxDodajNrSeryjny->itemText(i).toStdString() << endl;

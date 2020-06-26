@@ -17,12 +17,15 @@ public:
 
 public slots:
 
-    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    int zmianaLabela(
+        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
     void myfunctiontimer();
-    //void DataiCzas();
+    void wczytajMiasta();
+    void wczytajWojewodztwa();
+        //void DataiCzas();
 
-private slots:
-    void on_pushButton_clicked();
+        private slots :
+            void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 

@@ -16,7 +16,7 @@ using namespace std;
 
 string stringLabela4 = ("Producent: , Model: , Nr. Seryjny: ");
 QString zaznaczono;
-fstream plik;
+fstream plikUrzadzenia;
 
 time_t czasUrzadzenia;
 tm timeinfo;
@@ -44,48 +44,48 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     //===================
 
     //Wczytuje modele z pliku
-    plik.open("C:/Qt/Pliki/ZapisModel.txt", ios::in);
-    if (plik.good() == false) {
+    plikUrzadzenia.open("C:/Qt/Pliki/ZapisModel.txt", ios::in);
+    if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
     }
     string linia;
     int nr_lini = 1;
-    while (getline(plik, linia)) {
+    while (getline(plikUrzadzenia, linia)) {
         ui->comboBox_2->addItem(linia.c_str());
         cout << linia.c_str() << endl;
         nr_lini++;
     }
 
-    plik.close();
+    plikUrzadzenia.close();
     // wczytuj pliki z producenta
-    plik.open("C:/Qt/Pliki/ZapisProducenta.txt", ios::in);
-    if (plik.good() == false) {
+    plikUrzadzenia.open("C:/Qt/Pliki/ZapisProducenta.txt", ios::in);
+    if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
     }
     string linia1;
     int nr_lini1 = 1;
-    while (getline(plik, linia1)) {
+    while (getline(plikUrzadzenia, linia1)) {
         ui->comboBox->addItem(linia1.c_str());
         cout << linia1.c_str() << endl;
         nr_lini1++;
     }
-    plik.close();
+    plikUrzadzenia.close();
     //wczytaj numery seryjne z pliku
-    plik.open("C:/Qt/Pliki/ZapisNrSeryjny.txt", ios::in);
-    if (plik.good() == false) {
+    plikUrzadzenia.open("C:/Qt/Pliki/ZapisNrSeryjny.txt", ios::in);
+    if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
     }
     string linia2;
     int nr_lini2 = 1;
-    while (getline(plik, linia2)) {
+    while (getline(plikUrzadzenia, linia2)) {
         ui->comboBox_3->addItem(linia2.c_str());
         cout << linia2.c_str() << endl;
         nr_lini2++;
     }
-    plik.close();
+    plikUrzadzenia.close();
 
     countriesListModel = new QStringListModel(this);
 
