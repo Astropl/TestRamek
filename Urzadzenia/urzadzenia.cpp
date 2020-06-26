@@ -23,9 +23,9 @@ tm timeinfo;
 int labelGodzina;
 int labelData;
 int wynik;
-int godzina, minuta, sekunda, dzien, miesiac, rok;
-int dzienTygodnia;
-string stringDzienTygodnia;
+int godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia;
+int dzienTygodniaUrzadzenia;
+string stringDzienTygodniaUrzadzenia;
 string zmiennas;
 
 Urzadzenia::Urzadzenia(QWidget *parent)
@@ -100,55 +100,76 @@ void Urzadzenia::myfunctiontimer()
 {
     time(&czasUrzadzenia);
     timeinfo = *localtime(&czasUrzadzenia);
-    godzina = timeinfo.tm_hour;
-    minuta = timeinfo.tm_min;
-    sekunda = timeinfo.tm_sec;
-    dzien = timeinfo.tm_mday;
-    miesiac = timeinfo.tm_mon;
-    rok = timeinfo.tm_year;
-    dzienTygodnia = timeinfo.tm_wday;
-    miesiac = miesiac + 1;
-    rok = rok + 1900;
-    cout << godzina << endl;
-    cout << minuta << endl;
-    cout << sekunda << endl;
-    cout << dzien << endl;
-    cout << miesiac << endl;
-    cout << rok << endl;
-    cout << dzienTygodnia << endl;
-    zmianaLabela(godzina, minuta, sekunda, dzien, miesiac, rok, dzienTygodnia);
+    godzinaUrzadzenia = timeinfo.tm_hour;
+    minutaUrzadzenia = timeinfo.tm_min;
+    sekundaUrzadzenia = timeinfo.tm_sec;
+    dzienUrzadzenia = timeinfo.tm_mday;
+    miesiacUrzadzenia = timeinfo.tm_mon;
+    rokUrzadzenia = timeinfo.tm_year;
+    dzienTygodniaUrzadzenia = timeinfo.tm_wday;
+    miesiacUrzadzenia = miesiacUrzadzenia + 1;
+    rokUrzadzenia = rokUrzadzenia + 1900;
+
+    zmianaLabela(godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia, dzienTygodniaUrzadzenia);
 }
 int Urzadzenia::zmianaLabela(
     int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
 {
-    ui->labelZegara->setText(QString::number(godzina) + ":" + QString::number(minuta) + ":"
-                             + QString::number(sekunda));
-    ui->labelDaty->setText(QString::number(rok) + "." + QString::number(miesiac) + "."
-                           + QString::number(dzien));
+    // Dodoać zera do sekund gdy mniej niz 10
+    QString qStrMin = QString::number(minuta);
+    QString qStrGodz = QString::number(godzina);
+    QString qStrSek = QString::number(sekunda);
+    QString qStrDzien = QString::number( dzien);
+    QString qStrMiesiac = QString::number(miesiac);
+    if (sekunda<10)
+    {
+        qStrSek = "0"+QString::number(sekunda);
+    }
+    if (minuta <10)
+    {
+        qStrMin = "0"+QString::number(minuta);
+    }
+    if (godzina<10)
+    {
+        qStrGodz = "0"+QString::number(godzina);
+    }
+    if (miesiac <10)
+    {
+        qStrMiesiac = "0"+QString::number(miesiac);
+    }
+    if (dzien <10)
+    {
+        qStrDzien = "0"+QString::number(dzien);
+    }
+
+
+    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
+                           + qStrDzien);
     switch (dzienTygodnia) {
     case 1:
-        stringDzienTygodnia = "Poniedziałek";
+        stringDzienTygodniaUrzadzenia = "Poniedziałek";
         break;
     case 2:
-        stringDzienTygodnia = "Wtorek";
+        stringDzienTygodniaUrzadzenia = "Wtorek";
         break;
     case 3:
-        stringDzienTygodnia = "Środa";
+        stringDzienTygodniaUrzadzenia = "Środa";
         break;
     case 4:
-        stringDzienTygodnia = "Czwartek";
+        stringDzienTygodniaUrzadzenia = "Czwartek";
         break;
     case 5:
-        stringDzienTygodnia = "Piątek";
+        stringDzienTygodniaUrzadzenia = "Piątek";
         break;
     case 6:
-        stringDzienTygodnia = "Sobota";
+        stringDzienTygodniaUrzadzenia = "Sobota";
         break;
     case 7:
-        stringDzienTygodnia = "Niedziela";
+        stringDzienTygodniaUrzadzenia = "Niedziela";
         break;
     }
-    ui->labelDzien->setText((stringDzienTygodnia).c_str());
+    ui->labelDzien->setText((stringDzienTygodniaUrzadzenia).c_str());
 }
 Urzadzenia::~Urzadzenia()
 {

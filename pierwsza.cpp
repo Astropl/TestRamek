@@ -47,22 +47,43 @@ void Pierwsza::myfunctiontimer()
     dzienTygodniaPierwsza = timeinfoPierwsza.tm_wday;
     miesiacPierwsza = miesiacPierwsza + 1;
     rokPierwsza = rokPierwsza + 1900;
-    cout << godzinaPierwsza << endl;
-    cout << minutaPierwsza << endl;
-    cout << sekundaPierwsza << endl;
-    cout << dzienPierwsza << endl;
-    cout << miesiacPierwsza << endl;
-    cout << rokPierwsza << endl;
-    cout << dzienTygodniaPierwsza << endl;
+
     zmianaLabela(godzinaPierwsza, minutaPierwsza, sekundaPierwsza, dzienPierwsza, miesiacPierwsza, rokPierwsza, dzienTygodniaPierwsza);
 }
 int Pierwsza::zmianaLabela(
     int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
 {
-    ui->labelZegara->setText(QString::number(godzina) + ":" + QString::number(minuta) + ":"
-                             + QString::number(sekunda));
-    ui->labelDaty->setText(QString::number(rok) + "." + QString::number(miesiac) + "."
-                           + QString::number(dzien));
+    // Dodoać zera do sekund gdy mniej niz 10
+    QString qStrMin = QString::number(minuta);
+    QString qStrGodz = QString::number(godzina);
+    QString qStrSek = QString::number(sekunda);
+    QString qStrDzien = QString::number( dzien);
+    QString qStrMiesiac = QString::number(miesiac);
+    if (sekunda<10)
+    {
+        qStrSek = "0"+QString::number(sekunda);
+    }
+    if (minuta <10)
+    {
+        qStrMin = "0"+QString::number(minuta);
+    }
+    if (godzina<10)
+    {
+        qStrGodz = "0"+QString::number(godzina);
+    }
+    if (miesiac <10)
+    {
+        qStrMiesiac = "0"+QString::number(miesiac);
+    }
+    if (dzien <10)
+    {
+        qStrDzien = "0"+QString::number(dzien);
+    }
+
+
+    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
+                           + qStrDzien);
     switch (dzienTygodnia) {
     case 1:
         stringDzienTygodniaPierwsza = "Poniedziałek";

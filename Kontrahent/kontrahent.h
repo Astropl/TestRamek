@@ -26,6 +26,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_actionDodaj_Miasto_triggered();
+
+    void on_actionDodaj_Wojew_dztwo_triggered();
+
 private:
     Ui::Kontrahent *ui;
     QTimer *timer;
