@@ -22,6 +22,8 @@ private slots:
 
     void on_comboBoxDodajMiasto_activated(const QString &arg1);
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::KontrahentDodajMiasto *ui;
 };

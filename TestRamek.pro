@@ -22,6 +22,7 @@ SOURCES += \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
     Kontrahent/kontrahentdodajmiasto.cpp \
     Kontrahent/kontrahentdodajwojewodztwo.cpp \
+    Kontrahent/kontrahentlista.cpp \
     Timery/zegary.cpp \
     Urzadzenia/urzadzenia.cpp \
     Urzadzenia/urzadzeniadodajmodel.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
 #    Urzadzenia/Nowy dokument tekstowy.h \
     Kontrahent/kontrahentdodajmiasto.h \
     Kontrahent/kontrahentdodajwojewodztwo.h \
+    Kontrahent/kontrahentlista.h \
     Timery/zegary.h \
     Urzadzenia/urzadzenia.h \
     Urzadzenia/urzadzeniadodajmodel.h \
@@ -64,6 +66,7 @@ FORMS += \
     Kontrahent/kontrahent.ui \
     Kontrahent/kontrahentdodajmiasto.ui \
     Kontrahent/kontrahentdodajwojewodztwo.ui \
+    Kontrahent/kontrahentlista.ui \
     Urzadzenia/urzadzenia.ui \
     Urzadzenia/urzadzeniadodajmodel.ui \
     Urzadzenia/urzadzeniadodajnrseryjny.ui \

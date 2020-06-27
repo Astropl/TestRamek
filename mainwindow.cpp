@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Kontrahent/kontrahentlista.h"
 #include <QApplication>
 #include <QMainWindow>
 #include <pierwsza.h>
@@ -65,4 +66,10 @@ void MainWindow::on_pushButton_6_clicked()
     Urzadzenia *urzadzenia = new Urzadzenia(this);
     urzadzenia ->show();
 
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    KontrahentLista *kontrList = new KontrahentLista(this);
+    kontrList ->show();
 }

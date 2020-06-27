@@ -33,6 +33,10 @@ public slots:
 
     void on_actionDodaj_Wojew_dztwo_triggered();
 
+    //void on_lineEditWczytajNazwa_1_editingFinished();
+
+    void on_lineEditWczytajNazwa_1_textChanged(const QString &arg1);
+
 private:
     Ui::Kontrahent *ui;
     QTimer *timer;

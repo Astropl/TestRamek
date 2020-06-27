@@ -18,7 +18,7 @@ KontrahentDodajMiasto::KontrahentDodajMiasto(QWidget *parent) :
 
     //---------------------------------------------------------
 
-    plikOdczytDodajMiasto.open("C:/Qt/Pliki/ZapisMiasto.txt",ios::in);
+    plikOdczytDodajMiasto.open("C:/Qt/Pliki/ZapisMiasta.txt",ios::in);
     if(plikOdczytDodajMiasto.good()==false)
     {
         cout<<"Plik nie istnieje !!!!!";
@@ -86,3 +86,15 @@ void KontrahentDodajMiasto::on_comboBoxDodajMiasto_activated(const QString &arg1
 {
     //string[] items = ui->comboBoxDodajMiasto->getItems();
 }
+
+void KontrahentDodajMiasto::on_pushButton_3_clicked()
+{
+    //Usuń zaznaczony item
+//    comboBoxDodajMiasto-> Items->Remove(comboBoxDodajMiasto->text);
+
+    //ui->comboBoxDodajMiasto->removeItem(text);
+//    QVariant sprawdz = ui->comboBoxDodajMiasto->itemData(ui->comboBoxDodajMiasto->currentIndex());
+    ui->comboBoxDodajMiasto->removeItem(ui->comboBoxDodajMiasto->currentIndex());;
+   // cout<<sprawdz.toStdString>>endl;
+}
+

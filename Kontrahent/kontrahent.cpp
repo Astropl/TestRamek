@@ -148,7 +148,7 @@ void Kontrahent::wczytajWojewodztwa()
     plikKontrahent.open("C:/Qt/Pliki/ZapisWojewodztwa.txt", ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia;
     int nr_lini = 1;
@@ -175,13 +175,44 @@ void Kontrahent::on_pushButton_clicked()
 
     //tymczasowo
     ui->lineEditWczytajNumer->setText("1");
-    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text()) ;
+
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text()) ;
 ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text()) ;
 ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_2->text()) ;
 ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_3->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajUlica->text()) ;
 ui->comboBoxPomoc->addItem(ui->lineEditWczytajKraj->text()) ;
+//Wczytaj wojewodztwo
+ui->comboBoxPomoc->addItem(ui->comboBoxWczytajWojewodztwa->currentText());
+//Wczytaj miasto
+ui->comboBoxPomoc->addItem(ui->comboBoxWczytajMiasta->currentText());
 
+
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajKodPocztowy->text());
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajUlica->text()) ;
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajNrDomu->text());
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefon->text());
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefonDod->text());
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajEmail->text());
+ui->comboBoxPomoc->addItem(ui->lineEditWczytajUrl->text());
+
+plikKontrahent<<ui->lineEditWczytajNumer->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajNazwa_1->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajNazwa_2->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajNazwa_3->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajKraj->text().toStdString() << endl;
+//Wczytaj wojewodztwo
+plikKontrahent<<ui->comboBoxWczytajWojewodztwa->currentText().toStdString()<< endl;;
+
+//Wczytaj miasto
+plikKontrahent<<ui->comboBoxWczytajMiasta->currentText().toStdString()<< endl;;
+
+plikKontrahent<<ui->lineEditWczytajKodPocztowy->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajUlica->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajNrDomu->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajTelefon->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajTelefonDod->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajEmail->text().toStdString() << endl;
+plikKontrahent<<ui->lineEditWczytajUrl->text().toStdString() << endl;
 
     //lineEditWczytaj
 iloscElementowWcombo = ui->comboBoxPomoc->count();
@@ -195,7 +226,8 @@ iloscElementowWcombo = ui->comboBoxPomoc->count();
     plikKontrahent.close();
     //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
     //ui->comboBoxDodajMiasto->rep
-    destroy();
+
+    //destroy();
 }
 
 void Kontrahent::on_pushButton_2_clicked()
@@ -218,4 +250,11 @@ void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
     cout<<"Dodoaje wojewdoztwo z kontrahenta"<<endl;
     KontrahentDodajWojewodztwo *kontrDodWoje = new KontrahentDodajWojewodztwo(this);
     kontrDodWoje->show();
+}
+
+
+
+void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString &arg1)
+{
+    cout<<"Zmiana textu"<<endl;
 }
