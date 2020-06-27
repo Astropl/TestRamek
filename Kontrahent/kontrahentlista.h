@@ -14,9 +14,17 @@ class KontrahentLista : public QMainWindow
 public:
     explicit KontrahentLista(QWidget *parent = nullptr);
     ~KontrahentLista();
+public slots:
+    int zmianaLabela(
+        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    void myfunctiontimer();
+
+private slots:
+    void on_pushButton_2_clicked();
 
 private:
     Ui::KontrahentLista *ui;
+    QTimer *timer;
 };
 
 #endif // KONTRAHENTLISTA_H
