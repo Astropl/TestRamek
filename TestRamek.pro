@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    #Info/info.cpp \
     Kontrahent/kontrahent.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
     Kontrahent/kontrahentdodajmiasto.cpp \
     Kontrahent/kontrahentdodajwojewodztwo.cpp \
     Kontrahent/kontrahentlista.cpp \
+    Kontrahent/tableviewlistakontrahentow.cpp \
     Timery/zegary.cpp \
     Urzadzenia/urzadzenia.cpp \
     Urzadzenia/urzadzeniadodajmodel.cpp \
@@ -30,6 +32,7 @@ SOURCES += \
     Urzadzenia/urzadzeniadodajproducenta.cpp \
     druga.cpp \
 #    kontrahent.cpp \
+    Info/info.cpp \
     main.cpp \
     mainwindow.cpp \
     pierwsza.cpp \
@@ -40,6 +43,7 @@ SOURCES += \
 #    urzadzeniadodajproducenta.cpp
 
 HEADERS += \
+    #Info/info.h \
     Kontrahent/kontrahent.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \
@@ -47,6 +51,7 @@ HEADERS += \
     Kontrahent/kontrahentdodajmiasto.h \
     Kontrahent/kontrahentdodajwojewodztwo.h \
     Kontrahent/kontrahentlista.h \
+    Kontrahent/tableviewlistakontrahentow.h \
     Timery/zegary.h \
     Urzadzenia/urzadzenia.h \
     Urzadzenia/urzadzeniadodajmodel.h \
@@ -54,6 +59,7 @@ HEADERS += \
     Urzadzenia/urzadzeniadodajproducenta.h \
     druga.h \
 #    kontrahent.h \
+    Info/info.h \
     mainwindow.h \
     pierwsza.h \
     trzecia.h \
@@ -63,6 +69,7 @@ HEADERS += \
 #    urzadzeniadodajproducenta.h
 
 FORMS += \
+    #Info/info.ui \
     Kontrahent/kontrahent.ui \
     Kontrahent/kontrahentdodajmiasto.ui \
     Kontrahent/kontrahentdodajwojewodztwo.ui \
@@ -73,6 +80,7 @@ FORMS += \
     Urzadzenia/urzadzeniadodajproducenta.ui \
     druga.ui \
 #    kontrahent.ui \
+    Info/info.ui \
     mainwindow.ui \
     pierwsza.ui \
     trzecia.ui \

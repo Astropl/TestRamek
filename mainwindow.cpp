@@ -6,6 +6,7 @@
 #include <pierwsza.h>
 #include <druga.h>
 #include <trzecia.h>
+#include <Info/info.h>
 
 #include <Kontrahent/kontrahent.h>
 #include <Urzadzenia/urzadzenia.h>
@@ -72,4 +73,10 @@ void MainWindow::on_pushButton_7_clicked()
 {
     KontrahentLista *kontrList = new KontrahentLista(this);
     kontrList ->show();
+}
+
+void MainWindow::on_actionO_programie_triggered()
+{
+    Info *info= new Info(this);
+    info->show();
 }

@@ -1,11 +1,16 @@
 #include "kontrahentlista.h"
 #include "ui_kontrahentlista.h"
+#include "tableviewlistakontrahentow.h"
+#include <Info/info.h>
 #include <ctime>
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
 #include <QString>
 #include <QTimer>
+#include <QTableView>
+#include <QtWidgets>
+#include <QApplication>
 
 using namespace std;
 time_t czasKontrahentLista;
@@ -30,6 +35,36 @@ KontrahentLista::KontrahentLista(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
     timer->start(1000);
     //===================
+
+    // Tworze modele do Qtable
+    model = new QStandardItemModel (8,6,this);
+    ui->tableView->setModel(model);
+QModelIndex index;
+
+    // Generate data
+//    for(int row = 0; row < 4; row++)
+//    {
+//        for(int col = 0; col < 2; col++)
+//        {
+
+//            // 0 for all data
+//            model->setData(index,0);
+//        }
+//    }
+model->index(0,3,QModelIndex());
+model->setData(index,"rujyeh"); // Index to połozenie rzedu i kolumny
+//model->index(1,2,QModelIndex());
+//model->setData(index,"drugi rzad i 3 kolumna");
+//model->setItem(1,3,index);
+//model->setData()
+model->setHeaderData(0,Qt::Horizontal, "lp");
+model->setHeaderData(1,Qt::Horizontal, "Nazwa");
+model->setHeaderData(2,Qt::Horizontal, "Miasto");
+model->setHeaderData(3,Qt::Horizontal, "Kod Pocztowy");
+model->setHeaderData(4,Qt::Horizontal, "Telefon");
+
+
+    //==========================
 }
 
 KontrahentLista::~KontrahentLista()
@@ -105,11 +140,12 @@ int KontrahentLista::zmianaLabela(
     case 6:
         stringDzienTygodniaKontrahentLista = "Sobota";
         break;
-    case 7:
+    case 0:
         stringDzienTygodniaKontrahentLista = "Niedziela";
         break;
     }
     ui->labelDzien->setText((stringDzienTygodniaKontrahentLista).c_str());
+    return 1;
 }
 
 
@@ -117,3 +153,27 @@ void KontrahentLista::on_pushButton_2_clicked()
 {
     destroy();
 }
+
+void KontrahentLista::on_tableView_activated(const QModelIndex )
+{
+    //ui->tableView->set
+//    QTableView listaKontrahentów;
+
+//  TableViewListaKontrahentow myModel(0);
+//  listaKontrahentów.setModel(&myModel);
+//  listaKontrahentów.show();
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+

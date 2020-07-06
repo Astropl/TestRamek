@@ -37,6 +37,8 @@ public slots:
 
     void on_lineEditWczytajNazwa_1_textChanged(const QString &arg1);
 
+    void on_actionInfo_triggered();
+
 private:
     Ui::Kontrahent *ui;
     QTimer *timer;

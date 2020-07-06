@@ -3,6 +3,7 @@
 #include "QApplication"
 #include "time.h"
 #include "ui_pierwsza.h"
+#include <Info/info.h>
 #include <ctime>
 #include <iostream>
 #include <stdio.h>
@@ -48,63 +49,63 @@ void Pierwsza::myfunctiontimer()
     miesiacPierwsza = miesiacPierwsza + 1;
     rokPierwsza = rokPierwsza + 1900;
 
-    zmianaLabela(godzinaPierwsza, minutaPierwsza, sekundaPierwsza, dzienPierwsza, miesiacPierwsza, rokPierwsza, dzienTygodniaPierwsza);
+    zmianaLabela(godzinaPierwsza,
+                 minutaPierwsza,
+                 sekundaPierwsza,
+                 dzienPierwsza,
+                 miesiacPierwsza,
+                 rokPierwsza,
+                 dzienTygodniaPierwsza);
 }
 int Pierwsza::zmianaLabela(
     int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
 {
+    dzienTygodnia = dzienTygodnia + 1;
     // Dodoać zera do sekund gdy mniej niz 10
     QString qStrMin = QString::number(minuta);
     QString qStrGodz = QString::number(godzina);
     QString qStrSek = QString::number(sekunda);
-    QString qStrDzien = QString::number( dzien);
+    QString qStrDzien = QString::number(dzien);
     QString qStrMiesiac = QString::number(miesiac);
-    if (sekunda<10)
-    {
-        qStrSek = "0"+QString::number(sekunda);
+    if (sekunda < 10) {
+        qStrSek = "0" + QString::number(sekunda);
     }
-    if (minuta <10)
-    {
-        qStrMin = "0"+QString::number(minuta);
+    if (minuta < 10) {
+        qStrMin = "0" + QString::number(minuta);
     }
-    if (godzina<10)
-    {
-        qStrGodz = "0"+QString::number(godzina);
+    if (godzina < 10) {
+        qStrGodz = "0" + QString::number(godzina);
     }
-    if (miesiac <10)
-    {
-        qStrMiesiac = "0"+QString::number(miesiac);
+    if (miesiac < 10) {
+        qStrMiesiac = "0" + QString::number(miesiac);
     }
-    if (dzien <10)
-    {
-        qStrDzien = "0"+QString::number(dzien);
+    if (dzien < 10) {
+        qStrDzien = "0" + QString::number(dzien);
     }
-
 
     ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
-                           + qStrDzien);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
     switch (dzienTygodnia) {
     case 1:
-        stringDzienTygodniaPierwsza = "Poniedziałek";
+        stringDzienTygodniaPierwsza = "Niedziela";
         break;
     case 2:
-        stringDzienTygodniaPierwsza = "Wtorek";
+        stringDzienTygodniaPierwsza = "Poniedziałek";
         break;
     case 3:
-        stringDzienTygodniaPierwsza = "Środa";
+        stringDzienTygodniaPierwsza = "Wtorek";
         break;
     case 4:
-        stringDzienTygodniaPierwsza = "Czwartek";
+        stringDzienTygodniaPierwsza = "Środa";
         break;
     case 5:
-        stringDzienTygodniaPierwsza = "Piątek";
+        stringDzienTygodniaPierwsza = "Czwartek";
         break;
     case 6:
-        stringDzienTygodniaPierwsza = "Sobota";
+        stringDzienTygodniaPierwsza = "Piątek";
         break;
     case 7:
-        stringDzienTygodniaPierwsza = "Niedziela";
+        stringDzienTygodniaPierwsza = "Sobota";
         break;
     }
     ui->labelDzien->setText((stringDzienTygodniaPierwsza).c_str());

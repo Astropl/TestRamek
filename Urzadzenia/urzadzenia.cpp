@@ -5,6 +5,7 @@
 #include "urzadzeniadodajmodel.h"
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
+#include <Info/info.h>
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -165,11 +166,12 @@ int Urzadzenia::zmianaLabela(
     case 6:
         stringDzienTygodniaUrzadzenia = "Sobota";
         break;
-    case 7:
+    case 0:
         stringDzienTygodniaUrzadzenia = "Niedziela";
         break;
     }
     ui->labelDzien->setText((stringDzienTygodniaUrzadzenia).c_str());
+    return 1;
 }
 Urzadzenia::~Urzadzenia()
 {
@@ -195,21 +197,21 @@ void Urzadzenia::on_countriesList_clicked(const QModelIndex &index)
     ui->label_4->setText(zaznaczono + " " + ui->comboBox->currentText());
 }
 
-void Urzadzenia::on_comboBox_textActivated(const QString &arg1)
+void Urzadzenia::on_comboBox_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
                          + ", NumerSeryjny: " + ui->comboBox_3->currentText());
 }
 
-void Urzadzenia::on_comboBox_2_textActivated(const QString &arg1)
+void Urzadzenia::on_comboBox_2_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
                          + ", NumerSeryjny: " + ui->comboBox_3->currentText());
 }
 
-void Urzadzenia::on_comboBox_3_textActivated(const QString &arg1)
+void Urzadzenia::on_comboBox_3_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
@@ -232,4 +234,10 @@ void Urzadzenia::on_actionDodaj_Numer_Seryjny_triggered()
 {
     UrzadzeniaDodajNrSeryjny *urzDodNrSer = new UrzadzeniaDodajNrSeryjny(this);
     urzDodNrSer->show();
+}
+
+void Urzadzenia::on_actionInformacja_triggered()
+{
+    Info *info= new Info(this);
+    info->show();
 }

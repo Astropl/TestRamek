@@ -4,6 +4,7 @@
 #include "ui_kontrahent.h"
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
+#include "Info/info.h"
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -117,7 +118,7 @@ ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
     case 6:
         stringDzienTygodniaKontrahent = "Sobota";
         break;
-    case 7:
+    case 0:
         stringDzienTygodniaKontrahent = "Niedziela";
         break;
     }
@@ -257,4 +258,10 @@ void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
 void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString &arg1)
 {
     cout<<"Zmiana textu"<<endl;
+}
+
+void Kontrahent::on_actionInfo_triggered()
+{
+Info *info= new Info(this);
+    info->show();
 }

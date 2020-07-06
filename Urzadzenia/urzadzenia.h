@@ -35,17 +35,23 @@ private slots:
 
     void on_countriesList_clicked(const QModelIndex &index);
 
-    void on_comboBox_textActivated(const QString &arg1);
+    //void on_comboBox_textActivated(const QString &arg1);
+    void on_comboBox_textActivated(const QString );
 
-    void on_comboBox_2_textActivated(const QString &arg1);
+    //void on_comboBox_2_textActivated(const QString &arg1);
 
-    void on_comboBox_3_textActivated(const QString &arg1);
+    //void on_comboBox_3_textActivated(const QString &arg1);
+    void on_comboBox_2_textActivated(const QString );
+
+    void on_comboBox_3_textActivated(const QString );
 
     void on_actionDodaj_Model_triggered();
 
     void on_actionDodaj_Producenta_triggered();
 
     void on_actionDodaj_Numer_Seryjny_triggered();
+
+    void on_actionInformacja_triggered();
 
 private:
     Ui::Urzadzenia *ui;
