@@ -174,12 +174,31 @@
      <rect>
       <x>30</x>
       <y>40</y>
-      <width>256</width>
-      <height>192</height>
+      <width>551</width>
+      <height>371</height>
      </rect>
     </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::SingleSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
     <property name="sortingEnabled">
-     <bool>false</bool>
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTest">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>250</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>

@@ -7,7 +7,6 @@
 #include <QStandardItemModel>
 #include <QTableView>
 
-
 namespace Ui {
 class KontrahentLista;
 }
@@ -22,17 +21,18 @@ public:
 public slots:
     int zmianaLabela(
         int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    void wczytajDane();
     void myfunctiontimer();
+    void iloscWierszy();
 
 private slots:
     void on_pushButton_2_clicked();
-
     void on_tableView_activated(const QModelIndex);
 
 private:
     Ui::KontrahentLista *ui;
     QTimer *timer;
-    QStandardItemModel *model ;
+    QStandardItemModel *model;
 };
 
 #endif // KONTRAHENTLISTA_H

@@ -20,6 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //------------
+
+    TODO:" //Sprawdzenie czy są puste pliki<<";
+    //-----------------
+
 }
 
 MainWindow::~MainWindow()
