@@ -6,11 +6,13 @@
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
+#include <QMessageBox>
 #include <QApplication>
+#include <QtWidgets>
 #include <QString>
 #include <QTableView>
 #include <QTimer>
-#include <QtWidgets>
+
 
 using namespace std;
 time_t czasKontrahentLista;
@@ -23,6 +25,7 @@ int godzinaKontrahentLista, minutaKontrahentLista, sekundaKontrahentLista, dzien
 int dzienTygodniaKontrahentLista;
 string stringDzienTygodniaKontrahentLista;
 string zmiennasKontrahentLista;
+
 
 fstream plikKontrahentLista;
 
@@ -99,32 +102,31 @@ void KontrahentLista::wczytajDane()
     }
 
     plikKontrahentLista.close();
-    ui->tableView->horizontalHeader()->setSectionResizeMode(
-        QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
-    ui->tableView->sortByColumn(0,Qt::SortOrder(1)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
     // pobierz ilosc rzedów
     int rowDoSize = model->rowCount();
-    for(int i =0;i<=rowDoSize;i++)
-    {
-        ui->tableView->setRowHeight(i,20);
+    for (int i = 0; i <= rowDoSize; i++) {
+        ui->tableView->setRowHeight(i, 20);
     }
+    ui->tableView->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
+    ui->tableView->sortByColumn(0,
+                                Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
-//ui->tableView->setRowHeight(1,20);
-//ui->tableView->setRowHeight(2,20);
-//ui->tableView->setRowHeight(3,20);
+    //ui->tableView->setRowHeight(1,20);
+    //ui->tableView->setRowHeight(2,20);
+    //ui->tableView->setRowHeight(3,20);
     iloscWierszy();
 }
 
-void KontrahentLista::iloscWierszy(){
-
+void KontrahentLista::iloscWierszy()
+{
     int iloscWierszy = model->rowCount();
     QString qIloscWierszy;
     qIloscWierszy.setNum(iloscWierszy);
-    ui->labelTest->setText(qIloscWierszy);
+    ui->labelTest->setText("Ilosć Kontrahentów: " + qIloscWierszy);
     cout << iloscWierszy;
 }
-
 
 void KontrahentLista::myfunctiontimer()
 {
@@ -215,4 +217,20 @@ void KontrahentLista::on_tableView_activated(const QModelIndex)
     //  TableViewListaKontrahentow myModel(0);
     //  listaKontrahentów.setModel(&myModel);
     //  listaKontrahentów.show();
+}
+
+void KontrahentLista::on_tableView_doubleClicked(const QModelIndex &index)
+{
+    QMessageBox msgBox;
+    msgBox.setText("Click, Click, dwa razy");
+
+    msgBox.exec();
+}
+
+void KontrahentLista::on_tableView_clicked(const QModelIndex &index)
+{
+    QMessageBox msgBox;
+    msgBox.setText("Click,  tylko raz Click");
+
+    msgBox.exec();
 }

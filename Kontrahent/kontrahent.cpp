@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <QString>
 #include <QTimer>
+#include <QApplication>
+#include <QtWidgets>
 
 
 
@@ -34,7 +36,7 @@ Kontrahent::Kontrahent(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Kontrahent)
 {
-    ui->setupUi(this);
+     ui->setupUi(this);
     //---------Sekcja generacji timera
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
@@ -244,6 +246,7 @@ void Kontrahent::on_actionDodaj_Miasto_triggered()
     cout<<"Dodoaje miasto zkontrahenta"<<endl;
     KontrahentDodajMiasto *kontrDodMiasto = new KontrahentDodajMiasto(this);
     kontrDodMiasto->show();
+
 }
 
 void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
@@ -264,4 +267,18 @@ void Kontrahent::on_actionInfo_triggered()
 {
 Info *info= new Info(this);
     info->show();
+}
+
+//void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString &arg1)
+//{
+//     //ui->comboBoxWczytajMiasta->update(); // Odswiezam Comboboxa po powrocie z dodoaj miasto
+////     ui->comboBoxWczytajMiasta->clear();
+////     wczytajMiasta();
+
+//}
+
+void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString &arg1)
+{
+     ui->comboBoxWczytajMiasta->clear();
+     wczytajMiasta();
 }

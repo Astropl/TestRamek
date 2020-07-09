@@ -4,6 +4,9 @@
 #include <iostream>
 #include <QMessageBox>
 #include <QFile>
+#include <QMessageBox>
+#include <QApplication>
+#include <QtWidgets>
 
 using namespace std;
 

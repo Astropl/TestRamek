@@ -39,6 +39,10 @@ public slots:
 
     void on_actionInfo_triggered();
 
+    void on_comboBoxWczytajMiasta_activated(const QString &arg1);
+
+    void on_comboBoxWczytajMiasta_highlighted(const QString &arg1);
+
 private:
     Ui::Kontrahent *ui;
     QTimer *timer;
