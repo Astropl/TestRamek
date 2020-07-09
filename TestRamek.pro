@@ -24,6 +24,7 @@ SOURCES += \
     Kontrahent/kontrahentdodajmiasto.cpp \
     Kontrahent/kontrahentdodajwojewodztwo.cpp \
     Kontrahent/kontrahentlista.cpp \
+    Kontrahent/kontrahentshow.cpp \
     Kontrahent/tableviewlistakontrahentow.cpp \
     Timery/zegary.cpp \
     Urzadzenia/urzadzenia.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     Kontrahent/kontrahentdodajmiasto.h \
     Kontrahent/kontrahentdodajwojewodztwo.h \
     Kontrahent/kontrahentlista.h \
+    Kontrahent/kontrahentshow.h \
     Kontrahent/tableviewlistakontrahentow.h \
     Timery/zegary.h \
     Urzadzenia/urzadzenia.h \
@@ -74,6 +76,7 @@ FORMS += \
     Kontrahent/kontrahentdodajmiasto.ui \
     Kontrahent/kontrahentdodajwojewodztwo.ui \
     Kontrahent/kontrahentlista.ui \
+    Kontrahent/kontrahentshow.ui \
     Urzadzenia/urzadzenia.ui \
     Urzadzenia/urzadzeniadodajmodel.ui \
     Urzadzenia/urzadzeniadodajnrseryjny.ui \

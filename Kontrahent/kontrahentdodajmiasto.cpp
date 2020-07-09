@@ -23,7 +23,7 @@ KontrahentDodajMiasto::KontrahentDodajMiasto(QWidget *parent)
     plikOdczytDodajMiasto.open("C:/Qt/Pliki/ZapisMiasta.txt", ios::in);
     if (plikOdczytDodajMiasto.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia;
 

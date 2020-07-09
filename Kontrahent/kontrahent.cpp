@@ -4,6 +4,7 @@
 #include "ui_kontrahent.h"
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
+#include "kontrahentshow.h"
 #include "Info/info.h"
 #include <ctime>
 #include <fstream>
@@ -217,20 +218,17 @@ plikKontrahent<<ui->lineEditWczytajTelefonDod->text().toStdString() << endl;
 plikKontrahent<<ui->lineEditWczytajEmail->text().toStdString() << endl;
 plikKontrahent<<ui->lineEditWczytajUrl->text().toStdString() << endl;
 
-    //lineEditWczytaj
+
 iloscElementowWcombo = ui->comboBoxPomoc->count();
 
-    //iloscElementowWcombo = ui->comboBoxDodajMiasto->count();
+
     for (int i = 0; i <= iloscElementowWcombo-1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
-        //plikKontrahent << ui->comboBoxDodajMiasto->itemText(i).toStdString() << endl;
+
     }
     plikKontrahent.close();
-    //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
-    //ui->comboBoxDodajMiasto->rep
 
-    //destroy();
 }
 
 void Kontrahent::on_pushButton_2_clicked()
@@ -269,16 +267,13 @@ Info *info= new Info(this);
     info->show();
 }
 
-//void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString &arg1)
-//{
-//     //ui->comboBoxWczytajMiasta->update(); // Odswiezam Comboboxa po powrocie z dodoaj miasto
-////     ui->comboBoxWczytajMiasta->clear();
-////     wczytajMiasta();
 
-//}
+
 
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString &arg1)
 {
      ui->comboBoxWczytajMiasta->clear();
      wczytajMiasta();
+     //TODO: Posortować w comboBoxie miast
+
 }

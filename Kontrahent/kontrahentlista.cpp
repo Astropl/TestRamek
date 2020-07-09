@@ -1,6 +1,7 @@
 #include "kontrahentlista.h"
 #include "tableviewlistakontrahentow.h"
 #include "ui_kontrahentlista.h"
+#include "kontrahentshow.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
@@ -223,14 +224,21 @@ void KontrahentLista::on_tableView_doubleClicked(const QModelIndex &index)
 {
     QMessageBox msgBox;
     msgBox.setText("Click, Click, dwa razy");
+msgBox.exec();
 
-    msgBox.exec();
+
 }
 
 void KontrahentLista::on_tableView_clicked(const QModelIndex &index)
 {
     QMessageBox msgBox;
-    msgBox.setText("Click,  tylko raz Click");
+//    msgBox.setText("Click,  tylko raz Click");
+//    msgBox.exec();
+    QString pierwszazmienna ="Cos ik tam jest";
+KontrahentShow *kontrShow = new KontrahentShow(pierwszazmienna);
+//kontrShow = new KontrahentShow(pierwszazmienna);
 
-    msgBox.exec();
+//kontrShow ->show("jakas nazwa");
+    //kontrShow->wyswietl("jakas nazwa");
+
 }
