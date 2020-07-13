@@ -109,6 +109,7 @@ int Pierwsza::zmianaLabela(
         break;
     }
     ui->labelDzien->setText((stringDzienTygodniaPierwsza).c_str());
+    return 0;
 }
 Pierwsza::~Pierwsza()
 {

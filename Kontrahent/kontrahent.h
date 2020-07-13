@@ -35,13 +35,13 @@ public slots:
 
     //void on_lineEditWczytajNazwa_1_editingFinished();
 
-    void on_lineEditWczytajNazwa_1_textChanged(const QString &arg1);
+    void on_lineEditWczytajNazwa_1_textChanged(const QString ); //(const QString &arg1)
 
     void on_actionInfo_triggered();
 
     //void on_comboBoxWczytajMiasta_activated(const QString &arg1);
 
-    void on_comboBoxWczytajMiasta_highlighted(const QString &arg1);
+    void on_comboBoxWczytajMiasta_highlighted(const QString); // (const QString &arg1)
 
 private:
     Ui::Kontrahent *ui;

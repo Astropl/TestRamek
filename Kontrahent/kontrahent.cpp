@@ -126,6 +126,7 @@ ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
         break;
     }
     ui->labelDzien->setText((stringDzienTygodniaKontrahent).c_str());
+    return 0;
 }
 
 void Kontrahent::wczytajMiasta()
@@ -256,7 +257,7 @@ void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
 
 
 
-void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString &arg1)
+void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString ) // (const QString &arg1)
 {
     cout<<"Zmiana textu"<<endl;
 }
@@ -270,7 +271,7 @@ Info *info= new Info(this);
 
 
 
-void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString &arg1)
+void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
 {
      ui->comboBoxWczytajMiasta->clear();
      wczytajMiasta();

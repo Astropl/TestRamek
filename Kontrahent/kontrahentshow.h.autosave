@@ -16,7 +16,7 @@ public:
     ~KontrahentShow();
 
 public slots:
-    QString wyswietl (QString pierwszazmienna);
+    QString wyswietl (QString tab[1]);
     //KontrahentShow(QString pierwszazmienna);
 
 

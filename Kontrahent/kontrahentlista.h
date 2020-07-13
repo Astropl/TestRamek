@@ -29,9 +29,9 @@ private slots:
     void on_pushButton_2_clicked();
     void on_tableView_activated(const QModelIndex);
 
-    void on_tableView_doubleClicked(const QModelIndex &index);
+    void on_tableView_doubleClicked(const QModelIndex); //(const QModelIndex &index);
 
-    void on_tableView_clicked(const QModelIndex &index);
+    void on_tableView_clicked(const QModelIndex); //(const QModelIndex &index)
 
 private:
     Ui::KontrahentLista *ui;

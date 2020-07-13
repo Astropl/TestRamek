@@ -8,7 +8,7 @@
 
 using namespace std;
 
-
+QString tab[13];
 
 KontrahentShow::KontrahentShow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,12 +34,12 @@ void KontrahentShow::on_pushButton_2_clicked()
     destroy();
 }
 
-QString KontrahentShow::wyswietl (QString pierwszazmienna)
+QString KontrahentShow::wyswietl (QString tab[0] )
 {
     //TODO: Przechwycic nazwe kontrahenta z KontrhanetLista
 
     cout<<"Chche wysiwretlic i dopisac do labeli wybranego kontrahenta"<<endl;
-    cout<<"Pierwsa zmienne to :" <<pierwszazmienna.toStdString()<<endl;
-    ui->label->setText(pierwszazmienna);
+    cout<<"Pierwsa zmienne to :" <<tab[0].toStdString()<<endl;
+    ui->label->setText(tab[0]);
     return 0;
 }

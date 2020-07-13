@@ -47,6 +47,7 @@ int Zegary::myfunctiontimer()
 
 //    //pier->zmianaLabela(sekunda);
 //    return ( sekunda);
+return 0;
 }
 
 

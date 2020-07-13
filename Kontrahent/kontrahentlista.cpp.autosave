@@ -250,7 +250,7 @@ QModelIndex index=ui->tableView->selectionModel()->currentIndex();
 QVariant vartosc= index.sibling(index.row(),index.column()).data();
 QString QVartsoc = QVariant(vartosc).toString();
 ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
-kontrShow->wyswietl(QVartsoc);
+
 //kontrShow->wyswietl(ui->tableView->)
 
 // stringrowDosize: zaznaczony rzad
@@ -261,6 +261,16 @@ kontrShow->wyswietl(QVartsoc);
 
 int iloscColumn = ui->tableView->currentIndex().column()+1;
 ui->label_2->setText(QString::number(iloscColumn)+" "+ QString::number(stringrowDoSize));
+
+QString *tab[iloscColumn];
+for (int i =1;i<=iloscColumn;i++)
+{
+QVariant wyslij = index.sibling(i,index.column()).data();
+tab[i] == wyslij;
+kontrShow->wyswietl(QVariant(wyslij).toString() );
+}
+
+
 kontrShow ->show();
     //kontrShow->wyswietl("jakas nazwa");
 

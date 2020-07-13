@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //------------
 
-    TODO:" //Sprawdzenie czy są puste pliki<<";
+    //TODO:" //Sprawdzenie czy są puste pliki<<";
     //-----------------
 
 }
