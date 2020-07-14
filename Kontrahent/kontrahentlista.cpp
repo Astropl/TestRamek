@@ -1,19 +1,19 @@
 #include "kontrahentlista.h"
+#include "kontrahentshow.h"
 #include "tableviewlistakontrahentow.h"
 #include "ui_kontrahentlista.h"
-#include "kontrahentshow.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
-#include <QMessageBox>
+#include <string>
 #include <QApplication>
-#include <QtWidgets>
+#include <QMessageBox>
 #include <QString>
 #include <QTableView>
 #include <QTimer>
-
+#include <QtWidgets>
 
 using namespace std;
 time_t czasKontrahentLista;
@@ -26,7 +26,6 @@ int godzinaKontrahentLista, minutaKontrahentLista, sekundaKontrahentLista, dzien
 int dzienTygodniaKontrahentLista;
 string stringDzienTygodniaKontrahentLista;
 string zmiennasKontrahentLista;
-
 
 fstream plikKontrahentLista;
 
@@ -220,52 +219,72 @@ void KontrahentLista::on_tableView_activated(const QModelIndex)
     //  listaKontrahentów.show();
 }
 
-void KontrahentLista::on_tableView_doubleClicked(const QModelIndex ) //(const QModelIndex &index)
+void KontrahentLista::on_tableView_doubleClicked(const QModelIndex) //(const QModelIndex &index)
 {
     QMessageBox msgBox;
     msgBox.setText("Click, Click, dwa razy");
-msgBox.exec();
-
-
+    msgBox.exec();
 }
 
 void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelIndex &index)
 {
     QMessageBox msgBox;
-//    msgBox.setText("Click,  tylko raz Click");
-//    msgBox.exec();
-    QString pierwszazmienna ="Cos ik tam jest";
-KontrahentShow *kontrShow = new KontrahentShow(this); //KontrahentShow *kontrShow = new KontrahentShow(pierwszazmienna);
-//kontrShow = new KontrahentShow(pierwszazmienna);
-//kontrShow->wyswietl(ui->);
-//rzad pokaz
+    //    msgBox.setText("Click,  tylko raz Click");
+    //    msgBox.exec();
+    QString pierwszazmienna = "Cos ik tam jest";
+    KontrahentShow *kontrShow = new KontrahentShow(
+        this); //KontrahentShow *kontrShow = new KontrahentShow(pierwszazmienna);
+    //kontrShow = new KontrahentShow(pierwszazmienna);
+    //kontrShow->wyswietl(ui->);
+    //rzad pokaz
 
+    int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
+    cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+    //TODO: Musze zrobic tak zeby po wybraniu numeru wiersza przeliterowac wszytskie wartosci i wysłac.
 
+    QModelIndex index = ui->tableView->selectionModel()->currentIndex();
+    QVariant vartosc = index.sibling(index.row(), index.column()).data();
+    QString QVartsoc = QVariant(vartosc).toString();
+    ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
 
-int stringrowDoSize = ui->tableView->currentIndex().row()+1;
-cout<<"Zaznaczony rzad to: "<<stringrowDoSize<<endl;
-//TODO: Musze zrobic tak zeby po wybraniu numeru wiersza przeliterowac wszytskie wartosci i wysłac.
+    //kontrShow->wyswietl(ui->tableView->)
 
-QModelIndex index=ui->tableView->selectionModel()->currentIndex();
-QVariant vartosc= index.sibling(index.row(),index.column()).data();
-QString QVartsoc = QVariant(vartosc).toString();
-ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
-kontrShow->wyswietl(QVartsoc);
-//kontrShow->wyswietl(ui->tableView->)
+    // stringrowDosize: zaznaczony rzad
 
-// stringrowDosize: zaznaczony rzad
+    //int wybranyWiersz = ui->tableView->rowViewportPosition(0);
+    //ui->label_2->setText(QString::number(wybranyWiersz));
+    //model->setItem(row, nr_lini - 2, dodajItem);
 
-//int wybranyWiersz = ui->tableView->rowViewportPosition(0);
-//ui->label_2->setText(QString::number(wybranyWiersz));
-//model->setItem(row, nr_lini - 2, dodajItem);
+    //-------------
+    int iloscColumn = model->columnCount();
+    QString qIloscColumn;
+    qIloscColumn.setNum(iloscColumn);
 
-int iloscColumn = ui->tableView->currentIndex().column()+1;
-ui->label_2->setText(QString::number(iloscColumn)+" "+ QString::number(stringrowDoSize));
-kontrShow ->show();
+    //--------------
+    //int iloscColumn = ui->tableView->currentIndex().column()+1;
+    ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
+
+    QVariant tab[iloscColumn];
+    QVariant wyslij;
+    for (int i = 0; i <= iloscColumn; i++) {
+        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
+        //tab[i] =
+    }
+
+    //kontrShow->wyswietl(QVariant(wyslij).toString());
+    kontrShow->wyswietl(tab[0],
+                        tab[1],
+                        tab[2],
+                        tab[3],
+                        tab[4],
+                        tab[5],
+                        tab[6],
+                        tab[7],
+                        tab[8],tab[9],
+                        tab[10],
+                        tab[11],
+                        tab[12]);
+    //ui->label_2->setText(wyslij.toString());//ui->label_2->setText(tab[0].toString());
+    kontrShow->show();
     //kontrShow->wyswietl("jakas nazwa");
-
-
-
-
-
 }

@@ -16,7 +16,7 @@ public:
     ~KontrahentShow();
 
 public slots:
-    QString wyswietl (QString pierwszazmienna);
+    QVariant wyswietl (QVariant p1, QVariant p2, QVariant p3,QVariant p4,QVariant p5,QVariant p6,QVariant p7,QVariant p8,QVariant p9,QVariant p10,QVariant p11,QVariant p12,QVariant p13);
     //KontrahentShow(QString pierwszazmienna);
 
 
