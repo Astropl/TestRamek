@@ -20,7 +20,7 @@ KontrahentDodajMiasto::KontrahentDodajMiasto(QWidget *parent)
 
     //---------------------------------------------------------
 
-    plikOdczytDodajMiasto.open("C:/Qt/Pliki/ZapisMiasta.txt", ios::in);
+    plikOdczytDodajMiasto.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::in);
     if (plikOdczytDodajMiasto.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -49,7 +49,7 @@ void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
     cout << "Zapisuje " << endl;
     // musze zapisać do pliku
     plikOdczytDodajMiasto
-        .open("C:/Qt/Pliki/ZapisMiasta.txt",
+        .open("C:/Defaults/Pliki/ZapisMiasta.txt",
               ios::out
                   | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
 

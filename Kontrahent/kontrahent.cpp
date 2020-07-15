@@ -132,7 +132,7 @@ ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
 void Kontrahent::wczytajMiasta()
 {
     //Wczytuje miasta z pliku
-    plikKontrahent.open("C:/Qt/Pliki/ZapisMiasta.txt", ios::in);
+    plikKontrahent.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
@@ -150,7 +150,7 @@ void Kontrahent::wczytajMiasta()
 void Kontrahent::wczytajWojewodztwa()
 {
     //Wczytuje miasta z pliku
-    plikKontrahent.open("C:/Qt/Pliki/ZapisWojewodztwa.txt", ios::in);
+    plikKontrahent.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -172,7 +172,7 @@ void Kontrahent::on_pushButton_clicked()
     //Zapisz
     cout<<"Zapisuje"<<endl;
 
-    plikKontrahent.open("C:/Qt/Pliki/Kontrahent.txt", ios::out | ios::app);
+    plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;

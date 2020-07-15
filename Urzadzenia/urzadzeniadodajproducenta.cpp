@@ -15,7 +15,7 @@ UrzadzeniaDodajProducenta::UrzadzeniaDodajProducenta(QWidget *parent)
 {
     ui->setupUi(this);
 
-    plikProducent.open("C:/Qt/Pliki/ZapisProducenta.txt", ios::in);
+    plikProducent.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::in);
 
     if (plikProducent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
@@ -41,7 +41,7 @@ void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikProducent.open("C:/Qt/Pliki/ZapisProducenta.txt", ios::out | ios::app);
+    plikProducent.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::out | ios::app);
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajProdcuenta->count();

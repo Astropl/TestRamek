@@ -14,7 +14,7 @@ UrzadzeniaDodajNrSeryjny::UrzadzeniaDodajNrSeryjny(QWidget *parent)
 {
     ui->setupUi(this);
 
-    plikNrSeryjny.open("C:/Qt/Pliki/ZapisNrSeryjny.txt", ios::in);
+    plikNrSeryjny.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::in);
 
     if (plikNrSeryjny.good() == false) {
         cout << "Plik nie istnieje !!!!!";
@@ -57,7 +57,7 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikNrSeryjny.open("C:/Qt/Pliki/ZapisNrSeryjny.txt", ios::out | ios::app);
+    plikNrSeryjny.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::out | ios::app);
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajNrSeryjny->count();

@@ -18,7 +18,7 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
 
     //---------------------------------------------------------
 
-    plikOdczyt.open("C:/Qt/Pliki/ZapisModel.txt",ios::in);
+    plikOdczyt.open("C:/Defaults/Pliki/ZapisModel.txt",ios::in);
     if(plikOdczyt.good()==false)
     {
         cout<<"Plik nie istnieje !!!!!";
@@ -62,7 +62,7 @@ void UrzadzeniaDodajModel::on_pushButton_2_clicked()
 {
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikOdczyt.open("C:/Qt/Pliki/ZapisModel.txt", ios::out | ios::app);
+    plikOdczyt.open("C:/Defaults/Pliki/ZapisModel.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;

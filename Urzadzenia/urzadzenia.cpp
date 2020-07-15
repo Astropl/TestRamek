@@ -45,7 +45,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     //===================
 
     //Wczytuje modele z pliku
-    plikUrzadzenia.open("C:/Qt/Pliki/ZapisModel.txt", ios::in);
+    plikUrzadzenia.open("C:/Defaults/Pliki/ZapisModel.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
@@ -60,7 +60,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
 
     plikUrzadzenia.close();
     // wczytuj pliki z producenta
-    plikUrzadzenia.open("C:/Qt/Pliki/ZapisProducenta.txt", ios::in);
+    plikUrzadzenia.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
@@ -74,7 +74,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     }
     plikUrzadzenia.close();
     //wczytaj numery seryjne z pliku
-    plikUrzadzenia.open("C:/Qt/Pliki/ZapisNrSeryjny.txt", ios::in);
+    plikUrzadzenia.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);

@@ -79,7 +79,7 @@ void KontrahentLista::wczytajDane()
     //Wczytuje kontrahentow z pliku
 
     //QStandardItem *dodajNumer = new QStandardItem("");
-    plikKontrahentLista.open("C:/Qt/Pliki/Kontrahent.txt", ios::in);
+    plikKontrahentLista.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
     if (plikKontrahentLista.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         exit(0);
@@ -129,7 +129,7 @@ void KontrahentLista::iloscWierszy()
 }
 
 void KontrahentLista::myfunctiontimer()
-{
+{//TODO: Wywalic to do nowego pliku.
     time(&czasKontrahentLista);
     timeinfoKontrahentLista = *localtime(&czasKontrahentLista);
     godzinaKontrahentLista = timeinfoKontrahentLista.tm_hour;
@@ -232,46 +232,34 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
     //    msgBox.setText("Click,  tylko raz Click");
     //    msgBox.exec();
     QString pierwszazmienna = "Cos ik tam jest";
-    KontrahentShow *kontrShow = new KontrahentShow(
-        this); //KontrahentShow *kontrShow = new KontrahentShow(pierwszazmienna);
-    //kontrShow = new KontrahentShow(pierwszazmienna);
-    //kontrShow->wyswietl(ui->);
+    KontrahentShow *kontrShow = new KontrahentShow(this);
+
     //rzad pokaz
 
     int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
     cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
-    //TODO: Musze zrobic tak zeby po wybraniu numeru wiersza przeliterowac wszytskie wartosci i wysłac.
 
     QModelIndex index = ui->tableView->selectionModel()->currentIndex();
     QVariant vartosc = index.sibling(index.row(), index.column()).data();
     QString QVartsoc = QVariant(vartosc).toString();
     ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
 
-    //kontrShow->wyswietl(ui->tableView->)
-
     // stringrowDosize: zaznaczony rzad
 
-    //int wybranyWiersz = ui->tableView->rowViewportPosition(0);
-    //ui->label_2->setText(QString::number(wybranyWiersz));
-    //model->setItem(row, nr_lini - 2, dodajItem);
-
-    //-------------
     int iloscColumn = model->columnCount();
     QString qIloscColumn;
     qIloscColumn.setNum(iloscColumn);
 
     //--------------
-    //int iloscColumn = ui->tableView->currentIndex().column()+1;
+
     ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
 
     QVariant tab[iloscColumn];
     QVariant wyslij;
     for (int i = 0; i <= iloscColumn; i++) {
         tab[i] = index.sibling(stringrowDoSize - 1, i).data();
-        //tab[i] =
     }
 
-    //kontrShow->wyswietl(QVariant(wyslij).toString());
     kontrShow->wyswietl(tab[0],
                         tab[1],
                         tab[2],
@@ -280,11 +268,11 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
                         tab[5],
                         tab[6],
                         tab[7],
-                        tab[8],tab[9],
+                        tab[8],
+                        tab[9],
                         tab[10],
                         tab[11],
                         tab[12]);
-    //ui->label_2->setText(wyslij.toString());//ui->label_2->setText(tab[0].toString());
+
     kontrShow->show();
-    //kontrShow->wyswietl("jakas nazwa");
 }

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     #Info/info.cpp \
+    Files/checkfiles1.cpp \
     Kontrahent/kontrahent.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
@@ -45,6 +46,7 @@ SOURCES += \
 
 HEADERS += \
     #Info/info.h \
+    Files/checkfiles1.h \
     Kontrahent/kontrahent.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \

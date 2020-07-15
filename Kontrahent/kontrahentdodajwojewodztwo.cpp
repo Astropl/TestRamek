@@ -22,7 +22,7 @@ KontrahentDodajWojewodztwo::KontrahentDodajWojewodztwo(QWidget *parent) :
 
     //---------------------------------------------------------
 
-    plikOdczytDodajWojewodztwa.open("C:/Qt/Pliki/ZapisWojewodztwa.txt",ios::in);
+    plikOdczytDodajWojewodztwa.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt",ios::in);
     if(plikOdczytDodajWojewodztwa.good()==false)
     {
         cout<<"Plik nie istnieje !!!!!";
@@ -51,7 +51,7 @@ void KontrahentDodajWojewodztwo::on_pushButton_clicked()
 {
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikOdczytDodajWojewodztwa.open("C:/Qt/Pliki/ZapisWojewodztwa.txt", ios::out | ios::app);
+    plikOdczytDodajWojewodztwa.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
