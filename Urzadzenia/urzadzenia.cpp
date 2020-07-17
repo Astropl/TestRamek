@@ -20,7 +20,7 @@ QString zaznaczono;
 fstream plikUrzadzenia;
 
 time_t czasUrzadzenia;
-tm timeinfo;
+//tm timeinfo;
 int labelGodzina;
 int labelData;
 int wynik;
@@ -99,17 +99,17 @@ Urzadzenia::Urzadzenia(QWidget *parent)
 }
 void Urzadzenia::myfunctiontimer()
 {
-    time(&czasUrzadzenia);
-    timeinfo = *localtime(&czasUrzadzenia);
-    godzinaUrzadzenia = timeinfo.tm_hour;
-    minutaUrzadzenia = timeinfo.tm_min;
-    sekundaUrzadzenia = timeinfo.tm_sec;
-    dzienUrzadzenia = timeinfo.tm_mday;
-    miesiacUrzadzenia = timeinfo.tm_mon;
-    rokUrzadzenia = timeinfo.tm_year;
-    dzienTygodniaUrzadzenia = timeinfo.tm_wday;
-    miesiacUrzadzenia = miesiacUrzadzenia + 1;
-    rokUrzadzenia = rokUrzadzenia + 1900;
+//    time(&czasUrzadzenia);
+//    timeinfo = *localtime(&czasUrzadzenia);
+//    godzinaUrzadzenia = timeinfo.tm_hour;
+//    minutaUrzadzenia = timeinfo.tm_min;
+//    sekundaUrzadzenia = timeinfo.tm_sec;
+//    dzienUrzadzenia = timeinfo.tm_mday;
+//    miesiacUrzadzenia = timeinfo.tm_mon;
+//    rokUrzadzenia = timeinfo.tm_year;
+//    dzienTygodniaUrzadzenia = timeinfo.tm_wday;
+//    miesiacUrzadzenia = miesiacUrzadzenia + 1;
+//    rokUrzadzenia = rokUrzadzenia + 1900;
 
     zmianaLabela(godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia, dzienTygodniaUrzadzenia);
 }

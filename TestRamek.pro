@@ -27,6 +27,7 @@ SOURCES += \
     Kontrahent/kontrahentlista.cpp \
     Kontrahent/kontrahentshow.cpp \
     Kontrahent/tableviewlistakontrahentow.cpp \
+    Timery/timedate.cpp \
     Timery/zegary.cpp \
     Urzadzenia/urzadzenia.cpp \
     Urzadzenia/urzadzeniadodajmodel.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     Kontrahent/kontrahentlista.h \
     Kontrahent/kontrahentshow.h \
     Kontrahent/tableviewlistakontrahentow.h \
+    Timery/timedate.h \
     Timery/zegary.h \
     Urzadzenia/urzadzenia.h \
     Urzadzenia/urzadzeniadodajmodel.h \
