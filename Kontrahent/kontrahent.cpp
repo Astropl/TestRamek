@@ -5,6 +5,7 @@
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
 #include "kontrahentshow.h"
+#include "Timery/timedate.h"
 #include "Info/info.h"
 #include <ctime>
 #include <fstream>
@@ -21,15 +22,14 @@
 
 using namespace std;
 
-time_t czasKontrahent;
-tm timeinfoKontrahent;
-int labelGodzinaKontrahent;
-int labelDataKontrahent;
-int wynikKontrahent;
-int godzinaKontrahent, minutaKontrahent, sekundaKontrahent, dzienKontrahent, miesiacKontrahent, rokKontrahent;
-int dzienTygodniaKontrahent;
-string stringDzienTygodniaKontrahent;
-string zmiennasKontrahent;
+
+//int labelGodzina;
+//int labelData;
+//int wynikKontrahent;
+//int godzinaKontrahent, minutaKontrahent, sekundaKontrahent, dzienKontrahent, miesiacKontrahent, rokKontrahent;
+//int dzienTygodniaKontrahent;
+//string stringDzienTygodniaKontrahent;
+//string zmiennasKontrahent;
 
 fstream plikKontrahent;
 
@@ -53,81 +53,39 @@ Kontrahent::~Kontrahent()
 }
 
 void Kontrahent::myfunctiontimer()
-{
-    time(&czasKontrahent);
-    timeinfoKontrahent = *localtime(&czasKontrahent);
-    godzinaKontrahent = timeinfoKontrahent.tm_hour;
-    minutaKontrahent = timeinfoKontrahent.tm_min;
-    sekundaKontrahent = timeinfoKontrahent.tm_sec;
-    dzienKontrahent = timeinfoKontrahent.tm_mday;
-    miesiacKontrahent = timeinfoKontrahent.tm_mon;
-    rokKontrahent = timeinfoKontrahent.tm_year;
-    dzienTygodniaKontrahent = timeinfoKontrahent.tm_wday;
-    miesiacKontrahent = miesiacKontrahent + 1;
-    rokKontrahent = rokKontrahent + 1900;
+{time_t czas;
+    tm timeinfo;
+    QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
 
-    zmianaLabela(godzinaKontrahent, minutaKontrahent, sekundaKontrahent, dzienKontrahent, miesiacKontrahent, rokKontrahent, dzienTygodniaKontrahent);
+    TimeDate *timeDate = new TimeDate();
+
+    time(&czas);
+    timeinfo = *localtime(&czas);
+    int godzina = timeinfo.tm_hour;
+    int minuta = timeinfo.tm_min;
+    int sekunda = timeinfo.tm_sec;
+    int dzien = timeinfo.tm_mday;
+    int miesiac = timeinfo.tm_mon;
+    int rok = timeinfo.tm_year;
+    int dzienTygodnia = timeinfo.tm_wday;
+    miesiac = miesiac + 1;
+    rok = rok + 1900;
+    dzienTygodnia = dzienTygodnia + 1;
+
+    qStrMin = timeDate->changeStringsMin(minuta);
+    qStrSek = timeDate->changeStringsSek(sekunda);
+    qStrDzien = timeDate->changeStringsDzien(dzien);
+    qStrGodz = timeDate->changeStringsGodz(godzina);
+    qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
+    stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
+
+    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
+
+    ui->labelDzien->setText(stringDzienTygodnia);
+
 }
-int Kontrahent::zmianaLabela(
-    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
-{
-    // Dodoać zera do sekund gdy mniej niz 10
-    QString qStrMin = QString::number(minuta);
-    QString qStrGodz = QString::number(godzina);
-    QString qStrSek = QString::number(sekunda);
-    QString qStrDzien = QString::number( dzien);
-    QString qStrMiesiac = QString::number(miesiac);
-    if (sekunda<10)
-    {
-        qStrSek = "0"+QString::number(sekunda);
-    }
-    if (minuta <10)
-    {
-        qStrMin = "0"+QString::number(minuta);
-    }
-    if (godzina<10)
-    {
-        qStrGodz = "0"+QString::number(godzina);
-    }
-    if (miesiac <10)
-    {
-        qStrMiesiac = "0"+QString::number(miesiac);
-    }
-    if (dzien <10)
-    {
-        qStrDzien = "0"+QString::number(dzien);
-    }
 
-
-ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
-                           + qStrDzien);
-    switch (dzienTygodnia) {
-    case 1:
-        stringDzienTygodniaKontrahent = "Poniedziałek";
-        break;
-    case 2:
-        stringDzienTygodniaKontrahent = "Wtorek";
-        break;
-    case 3:
-        stringDzienTygodniaKontrahent = "Środa";
-        break;
-    case 4:
-        stringDzienTygodniaKontrahent = "Czwartek";
-        break;
-    case 5:
-        stringDzienTygodniaKontrahent = "Piątek";
-        break;
-    case 6:
-        stringDzienTygodniaKontrahent = "Sobota";
-        break;
-    case 0:
-        stringDzienTygodniaKontrahent = "Niedziela";
-        break;
-    }
-    ui->labelDzien->setText((stringDzienTygodniaKontrahent).c_str());
-    return 0;
-}
 
 void Kontrahent::wczytajMiasta()
 {

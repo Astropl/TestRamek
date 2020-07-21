@@ -5,6 +5,7 @@
 #include "urzadzeniadodajmodel.h"
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
+#include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
@@ -19,15 +20,15 @@ string stringLabela4 = ("Producent: , Model: , Nr. Seryjny: ");
 QString zaznaczono;
 fstream plikUrzadzenia;
 
-time_t czasUrzadzenia;
+//time_t czasUrzadzenia;
 //tm timeinfo;
-int labelGodzina;
-int labelData;
-int wynik;
-int godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia;
-int dzienTygodniaUrzadzenia;
-string stringDzienTygodniaUrzadzenia;
-string zmiennas;
+//int labelGodzina;
+//int labelData;
+//int wynik;
+//int godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia;
+//int dzienTygodniaUrzadzenia;
+//string stringDzienTygodniaUrzadzenia;
+//string zmiennas;
 
 Urzadzenia::Urzadzenia(QWidget *parent)
     : QMainWindow(parent)
@@ -98,7 +99,37 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     countriesListModel->setData(index, QVariant("*"));
 }
 void Urzadzenia::myfunctiontimer()
-{
+{time_t czas;
+        tm timeinfo;
+        QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
+
+        TimeDate *timeDate = new TimeDate();
+
+        time(&czas);
+        timeinfo = *localtime(&czas);
+        int godzina = timeinfo.tm_hour;
+        int minuta = timeinfo.tm_min;
+        int sekunda = timeinfo.tm_sec;
+        int dzien = timeinfo.tm_mday;
+        int miesiac = timeinfo.tm_mon;
+        int rok = timeinfo.tm_year;
+        int dzienTygodnia = timeinfo.tm_wday;
+        miesiac = miesiac + 1;
+        rok = rok + 1900;
+        dzienTygodnia = dzienTygodnia + 1;
+
+        qStrMin = timeDate->changeStringsMin(minuta);
+        qStrSek = timeDate->changeStringsSek(sekunda);
+        qStrDzien = timeDate->changeStringsDzien(dzien);
+        qStrGodz = timeDate->changeStringsGodz(godzina);
+        qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
+        stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
+
+        ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+        ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
+
+        ui->labelDzien->setText(stringDzienTygodnia);
+}
 //    time(&czasUrzadzenia);
 //    timeinfo = *localtime(&czasUrzadzenia);
 //    godzinaUrzadzenia = timeinfo.tm_hour;
@@ -111,68 +142,68 @@ void Urzadzenia::myfunctiontimer()
 //    miesiacUrzadzenia = miesiacUrzadzenia + 1;
 //    rokUrzadzenia = rokUrzadzenia + 1900;
 
-    zmianaLabela(godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia, dzienTygodniaUrzadzenia);
-}
-int Urzadzenia::zmianaLabela(
-    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
-{
-    // Dodoać zera do sekund gdy mniej niz 10
-    QString qStrMin = QString::number(minuta);
-    QString qStrGodz = QString::number(godzina);
-    QString qStrSek = QString::number(sekunda);
-    QString qStrDzien = QString::number( dzien);
-    QString qStrMiesiac = QString::number(miesiac);
-    if (sekunda<10)
-    {
-        qStrSek = "0"+QString::number(sekunda);
-    }
-    if (minuta <10)
-    {
-        qStrMin = "0"+QString::number(minuta);
-    }
-    if (godzina<10)
-    {
-        qStrGodz = "0"+QString::number(godzina);
-    }
-    if (miesiac <10)
-    {
-        qStrMiesiac = "0"+QString::number(miesiac);
-    }
-    if (dzien <10)
-    {
-        qStrDzien = "0"+QString::number(dzien);
-    }
+//    zmianaLabela(godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia, dzienTygodniaUrzadzenia);
+//}
+//int Urzadzenia::zmianaLabela(
+//    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
+//{
+//    // Dodoać zera do sekund gdy mniej niz 10
+//    QString qStrMin = QString::number(minuta);
+//    QString qStrGodz = QString::number(godzina);
+//    QString qStrSek = QString::number(sekunda);
+//    QString qStrDzien = QString::number( dzien);
+//    QString qStrMiesiac = QString::number(miesiac);
+//    if (sekunda<10)
+//    {
+//        qStrSek = "0"+QString::number(sekunda);
+//    }
+//    if (minuta <10)
+//    {
+//        qStrMin = "0"+QString::number(minuta);
+//    }
+//    if (godzina<10)
+//    {
+//        qStrGodz = "0"+QString::number(godzina);
+//    }
+//    if (miesiac <10)
+//    {
+//        qStrMiesiac = "0"+QString::number(miesiac);
+//    }
+//    if (dzien <10)
+//    {
+//        qStrDzien = "0"+QString::number(dzien);
+//    }
 
 
-    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
-                           + qStrDzien);
-    switch (dzienTygodnia) {
-    case 1:
-        stringDzienTygodniaUrzadzenia = "Poniedziałek";
-        break;
-    case 2:
-        stringDzienTygodniaUrzadzenia = "Wtorek";
-        break;
-    case 3:
-        stringDzienTygodniaUrzadzenia = "Środa";
-        break;
-    case 4:
-        stringDzienTygodniaUrzadzenia = "Czwartek";
-        break;
-    case 5:
-        stringDzienTygodniaUrzadzenia = "Piątek";
-        break;
-    case 6:
-        stringDzienTygodniaUrzadzenia = "Sobota";
-        break;
-    case 0:
-        stringDzienTygodniaUrzadzenia = "Niedziela";
-        break;
-    }
-    ui->labelDzien->setText((stringDzienTygodniaUrzadzenia).c_str());
-    return 1;
-}
+//    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+//    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
+//                           + qStrDzien);
+//    switch (dzienTygodnia) {
+//    case 1:
+//        stringDzienTygodniaUrzadzenia = "Poniedziałek";
+//        break;
+//    case 2:
+//        stringDzienTygodniaUrzadzenia = "Wtorek";
+//        break;
+//    case 3:
+//        stringDzienTygodniaUrzadzenia = "Środa";
+//        break;
+//    case 4:
+//        stringDzienTygodniaUrzadzenia = "Czwartek";
+//        break;
+//    case 5:
+//        stringDzienTygodniaUrzadzenia = "Piątek";
+//        break;
+//    case 6:
+//        stringDzienTygodniaUrzadzenia = "Sobota";
+//        break;
+//    case 0:
+//        stringDzienTygodniaUrzadzenia = "Niedziela";
+//        break;
+//    }
+//    ui->labelDzien->setText((stringDzienTygodniaUrzadzenia).c_str());
+//    return 1;
+//}
 Urzadzenia::~Urzadzenia()
 {
     delete ui;

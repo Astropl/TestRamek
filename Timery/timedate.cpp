@@ -1,97 +1,93 @@
 #include "timedate.h"
-#include <iostream>
+#include "pierwsza.h"
+#include <cstring>
 #include <ctime>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
-//time_t czas;
-//tm timeinfo;
+//int minuta;
 
-int godzina, minuta, sekunda, dzien, miesiac, rok, dzienTygodnia;
-string stringDzienTygodnia;
-QString qStrMin, qStrGodz,qStrSek, qStrDzien, qStrMiesiac;
-
-TimeDate::TimeDate(QObject *parent) : QObject(parent)
-{
-
-}
+TimeDate::TimeDate(QObject *parent)
+    : QObject(parent)
+{}
 void TimeDate::init()
 {
 
-
-//    //zmianaLabela(godzina,
-//                 minuta,
-//                 sekunda,
-//                 dzien,
-//                 miesiac,
-//                 rok,
-//                 dzienTygodnia);
-
-
-
 }
 
-QString TimeDate::zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia, QString qStrMin, QString qStrGodz,QString qStrSek,QString qStrDzien,QString qStrMiesiac, QString stringDzienTygodnia)
+//Wyodrebnię QStringi z minutami i godzinami i resztą
+
+QString TimeDate::changeStringsMin(int minuta1)
 {
-    cout<<"Jestem w zegrach druga timedata"<<endl;
+    cout << "Jestem w zegrach od pierwszego timedata. changeStrings" << endl;
 
-    cout << "Jestem w myfunction" << endl;
+    QString qStrMin1 = QString::number(minuta1);
+    if (minuta1 < 10) {
+        qStrMin1 = "0" + QString::number(minuta1);
+    }
+    return qStrMin1;
+}
+QString TimeDate::changeStringsSek(int sekunda1)
+{
+    QString qStrSek1 = QString::number(sekunda1);
+    if (sekunda1 < 10) {
+        qStrSek1 = "0" + QString::number(sekunda1);
+    }
+    return qStrSek1;
+}
+QString TimeDate::changeStringsGodz(int godzina1)
+{
+    QString qStrGodz1 = QString::number(godzina1);
+    if (godzina1 < 10) {
+        qStrGodz1 = "0" + QString::number(godzina1);
+    }
+    return qStrGodz1;
+}
+QString TimeDate::changeStringsDzien(int dzien1)
+{
+    QString qStrDzien1 = QString::number(dzien1);
+    if (dzien1 < 10) {
+        qStrDzien1 = "0" + QString::number(dzien1);
+    }
+    return qStrDzien1;
+}
+QString TimeDate::changeStringsMiesiac(int miesiac1)
+{
+    QString qStrMiesiac1 = QString::number(miesiac1);
 
-    // Dodoać zera do sekund gdy mniej niz 10
-    qStrMin = QString::number(minuta);
-    qStrGodz = QString::number(godzina);
-    qStrSek = QString::number(sekunda);
-    qStrDzien = QString::number(dzien);
-    qStrMiesiac = QString::number(miesiac);
-    if (sekunda < 10) {
-        qStrSek = "0" + QString::number(sekunda);
+    if (miesiac1 < 10) {
+        qStrMiesiac1 = "0" + QString::number(miesiac1);
     }
-    if (minuta < 10) {
-        qStrMin = "0" + QString::number(minuta);
-    }
-    if (godzina < 10) {
-        qStrGodz = "0" + QString::number(godzina);
-    }
-    if (miesiac < 10) {
-        qStrMiesiac = "0" + QString::number(miesiac);
-    }
-    if (dzien < 10) {
-        qStrDzien = "0" + QString::number(dzien);
-    }
-
-//   /*/* ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-//    u**//i->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
-
-
-    switch (dzienTygodnia) {
+    return qStrMiesiac1;
+}
+QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia1)
+{QString stringDzienTygodnia1;
+    switch (dzienTygodnia1) {
     case 1:
-        stringDzienTygodnia = "Niedziela";
+         stringDzienTygodnia1 = "Niedziela";
         break;
     case 2:
-        stringDzienTygodnia = "Poniedziałek";
+        stringDzienTygodnia1 = "Poniedziałek";
         break;
     case 3:
-        stringDzienTygodnia = "Wtorek";
+        stringDzienTygodnia1 = "Wtorek";
         break;
     case 4:
-        stringDzienTygodnia = "Środa";
+        stringDzienTygodnia1 = "Środa";
         break;
     case 5:
-        stringDzienTygodnia = "Czwartek";
+        stringDzienTygodnia1 = "Czwartek";
         break;
     case 6:
-        stringDzienTygodnia = "Piątek";
+        stringDzienTygodnia1 = "Piątek";
         break;
     case 7:
-        stringDzienTygodnia = "Sobota";
+        stringDzienTygodnia1 = "Sobota";
         break;
     }
-    //ui->labelDzien->setText((stringDzienTygodnia).c_str());
-    QString pairConst;
-    pair(godzina,  minuta,  sekunda,  dzien,  miesiac,  rok,  dzienTygodnia, qStrMin, qStrGodz,qStrSek, qStrDzien, qStrMiesiac,  stringDzienTygodnia);
-    return pairConst;
+    return stringDzienTygodnia1;
 }
-QString TimeDate::pair(int godzina, int  minuta,int   sekunda, int  dzien, int  miesiac, int rok, int dzienTygodnia, QString qStrMin, QString qStrGodz,QString qStrSek, QString qStrDzien, QString qStrMiesiac, QString stringDzienTygodnia)
-{
-    QString pairConst = (godzina,  minuta,  sekunda,  dzien,  miesiac,  rok,  dzienTygodnia, qStrMin, qStrGodz,qStrSek, qStrDzien, qStrMiesiac,  stringDzienTygodnia);
-    return pairConst;
-}
+
+

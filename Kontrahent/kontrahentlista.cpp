@@ -2,6 +2,7 @@
 #include "kontrahentshow.h"
 #include "tableviewlistakontrahentow.h"
 #include "ui_kontrahentlista.h"
+#include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
@@ -129,80 +130,41 @@ void KontrahentLista::iloscWierszy()
 }
 
 void KontrahentLista::myfunctiontimer()
-{//TODO: Wywalic to do nowego pliku.
-    time(&czasKontrahentLista);
-    timeinfoKontrahentLista = *localtime(&czasKontrahentLista);
-    godzinaKontrahentLista = timeinfoKontrahentLista.tm_hour;
-    minutaKontrahentLista = timeinfoKontrahentLista.tm_min;
-    sekundaKontrahentLista = timeinfoKontrahentLista.tm_sec;
-    dzienKontrahentLista = timeinfoKontrahentLista.tm_mday;
-    miesiacKontrahentLista = timeinfoKontrahentLista.tm_mon;
-    rokKontrahentLista = timeinfoKontrahentLista.tm_year;
-    dzienTygodniaKontrahentLista = timeinfoKontrahentLista.tm_wday;
-    miesiacKontrahentLista = miesiacKontrahentLista + 1;
-    rokKontrahentLista = rokKontrahentLista + 1900;
+{//TODO: Wywalic to do nowego pliku. Zrobione
+    time_t czas;
+    tm timeinfo;
+    QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
 
-    zmianaLabela(godzinaKontrahentLista,
-                 minutaKontrahentLista,
-                 sekundaKontrahentLista,
-                 dzienKontrahentLista,
-                 miesiacKontrahentLista,
-                 rokKontrahentLista,
-                 dzienTygodniaKontrahentLista);
-}
-int KontrahentLista::zmianaLabela(
-    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
-{
-    // Dodoać zera do sekund gdy mniej niz 10
-    QString qStrMin = QString::number(minuta);
-    QString qStrGodz = QString::number(godzina);
-    QString qStrSek = QString::number(sekunda);
-    QString qStrDzien = QString::number(dzien);
-    QString qStrMiesiac = QString::number(miesiac);
-    if (sekunda < 10) {
-        qStrSek = "0" + QString::number(sekunda);
-    }
-    if (minuta < 10) {
-        qStrMin = "0" + QString::number(minuta);
-    }
-    if (godzina < 10) {
-        qStrGodz = "0" + QString::number(godzina);
-    }
-    if (miesiac < 10) {
-        qStrMiesiac = "0" + QString::number(miesiac);
-    }
-    if (dzien < 10) {
-        qStrDzien = "0" + QString::number(dzien);
-    }
+    TimeDate *timeDate = new TimeDate();
+
+    time(&czas);
+    timeinfo = *localtime(&czas);
+    int godzina = timeinfo.tm_hour;
+    int minuta = timeinfo.tm_min;
+    int sekunda = timeinfo.tm_sec;
+    int dzien = timeinfo.tm_mday;
+    int miesiac = timeinfo.tm_mon;
+    int rok = timeinfo.tm_year;
+    int dzienTygodnia = timeinfo.tm_wday;
+    miesiac = miesiac + 1;
+    rok = rok + 1900;
+    dzienTygodnia = dzienTygodnia + 1;
+
+    qStrMin = timeDate->changeStringsMin(minuta);
+    qStrSek = timeDate->changeStringsSek(sekunda);
+    qStrDzien = timeDate->changeStringsDzien(dzien);
+    qStrGodz = timeDate->changeStringsGodz(godzina);
+    qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
+    stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
 
     ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
     ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
-    switch (dzienTygodnia) {
-    case 1:
-        stringDzienTygodniaKontrahentLista = "Poniedziałek";
-        break;
-    case 2:
-        stringDzienTygodniaKontrahentLista = "Wtorek";
-        break;
-    case 3:
-        stringDzienTygodniaKontrahentLista = "Środa";
-        break;
-    case 4:
-        stringDzienTygodniaKontrahentLista = "Czwartek";
-        break;
-    case 5:
-        stringDzienTygodniaKontrahentLista = "Piątek";
-        break;
-    case 6:
-        stringDzienTygodniaKontrahentLista = "Sobota";
-        break;
-    case 0:
-        stringDzienTygodniaKontrahentLista = "Niedziela";
-        break;
-    }
-    ui->labelDzien->setText((stringDzienTygodniaKontrahentLista).c_str());
-    return 1;
+
+    ui->labelDzien->setText(stringDzienTygodnia);
+
+
 }
+
 
 void KontrahentLista::on_pushButton_2_clicked()
 {

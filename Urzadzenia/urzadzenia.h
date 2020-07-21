@@ -24,7 +24,7 @@ public:
     ~Urzadzenia();
 
 public slots:
-    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+//    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
     void myfunctiontimer();
     //void DataiCzas();
 

@@ -11,7 +11,14 @@ public:
 
 signals:
 public slots:
-    void init ();
+    void init();
+    void initMkDir();
+    void initKontrahent();
+    void initZapisMiasta();
+    void initZapisModel();
+    void initZapisNrSeryjny();
+    void initZapisProducenta();
+    void initZapisWojewodztwa();
 };
 
 #endif // CHECKFILES1_H
