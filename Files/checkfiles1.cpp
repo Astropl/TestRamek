@@ -79,7 +79,7 @@ void CheckFiles1::initZapisWojewodztwa()
 
 void CheckFiles1::init()
 {
-    //TODO: Dołozytc graficznie tworzenie bazy i sprawdzenie integralnosci plików.
+
     initMkDir();
     initKontrahent();
     initZapisMiasta();

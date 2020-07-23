@@ -22,12 +22,16 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+
+
+    //-----------------
     ui->setupUi(this);
     //------------
+ CheckIsFileExist();
 
-    //TODO:" //Sprawdzenie czy są puste pliki<<";
-    CheckIsFileExist();
-    //-----------------
+
+
 }
 
 MainWindow::~MainWindow()
@@ -44,8 +48,7 @@ void MainWindow::CheckIsFileExist()
 void MainWindow::on_pushButton_clicked()
 {
     Pierwsza *pierwsza = new Pierwsza(this);
-
-    pierwsza->show();
+pierwsza->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()

@@ -130,7 +130,7 @@ void KontrahentLista::iloscWierszy()
 }
 
 void KontrahentLista::myfunctiontimer()
-{//TODO: Wywalic to do nowego pliku. Zrobione
+{
     time_t czas;
     tm timeinfo;
     QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;

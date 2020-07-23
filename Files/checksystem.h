@@ -14,6 +14,14 @@ class CheckSystem : public QMainWindow
 public:
     explicit CheckSystem(QWidget *parent = nullptr);
     ~CheckSystem();
+public slots:
+
+
+    void init();
+    void updateProgress();
+
+private slots:
+//    void on_progressBar_valueChanged(int value);
 
 private:
     Ui::CheckSystem *ui;

@@ -47,7 +47,7 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
                                   QVariant p12,
                                   QVariant p13)
 {
-    //TODO: Przechwycic nazwe kontrahenta z KontrhanetLista
+
 
     cout << "Chche wysiwretlic i dopisac do labeli wybranego kontrahenta" << endl;
     //cout<<"Pierwsa zmienne to :" +pierwsza.toString()<<endl;
