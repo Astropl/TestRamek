@@ -59,3 +59,4 @@ private:
 };
 
 #endif // URZADZENIA_H
+//Info do Gita

@@ -93,3 +93,4 @@ void MainWindow::on_actionO_programie_triggered()
     Info *info = new Info(this);
     info->show();
 }
+//Info do Gita

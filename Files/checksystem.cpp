@@ -13,7 +13,7 @@
 using namespace std;
 
 int valueOfProgress;
-
+QTimer *timer = new QTimer();
 CheckSystem::CheckSystem(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CheckSystem)
@@ -79,7 +79,7 @@ void CheckSystem::updateProgress()
         ui->textEdit->append(txt6);
         txt->append(txt6);
         cout << txt6.toStdString() << endl;
-
+        timer->stop();
         (this->close());
 
 
@@ -92,8 +92,10 @@ void CheckSystem::init()
     cout << "Jestem w checksytme i w progress barze" << endl;
 
     ui->progressBar->setValue(0);
-    QTimer *timer = new QTimer(this);
+    //QTimer *timer = new QTimer(this);
 
     connect(timer, &QTimer::timeout, this, &CheckSystem::updateProgress);
     timer->start(100);
+    //timer->stop();
 }
+//Info do Gita

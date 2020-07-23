@@ -22,3 +22,4 @@ public slots:
 };
 
 #endif // CHECKFILES1_H
+//Info do Gita

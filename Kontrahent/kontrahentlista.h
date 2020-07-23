@@ -40,3 +40,4 @@ private:
 };
 
 #endif // KONTRAHENTLISTA_H
+//Info do Gita

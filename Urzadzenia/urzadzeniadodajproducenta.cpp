@@ -69,3 +69,4 @@ void UrzadzeniaDodajProducenta::on_pushButton_clicked()
         QMessageBox::information(this, "Ostrzeżenie", "Nie możesz wprowdzić pustego modelu.");
     }
 }
+//Info do Gita

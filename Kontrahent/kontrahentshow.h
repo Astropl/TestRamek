@@ -29,3 +29,4 @@ private:
 };
 
 #endif // KONTRAHENTSHOW_H
+//Info do Gita

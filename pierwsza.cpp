@@ -68,7 +68,7 @@ Pierwsza::~Pierwsza()
 }
 
 void Pierwsza::on_pushButton_clicked()
-{
+{timer->stop();
     destroy();
 }
 
@@ -76,3 +76,4 @@ void Pierwsza::DataiCzas()
 {
     cout << "Wszedłem do daty i czsu" << endl;
 }
+//Info do Gita

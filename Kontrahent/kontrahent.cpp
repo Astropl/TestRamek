@@ -194,6 +194,7 @@ void Kontrahent::on_pushButton_2_clicked()
 {
     //Wyjdz
     cout<<"Wychodze z Kontrahentów"<<endl;
+    timer->stop();
     destroy();
 }
 
@@ -236,3 +237,4 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
      //TODO: Posortować w comboBoxie miast
 
 }
+//Info do Gita

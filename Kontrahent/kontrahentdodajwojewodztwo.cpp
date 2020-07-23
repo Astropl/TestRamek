@@ -89,3 +89,4 @@ void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
    //Próbuje srotowania
    //string  items[] = ui->comboBoxDodajMiasto->count();
 }
+//Info do Gita

@@ -25,3 +25,4 @@ private:
 };
 
 #endif // URZADZENIADODAJNRSERYJNY_H
+//Info do Gita

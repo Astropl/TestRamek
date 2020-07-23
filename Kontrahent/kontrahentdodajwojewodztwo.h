@@ -25,3 +25,4 @@ private:
 };
 
 #endif // KONTRAHENTDODAJWOJEWODZTWO_H
+//Info do Gita

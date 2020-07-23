@@ -49,7 +49,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     plikUrzadzenia.open("C:/Defaults/Pliki/ZapisModel.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia;
     int nr_lini = 1;
@@ -64,7 +64,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     plikUrzadzenia.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia1;
     int nr_lini1 = 1;
@@ -78,7 +78,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     plikUrzadzenia.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::in);
     if (plikUrzadzenia.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia2;
     int nr_lini2 = 1;
@@ -215,7 +215,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
 }
 
 void Urzadzenia::on_BtnUrzaZamknij_clicked()
-{
+{timer->stop();
     destroy();
 }
 
@@ -272,3 +272,4 @@ void Urzadzenia::on_actionInformacja_triggered()
     Info *info= new Info(this);
     info->show();
 }
+//Info do Gita

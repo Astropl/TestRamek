@@ -78,3 +78,4 @@ void UrzadzeniaDodajModel::on_pushButton_2_clicked()
 
     destroy();
 }
+//Info do Gita

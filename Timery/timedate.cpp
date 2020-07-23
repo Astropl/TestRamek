@@ -90,4 +90,4 @@ QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia10)
     return stringDzienTygodnia10;
 }
 
-
+//Info do Gita

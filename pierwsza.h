@@ -34,3 +34,4 @@ private:
 };
 
 #endif // PIERWSZA_H
+//Info do Gita

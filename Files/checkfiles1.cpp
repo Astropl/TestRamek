@@ -17,18 +17,20 @@ void CheckFiles1::initMkDir()
 
 void CheckFiles1::initKontrahent()
 {
-    file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
+    file.open("C:/Defaults/Pliki/Kontrahent.txt"); //, ios::app
     if (file.good() == false) {
         cout << "Plik nie istnieje !!!!!";
+        file.open("C:/Defaults/Pliki/Kontrahent.txt",ios::app);
         //exit(0);
     }
     file.close();
 }
 void CheckFiles1::initZapisMiasta()
 {
-    file.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::out);
+    file.open("C:/Defaults/Pliki/ZapisMiasta.txt");
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisMiasta.txt",ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -37,9 +39,10 @@ void CheckFiles1::initZapisMiasta()
 
 void CheckFiles1::initZapisModel()
 {
-    file.open("C:/Defaults/Pliki/ZapisModel.txt", ios::out);
+    file.open("C:/Defaults/Pliki/ZapisModel.txt");
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisModel.txt",ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -47,9 +50,10 @@ void CheckFiles1::initZapisModel()
 }
 void CheckFiles1::initZapisNrSeryjny()
 {
-    file.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::out);
+    file.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt");
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt",ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -58,9 +62,10 @@ void CheckFiles1::initZapisNrSeryjny()
 
 void CheckFiles1::initZapisProducenta()
 {
-    file.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::out);
+    file.open("C:/Defaults/Pliki/ZapisProducenta.txt");
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -68,9 +73,10 @@ void CheckFiles1::initZapisProducenta()
 }
 void CheckFiles1::initZapisWojewodztwa()
 {
-    file.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::out);
+    file.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt");
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt",ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -97,3 +103,4 @@ void CheckFiles1::init()
 
     //Kontrahent.txt, ZapisMiasta, ZapisModel,ZapisNrSeryjny,ZapisProducenta,ZapisWojewodztwa
 }
+//Info do Gita

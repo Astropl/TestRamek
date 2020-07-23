@@ -69,3 +69,4 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
     plikNrSeryjny.close();
     destroy();
 }
+//Info do Gita

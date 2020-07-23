@@ -23,3 +23,4 @@ private:
 };
 
 #endif // TRZECIA_H
+//Info do Gita

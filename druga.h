@@ -23,3 +23,4 @@ private:
 };
 
 #endif // DRUGA_H
+//Info do Gita

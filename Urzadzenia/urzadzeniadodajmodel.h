@@ -25,3 +25,4 @@ private:
 };
 
 #endif // URZADZENIADODAJMODEL_H
+//Info do Gita

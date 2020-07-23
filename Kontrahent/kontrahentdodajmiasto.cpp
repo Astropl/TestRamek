@@ -151,3 +151,4 @@ void KontrahentDodajMiasto::on_pushButton_4_clicked() // zamknij bez zapisywania
 {                                                    //zamknij be zpisywania
     destroy();
 }
+//Info do Gita

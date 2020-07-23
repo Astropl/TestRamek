@@ -17,3 +17,4 @@ void Info::on_pushButton_clicked()
 {
     destroy();
 }
+//Info do Gita

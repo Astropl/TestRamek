@@ -167,7 +167,7 @@ void KontrahentLista::myfunctiontimer()
 
 
 void KontrahentLista::on_pushButton_2_clicked()
-{
+{timer->stop();
     destroy();
 }
 
@@ -238,3 +238,4 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
 
     kontrShow->show();
 }
+//Info do Gita

@@ -28,3 +28,4 @@ QVariant TableViewListaKontrahentow::data(const QModelIndex &index, int role) co
     }
     return QVariant();
 }
+//Info do Gita

@@ -68,3 +68,4 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
     ui->leEmail->setText(p12.toString());
     ui->leUrl->setText(p13.toString());
 }
+//Info do Gita

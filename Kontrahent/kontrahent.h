@@ -49,3 +49,4 @@ private:
 };
 
 #endif // KONTRAHENT_H
+//Info do Gita

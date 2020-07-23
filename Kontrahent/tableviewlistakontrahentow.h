@@ -14,3 +14,4 @@ public:
 };
 
 #endif // TABLEVIEWLISTAKONTRAHENTOW_H
+//Info do Gita

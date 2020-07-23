@@ -31,3 +31,4 @@ private:
 };
 
 #endif // KONTRAHENTDODAJMIASTO_H
+//Info do Gita
