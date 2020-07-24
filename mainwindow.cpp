@@ -94,3 +94,5 @@ void MainWindow::on_actionO_programie_triggered()
     info->show();
 }
 //Info do Gita
+
+//TODO: Sprawdzić co sie dzieje z wyborem miast w Kontrahent

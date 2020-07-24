@@ -277,11 +277,13 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
 {
 //     ui->comboBoxWczytajMiasta->clear();
 //     wczytajMiasta();
-//     //TODO: Posortować w comboBoxie miast
+//     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
  cout<<"Otrzymanie highland przycisku wczytaj Miasta"<<endl;
+ 
+ 
 }
 //Info do Gita
-void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString &arg1)
+void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString ) //(const QString &arg1)
 {
     cout<<"Aktywacja przycisku wczytaj Miasta"<<endl;
 }
