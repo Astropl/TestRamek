@@ -90,3 +90,5 @@ void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
    //string  items[] = ui->comboBoxDodajMiasto->count();
 }
 //Info do Gita
+
+//TODO: DOdac mozliowsc kasowania itemu. i dodoav wymagane klawisze.

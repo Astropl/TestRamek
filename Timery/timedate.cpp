@@ -19,75 +19,75 @@ void TimeDate::init()
 
 //Wyodrebnię QStringi z minutami i godzinami i resztą
 
-QString TimeDate::changeStringsMin(int minuta2)
+QString TimeDate::changeStringsMin(int minuta3)
 {
     cout << "Jestem w zegrach od pierwszego timedata. changeStrings" << endl;
 
-    QString qStrMin2 = QString::number(minuta2);
-    if (minuta2 < 10) {
-        qStrMin2 = "0" + QString::number(minuta2);
+    QString qStrMin3 = QString::number(minuta3);
+    if (minuta3 < 10) {
+        qStrMin3 = "0" + QString::number(minuta3);
     }
-    return qStrMin2;
+    return qStrMin3;
 }
-QString TimeDate::changeStringsSek(int sekunda2)
+QString TimeDate::changeStringsSek(int sekunda3)
 {
-    QString qStrSek2 = QString::number(sekunda2);
-    if (sekunda2 < 10) {
-        qStrSek2 = "0" + QString::number(sekunda2);
+    QString qStrSek3 = QString::number(sekunda3);
+    if (sekunda3 < 10) {
+        qStrSek3 = "0" + QString::number(sekunda3);
     }
-    return qStrSek2;
+    return qStrSek3;
 }
-QString TimeDate::changeStringsGodz(int godzina2)
+QString TimeDate::changeStringsGodz(int godzina3)
 {
-    QString qStrGodz2 = QString::number(godzina2);
-    if (godzina2 < 10) {
-        qStrGodz2 = "0" + QString::number(godzina2);
+    QString qStrGodz3 = QString::number(godzina3);
+    if (godzina3 < 10) {
+        qStrGodz3 = "0" + QString::number(godzina3);
     }
-    return qStrGodz2;
+    return qStrGodz3;
 }
-QString TimeDate::changeStringsDzien(int dzien2)
+QString TimeDate::changeStringsDzien(int dzien3)
 {
-    QString qStrDzien2 = QString::number(dzien2);
-    if (dzien2 < 10) {
-        qStrDzien2 = "0" + QString::number(dzien2);
+    QString qStrDzien3 = QString::number(dzien3);
+    if (dzien3 < 10) {
+        qStrDzien3 = "0" + QString::number(dzien3);
     }
-    return qStrDzien2;
+    return qStrDzien3;
 }
-QString TimeDate::changeStringsMiesiac(int miesiac2)
+QString TimeDate::changeStringsMiesiac(int miesiac3)
 {
-    QString qStrMiesiac2 = QString::number(miesiac2);
+    QString qStrMiesiac3 = QString::number(miesiac3);
 
-    if (miesiac2 < 10) {
-        qStrMiesiac2 = "0" + QString::number(miesiac2);
+    if (miesiac3 < 10) {
+        qStrMiesiac3 = "0" + QString::number(miesiac3);
     }
-    return qStrMiesiac2;
+    return qStrMiesiac3;
 }
-QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia2)
-{QString stringDzienTygodnia2;
-    switch (dzienTygodnia2) {
+QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia3)
+{QString stringDzienTygodnia3;
+    switch (dzienTygodnia3) {
     case 1:
-         stringDzienTygodnia2 = "Niedziela";
+         stringDzienTygodnia3 = "Niedziela";
         break;
     case 2:
-        stringDzienTygodnia2 = "Poniedziałek";
+        stringDzienTygodnia3 = "Poniedziałek";
         break;
     case 3:
-        stringDzienTygodnia2 = "Wtorek";
+        stringDzienTygodnia3 = "Wtorek";
         break;
     case 4:
-        stringDzienTygodnia2 = "Środa";
+        stringDzienTygodnia3 = "Środa";
         break;
     case 5:
-        stringDzienTygodnia2 = "Czwartek";
+        stringDzienTygodnia3 = "Czwartek";
         break;
     case 6:
-        stringDzienTygodnia2 = "Piątek";
+        stringDzienTygodnia3 = "Piątek";
         break;
     case 7:
-        stringDzienTygodnia2 = "Sobota";
+        stringDzienTygodnia3 = "Sobota";
         break;
     }
-    return stringDzienTygodnia2;
+    return stringDzienTygodnia3;
 }
 
 //Info do Gita

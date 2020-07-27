@@ -44,7 +44,7 @@ void CheckSystem::updateProgress()
 
     QString txt1 = "Tworze katalogi";
     QString txt2 = "Tworze puste pliki Bazy Danych";
-    QString txt3 = "Tworze cos tam przy 40";
+    QString txt3 = "Wypełniam Bazę Danych";
     QString txt4 = "Tworze cos tam przy 60";
     QString txt5 = "Tworze cos tam przy 80";
     QString txt6 = "Skonczone";

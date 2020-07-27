@@ -44,7 +44,7 @@ public slots:
 
     void on_comboBoxWczytajMiasta_highlighted(const QString); // (const QString &arg1)
 
-    void on_comboBoxWczytajMiasta_activated(const QString &arg1);
+    void on_comboBoxWczytajMiasta_activated(const QString ); //const QString &arg1
 
 private:
     Ui::Kontrahent *ui;

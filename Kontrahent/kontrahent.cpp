@@ -16,6 +16,8 @@
 #include <QApplication>
 #include <QtWidgets>
 
+//#include <algorithm>
+
 
 
 
@@ -277,11 +279,50 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
 {
 //     ui->comboBoxWczytajMiasta->clear();
 //     wczytajMiasta();
-//     //TODO: Posortować w comboBoxie miast
+//     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
  cout<<"Otrzymanie highland przycisku wczytaj Miasta"<<endl;
+ //ui->comboBoxWczytajMiasta->sort(0);
+ //TODO: Sortowanie. A moze zczytac wszytsko do tabeli o wielkosci = ilosci elementow w combobox. Wyciagnac pierwsze litery na stringach i posortowac a potem wyczyscic comboboxa i potem wkleic te dane posortowane juz? ::Sprawzić
+ ui->comboBoxWczytajMiasta->setInsertPolicy(QComboBox::InsertAlphabetically);
+ //int pierwszyindex =0, ostatniindex;
+ //pierwszyindex = ui->comboBoxWczytajMiasta->item
+ QString tablicaDoMiasta[100] ;
+ int ostatniindex = ui->comboBoxWczytajMiasta->count();
+ QString tymczasowaDoTabeli;
+ //ui->comboBoxWczytajMiasta->sort  (0);
+ //sort(pierwszyindex,ostatniindex);
+ tablicaDoMiasta[ostatniindex];
+ for (int i =0;i<=ostatniindex;i++
+      ) {
+     tablicaDoMiasta[i]=(ui->comboBoxWczytajMiasta->itemText(i));
+     cout<<tablicaDoMiasta[i].toStdString()<<endl;
+ }
+    for (int j =0;j<=ostatniindex;j++) {
+
+
+         if (tablicaDoMiasta[j]>tablicaDoMiasta[j+1])
+             //swap(tablicaDoMiasta[j],tablicaDoMiasta[j+1]);
+         {
+
+             tymczasowaDoTabeli=tablicaDoMiasta[j+1];
+             tablicaDoMiasta[j+1]= tablicaDoMiasta[j];
+             tablicaDoMiasta[j]= tymczasowaDoTabeli;
+
+         }
+     }
+
+
+ //ui->comboBoxWczytajMiasta->clear();
+ for (int k=0;k<=tablicaDoMiasta[ostatniindex];k++) {
+     ui->comboBoxWczytajMiasta->addItem(tablicaDoMiasta[k]);
+  cout<<tablicaDoMiasta[k].toStdString()<<endl;
+
+ }
+
+
 }
 //Info do Gita
-void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString &arg1)
+void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString ) //(const QString &arg1)
 {
     cout<<"Aktywacja przycisku wczytaj Miasta"<<endl;
 }
