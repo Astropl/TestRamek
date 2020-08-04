@@ -46,6 +46,8 @@ public slots:
 
     void on_comboBoxWczytajMiasta_activated(const QString ); //const QString &arg1
 
+    void on_comboBoxWczytajMiasta_textHighlighted(const QString );
+    //void on_comboBoxWczytajMiasta_textHighlighted(const QString );
 private:
     Ui::Kontrahent *ui;
     QTimer *timer;

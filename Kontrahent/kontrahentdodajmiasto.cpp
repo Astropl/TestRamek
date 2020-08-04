@@ -11,6 +11,8 @@ using namespace std;
 
 fstream plikOdczytDodajMiasto;
 
+
+
 KontrahentDodajMiasto::KontrahentDodajMiasto(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::KontrahentDodajMiasto)
@@ -45,7 +47,7 @@ KontrahentDodajMiasto::~KontrahentDodajMiasto()
 }
 
 void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
-{
+{fstream checkFlags;
     cout << "Zapisuje " << endl;
     // musze zapisać do pliku
     plikOdczytDodajMiasto
@@ -63,6 +65,15 @@ void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
         plikOdczytDodajMiasto << ui->comboBoxDodajMiasto->itemText(i).toStdString() << endl;
     }
     plikOdczytDodajMiasto.close();
+    //
+    checkFlags
+        .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
+              ios::in
+                  | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    checkFlags<<"1";
+    checkFlags.close();
+
+
     //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
     //ui->comboBoxDodajMiasto->rep
     //destroy();
@@ -148,7 +159,7 @@ void KontrahentDodajMiasto::on_pushButton_3_clicked() //usuń item
 }
 
 void KontrahentDodajMiasto::on_pushButton_4_clicked() // zamknij bez zapisywania
-{                                                    //zamknij be zpisywania
+{                                                 //zamknij be zpisywania
     destroy();
 }
 //Info do Gita

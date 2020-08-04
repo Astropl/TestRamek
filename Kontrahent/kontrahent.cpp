@@ -34,7 +34,8 @@ int iloscKontrahentow = 0;
 //string zmiennasKontrahent;
 
 fstream plikKontrahent;
-
+fstream checkFlags;
+int zmiennaDoHighlandWczytajMiasta = 1;
 Kontrahent::Kontrahent(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Kontrahent)
@@ -256,33 +257,65 @@ void Kontrahent::on_actionInfo_triggered()
 
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
 {
- cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
+    cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
 }
 
 //Info do Gita
 void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
 {
     cout << "Aktywacja przycisku wczytaj Miasta" << endl;
-    QStringList listaMiast = QStringList();
+}
 
-    //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
+void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString)
+{ string checkFlagsVarriable;
 
+    checkFlags
+        .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
+              ios::in
+                  ); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    string linia;
 
-    //TODO: Sortowanie. A moze zczytac wszytsko do tabeli o wielkosci = ilosci elementow w combobox. Wyciagnac pierwsze litery na stringach i posortowac a potem wyczyscic comboboxa i potem wkleic te dane posortowane juz? ::Sprawzić
-
-    int ostatniindex = ui->comboBoxWczytajMiasta->count()-1;
-    for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
-        listaMiast.push_back(ui->comboBoxWczytajMiasta->itemText(iZmienna).toUtf8());
+    int nr_lini = 1;
+    while (getline(checkFlags, linia)) {
+        checkFlagsVarriable =(linia);
+        cout << linia << endl;
+        nr_lini++;
     }
-    sort(listaMiast.begin(), listaMiast.end());
-//    for (int jZmienna = 0; jZmienna <= listaMiast.count() - 1; jZmienna++) {
-//        QVariant some = listaMiast.at(jZmienna);
-//    }
-    ui->comboBoxWczytajMiasta->clear();
-    for (int kZmienna = 0; kZmienna <= listaMiast.count()-1; kZmienna++) {
-//        ui->comboBoxWczytajMiasta->insertItem(ui->comboBoxWczytajMiasta->InsertAtCurrent,
-//                                              listaMiast.takeAt(kZmienna).toLocal8Bit().constData());
 
-ui->comboBoxWczytajMiasta->addItem(listaMiast.at(kZmienna));
+
+    //checkFlagsVarriable<<"1";
+    checkFlags.close();
+
+
+
+    if (checkFlagsVarriable != "0") {
+        cout << "textHighlighted" << endl;
+
+        QStringList listaMiast = QStringList();
+
+        //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
+         ui->comboBoxWczytajMiasta->clear();
+        wczytajMiasta();
+
+
+        int ostatniindex = ui->comboBoxWczytajMiasta->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaMiast.push_back(ui->comboBoxWczytajMiasta->itemText(iZmienna).toUtf8());
+        }
+        sort(listaMiast.begin(), listaMiast.end());
+
+        ui->comboBoxWczytajMiasta->clear();
+        for (int kZmienna = 0; kZmienna <= listaMiast.count() - 1; kZmienna++) {
+            //
+
+            ui->comboBoxWczytajMiasta->addItem(listaMiast.at(kZmienna));
+        }
     }
+    checkFlags
+        .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
+              ios::out
+                  | ios::trunc);
+    checkFlags<<"1"<<endl;
+    checkFlags.close();
+    //zmiennaDoHighlandWczytajMiasta=1;
 }
