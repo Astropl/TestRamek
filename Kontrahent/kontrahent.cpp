@@ -1,30 +1,30 @@
 #include "kontrahent.h"
-#include "mainwindow.h"
-#include "time.h"
-#include "ui_kontrahent.h"
+#include "Info/info.h"
+#include "Timery/timedate.h"
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
 #include "kontrahentshow.h"
-#include "Timery/timedate.h"
-#include "Info/info.h"
+#include "mainwindow.h"
+#include "time.h"
+#include "ui_kontrahent.h"
 #include <ctime>
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
+#include <QApplication>
 #include <QString>
 #include <QTimer>
-#include <QApplication>
 #include <QtWidgets>
-
-//#include <algorithm>
-
-
-
-
+//#include "stdafx.h"
+#include "QByteArrayList"
+#include <algorithm>
+#include <vector>
 
 using namespace std;
+//using namespace System;
+//using namespace System::Collections;
 
-int iloscKontrahentow =0;
+int iloscKontrahentow = 0;
 //int labelGodzina;
 //int labelData;
 //int wynikKontrahent;
@@ -35,11 +35,11 @@ int iloscKontrahentow =0;
 
 fstream plikKontrahent;
 
-Kontrahent::Kontrahent(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Kontrahent)
+Kontrahent::Kontrahent(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Kontrahent)
 {
-     ui->setupUi(this);
+    ui->setupUi(this);
     //---------Sekcja generacji timera
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
@@ -48,8 +48,8 @@ Kontrahent::Kontrahent(QWidget *parent) :
     wczytajMiasta();
     wczytajWojewodztwa();
     howMuchKontrahent();
-//    iloscKontrahentow++;
-//    ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
+    //    iloscKontrahentow++;
+    //    ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
 }
 
 Kontrahent::~Kontrahent()
@@ -57,11 +57,10 @@ Kontrahent::~Kontrahent()
     delete ui;
 }
 
-
-void Kontrahent::howMuchKontrahent ()
+void Kontrahent::howMuchKontrahent()
 {
-//TODO: Okreslic ile kontrahentow jest
-    plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in );
+    //TODO: Okreslic ile kontrahentow jest
+    plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -75,17 +74,17 @@ void Kontrahent::howMuchKontrahent ()
         cout << linia.c_str() << endl;
         nr_lini++;
     }
-    iloscKontrahentow=iloscKontrahentow/14;
+    iloscKontrahentow = iloscKontrahentow / 14;
     ui->label_16->setText(QString::number(iloscKontrahentow));
     plikKontrahent.close();
 
     iloscKontrahentow++;
     ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
-
 }
 
 void Kontrahent::myfunctiontimer()
-{time_t czas;
+{
+    time_t czas;
     tm timeinfo;
     QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
 
@@ -115,9 +114,7 @@ void Kontrahent::myfunctiontimer()
     ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
 
     ui->labelDzien->setText(stringDzienTygodnia);
-
 }
-
 
 void Kontrahent::wczytajMiasta()
 {
@@ -160,85 +157,73 @@ void Kontrahent::on_pushButton_clicked()
 {
     string kontrahent;
     //Zapisz
-    cout<<"Zapisuje"<<endl;
+    cout << "Zapisuje" << endl;
 
     plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
 
-//TODO: Przypisac automatyczą numeracje WCZYTAJNUMER
+    //TODO: Przypisac automatyczą numeracje WCZYTAJNUMER
     //tymczasowo
 
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajImie->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwisko->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajKraj->text());
+    //Wczytaj wojewodztwo
+    ui->comboBoxPomoc->addItem(ui->comboBoxWczytajWojewodztwa->currentText());
+    //Wczytaj miasto
+    ui->comboBoxPomoc->addItem(ui->comboBoxWczytajMiasta->currentText());
 
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajImie->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwisko->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajKraj->text()) ;
-//Wczytaj wojewodztwo
-ui->comboBoxPomoc->addItem(ui->comboBoxWczytajWojewodztwa->currentText());
-//Wczytaj miasto
-ui->comboBoxPomoc->addItem(ui->comboBoxWczytajMiasta->currentText());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajKodPocztowy->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajUlica->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajNrDomu->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefon->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefonDod->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajEmail->text());
+    ui->comboBoxPomoc->addItem(ui->lineEditWczytajUrl->text());
 
+    //TODO: Sprawdzam czy moge ominac comboBox Pomoc
 
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajKodPocztowy->text());
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajUlica->text()) ;
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajNrDomu->text());
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefon->text());
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajTelefonDod->text());
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajEmail->text());
-ui->comboBoxPomoc->addItem(ui->lineEditWczytajUrl->text());
+    //plikKontrahent<<ui->
 
-//TODO: Sprawdzam czy moge ominac comboBox Pomoc
+    plikKontrahent << ui->lineEditWczytajNumer->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajNazwa_1->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajImie->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajNazwisko->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajKraj->text().toStdString() << endl;
+    //Wczytaj wojewodztwo
+    plikKontrahent << ui->comboBoxWczytajWojewodztwa->currentText().toStdString() << endl;
+    ;
 
-//plikKontrahent<<ui->
+    //Wczytaj miasto
+    plikKontrahent << ui->comboBoxWczytajMiasta->currentText().toStdString() << endl;
+    ;
 
+    plikKontrahent << ui->lineEditWczytajKodPocztowy->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajUlica->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajNrDomu->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajTelefon->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajTelefonDod->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajEmail->text().toStdString() << endl;
+    plikKontrahent << ui->lineEditWczytajUrl->text().toStdString() << endl;
 
+    iloscElementowWcombo = ui->comboBoxPomoc->count();
 
-
-
-
-
-
-
-
-plikKontrahent<<ui->lineEditWczytajNumer->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajNazwa_1->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajImie->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajNazwisko->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajKraj->text().toStdString() << endl;
-//Wczytaj wojewodztwo
-plikKontrahent<<ui->comboBoxWczytajWojewodztwa->currentText().toStdString()<< endl;;
-
-//Wczytaj miasto
-plikKontrahent<<ui->comboBoxWczytajMiasta->currentText().toStdString()<< endl;;
-
-plikKontrahent<<ui->lineEditWczytajKodPocztowy->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajUlica->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajNrDomu->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajTelefon->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajTelefonDod->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajEmail->text().toStdString() << endl;
-plikKontrahent<<ui->lineEditWczytajUrl->text().toStdString() << endl;
-
-
-iloscElementowWcombo = ui->comboBoxPomoc->count();
-
-
-    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
-
     }
     plikKontrahent.close();
- ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
+    ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
 }
 
 void Kontrahent::on_pushButton_2_clicked()
 {
     //Wyjdz
-    cout<<"Wychodze z Kontrahentów"<<endl;
+    cout << "Wychodze z Kontrahentów" << endl;
     timer->stop();
     destroy();
 }
@@ -246,83 +231,58 @@ void Kontrahent::on_pushButton_2_clicked()
 void Kontrahent::on_actionDodaj_Miasto_triggered()
 {
     // Kontarhaent Dodaj miasto // kontrahentdodajmiasto.
-    cout<<"Dodoaje miasto zkontrahenta"<<endl;
+    cout << "Dodoaje miasto zkontrahenta" << endl;
     KontrahentDodajMiasto *kontrDodMiasto = new KontrahentDodajMiasto(this);
     kontrDodMiasto->show();
-
 }
 
 void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
 {
-    cout<<"Dodoaje wojewdoztwo z kontrahenta"<<endl;
+    cout << "Dodoaje wojewdoztwo z kontrahenta" << endl;
     KontrahentDodajWojewodztwo *kontrDodWoje = new KontrahentDodajWojewodztwo(this);
     kontrDodWoje->show();
 }
 
-
-
-void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString ) // (const QString &arg1)
+void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString) // (const QString &arg1)
 {
-    cout<<"Zmiana textu"<<endl;
+    cout << "Zmiana textu" << endl;
 }
 
 void Kontrahent::on_actionInfo_triggered()
 {
-Info *info= new Info(this);
+    Info *info = new Info(this);
     info->show();
 }
 
-
-
-
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
 {
-//     ui->comboBoxWczytajMiasta->clear();
-//     wczytajMiasta();
-//     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
- cout<<"Otrzymanie highland przycisku wczytaj Miasta"<<endl;
- //ui->comboBoxWczytajMiasta->sort(0);
- //TODO: Sortowanie. A moze zczytac wszytsko do tabeli o wielkosci = ilosci elementow w combobox. Wyciagnac pierwsze litery na stringach i posortowac a potem wyczyscic comboboxa i potem wkleic te dane posortowane juz? ::Sprawzić
- ui->comboBoxWczytajMiasta->setInsertPolicy(QComboBox::InsertAlphabetically);
- //int pierwszyindex =0, ostatniindex;
- //pierwszyindex = ui->comboBoxWczytajMiasta->item
- QString tablicaDoMiasta[100] ;
- int ostatniindex = ui->comboBoxWczytajMiasta->count();
- QString tymczasowaDoTabeli;
- //ui->comboBoxWczytajMiasta->sort  (0);
- //sort(pierwszyindex,ostatniindex);
- tablicaDoMiasta[ostatniindex];
- for (int i =0;i<=ostatniindex;i++
-      ) {
-     tablicaDoMiasta[i]=(ui->comboBoxWczytajMiasta->itemText(i));
-     cout<<tablicaDoMiasta[i].toStdString()<<endl;
- }
-    for (int j =0;j<=ostatniindex;j++) {
-
-
-         if (tablicaDoMiasta[j]>tablicaDoMiasta[j+1])
-             //swap(tablicaDoMiasta[j],tablicaDoMiasta[j+1]);
-         {
-
-             tymczasowaDoTabeli=tablicaDoMiasta[j+1];
-             tablicaDoMiasta[j+1]= tablicaDoMiasta[j];
-             tablicaDoMiasta[j]= tymczasowaDoTabeli;
-
-         }
-     }
-
-
- //ui->comboBoxWczytajMiasta->clear();
- for (int k=0;k<=tablicaDoMiasta[ostatniindex];k++) {
-     ui->comboBoxWczytajMiasta->addItem(tablicaDoMiasta[k]);
-  cout<<tablicaDoMiasta[k].toStdString()<<endl;
-
- }
-
-
+ cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
 }
+
 //Info do Gita
-void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString ) //(const QString &arg1)
+void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
 {
-    cout<<"Aktywacja przycisku wczytaj Miasta"<<endl;
+    cout << "Aktywacja przycisku wczytaj Miasta" << endl;
+    QStringList listaMiast = QStringList();
+
+    //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
+
+
+    //TODO: Sortowanie. A moze zczytac wszytsko do tabeli o wielkosci = ilosci elementow w combobox. Wyciagnac pierwsze litery na stringach i posortowac a potem wyczyscic comboboxa i potem wkleic te dane posortowane juz? ::Sprawzić
+
+    int ostatniindex = ui->comboBoxWczytajMiasta->count()-1;
+    for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+        listaMiast.push_back(ui->comboBoxWczytajMiasta->itemText(iZmienna).toUtf8());
+    }
+    sort(listaMiast.begin(), listaMiast.end());
+//    for (int jZmienna = 0; jZmienna <= listaMiast.count() - 1; jZmienna++) {
+//        QVariant some = listaMiast.at(jZmienna);
+//    }
+    ui->comboBoxWczytajMiasta->clear();
+    for (int kZmienna = 0; kZmienna <= listaMiast.count()-1; kZmienna++) {
+//        ui->comboBoxWczytajMiasta->insertItem(ui->comboBoxWczytajMiasta->InsertAtCurrent,
+//                                              listaMiast.takeAt(kZmienna).toLocal8Bit().constData());
+
+ui->comboBoxWczytajMiasta->addItem(listaMiast.at(kZmienna));
+    }
 }
