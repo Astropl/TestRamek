@@ -2,6 +2,8 @@
 #define CHECKFILES1_H
 
 #include <QMainWindow>
+#include <string>
+#include <cstring>
 
 class CheckFiles1 : public QMainWindow
 {
@@ -19,6 +21,8 @@ public slots:
     void initZapisNrSeryjny();
     void initZapisProducenta();
     void initZapisWojewodztwa();
+    void initCheckFlagsInMiasto();
+    int checkFlags(int checkFlagsVarriable);
 };
 
 #endif // CHECKFILES1_H

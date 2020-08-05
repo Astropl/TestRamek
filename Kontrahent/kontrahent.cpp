@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "time.h"
 #include "ui_kontrahent.h"
+#include "Files/checkfiles1.h"
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -256,45 +257,21 @@ void Kontrahent::on_actionInfo_triggered()
 }
 
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
-{
+{ CheckFiles1 *checkFiles = new CheckFiles1(this);
+
     cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
-}
-
-//Info do Gita
-void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
-{
-    cout << "Aktywacja przycisku wczytaj Miasta" << endl;
-}
-
-void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString)
-{ string checkFlagsVarriable;
-
-    checkFlags
-        .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
-              ios::in
-                  ); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
-    string linia;
-
-    int nr_lini = 1;
-    while (getline(checkFlags, linia)) {
-        checkFlagsVarriable =(linia);
-        cout << linia << endl;
-        nr_lini++;
-    }
-
-
-    //checkFlagsVarriable<<"1";
-    checkFlags.close();
+    int checkFlagsVarriable;
+      checkFiles->checkFlags (checkFlagsVarriable);
 
 
 
-    if (checkFlagsVarriable != "0") {
+    if (checkFlagsVarriable != 0) {
         cout << "textHighlighted" << endl;
 
         QStringList listaMiast = QStringList();
 
         //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
-         ui->comboBoxWczytajMiasta->clear();
+        ui->comboBoxWczytajMiasta->clear();
         wczytajMiasta();
 
 
@@ -318,4 +295,16 @@ void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString)
     checkFlags<<"1"<<endl;
     checkFlags.close();
     //zmiennaDoHighlandWczytajMiasta=1;
+
+
+}
+
+//Info do Gita
+void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
+{
+    cout << "Aktywacja przycisku wczytaj Miasta" << endl;
+}
+
+void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString)
+{
 }
