@@ -26,6 +26,7 @@ using namespace std;
 //using namespace System::Collections;
 
 int iloscKontrahentow = 0;
+int checkFlagsVarriable=0;
 //int labelGodzina;
 //int labelData;
 //int wynikKontrahent;
@@ -260,8 +261,8 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
 { CheckFiles1 *checkFiles = new CheckFiles1(this);
 
     cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
-    int checkFlagsVarriable;
-      checkFiles->checkFlags (checkFlagsVarriable);
+
+      checkFlagsVarriable= checkFiles->checkFlags (checkFlagsVarriable);
 
 
 
@@ -292,7 +293,7 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
         .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
               ios::out
                   | ios::trunc);
-    checkFlags<<"1"<<endl;
+    checkFlags<<"0"<<endl;
     checkFlags.close();
     //zmiennaDoHighlandWczytajMiasta=1;
 

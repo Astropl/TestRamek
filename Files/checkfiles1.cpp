@@ -97,6 +97,7 @@ void CheckFiles1::initCheckFlagsInMiasto()
     } else {
         cout << "Plik jest" << endl;
     }
+    file<<"0"<<endl;
     file.close();
     cout<<"Plik Check Flags In Miasto Jest."<<endl;
 
