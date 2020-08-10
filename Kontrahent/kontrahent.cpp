@@ -1,4 +1,5 @@
 #include "kontrahent.h"
+#include "Files/checkfiles1.h"
 #include "Info/info.h"
 #include "Timery/timedate.h"
 #include "kontrahentdodajmiasto.h"
@@ -7,7 +8,6 @@
 #include "mainwindow.h"
 #include "time.h"
 #include "ui_kontrahent.h"
-#include "Files/checkfiles1.h"
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -26,7 +26,8 @@ using namespace std;
 //using namespace System::Collections;
 
 int iloscKontrahentow = 0;
-int checkFlagsVarriable=0;
+int checkFlagsVarriableMiasto = 0;
+int checkFlagsVarriableWojewodztwo =0;
 //int labelGodzina;
 //int labelData;
 //int wynikKontrahent;
@@ -258,54 +259,70 @@ void Kontrahent::on_actionInfo_triggered()
 }
 
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
-{ CheckFiles1 *checkFiles = new CheckFiles1(this);
-
+{
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
-
-      checkFlagsVarriable= checkFiles->checkFlags (checkFlagsVarriable);
-
-
-
-    if (checkFlagsVarriable != 0) {
+    checkFlagsVarriableMiasto = checkFiles->checkFlagsMiasto(checkFlagsVarriableMiasto);
+    if (checkFlagsVarriableMiasto != 0) {
         cout << "textHighlighted" << endl;
-
         QStringList listaMiast = QStringList();
-
         //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
         ui->comboBoxWczytajMiasta->clear();
         wczytajMiasta();
-
-
         int ostatniindex = ui->comboBoxWczytajMiasta->count() - 1;
         for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
             listaMiast.push_back(ui->comboBoxWczytajMiasta->itemText(iZmienna).toUtf8());
         }
         sort(listaMiast.begin(), listaMiast.end());
-
         ui->comboBoxWczytajMiasta->clear();
         for (int kZmienna = 0; kZmienna <= listaMiast.count() - 1; kZmienna++) {
-            //
-
             ui->comboBoxWczytajMiasta->addItem(listaMiast.at(kZmienna));
         }
     }
-    checkFlags
-        .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
-              ios::out
-                  | ios::trunc);
-    checkFlags<<"0"<<endl;
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
     checkFlags.close();
-    //zmiennaDoHighlandWczytajMiasta=1;
-
-
 }
 
 //Info do Gita
-void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
-{
-    cout << "Aktywacja przycisku wczytaj Miasta" << endl;
-}
+//void Kontrahent::on_comboBoxWczytajMiasta_activated(const QString) //(const QString &arg1)
+//{
+//    cout << "Aktywacja przycisku wczytaj Miasta" << endl;
+//}
 
-void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString)
+//void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString) {}
+
+void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString ) //const QString &arg1
 {
+
+    CheckFiles1 *checkFiles  = new CheckFiles1(this);
+    cout <<" Otrzymanie highland przycisku wczytaj wojewdóztwo"<<endl;
+    checkFlagsVarriableWojewodztwo = checkFiles->checkFlagsWojewodztwo(checkFlagsVarriableWojewodztwo);
+    if (checkFlagsVarriableWojewodztwo !=0)
+    {
+        cout<<"Higladned w Przycisk wczyta Wojewodztwa"<<endl;
+        QStringList listaWojewodztw = QStringList();
+
+        ui->comboBoxWczytajWojewodztwa->clear();
+        wczytajWojewodztwa();
+        int ostatniindex = ui->comboBoxWczytajWojewodztwa->count()-1;
+        for (int iZmienna =0; iZmienna<= ostatniindex;iZmienna++)
+        {
+            listaWojewodztw.push_back(ui->comboBoxWczytajWojewodztwa->itemText(iZmienna).toUtf8());
+
+        }
+        sort(listaWojewodztw.begin(),listaWojewodztw.end());
+        ui->comboBoxWczytajWojewodztwa->clear();
+        for(int kZmienna =0; kZmienna <=listaWojewodztw.count()-1;kZmienna++)
+        {
+            ui->comboBoxWczytajWojewodztwa->addItem(listaWojewodztw.at(kZmienna)) ;
+        }
+
+
+
+    }
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+
 }

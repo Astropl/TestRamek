@@ -22,7 +22,9 @@ public slots:
     void initZapisProducenta();
     void initZapisWojewodztwa();
     void initCheckFlagsInMiasto();
-    int checkFlags(int checkFlagsVarriable);
+    void initCheckFlagsInWojewodztwo();
+    int checkFlagsMiasto(int checkFlagsVarriable);
+    int checkFlagsWojewodztwo(int checkFlagsVarriableWojewodztwo);
 };
 
 #endif // CHECKFILES1_H

@@ -47,7 +47,7 @@ KontrahentDodajMiasto::~KontrahentDodajMiasto()
 }
 
 void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
-{fstream checkFlags;
+{fstream checkFlagsinMiasta;
     cout << "Zapisuje " << endl;
     // musze zapisać do pliku
     plikOdczytDodajMiasto
@@ -66,12 +66,12 @@ void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
     }
     plikOdczytDodajMiasto.close();
     //
-    checkFlags
+    checkFlagsinMiasta
         .open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
               ios::in
                   | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
-    checkFlags<<"1";
-    checkFlags.close();
+    checkFlagsinMiasta<<"1";
+    checkFlagsinMiasta.close();
 
 
     //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
@@ -106,9 +106,7 @@ void KontrahentDodajMiasto::on_pushButton_2_clicked() //dodoaj do comboboxa
 
                 //Wrzucic do tabeli. Przeleciec tabele. jezeli bedzie wyraz z listy zakonczyc. Jezeli nie dodoać do combo boa.
 
-                // if (ui->lineEditDodajMiasto->text() == ui->comboBoxDodajMiasto->itemData(i)) {
-//
-//                break;
+
             } else {
                 msgBox.setText("Te miasto jezst juz na liscie");
                 QMessageBox::information(this, "Ostrzeżenie", "Te miasto już znajduje się na liście.");
@@ -149,13 +147,9 @@ void KontrahentDodajMiasto::on_comboBoxDodajMiasto_activated(const QString)
 void KontrahentDodajMiasto::on_pushButton_3_clicked() //usuń item
 {
     //Usuń zaznaczony item
-    //    comboBoxDodajMiasto-> Items->Remove(comboBoxDodajMiasto->text);
 
-    //ui->comboBoxDodajMiasto->removeItem(text);
-    //    QVariant sprawdz = ui->comboBoxDodajMiasto->itemData(ui->comboBoxDodajMiasto->currentIndex());
     ui->comboBoxDodajMiasto->removeItem(ui->comboBoxDodajMiasto->currentIndex());
-    ;
-    // cout<<sprawdz.toStdString>>endl;
+
 }
 
 void KontrahentDodajMiasto::on_pushButton_4_clicked() // zamknij bez zapisywania
