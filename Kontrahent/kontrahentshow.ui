@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Edytuj</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -246,7 +246,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Region</string>
+       <string>Województwo</string>
       </property>
      </widget>
     </widget>
@@ -295,7 +295,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>430</x>
       <y>90</y>
       <width>250</width>
       <height>20</height>
@@ -314,7 +314,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>430</x>
       <y>110</y>
       <width>250</width>
       <height>20</height>
@@ -333,7 +333,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>430</x>
       <y>130</y>
       <width>250</width>
       <height>20</height>
@@ -500,7 +500,68 @@
        <height>278</height>
       </rect>
      </property>
+     <widget class="QComboBox" name="comboBoxMiasta">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>250</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxWojewodztwa">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>250</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBoxKraj">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>250</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>330</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zapisz</string>
+    </property>
    </widget>
    <zorder>scrollArea_2</zorder>
    <zorder>scrollArea</zorder>
@@ -523,6 +584,7 @@
    <zorder>leTelPryw</zorder>
    <zorder>leEmail</zorder>
    <zorder>leUrl</zorder>
+   <zorder>pushButton_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

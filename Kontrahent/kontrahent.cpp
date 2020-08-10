@@ -266,7 +266,7 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
     if (checkFlagsVarriableMiasto != 0) {
         cout << "textHighlighted" << endl;
         QStringList listaMiast = QStringList();
-        //     //TODO: tutuaj zrobic sortowanie. Posortować w comboBoxie miast
+
         ui->comboBoxWczytajMiasta->clear();
         wczytajMiasta();
         int ostatniindex = ui->comboBoxWczytajMiasta->count() - 1;

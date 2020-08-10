@@ -89,7 +89,7 @@ void KontrahentDodajMiasto::on_pushButton_2_clicked() //dodoaj do comboboxa
     // Pobrac ilosc elementów z ComboBoxa
     int iloscElementowwCombo = ui->comboBoxDodajMiasto->count();
     // Zrobic cos aby najpierw sprawdzało czy jest puste a potm przeszukiwało itemy z comboxa
-    //TODO: jak wyzje;
+
 
     if (ui->lineEditDodajMiasto->text() != "") {
         cout << "Dodaje miasto" << endl;

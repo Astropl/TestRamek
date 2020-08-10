@@ -126,7 +126,7 @@ void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
 }
 //Info do Gita
 
-//TODO: DOdac mozliowsc kasowania itemu. i dodoav wymagane klawisze.
+
 void KontrahentDodajWojewodztwo::on_pushButton_3_clicked()
 {
     // Button Usuń
