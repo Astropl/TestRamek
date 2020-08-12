@@ -51,23 +51,23 @@ void KontrahentLista::wczytajDane()
 {
     // Tworze modele do Qtable
 
-    model = new QStandardItemModel(1, 13, this);
+    model = new QStandardItemModel(1, 14, this);
     ui->tableView->setModel(model);
     //QModelIndex *index;
-
-    model->setHeaderData(0, Qt::Horizontal, "Nazwa");
-    model->setHeaderData(1, Qt::Horizontal, "Imię");
-    model->setHeaderData(2, Qt::Horizontal, "Nazwisko");
-    model->setHeaderData(3, Qt::Horizontal, "Kraj");
-    model->setHeaderData(4, Qt::Horizontal, "Region");
-    model->setHeaderData(5, Qt::Horizontal, "Miasto");
-    model->setHeaderData(6, Qt::Horizontal, "Kod Pocztowy");
-    model->setHeaderData(7, Qt::Horizontal, "Ulica");
-    model->setHeaderData(8, Qt::Horizontal, "Nr domu/mieszkania");
-    model->setHeaderData(9, Qt::Horizontal, "Telefon");
-    model->setHeaderData(10, Qt::Horizontal, "Telefon prywatny");
-    model->setHeaderData(11, Qt::Horizontal, "Adres E-mail");
-    model->setHeaderData(12, Qt::Horizontal, "Strona URL");
+    model->setHeaderData(0, Qt::Horizontal, "L.P.");
+    model->setHeaderData(1, Qt::Horizontal, "Nazwa");
+    model->setHeaderData(2, Qt::Horizontal, "Imię");
+    model->setHeaderData(3, Qt::Horizontal, "Nazwisko");
+    model->setHeaderData(4, Qt::Horizontal, "Kraj");
+    model->setHeaderData(5, Qt::Horizontal, "Region");
+    model->setHeaderData(6, Qt::Horizontal, "Miasto");
+    model->setHeaderData(7, Qt::Horizontal, "Kod Pocztowy");
+    model->setHeaderData(8, Qt::Horizontal, "Ulica");
+    model->setHeaderData(9, Qt::Horizontal, "Nr domu/mieszkania");
+    model->setHeaderData(10, Qt::Horizontal, "Telefon");
+    model->setHeaderData(11, Qt::Horizontal, "Telefon prywatny");
+    model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
+    model->setHeaderData(13, Qt::Horizontal, "Strona URL");
 
     //model->insertRow(model->rowCount());
 
@@ -83,22 +83,23 @@ void KontrahentLista::wczytajDane()
     plikKontrahentLista.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
     if (plikKontrahentLista.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia;
     int row = 0;
-    int nr_lini = 1;
+    int nr_lini = 0; // zmiana z int nr_lini = 1;
     while (getline(plikKontrahentLista, linia)) {
         dodajItem = new QStandardItem(linia.c_str());
-        if (nr_lini > 1) {
-            model->setItem(row, nr_lini - 2, dodajItem);
+        //if (nr_lini > 0)
+        {
+            model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
         }
         //ui->comboBoxWczytajMiasta->addItem(linia.c_str());
         cout << linia.c_str() << endl;
         nr_lini++;
-        if (nr_lini > 14) {
+        if (nr_lini > 13) {
             row = row + 1;
-            nr_lini = 1;
+            nr_lini = 0;
         }
     }
 
@@ -189,7 +190,7 @@ void KontrahentLista::on_tableView_doubleClicked(const QModelIndex) //(const QMo
 }
 
 void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelIndex &index)
-{
+{//TODO: Dodoać pierwszy rzaD  znumerem LP ale go nie pokazywac
     QMessageBox msgBox;
     //    msgBox.setText("Click,  tylko raz Click");
     //    msgBox.exec();
@@ -234,7 +235,7 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
                         tab[9],
                         tab[10],
                         tab[11],
-                        tab[12]);
+                        tab[12],tab[13]);
 
     kontrShow->show();
 }

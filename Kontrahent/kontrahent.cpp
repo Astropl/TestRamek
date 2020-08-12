@@ -22,19 +22,12 @@
 #include <vector>
 
 using namespace std;
-//using namespace System;
-//using namespace System::Collections;
+
 
 int iloscKontrahentow = 0;
 int checkFlagsVarriableMiasto = 0;
 int checkFlagsVarriableWojewodztwo =0;
-//int labelGodzina;
-//int labelData;
-//int wynikKontrahent;
-//int godzinaKontrahent, minutaKontrahent, sekundaKontrahent, dzienKontrahent, miesiacKontrahent, rokKontrahent;
-//int dzienTygodniaKontrahent;
-//string stringDzienTygodniaKontrahent;
-//string zmiennasKontrahent;
+
 
 fstream plikKontrahent;
 fstream checkFlags;

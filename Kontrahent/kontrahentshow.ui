@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Kontrahent Edycja</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
@@ -563,6 +563,65 @@
      <string>Zapisz</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>290</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Usuń</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNumerPorz">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>60</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Numer porządkowy</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxPomoc">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>340</y>
+      <width>341</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>60</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxPomoc1">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>370</y>
+      <width>341</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>scrollArea_2</zorder>
    <zorder>scrollArea</zorder>
    <zorder>pushButton</zorder>
@@ -585,6 +644,11 @@
    <zorder>leEmail</zorder>
    <zorder>leUrl</zorder>
    <zorder>pushButton_3</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>lblNumerPorz</zorder>
+   <zorder>comboBoxPomoc</zorder>
+   <zorder>label_14</zorder>
+   <zorder>comboBoxPomoc1</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
