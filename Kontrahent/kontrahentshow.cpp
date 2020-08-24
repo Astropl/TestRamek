@@ -41,10 +41,11 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
                                   QVariant p10,
                                   QVariant p11,
                                   QVariant p12,
-                                  QVariant p13,QVariant p14)
+                                  QVariant p13,
+                                  QVariant p14)
 {
     cout << "Chche wysiwretlic i dopisac do labeli wybranego kontrahenta" << endl;
-ui->lblNumerPorz->setText(p1.toString());
+    ui->lblNumerPorz->setText(p1.toString());
     ui->leNazwa->setText(p2.toString());
     ui->leImie->setText(p3.toString());
     ui->leNazwisko->setText(p4.toString());
@@ -61,7 +62,6 @@ ui->lblNumerPorz->setText(p1.toString());
     ui->leTelPryw->setText(p12.toString());
     ui->leEmail->setText(p13.toString());
     ui->leUrl->setText(p14.toString());
-
 }
 //Info do Gita
 void KontrahentShow::on_pushButton_clicked()
@@ -162,18 +162,18 @@ void KontrahentShow::on_pushButton_3_clicked()
 {
     //ZAPISZ wszytsko
     cout << "Zapisuje po edycji" << endl;
-// Wczytać dane do cmoboBoxaPomoc.
+    // Wczytać dane do cmoboBoxaPomoc.
     // Znalesc te same dane co sa w trybie edycji.
     // skasować te dane.
     // Dopisać te nowe
     //Zapisać wszytsko.
     //
-    fstream file;
+    //fstream file;
     string kontrahent;
     //Zapisz
     cout << "Zapisuje" << endl;
 
-    file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
+    //file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
@@ -202,98 +202,79 @@ void KontrahentShow::on_pushButton_3_clicked()
 
     //plikKontrahent<<ui->
 
-
     // TODO: Zobaczc i porównac po id czy jest taki w plikach.
 
     //int QComboBox::findText(const QString &text, Qt::MatchFlags flags) const;
 
-//    int findPosition  = ui->comboBoxPomoc->findText(ui->lblNumerPorz->text(), Qt::MatchContains);
+    //    int findPosition  = ui->comboBoxPomoc->findText(ui->lblNumerPorz->text(), Qt::MatchContains);
 
-    int findPosition  = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
+    int findPosition = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
+
+    //warning:
     ui->label_14->setText(QString::number(findPosition));
-
+    //file.close();
     fstream fileKontrahent;
 
-    //fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in ||ios::trunc);
-//    if (fileKontrahent.good() == false) {
-//        cout << "Plik nie istnieje !!!!!";
-//        //exit(0);
-   // }
+    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
+    //    if (fileKontrahent.good() == false) {
+    //        cout << "Plik nie istnieje !!!!!";
+    //        //exit(0);
+    // }
     string linia;
-    while (getline(file, linia)) {
-        ui->comboBoxPomoc1 ->addItem(linia.c_str());
+    while (getline(fileKontrahent, linia)) {
+        ui->comboBoxPomoc1->addItem(linia.c_str());
         //if (nr_lini > 0)
 
         //ui->comboBoxWczytajMiasta->addItem(linia.c_str());
         cout << linia.c_str() << endl;
-
     }
 
-    //fileKontrahent.close();
+    fileKontrahent.close();
 
-    int findPosition2 =  ui->comboBoxPomoc1->findText(ui->leNazwa->text(), Qt::MatchContains);
+    int findPosition2 = ui->comboBoxPomoc1->findText(ui->leNazwa->text(), Qt::MatchContains);
+    //ui->label_15->setText(ui->comboBoxPomoc1->itemText(findPosition2));
+    int koniecPomocy1 = ui->comboBoxPomoc1->count();
+    QString tym1 = ui->comboBoxPomoc1->itemText(findPosition2 - 1);
+    QString tym2 = ui->comboBoxPomoc1->itemText(findPosition2);
+    QString tym3 = ui->comboBoxPomoc1->itemText(findPosition2 + 1);
+    QString tym4 = ui->comboBoxPomoc1->itemText(findPosition2 + 2);
+    QString tym5 = ui->comboBoxPomoc1->itemText(findPosition2 + 3);
+    QString tym6 = ui->comboBoxPomoc1->itemText(findPosition2 + 4);
+    QString tym7 = ui->comboBoxPomoc1->itemText(findPosition2 + 5);
+    QString tym8 = ui->comboBoxPomoc1->itemText(findPosition2 + 6);
+    QString tym9 = ui->comboBoxPomoc1->itemText(findPosition2 + 7);
+    QString tym10 = ui->comboBoxPomoc1->itemText(findPosition2 + 8);
+    QString tym11 = ui->comboBoxPomoc1->itemText(findPosition2 + 9);
+    QString tym12 = ui->comboBoxPomoc1->itemText(findPosition2 + 10);
+    QString tym13 = ui->comboBoxPomoc1->itemText(findPosition2 + 11);
+    QString tym14 = ui->comboBoxPomoc1->itemText(findPosition2 + 12);
 
-    ui->comboBoxPomoc1->removeItem(findPosition2-1);
-    ui->comboBoxPomoc1->removeItem(findPosition2);
-    ui->comboBoxPomoc1->removeItem(findPosition2+1);
-    ui->comboBoxPomoc1->removeItem(findPosition2+2);
-    ui->comboBoxPomoc1->removeItem(findPosition2+3);
-    ui->comboBoxPomoc1->removeItem(findPosition2+4);
-    ui->comboBoxPomoc1->removeItem(findPosition2+5);
-    ui->comboBoxPomoc1->removeItem(findPosition2+6);
-    ui->comboBoxPomoc1->removeItem(findPosition2+7);
-    ui->comboBoxPomoc1->removeItem(findPosition2+8);
-    ui->comboBoxPomoc1->removeItem(findPosition2+9);
-    ui->comboBoxPomoc1->removeItem(findPosition2+10);
-    ui->comboBoxPomoc1->removeItem(findPosition2+11);
-    ui->comboBoxPomoc1->removeItem(findPosition2+12);
-    ui->comboBoxPomoc1->removeItem(findPosition2+13);
+    for (int i = -1; i <= ui->comboBoxPomoc->count() - 2; i++) {
+        QString tym8 = ui->comboBoxPomoc1->itemText(findPosition2 - 1);
+        ui->comboBoxPomoc1->removeItem(findPosition2 - 1);
+    }
 
 
+
+    //ui->comboBoxPomoc1->addItem(ui->label_14->text());
+    for (int i = 0; i <= ui->comboBoxPomoc->count() - 1; i++) {
+        ui->comboBoxPomoc1->addItem(ui->comboBoxPomoc->itemText(i));
+    }
+
+    //ui->comboBoxPomoc1->addItem(
+    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
     //teraz zapisac itemy z comboxaPomoc1
+    fileKontrahent.clear();
 
     int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
-
-    for(int i=0;i<=iloscWComboPomoc1;i++)
-    {
-        file<<ui->comboBoxPomoc1->itemText(i).toStdString()<<endl;
-
+    string ala1;
+    for (int i = 0; i <= iloscWComboPomoc1-1; i++) {
+        ala1 = ui->comboBoxPomoc1->itemText(i).toStdString();
+        //file<<ui->comboBoxPomoc1->itemText(i).toStdString()<<endl;
+        fileKontrahent << ala1 << endl;
     }
 
-
-
-//    file << ui->lblNumerPorz->text().toStdString() << endl;
-//    file << ui->leNazwa->text().toStdString() << endl;
-//    file << ui->leImie->text().toStdString() << endl;
-//    file << ui->leNazwisko->text().toStdString() << endl;
-//    //TODO: Kraj na ComboBoxie
-//    file << ui->comboBoxKraj->currentText().toStdString() << endl;
-//    //file << ui->leKraj->text().toStdString() << endl;
-//    //Wczytaj wojewodztwo
-//    file << ui->comboBoxWojewodztwa->currentText().toStdString() << endl;
-//    ;
-
-//    //Wczytaj miasto
-//    file << ui->comboBoxMiasta->currentText().toStdString() << endl;
-//    ;
-
-//    file << ui->leKod->text().toStdString() << endl;
-//    file << ui->leUlica->text().toStdString() << endl;
-//    file << ui->leNrDomu->text().toStdString() << endl;
-//    file << ui->leTelefon->text().toStdString() << endl;
-//    file << ui->leTelPryw->text().toStdString() << endl;
-//    file << ui->leEmail->text().toStdString() << endl;
-//    file << ui->leUrl->text().toStdString() << endl;
-
-    iloscElementowWcombo = ui->comboBoxPomoc->count();
-
-    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
-        //  petla wczytująca liste z combo
-        cout << iloscElementowWcombo << endl;
-    }
-    file.close();
-    //ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
-    //
+    fileKontrahent.close();
 }
 
 void KontrahentShow::on_pushButton_4_clicked()
