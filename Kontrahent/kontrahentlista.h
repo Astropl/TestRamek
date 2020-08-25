@@ -33,6 +33,8 @@ private slots:
 
     void on_tableView_clicked(const QModelIndex); //(const QModelIndex &index)
 
+    void on_pushButton_clicked();
+
 private:
     Ui::KontrahentLista *ui;
     QTimer *timer;

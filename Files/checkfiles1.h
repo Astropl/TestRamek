@@ -21,10 +21,13 @@ public slots:
     void initZapisNrSeryjny();
     void initZapisProducenta();
     void initZapisWojewodztwa();
+    void initZapisKraj();
     void initCheckFlagsInMiasto();
     void initCheckFlagsInWojewodztwo();
+    void initCheckFlagsInKraj();
     int checkFlagsMiasto(int checkFlagsVarriable);
     int checkFlagsWojewodztwo(int checkFlagsVarriableWojewodztwo);
+    int checkFlagsKraj(int checkFlagsVarriableKraj);
 };
 
 #endif // CHECKFILES1_H

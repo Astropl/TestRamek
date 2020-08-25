@@ -23,6 +23,7 @@ public slots:
     void wczytajMiasta();
     void wczytajWojewodztwa();
         //void DataiCzas();
+    void wczytajKraj();
 
         private slots :
             void on_pushButton_clicked();
@@ -32,6 +33,7 @@ public slots:
     void on_actionDodaj_Miasto_triggered();
 
     void on_actionDodaj_Wojew_dztwo_triggered();
+    void on_actionDodaj_Kraj_triggered();
 
     //void on_lineEditWczytajNazwa_1_editingFinished();
 
@@ -49,6 +51,10 @@ public slots:
     //void on_comboBoxWczytajMiasta_textHighlighted(const QString );
     //void on_comboBoxWczytajMiasta_textHighlighted(const QString );
     void on_comboBoxWczytajWojewodztwa_highlighted(const QString);
+    void on_comboBoxWczytajKraj_highlighted(const QString );
+
+
+    void on_comboBoxWczytajKraj_activated(const QString);
 
 private:
     Ui::Kontrahent *ui;

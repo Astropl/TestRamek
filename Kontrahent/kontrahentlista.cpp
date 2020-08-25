@@ -240,3 +240,8 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
     kontrShow->show();
 }
 //Info do Gita
+void KontrahentLista::on_pushButton_clicked()
+{
+    // Odswiez i wyswietl kontrahentów
+    wczytajDane();
+}

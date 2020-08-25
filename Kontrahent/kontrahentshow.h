@@ -20,6 +20,8 @@ public slots:
     //KontrahentShow(QString pierwszazmienna);
     void showCities();
     void showWojewodztwa();
+    void showKraj();
+    void unblock();
 
 private slots:
     void on_pushButton_2_clicked();

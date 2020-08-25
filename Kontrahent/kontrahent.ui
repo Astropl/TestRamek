@@ -259,7 +259,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>170</y>
+      <y>370</y>
       <width>235</width>
       <height>20</height>
      </rect>
@@ -346,6 +346,16 @@
        <height>159</height>
       </rect>
      </property>
+     <widget class="QComboBox" name="comboBoxWczytajKraj">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>10</y>
+        <width>235</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLineEdit" name="lineEditWczytajNazwa_1">
@@ -753,6 +763,7 @@
     </property>
     <addaction name="actionDodaj_Miasto"/>
     <addaction name="actionDodaj_Wojew_dztwo"/>
+    <addaction name="actionDodaj_Kraj"/>
     <addaction name="actionNumer_automatyczny"/>
    </widget>
    <widget class="QMenu" name="menuInformacje">
@@ -806,6 +817,11 @@
   <action name="actionNumer_automatyczny">
    <property name="text">
     <string>Numer automatyczny</string>
+   </property>
+  </action>
+  <action name="actionDodaj_Kraj">
+   <property name="text">
+    <string>Dodaj Kraj</string>
    </property>
   </action>
  </widget>

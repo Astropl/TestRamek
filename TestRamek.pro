@@ -23,6 +23,7 @@ SOURCES += \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
 #    Urzadzenia/Nowy dokument tekstowy.cpp \
+    Kontrahent/kontrahentdodajkraj.cpp \
     Kontrahent/kontrahentdodajmiasto.cpp \
     Kontrahent/kontrahentdodajwojewodztwo.cpp \
     Kontrahent/kontrahentlista.cpp \
@@ -54,6 +55,7 @@ HEADERS += \
 #    Urzadzenia/Nowy dokument tekstowy.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \
 #    Urzadzenia/Nowy dokument tekstowy.h \
+    Kontrahent/kontrahentdodajkraj.h \
     Kontrahent/kontrahentdodajmiasto.h \
     Kontrahent/kontrahentdodajwojewodztwo.h \
     Kontrahent/kontrahentlista.h \
@@ -80,6 +82,7 @@ FORMS += \
     #Info/info.ui \
     Files/checksystem.ui \
     Kontrahent/kontrahent.ui \
+    Kontrahent/kontrahentdodajkraj.ui \
     Kontrahent/kontrahentdodajmiasto.ui \
     Kontrahent/kontrahentdodajwojewodztwo.ui \
     Kontrahent/kontrahentlista.ui \

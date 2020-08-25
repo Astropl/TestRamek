@@ -85,6 +85,30 @@ void CheckFiles1::initZapisWojewodztwa()
     }
     file.close();
 }
+void CheckFiles1::initZapisKraj()
+{
+    file.open("C:/Defaults/Pliki/ZapisKraj.txt");
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file.close();
+}
+
+void CheckFiles1::initCheckFlagsInKraj()
+{
+    file.open("C:/Defaults/Pliki/ZapisKraj.txt");
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file.close();
+}
+
 
 void CheckFiles1::initCheckFlagsInMiasto()
 {
@@ -166,6 +190,33 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 
 }
 
+
+int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
+{
+    cout << " W CheckFiles1: CheckFlags" << endl;
+
+    file.open("C:/Defaults/Pliki/CheckFlagsInKraj.txt",
+              ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
+
+    int nr_lini = 1;
+    while (getline(file, linia)) {
+
+        cout << linia << endl;
+        if (linia == "0") {
+            cout << "Linia równa się 0" << endl;
+            return 0;
+        } else if (linia == "1") {
+            cout << "Linia równa się 1" << endl;
+            return 1;
+        }
+        nr_lini++;
+    }
+
+    file.close();
+
+}
+
 void CheckFiles1::init()
 {
     initMkDir();
@@ -177,6 +228,7 @@ void CheckFiles1::init()
     initZapisWojewodztwa();
     initCheckFlagsInMiasto();
     initCheckFlagsInWojewodztwo();
+    initCheckFlagsInKraj();
     CheckSystem *checkSystem = new CheckSystem();
     checkSystem->show();
 

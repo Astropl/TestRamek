@@ -4,6 +4,7 @@
 #include "Timery/timedate.h"
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
+#include "kontrahentdodajkraj.h"
 #include "kontrahentshow.h"
 #include "mainwindow.h"
 #include "time.h"
@@ -27,7 +28,7 @@ using namespace std;
 int iloscKontrahentow = 0;
 int checkFlagsVarriableMiasto = 0;
 int checkFlagsVarriableWojewodztwo =0;
-
+int checkFlagsVarriableKraj =0;
 
 fstream plikKontrahent;
 fstream checkFlags;
@@ -44,6 +45,7 @@ Kontrahent::Kontrahent(QWidget *parent)
     //===================
     wczytajMiasta();
     wczytajWojewodztwa();
+    wczytajKraj();
     howMuchKontrahent();
     //    iloscKontrahentow++;
     //    ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
@@ -112,6 +114,28 @@ void Kontrahent::myfunctiontimer()
 
     ui->labelDzien->setText(stringDzienTygodnia);
 }
+
+void Kontrahent::wczytajKraj()
+{
+    //Wczytuje Kraje z pliku
+    plikKontrahent.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::in);
+    if (plikKontrahent.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        //exit(0);
+    }
+    string linia;
+    int nr_lini = 1;
+    while (getline(plikKontrahent, linia)) {
+        ui->comboBoxWczytajKraj->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+
+    plikKontrahent.close();
+}
+
+
+
 
 void Kontrahent::wczytajMiasta()
 {
@@ -240,6 +264,15 @@ void Kontrahent::on_actionDodaj_Wojew_dztwo_triggered()
     kontrDodWoje->show();
 }
 
+void Kontrahent::on_actionDodaj_Kraj_triggered()
+{
+    cout << "Dodoaje Kraje z kontrahenta" << endl;
+    KontrahentDodajKraj *kontrDodKraj = new KontrahentDodajKraj(this);
+    kontrDodKraj->show();
+
+
+}
+
 void Kontrahent::on_lineEditWczytajNazwa_1_textChanged(const QString) // (const QString &arg1)
 {
     cout << "Zmiana textu" << endl;
@@ -317,5 +350,45 @@ void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString ) //con
     checkFlags.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt", ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
+
+}
+
+void Kontrahent::on_comboBoxWczytajKraj_highlighted(const QString ) //const QString &arg1
+{
+
+    CheckFiles1 *checkFiles  = new CheckFiles1(this);
+    cout <<" Otrzymanie highland przycisku wczytaj wojewdóztwo"<<endl;
+    checkFlagsVarriableKraj = checkFiles->checkFlagsKraj(checkFlagsVarriableKraj);
+    if (checkFlagsVarriableKraj !=0)
+    {
+        cout<<"Higladned w Przycisk wczyta Kraj"<<endl;
+        QStringList listaKraj = QStringList();
+
+        ui->comboBoxWczytajKraj->clear();
+        wczytajKraj();
+        int ostatniindex = ui->comboBoxWczytajKraj->count()-1;
+        for (int iZmienna =0; iZmienna<= ostatniindex;iZmienna++)
+        {
+            listaKraj.push_back(ui->comboBoxWczytajKraj->itemText(iZmienna).toUtf8());
+
+        }
+        sort(listaKraj.begin(),listaKraj.end());
+        ui->comboBoxWczytajKraj->clear();
+        for(int kZmienna =0; kZmienna <=listaKraj.count()-1;kZmienna++)
+        {
+            ui->comboBoxWczytajKraj->addItem(listaKraj.at(kZmienna)) ;
+        }
+
+
+
+    }
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInKraj.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+
+}
+
+void Kontrahent::on_comboBoxWczytajKraj_activated(const QString)
+{
 
 }
