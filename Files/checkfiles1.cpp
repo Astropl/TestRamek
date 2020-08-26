@@ -229,6 +229,7 @@ void CheckFiles1::init()
     initCheckFlagsInMiasto();
     initCheckFlagsInWojewodztwo();
     initCheckFlagsInKraj();
+    initUrzadzenie();
     CheckSystem *checkSystem = new CheckSystem();
     checkSystem->show();
 
@@ -237,5 +238,16 @@ void CheckFiles1::init()
     //Sprawdzam czy pliki istnieją jezeli nie tworzę je.
 
     //Kontrahent.txt, ZapisMiasta, ZapisModel,ZapisNrSeryjny,ZapisProducenta,ZapisWojewodztwa, CheckFlagsInMiasto.txt
+}
+void CheckFiles1::initUrzadzenie()
+{
+    file.open("C:/Defaults/Pliki/Urzadzenie.txt"); //, ios::app
+    if (file.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        file.open("C:/Defaults/Pliki/Urzadzenie.txt", ios::app);
+        //exit(0);
+    }
+    file.close();
+
 }
 //Info do Gita

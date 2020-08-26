@@ -53,6 +53,8 @@ private slots:
 
     void on_actionInformacja_triggered();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Urzadzenia *ui;
     QTimer *timer;

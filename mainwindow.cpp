@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "Files/checkfiles1.h"
 #include "Kontrahent/kontrahentlista.h"
+#include "Urzadzenia/urzadzenialista.h"
 #include "ui_mainwindow.h"
 #include <Info/info.h>
 #include <druga.h>
@@ -95,3 +96,10 @@ void MainWindow::on_actionO_programie_triggered()
 }
 //Info do Gita
 
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    //Lista Urzadzeń w tabeli jak w kontrahnet
+    UrzadzeniaLista *urzList = new UrzadzeniaLista(this);
+    urzList->show();
+}

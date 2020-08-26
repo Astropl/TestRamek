@@ -22,7 +22,7 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
     if(plikOdczyt.good()==false)
     {
         cout<<"Plik nie istnieje !!!!!";
-        exit(0);
+        //exit(0);
     }
     string linia;
     int nr_lini = 1;

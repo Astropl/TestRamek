@@ -5,6 +5,7 @@
 #include "urzadzeniadodajmodel.h"
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
+
 #include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
@@ -130,80 +131,8 @@ void Urzadzenia::myfunctiontimer()
 
         ui->labelDzien->setText(stringDzienTygodnia);
 }
-//    time(&czasUrzadzenia);
-//    timeinfo = *localtime(&czasUrzadzenia);
-//    godzinaUrzadzenia = timeinfo.tm_hour;
-//    minutaUrzadzenia = timeinfo.tm_min;
-//    sekundaUrzadzenia = timeinfo.tm_sec;
-//    dzienUrzadzenia = timeinfo.tm_mday;
-//    miesiacUrzadzenia = timeinfo.tm_mon;
-//    rokUrzadzenia = timeinfo.tm_year;
-//    dzienTygodniaUrzadzenia = timeinfo.tm_wday;
-//    miesiacUrzadzenia = miesiacUrzadzenia + 1;
-//    rokUrzadzenia = rokUrzadzenia + 1900;
-
-//    zmianaLabela(godzinaUrzadzenia, minutaUrzadzenia, sekundaUrzadzenia, dzienUrzadzenia, miesiacUrzadzenia, rokUrzadzenia, dzienTygodniaUrzadzenia);
-//}
-//int Urzadzenia::zmianaLabela(
-//    int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia)
-//{
-//    // Dodoać zera do sekund gdy mniej niz 10
-//    QString qStrMin = QString::number(minuta);
-//    QString qStrGodz = QString::number(godzina);
-//    QString qStrSek = QString::number(sekunda);
-//    QString qStrDzien = QString::number( dzien);
-//    QString qStrMiesiac = QString::number(miesiac);
-//    if (sekunda<10)
-//    {
-//        qStrSek = "0"+QString::number(sekunda);
-//    }
-//    if (minuta <10)
-//    {
-//        qStrMin = "0"+QString::number(minuta);
-//    }
-//    if (godzina<10)
-//    {
-//        qStrGodz = "0"+QString::number(godzina);
-//    }
-//    if (miesiac <10)
-//    {
-//        qStrMiesiac = "0"+QString::number(miesiac);
-//    }
-//    if (dzien <10)
-//    {
-//        qStrDzien = "0"+QString::number(dzien);
-//    }
 
 
-//    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-//    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "."
-//                           + qStrDzien);
-//    switch (dzienTygodnia) {
-//    case 1:
-//        stringDzienTygodniaUrzadzenia = "Poniedziałek";
-//        break;
-//    case 2:
-//        stringDzienTygodniaUrzadzenia = "Wtorek";
-//        break;
-//    case 3:
-//        stringDzienTygodniaUrzadzenia = "Środa";
-//        break;
-//    case 4:
-//        stringDzienTygodniaUrzadzenia = "Czwartek";
-//        break;
-//    case 5:
-//        stringDzienTygodniaUrzadzenia = "Piątek";
-//        break;
-//    case 6:
-//        stringDzienTygodniaUrzadzenia = "Sobota";
-//        break;
-//    case 0:
-//        stringDzienTygodniaUrzadzenia = "Niedziela";
-//        break;
-//    }
-//    ui->labelDzien->setText((stringDzienTygodniaUrzadzenia).c_str());
-//    return 1;
-//}
 Urzadzenia::~Urzadzenia()
 {
     delete ui;
@@ -212,6 +141,18 @@ Urzadzenia::~Urzadzenia()
 void Urzadzenia::on_BtnUrzaZapisz_clicked()
 {
     cout << "Zapisz" << endl;
+
+    plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt");
+    //TODO: Plik urzadzenia
+
+    for (int i=0;i<=ui->comboBox_4->count()-1;i++) {
+        plikUrzadzenia<<ui->comboBox_4->itemText(i).toStdString()<<endl;;
+
+
+    }
+
+
+    plikUrzadzenia.close();
 }
 
 void Urzadzenia::on_BtnUrzaZamknij_clicked()
@@ -273,3 +214,10 @@ void Urzadzenia::on_actionInformacja_triggered()
     info->show();
 }
 //Info do Gita
+void Urzadzenia::on_pushButton_clicked()
+{
+    // Dodaj do comboBoxa
+    ui->comboBox_4->addItem(ui->comboBox->currentText());
+    ui->comboBox_4->addItem(ui->comboBox_2->currentText());
+    ui->comboBox_4->addItem(ui->comboBox_3->currentText());
+}

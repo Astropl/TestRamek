@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>140</y>
+      <y>150</y>
       <width>121</width>
       <height>23</height>
      </rect>
@@ -89,10 +89,23 @@
      </rect>
     </property>
     <property name="text">
-     <string>Urzadzenia</string>
+     <string>Dodaj Urzadzenie</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>70</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lista Kontahentów</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -102,7 +115,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Lista Kontahentów</string>
+     <string>Lista Urządzeń</string>
     </property>
    </widget>
   </widget>

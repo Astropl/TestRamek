@@ -28,6 +28,7 @@ public slots:
     int checkFlagsMiasto(int checkFlagsVarriable);
     int checkFlagsWojewodztwo(int checkFlagsVarriableWojewodztwo);
     int checkFlagsKraj(int checkFlagsVarriableKraj);
+    void initUrzadzenie();
 };
 
 #endif // CHECKFILES1_H
