@@ -2,6 +2,7 @@
 #include "Files/checkfiles1.h"
 #include "Kontrahent/kontrahentlista.h"
 #include "Urzadzenia/urzadzenialista.h"
+#include "Ustawienia/ustawienia.h"
 #include "ui_mainwindow.h"
 #include <Info/info.h>
 #include <druga.h>

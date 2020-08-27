@@ -5,7 +5,7 @@
 #include "urzadzeniadodajmodel.h"
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
-
+#include "Ustawienia/ustawienia.h"
 #include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
@@ -20,7 +20,7 @@ using namespace std;
 string stringLabela4 = ("Producent: , Model: , Nr. Seryjny: ");
 QString zaznaczono;
 fstream plikUrzadzenia;
-
+int iloscUrzadzen =0;
 //time_t czasUrzadzenia;
 //tm timeinfo;
 //int labelGodzina;
@@ -39,12 +39,15 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     ui->comboBox->addItem("");
     ui->comboBox_2->addItem("");
     ui->comboBox_3->addItem("");
+    ui->lineEditNumber->setText(QString::number(iloscUrzadzen));
 
     //---------Sekcja generacji timera
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
     timer->start(1000);
     //===================
+
+    howMuchDevice();
 
     //Wczytuje modele z pliku
     plikUrzadzenia.open("C:/Defaults/Pliki/ZapisModel.txt", ios::in);
@@ -97,7 +100,39 @@ Urzadzenia::Urzadzenia(QWidget *parent)
 
     countriesListModel->insertRow(row);                    // wstawiam dodatkowy wiersz na końcu
     QModelIndex index = countriesListModel->index(row, 0); // pobieram obiekt wstawionego indeksu
-    countriesListModel->setData(index, QVariant("*"));
+    //countriesListModel->setData(index, QVariant("*"));
+}
+
+
+void Urzadzenia::howMuchDevice()
+{
+    // TODO: okreslić ile znajduje sie zapisanych urzadzen juz.
+
+    plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt", ios::in);
+    if (plikUrzadzenia.good() ==false)
+    {
+        cout<<"Plik nie istnieje";
+
+    }
+    string linia;
+
+    int nr_lini = 1;
+    while (getline(plikUrzadzenia, linia))
+    {
+        iloscUrzadzen ++;
+        cout << linia.c_str()<<endl;
+        nr_lini++;
+    }
+    cout<<"ilosc Urzadzen wczytanych stringów: "<< iloscUrzadzen<<endl;
+    iloscUrzadzen = iloscUrzadzen /4;
+     cout<<"ilosc Urzadzen po 4: "<< iloscUrzadzen<<endl;
+    ui->LblNumberAnaliz->setText(QString::number(iloscUrzadzen));
+    plikUrzadzenia.close();
+    iloscUrzadzen ++;
+     cout<<"ilosc Urzadzen z nastepnym: "<< iloscUrzadzen<<endl;
+     ui->lineEditNumber->setText(QString::number(iloscUrzadzen));
+
+
 }
 void Urzadzenia::myfunctiontimer()
 {time_t czas;
@@ -142,11 +177,14 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
 {
     cout << "Zapisz" << endl;
 
-    plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt");
+    plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt",ios::out | ios::app);
     //TODO: Plik urzadzenia
 
+
+
+
     for (int i=0;i<=ui->comboBox_4->count()-1;i++) {
-        plikUrzadzenia<<ui->comboBox_4->itemText(i).toStdString()<<endl;;
+        plikUrzadzenia<<ui->comboBox_4->itemText(i).toStdString()<<endl;
 
 
     }
@@ -217,7 +255,13 @@ void Urzadzenia::on_actionInformacja_triggered()
 void Urzadzenia::on_pushButton_clicked()
 {
     // Dodaj do comboBoxa
+    ui->comboBox_4->addItem(ui->lineEditNumber->text());
     ui->comboBox_4->addItem(ui->comboBox->currentText());
     ui->comboBox_4->addItem(ui->comboBox_2->currentText());
     ui->comboBox_4->addItem(ui->comboBox_3->currentText());
+}
+void Urzadzenia::on_actionOpcje_triggered()
+{
+    Ustawienia *ustaw = new Ustawienia(this);
+    ustaw->show();
 }

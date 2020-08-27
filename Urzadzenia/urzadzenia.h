@@ -52,8 +52,12 @@ private slots:
     void on_actionDodaj_Numer_Seryjny_triggered();
 
     void on_actionInformacja_triggered();
+    void on_actionOpcje_triggered();
 
     void on_pushButton_clicked();
+    void howMuchDevice();
+
+
 
 private:
     Ui::Urzadzenia *ui;
