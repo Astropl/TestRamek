@@ -69,6 +69,10 @@ void KontrahentLista::wczytajDane()
     model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
     model->setHeaderData(13, Qt::Horizontal, "Strona URL");
 
+
+    //---------------------------------------------------------------
+    ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
+        //---------------------------------------------------------------
     //model->insertRow(model->rowCount());
 
     //ui->labelTest->text(QString::number(iloscWierszy));
@@ -190,7 +194,7 @@ void KontrahentLista::on_tableView_doubleClicked(const QModelIndex) //(const QMo
 }
 
 void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelIndex &index)
-{//TODO: Dodoać pierwszy rzaD  znumerem LP ale go nie pokazywac
+{
     QMessageBox msgBox;
     //    msgBox.setText("Click,  tylko raz Click");
     //    msgBox.exec();

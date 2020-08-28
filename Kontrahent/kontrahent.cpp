@@ -185,8 +185,7 @@ void Kontrahent::on_pushButton_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
 
-    //TODO: Przypisac automatyczą numeracje WCZYTAJNUMER
-    //tymczasowo
+
 
     ui->comboBoxPomoc->addItem(ui->lineEditWczytajNumer->text());
     ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text());

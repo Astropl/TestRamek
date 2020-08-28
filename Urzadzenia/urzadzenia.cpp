@@ -106,7 +106,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
 
 void Urzadzenia::howMuchDevice()
 {
-    // TODO: okreslić ile znajduje sie zapisanych urzadzen juz.
+
 
     plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt", ios::in);
     if (plikUrzadzenia.good() ==false)

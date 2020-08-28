@@ -46,7 +46,7 @@ void Ustawienia::on_pushButton_clicked()
         fileUstawienia.open(patchBasic+fN[i],ios::in);
         fileUstawienia1.open(patchBasic+stringFile+fN[i],ios::out);
         string linia;
-
+//TODO: cos tu nie działa
         int nr_lini = 1;
         while (getline(fileUstawienia, linia))
         {

@@ -264,7 +264,7 @@ void KontrahentShow::on_pushButton_4_clicked()
 {
     //Usuń kontrahenta
     cout << "Kontrahent usunięty" << endl;
-
+int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     // Odblokować pola edycyjne
     unblock();
     //dodac do comboPomoc kontrahenta do usuniecia
@@ -284,7 +284,7 @@ void KontrahentShow::on_pushButton_4_clicked()
     ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
     ui->comboBoxPomoc->addItem(ui->leEmail->text());
     ui->comboBoxPomoc->addItem(ui->leUrl->text());
-
+ iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     int findPosition = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
     fstream fileKontrahent;
     fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
@@ -315,7 +315,7 @@ void KontrahentShow::on_pushButton_4_clicked()
     ui->leEmail->setText("");
     ui->leUrl->setText("");
 
-
+iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     // szukamy nazwy w combo pomoc i i szuamy jej w combopomoc1
 
 
@@ -333,7 +333,7 @@ fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
 //teraz zapisac itemy z comboxaPomoc1
 fileKontrahent.clear();
 
-int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
 string ala1;
 for (int i = 0; i <= iloscWComboPomoc1 - 1; i++) {
     ala1 = ui->comboBoxPomoc1->itemText(i).toStdString();

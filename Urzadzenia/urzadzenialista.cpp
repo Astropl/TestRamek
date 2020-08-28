@@ -67,7 +67,9 @@ void UrzadzeniaLista::wczytajDane()
     //    model->setHeaderData(11, Qt::Horizontal, "Telefon prywatny");
     //    model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
     //    model->setHeaderData(13, Qt::Horizontal, "Strona URL")
-
+    //---------------------------------------------------------------
+    ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
+     //---------------------------------------------------------------
     QStandardItem *dodajItem = new QStandardItem("Jakies cos");
 fileUrzadzeniaLista.open("C:/Defaults/Pliki/Urzadzenie.txt", ios::in);
 if (fileUrzadzeniaLista.good() == false)
@@ -155,4 +157,30 @@ void UrzadzeniaLista::myfunctiontimer()
     ui->labelDzien->setText(stringDzienTygodnia);
 
 
+}
+void UrzadzeniaLista::on_pushButton_clicked()
+{
+    //Odswiez
+}
+
+void UrzadzeniaLista::on_pushButton_2_clicked()
+{
+    //Zamknij
+    destroy();
+
+}
+
+void UrzadzeniaLista::on_pushButton_3_clicked()
+{
+    //Usuń
+}
+
+void UrzadzeniaLista::on_pushButton_4_clicked()
+{
+    //Edytuj
+}
+
+void UrzadzeniaLista::on_pushButton_5_clicked()
+{
+    //Zapisz
 }

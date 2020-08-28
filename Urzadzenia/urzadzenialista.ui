@@ -233,6 +233,45 @@
      <string>Test Skasuj</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>180</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Usuń</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>210</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edytuj</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>240</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zapisz</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>scrollArea</zorder>
    <zorder>tableView</zorder>
@@ -241,6 +280,9 @@
    <zorder>pushButton</zorder>
    <zorder>label_2</zorder>
    <zorder>labelDaty</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>pushButton_5</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
