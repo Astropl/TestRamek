@@ -14,7 +14,7 @@ class Ustawienia : public QMainWindow
 public:
     explicit Ustawienia(QWidget *parent = nullptr);
     ~Ustawienia();
-
+    QString pobierzDate(QString aktHour);
 private slots:
     void on_pushButton_clicked();
 
