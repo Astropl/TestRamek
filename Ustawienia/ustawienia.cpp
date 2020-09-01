@@ -1,25 +1,26 @@
 #include "ustawienia.h"
-#include "ui_ustawienia.h"
 #include "Timery/timedate.h"
-#include <iostream>
-#include <fstream>
-#include <direct.h> //biblio do stworzenia katalogu poprzez mkdir
-#include <windows.h>
-#include <ctime>
 #include "time.h"
+#include "ui_ustawienia.h"
+#include <ctime>
+#include <direct.h> //biblio do stworzenia katalogu poprzez mkdir
+#include <direct.h>
+#include <fstream>
+#include <iostream>
+#include <iterator> // do obliczenia rozmiaru tablicy FN
+#include <windows.h>
+#include <QMessageBox>
 
 using namespace std;
 QString aktHour;
-fstream fileUstawienia,fileUstawienia1;
-Ustawienia::Ustawienia(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Ustawienia)
+fstream fileUstawienia, fileUstawienia1;
+Ustawienia::Ustawienia(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Ustawienia)
 {
     ui->setupUi(this);
 
-    cout<<"Jestem w ustawieniach"<<endl;
-
-
+    cout << "Jestem w ustawieniach" << endl;
 }
 
 Ustawienia::~Ustawienia()
@@ -35,15 +36,14 @@ QString Ustawienia::pobierzDate(QString aktHour)
     int tm_mday; //Dzień miesiąca. Zakres [1..31]
     int tm_mon; //Miesiąc. Zakres [0..11]
     int tm_year = 0; *///Obecny rok. Lata zaczynają się liczyć od roku 1900, czyli: wartość 0 = 1900 rok.
-//    /*int tm_wday; //Dzień tygodnia. Zakres [0..6]. 0 = Niedziela; 1 = Poniedziałek; itd...
-//    int tm_yday; //Dzień roku. Zakres [0..365].
-//    int tm_isdst; //Letnie/zimowe przesunięcie czasowe. Jeśli wartość jest większa od 0 to przesunięcie czasowe jest 'aktywne'. */Jeśli wartość mniejsza od 0 to informacja jest niedostępna.
+    //    /*int tm_wday; //Dzień tygodnia. Zakres [0..6]. 0 = Niedziela; 1 = Poniedziałek; itd...
+    //    int tm_yday; //Dzień roku. Zakres [0..365].
+    //    int tm_isdst; //Letnie/zimowe przesunięcie czasowe. Jeśli wartość jest większa od 0 to przesunięcie czasowe jest 'aktywne'. */Jeśli wartość mniejsza od 0 to informacja jest niedostępna.
 
-//    time_t czas;
-//    struct tm *data;
-//    char godzina [80];
-//    time
-
+    //    time_t czas;
+    //    struct tm *data;
+    //    char godzina [80];
+    //    time
 
     time_t czas;
     tm timeinfo;
@@ -71,81 +71,69 @@ QString Ustawienia::pobierzDate(QString aktHour)
     qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
     //stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
 
-    aktHour = QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien+"." +qStrGodz + "." + qStrMin + "." + qStrSek;
-
+    aktHour = QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien + "." + qStrGodz + "."
+              + qStrMin + "." + qStrSek;
 
     return aktHour;
     //cout<<aktHour<<endl;
 
-//    cout<<QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien+qStrGodz + ":" + qStrMin + ":" + qStrSek<<endl;
+    //    cout<<QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien+qStrGodz + ":" + qStrMin + ":" + qStrSek<<endl;
 
-//    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-//    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
+    //    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    //    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
 
-//    ui->labelDzien->setText(stringDzienTygodnia)
+    //    ui->labelDzien->setText(stringDzienTygodnia)
 
-
-
-//    cout <<tm_year<<endl;//+ "."+ tm_mon ;//+ "."  tm_mday"." tm_hour<<endl;
+    //    cout <<tm_year<<endl;//+ "."+ tm_mon ;//+ "."  tm_mday"." tm_hour<<endl;
 }
 
 void Ustawienia::on_pushButton_clicked()
-{QString aktHours = pobierzDate(aktHour);
+{
+    string stringFile = "Backup/";
+    string patchBasic = "C:/Defaults/Pliki/";
+    string tableOfstrings[11] = {"Kontrahent.txt",
+                     "CheckFlagsInMiasto.txt",
+                     "CheckFlagsInWojewodztwo.txt",
+                     "Urzadzenie.txt",
+                     "ZapisNrSeryjny.txt",
+                     "ZapisModel.txt",
+                     "ZapisProducenta.txt",
+                     "CheckFlagsInKraj.txt",
+                     "ZapisMiasta.txt",
+                     "ZapisWojewodztwa.txt",
+                     "ZapisKraj.txt"};
+
+    QString aktHours = pobierzDate(aktHour);
     ui->lblData->setText(aktHours);
     // Kopia danych plików
+    string aktHours1 = aktHours.toStdString();
+    string aktHours2 = patchBasic + stringFile + aktHours1 + "/";
 
-    mkdir("C:/Defaults/Pliki/Backup");
+    _mkdir(aktHours2.c_str());
 
+    //TODO: dodac nowy katalog z dataa i godzina z minutami do Backupa
 
-    //char ch;
-
-    string stringFile = "Backup/";
-    string patchBasic ="C:/Defaults/Pliki/";
-    string fN [11]= {"Kontrahent.txt","CheckFlagsInMiasto.txt","CheckFlagsInWojewodztwo.txt", "Urzadzenie.txt", "ZapisNrSeryjny.txt", "ZapisModel.txt", "ZapisProducenta.txt", "CheckFlagsInKraj.txt", "ZapisMiasta.txt", "ZapisWojewodztwa.txt", "ZapisKraj.txt"};
-
-
-
-
-//TODO: dodac nowy katalog z dataa i godzina z minutami do Backupa
-
- //for (int i = 0;i<=fN->sizeof()-1;i++)
-    for (int i = 0;i<=sizeof(fN)-1;i++) {
-
-        fileUstawienia.open(patchBasic+fN[i],ios::in);
-        fileUstawienia1.open(patchBasic+stringFile+fN[i],ios::out);
+    //for (int i = 0;i<=sizeof(fN)-1;i++)
+    int sizeOfTable = tableOfstrings->size();
+    for (int i = 0; i < sizeOfTable; i++) {
+        fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
+        fileUstawienia1.open(aktHours2 + tableOfstrings[i], ios::out);
         string linia;
-//TODO: cos tu nie działa
+
         int nr_lini = 1;
-        while (getline(fileUstawienia, linia))
-        {
-            //iloscUrzadzen ++;
-            ui->comboBox->addItem( linia.c_str());
-            fileUstawienia1<<linia.c_str()<<endl;
-            cout<<linia.c_str()<<endl;
+        while (getline(fileUstawienia, linia)) {
+            ui->comboBox->addItem(linia.c_str());
+            fileUstawienia1 << linia.c_str() << endl;
+            cout << linia.c_str() << endl;
             nr_lini++;
         }
         ui->comboBox->clear();
+
         fileUstawienia.close();
         fileUstawienia1.close();
-
-
-//        ifstream file1(patchBasic+fN[i]);
-//        ofstream file2(patchBasic+stringFile+fN[i]);
-
-//        if (!file1)
-//            cerr <<"Nie moge ptworzyc pliku wejsciowego\n";
-//        if(!file2)
-//            cerr << "Nie moge ptworzyc pliku wyjsciowego\n";
-//        while(file1 && file1.get(ch))
-//            file2.put(ch);
-
+        cout << "Zapisano: " + aktHours2 << endl;
     }
-
-
-
-//    while(file1 && file2.get(ch) )
-    //          file2.put(ch);
-
-
-
+    //    QMessageBox msgBox;
+    //    msgBox.setText("Kopia Bazy Danych zrobiona");
+    QMessageBox::information(this, "Ostrzeżenie", "Kopia Bazy Danych zrobiona.");
 }
