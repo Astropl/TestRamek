@@ -46,6 +46,9 @@ Kontrahent::Kontrahent(QWidget *parent)
     wczytajMiasta();
     wczytajWojewodztwa();
     wczytajKraj();
+     ui-> comboBoxWczytajMiasta->currentIndex();
+      ui-> comboBoxWczytajWojewodztwa->currentIndex();
+       ui-> comboBoxWczytajKraj->currentIndex();
     howMuchKontrahent();
     //    iloscKontrahentow++;
     //    ui->lineEditWczytajNumer->setText(QString::number(iloscKontrahentow));
@@ -132,6 +135,7 @@ void Kontrahent::wczytajKraj()
     }
 
     plikKontrahent.close();
+    ui-> comboBoxWczytajKraj->currentIndex();
 }
 
 
@@ -191,7 +195,7 @@ void Kontrahent::on_pushButton_clicked()
     ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwa_1->text());
     ui->comboBoxPomoc->addItem(ui->lineEditWczytajImie->text());
     ui->comboBoxPomoc->addItem(ui->lineEditWczytajNazwisko->text());
-    ui->comboBoxPomoc->addItem(ui->lineEditWczytajKraj->text());
+    ui->comboBoxPomoc->addItem(ui->comboBoxWczytajWojewodztwa->currentText());
     //Wczytaj wojewodztwo
     ui->comboBoxPomoc->addItem(ui->comboBoxWczytajWojewodztwa->currentText());
     //Wczytaj miasto

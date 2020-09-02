@@ -5,9 +5,15 @@
 #include <iostream>
 #include <ostream>
 #include <QString>
+#include "Files/checkfiles1.h"
+#include "Info/info.h"
 
 using namespace std;
 
+
+int checkFlagsVarriableMiastoKontrahentShow = 0;
+int checkFlagsVarriableWojewodztwoKontrahentShow =0;
+int checkFlagsVarriableKrajKontrahentShow =0;
 QString tab[13];
 
 KontrahentShow::KontrahentShow(QWidget *parent)
@@ -51,10 +57,10 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
     ui->leNazwisko->setText(p4.toString());
     ui->leKraj->setText(p5.toString());
     ui->comboBoxKraj->addItem(p5.toString());
-    ui->comboBoxMiasta->addItem(p6.toString());
-    ui->comboBoxWojewodztwa->addItem(p7.toString());
-    ui->leRegion->setText(p7.toString());
-    ui->leMiasto->setText(p6.toString());
+    ui->comboBoxMiasta->addItem(p7.toString());// tutaj
+    ui->comboBoxWojewodztwa->addItem(p6.toString());// tutaj
+    ui->leRegion->setText(p6.toString());// tutaj
+    ui->leMiasto->setText(p7.toString());// tutaj
     ui->leKod->setText(p8.toString());
     ui->leUlica->setText(p9.toString());
     ui->leNrDomu->setText(p10.toString());
@@ -84,7 +90,6 @@ void KontrahentShow::on_pushButton_clicked()
 }
 void KontrahentShow::showKraj()
 {
-
     // wczytuje kraje do comboBoxa
     fstream plikOdczytDodajKraj;
     // wczytuje miasta do comboBoxa
@@ -105,10 +110,7 @@ void KontrahentShow::showKraj()
     ui->comboBoxKraj->setCurrentText(ui->leKraj->text());
 
     //TODO: Posortować.
-
 }
-
-
 
 void KontrahentShow::showWojewodztwa()
 {
@@ -155,6 +157,8 @@ void KontrahentShow::showCities()
 }
 void KontrahentShow::on_pushButton_3_clicked()
 {
+    ui->comboBoxPomoc->clear();
+    ui->comboBoxPomoc1->clear();
     //ZAPISZ wszytsko
     cout << "Zapisuje po edycji" << endl;
     // Wczytać dane do cmoboBoxaPomoc.
@@ -171,10 +175,19 @@ void KontrahentShow::on_pushButton_3_clicked()
     //file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
-    int iloscElementowWcombo;
+    //int iloscElementowWcombo;
 
     //TODO: Przypisac automatyczą numeracje WCZYTAJNUMER
     //tymczasowo
+
+
+    // sprawdzic czy labele sa puste
+    //QString tymcsowet = ui->leNazwa->text();
+    if (ui->leNazwa->text() == "" )
+
+    {
+        // pusty
+    }else{
 
     ui->comboBoxPomoc->addItem(ui->lblNumerPorz->text());
     ui->comboBoxPomoc->addItem(ui->leNazwa->text());
@@ -192,7 +205,7 @@ void KontrahentShow::on_pushButton_3_clicked()
     ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
     ui->comboBoxPomoc->addItem(ui->leEmail->text());
     ui->comboBoxPomoc->addItem(ui->leUrl->text());
-
+    }
     //TODO: Sprawdzam czy moge ominac comboBox Pomoc
 
     //plikKontrahent<<ui->
@@ -258,13 +271,20 @@ void KontrahentShow::on_pushButton_3_clicked()
     }
 
     fileKontrahent.close();
+    ui->comboBoxPomoc->clear();
 }
 
 void KontrahentShow::on_pushButton_4_clicked()
 {
+    //TODO: Sprawdzić czy dobrze ze wyczysciłem comboBoxaPomoc
+    //TODO: Dlaczego zapisauja się białe pola
+    //-----------------------------------------
+    ui->comboBoxPomoc->clear();
+    ui->comboBoxPomoc1->clear();
+    //--------------------------------------------
     //Usuń kontrahenta
     cout << "Kontrahent usunięty" << endl;
-int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+
     // Odblokować pola edycyjne
     unblock();
     //dodac do comboPomoc kontrahenta do usuniecia
@@ -284,7 +304,9 @@ int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
     ui->comboBoxPomoc->addItem(ui->leEmail->text());
     ui->comboBoxPomoc->addItem(ui->leUrl->text());
- iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+     //int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+    //iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+
     int findPosition = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
     fstream fileKontrahent;
     fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
@@ -293,8 +315,8 @@ int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
         ui->comboBoxPomoc1->addItem(linia.c_str());
         cout << linia.c_str() << endl;
     }
+ fileKontrahent.close();
 
-    fileKontrahent.close();
     ui->label_14->setText(QString::number(findPosition));
     int findPosition2 = ui->comboBoxPomoc1->findText(ui->leNazwa->text(), Qt::MatchContains);
     //wyczyscic pola edycyjne
@@ -315,33 +337,30 @@ int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     ui->leEmail->setText("");
     ui->leUrl->setText("");
 
-iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+    int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     // szukamy nazwy w combo pomoc i i szuamy jej w combopomoc1
-
-
 
     //warning:
 
+    //usuwam w combopomoc1
+    for (int i = -1; i <= ui->comboBoxPomoc->count() - 2; i++) {
+        QString tym8 = ui->comboBoxPomoc1->itemText(findPosition2 - 1);
+        ui->comboBoxPomoc1->removeItem(findPosition2 - 1);
+    }
+    // i zapisuje
+    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
+    //teraz zapisac itemy z comboxaPomoc1
+    fileKontrahent.clear();
+    ui->comboBoxPomoc1->update();
+    iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+    string ala1;
+    for (int i = 0; i <= iloscWComboPomoc1 - 1; i++) {
+        ala1 = ui->comboBoxPomoc1->itemText(i).toStdString();
+        fileKontrahent << ala1 << endl;
+    }
 
-//usuwam w combopomoc1
-for (int i = -1; i <= ui->comboBoxPomoc->count() - 2; i++) {
-    QString tym8 = ui->comboBoxPomoc1->itemText(findPosition2 - 1);
-    ui->comboBoxPomoc1->removeItem(findPosition2 - 1);
-}
-// i zapisuje
-fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
-//teraz zapisac itemy z comboxaPomoc1
-fileKontrahent.clear();
-
-iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
-string ala1;
-for (int i = 0; i <= iloscWComboPomoc1 - 1; i++) {
-    ala1 = ui->comboBoxPomoc1->itemText(i).toStdString();
-    fileKontrahent << ala1 << endl;
-}
-
-fileKontrahent.close();
-
+    fileKontrahent.close();
+    ui->comboBoxPomoc->clear();
 }
 void KontrahentShow::unblock()
 {
@@ -382,3 +401,89 @@ void KontrahentShow::unblock()
     ui->leEmail->setReadOnly(false);
     ui->leUrl->setReadOnly(false);
 }
+
+void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
+{fstream checkFlags;
+    // Sortowanie kraj
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
+    cout << "Otrzymanie highland przycisku wczytaj Kraj" << endl;
+    checkFlagsVarriableKrajKontrahentShow = checkFiles->checkFlagsKraj(checkFlagsVarriableKrajKontrahentShow);
+    if (checkFlagsVarriableKrajKontrahentShow != 0) {
+        cout << "textHighlighted" << endl;
+        QStringList listaKraj = QStringList();
+
+        ui->comboBoxKraj->clear();
+        showKraj();
+        int ostatniindex = ui->comboBoxKraj->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaKraj.push_back(ui->comboBoxKraj->itemText(iZmienna).toUtf8());
+        }
+        sort(listaKraj.begin(), listaKraj.end());
+        ui->comboBoxKraj->clear();
+        for (int kZmienna = 0; kZmienna <= listaKraj.count() - 1; kZmienna++) {
+            ui->comboBoxKraj->addItem(listaKraj.at(kZmienna));
+        }
+    }
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInKrajKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+}
+
+void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
+{
+    // Sortowanie wojewodztwo
+    fstream checkFlags;
+    // Sortowanie wojewodztwo
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
+    cout << "Otrzymanie highland przycisku wczytaj wojewodztwo" << endl;
+    checkFlagsVarriableWojewodztwoKontrahentShow = checkFiles->checkFlagsWojewodztwo(checkFlagsVarriableWojewodztwoKontrahentShow);
+    if (checkFlagsVarriableWojewodztwoKontrahentShow != 0) {
+        cout << "textHighlighted" << endl;
+        QStringList listaWojewodztwo = QStringList();
+
+        ui->comboBoxWojewodztwa->clear();
+        showWojewodztwa();
+        int ostatniindex = ui->comboBoxWojewodztwa->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaWojewodztwo.push_back(ui->comboBoxWojewodztwa->itemText(iZmienna).toUtf8());
+        }
+        sort(listaWojewodztwo.begin(), listaWojewodztwo.end());
+        ui->comboBoxWojewodztwa->clear();
+        for (int kZmienna = 0; kZmienna <= listaWojewodztwo.count() - 1; kZmienna++) {
+            ui->comboBoxWojewodztwa->addItem(listaWojewodztwo.at(kZmienna));
+        }
+    }
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwoKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+}
+
+void KontrahentShow::on_comboBoxMiasta_highlighted(const QString )
+{
+    // Sortowanie Miasta
+    fstream checkFlags;
+    // Sortowanie wojewodztwo
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
+    cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
+    checkFlagsVarriableMiastoKontrahentShow = checkFiles->checkFlagsMiasto(checkFlagsVarriableMiastoKontrahentShow);
+    if (checkFlagsVarriableMiastoKontrahentShow != 0) {
+        cout << "textHighlighted" << endl;
+        QStringList listaMiasto = QStringList();
+
+        ui->comboBoxMiasta->clear();
+        showCities();
+        int ostatniindex = ui->comboBoxMiasta->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaMiasto.push_back(ui->comboBoxMiasta->itemText(iZmienna).toUtf8());
+        }
+        sort(listaMiasto.begin(), listaMiasto.end());
+        ui->comboBoxMiasta->clear();
+        for (int kZmienna = 0; kZmienna <= listaMiasto.count() - 1; kZmienna++) {
+            ui->comboBoxMiasta->addItem(listaMiasto.at(kZmienna));
+        }
+    }
+    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInMiastoKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+}
+//TODO: Dodoac pliki nowe CheckFlags do poczatku i sprawdzenia

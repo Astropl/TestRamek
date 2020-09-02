@@ -91,6 +91,10 @@ void Ustawienia::on_pushButton_clicked()
 {
     string stringFile = "Backup/";
     string patchBasic = "C:/Defaults/Pliki/";
+
+//    string tableOfstrings[2] = {"Kontrahent.txt",
+//                                   "CheckFlagsInMiasto.txt"};
+
     string tableOfstrings[11] = {"Kontrahent.txt",
                      "CheckFlagsInMiasto.txt",
                      "CheckFlagsInWojewodztwo.txt",
@@ -114,8 +118,8 @@ void Ustawienia::on_pushButton_clicked()
     //TODO: dodac nowy katalog z dataa i godzina z minutami do Backupa
 
     //for (int i = 0;i<=sizeof(fN)-1;i++)
-    int sizeOfTable = tableOfstrings->size();
-    for (int i = 0; i < sizeOfTable; i++) {
+    int sizeOfTable =11;
+    for (int i = 0; i < sizeOfTable-1; i++) {
         fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
         fileUstawienia1.open(aktHours2 + tableOfstrings[i], ios::out);
         string linia;

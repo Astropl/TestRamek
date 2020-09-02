@@ -33,6 +33,12 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_comboBoxKraj_highlighted(const QString );
+
+    void on_comboBoxWojewodztwa_highlighted(const QString );
+
+    void on_comboBoxMiasta_highlighted(const QString );
+
 private:
     Ui::KontrahentShow *ui;
 };
