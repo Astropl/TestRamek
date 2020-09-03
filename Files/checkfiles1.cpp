@@ -13,7 +13,13 @@ CheckFiles1::CheckFiles1(QWidget *parent)
 {}
 
 void CheckFiles1::initMkDir()
-{
+{/*//TODO: Dodoac pliki do Katalogów
+    CheckFlagsInMiastoKontrahentShow
+        CheckFlagsInWojewodztwoKontrahentShow
+            CheckFlagsInKrajKontrahentShow*/
+
+
+
     mkdir("C:/Defaults");
     mkdir("C:/Defaults/Pliki");
 }

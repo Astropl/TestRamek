@@ -36,6 +36,7 @@ SOURCES += \
     Urzadzenia/urzadzeniadodajnrseryjny.cpp \
     Urzadzenia/urzadzeniadodajproducenta.cpp \
     Urzadzenia/urzadzenialista.cpp \
+    Urzadzenia/urzadzenialistakontrahent.cpp \
     Ustawienia/ustawienia.cpp \
     druga.cpp \
 #    kontrahent.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     Urzadzenia/urzadzeniadodajnrseryjny.h \
     Urzadzenia/urzadzeniadodajproducenta.h \
     Urzadzenia/urzadzenialista.h \
+    Urzadzenia/urzadzenialistakontrahent.h \
     Ustawienia/ustawienia.h \
     druga.h \
 #    kontrahent.h \
@@ -96,6 +98,7 @@ FORMS += \
     Urzadzenia/urzadzeniadodajnrseryjny.ui \
     Urzadzenia/urzadzeniadodajproducenta.ui \
     Urzadzenia/urzadzenialista.ui \
+    Urzadzenia/urzadzenialistakontrahent.ui \
     Ustawienia/ustawienia.ui \
     druga.ui \
 #    kontrahent.ui \

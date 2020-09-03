@@ -115,7 +115,7 @@ void Ustawienia::on_pushButton_clicked()
 
     _mkdir(aktHours2.c_str());
 
-    //TODO: dodac nowy katalog z dataa i godzina z minutami do Backupa
+
 
     //for (int i = 0;i<=sizeof(fN)-1;i++)
     int sizeOfTable =11;

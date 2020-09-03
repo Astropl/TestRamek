@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>150</y>
+      <y>450</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -231,6 +231,19 @@
     </property>
     <property name="text">
      <string>Test Skasuj</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>180</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edycja / Usuń</string>
     </property>
    </widget>
   </widget>

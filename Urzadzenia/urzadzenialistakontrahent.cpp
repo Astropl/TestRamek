@@ -1,39 +1,22 @@
-#include "kontrahentlista.h"
-#include "kontrahentshow.h"
-#include "tableviewlistakontrahentow.h"
-#include "ui_kontrahentlista.h"
-#include "Timery/timedate.h"
-#include <Info/info.h>
-#include <ctime>
-#include <fstream>
+#include "urzadzenialistakontrahent.h"
+#include "ui_urzadzenialistakontrahent.h"
 #include <iostream>
-#include <stdio.h>
-#include <string>
-#include <QApplication>
-#include <QMessageBox>
-#include <QString>
 #include <QTableView>
 #include <QTimer>
-#include <QtWidgets>
+#include <fstream>
+#include "Timery/timedate.h"
+
 
 using namespace std;
-time_t czasKontrahentLista;
-tm timeinfoKontrahentLista;
-int labelGodzinaKontrahentLista;
-int labelDataKontrahentLista;
-int wynikKontrahentLista;
-int godzinaKontrahentLista, minutaKontrahentLista, sekundaKontrahentLista, dzienKontrahentLista,
-    miesiacKontrahentLista, rokKontrahentLista;
-int dzienTygodniaKontrahentLista;
-string stringDzienTygodniaKontrahentLista;
-string zmiennasKontrahentLista;
 
-fstream plikKontrahentLista;
+fstream plikUrzadzeniaKontrahentLista;
 
-KontrahentLista::KontrahentLista(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::KontrahentLista)
+UrzadzeniaListaKontrahent::UrzadzeniaListaKontrahent(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::UrzadzeniaListaKontrahent)
 {
+
+    ui->setupUi(this);
     ui->setupUi(this);
     //---------Sekcja generacji timera
     timer = new QTimer(this);
@@ -41,13 +24,15 @@ KontrahentLista::KontrahentLista(QWidget *parent)
     timer->start(1000);
     //===================
     wczytajDane();
+
+
 }
 
-KontrahentLista::~KontrahentLista()
+UrzadzeniaListaKontrahent::~UrzadzeniaListaKontrahent()
 {
     delete ui;
 }
-void KontrahentLista::wczytajDane()
+void UrzadzeniaListaKontrahent::wczytajDane()
 {
     // Tworze modele do Qtable
 
@@ -84,15 +69,15 @@ void KontrahentLista::wczytajDane()
     //Wczytuje kontrahentow z pliku
 
     //QStandardItem *dodajNumer = new QStandardItem("");
-    plikKontrahentLista.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
-    if (plikKontrahentLista.good() == false) {
+    plikUrzadzeniaKontrahentLista.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
+    if (plikUrzadzeniaKontrahentLista.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
     }
     string linia;
     int row = 0;
     int nr_lini = 0; // zmiana z int nr_lini = 1;
-    while (getline(plikKontrahentLista, linia)) {
+    while (getline(plikUrzadzeniaKontrahentLista, linia)) {
         dodajItem = new QStandardItem(linia.c_str());
         //if (nr_lini > 0)
         {
@@ -107,7 +92,7 @@ void KontrahentLista::wczytajDane()
         }
     }
 
-    plikKontrahentLista.close();
+    plikUrzadzeniaKontrahentLista.close();
 
     // pobierz ilosc rzedów
     int rowDoSize = model->rowCount();
@@ -123,9 +108,12 @@ void KontrahentLista::wczytajDane()
     //ui->tableView->setRowHeight(2,20);
     //ui->tableView->setRowHeight(3,20);
     iloscWierszy();
+
+    //TODO: Sprawdzic zaznaczenie całego wiersza
+
 }
 
-void KontrahentLista::iloscWierszy()
+void UrzadzeniaListaKontrahent::iloscWierszy()
 {
     int iloscWierszy = model->rowCount();
     QString qIloscWierszy;
@@ -133,8 +121,7 @@ void KontrahentLista::iloscWierszy()
     ui->labelTest->setText("Ilosć Kontrahentów: " + qIloscWierszy);
     cout << iloscWierszy;
 }
-
-void KontrahentLista::myfunctiontimer()
+void UrzadzeniaListaKontrahent::myfunctiontimer()
 {
     time_t czas;
     tm timeinfo;
@@ -169,105 +156,18 @@ void KontrahentLista::myfunctiontimer()
 
 
 }
+void UrzadzeniaListaKontrahent::on_pushButton_clicked()
+{
+    // Przypisz
 
 
-void KontrahentLista::on_pushButton_2_clicked()
-{timer->stop();
+}
+
+void UrzadzeniaListaKontrahent::on_pushButton_2_clicked()
+{
+    //zamknij
+    timer->stop();
     destroy();
-}
+//TODO: Dlaczego nie działa button Zamknij
 
-void KontrahentLista::on_tableView_activated(const QModelIndex)
-{
-    //ui->tableView->set
-    //    QTableView listaKontrahentów;
-
-    //  TableViewListaKontrahentow myModel(0);
-    //  listaKontrahentów.setModel(&myModel);
-    //  listaKontrahentów.show();
-}
-
-void KontrahentLista::on_tableView_doubleClicked(const QModelIndex) //(const QModelIndex &index)
-{
-    QMessageBox msgBox;
-    msgBox.setText("Click, Click, dwa razy");
-    msgBox.exec();
-}
-
-void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelIndex &index)
-{
-    QMessageBox msgBox;
-    //    msgBox.setText("Click,  tylko raz Click");
-    //    msgBox.exec();
-    QString pierwszazmienna = "Cos ik tam jest";
-    //rzad pokaz
-
-    // stringrowDosize: zaznaczony rzad
-//    QVariant tab[iloscColumn];
-//    QVariant wyslij;
-//    for (int i = 0; i <= iloscColumn; i++) {
-//        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
-//    }
-
-//    kontrShow->wyswietl(tab[0],
-//                        tab[1],
-//                        tab[2],
-//                        tab[3],
-//                        tab[4],
-//                        tab[5],
-//                        tab[6],
-//                        tab[7],
-//                        tab[8],
-//                        tab[9],
-//                        tab[10],
-//                        tab[11],
-//                        tab[12],tab[13]);
-
-//    kontrShow->show();
-}
-//Info do Gita
-void KontrahentLista::on_pushButton_clicked()
-{
-    // Odswiez i wyswietl kontrahentów
-    wczytajDane();
-}
-
-void KontrahentLista::on_pushButton_3_clicked()
-{
-    // Edycaj /. usuń
-     KontrahentShow *kontrShow = new KontrahentShow(this);
-     int iloscColumn = model->columnCount();
-     QString qIloscColumn;
-     qIloscColumn.setNum(iloscColumn);
-
-     //--------------
-     int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
-     cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
-
-     ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
-     QModelIndex index = ui->tableView->selectionModel()->currentIndex();
-     QVariant vartosc = index.sibling(index.row(), index.column()).data();
-     QString QVartsoc = QVariant(vartosc).toString();
-     ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
-
-    QVariant tab[iloscColumn];
-    QVariant wyslij;
-    for (int i = 0; i <= iloscColumn; i++) {
-        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
-    }
-
-    kontrShow->wyswietl(tab[0],
-                        tab[1],
-                        tab[2],
-                        tab[3],
-                        tab[4],
-                        tab[5],
-                        tab[6],
-                        tab[7],
-                        tab[8],
-                        tab[9],
-                        tab[10],
-                        tab[11],
-                        tab[12],tab[13]);
-
-    kontrShow->show();
 }

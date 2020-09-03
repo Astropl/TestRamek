@@ -1,5 +1,6 @@
 #include "urzadzenialista.h"
 #include "ui_urzadzenialista.h"
+#include "urzadzenialistakontrahent.h"
 #include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
@@ -183,4 +184,17 @@ void UrzadzeniaLista::on_pushButton_4_clicked()
 void UrzadzeniaLista::on_pushButton_5_clicked()
 {
     //Zapisz
+}
+
+void UrzadzeniaLista::on_pushButton_6_clicked()
+{
+    // Przypisz Kontrahenta
+    //Wyswietl Tabele kontrahentów.
+    // Zaznacz jakiegos
+    //Dopisz do TABELI z urzadzeniami
+    //Zapisz w pliku BDMain
+
+
+    UrzadzeniaListaKontrahent * urzkl = new UrzadzeniaListaKontrahent (this);
+    urzkl ->show();
 }

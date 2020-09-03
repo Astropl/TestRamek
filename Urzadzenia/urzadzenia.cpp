@@ -178,7 +178,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
     cout << "Zapisz" << endl;
 
     plikUrzadzenia.open("C:/Defaults/Pliki/Urzadzenie.txt",ios::out | ios::app);
-    //TODO: Plik urzadzenia
+
 
 
 
@@ -225,7 +225,7 @@ void Urzadzenia::on_comboBox_3_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
+                         + ", NumerSeryjny: " + ui->lineEditNrSeryjny->text());
 }
 
 void Urzadzenia::on_actionDodaj_Model_triggered()
@@ -258,7 +258,7 @@ void Urzadzenia::on_pushButton_clicked()
     ui->comboBox_4->addItem(ui->lineEditNumber->text());
     ui->comboBox_4->addItem(ui->comboBox->currentText());
     ui->comboBox_4->addItem(ui->comboBox_2->currentText());
-    ui->comboBox_4->addItem(ui->comboBox_3->currentText());
+    ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
 }
 void Urzadzenia::on_actionOpcje_triggered()
 {

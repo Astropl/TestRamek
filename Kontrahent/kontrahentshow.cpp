@@ -68,6 +68,7 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
     ui->leTelPryw->setText(p12.toString());
     ui->leEmail->setText(p13.toString());
     ui->leUrl->setText(p14.toString());
+    return 0;
 }
 //Info do Gita
 void KontrahentShow::on_pushButton_clicked()
@@ -109,7 +110,7 @@ void KontrahentShow::showKraj()
     plikOdczytDodajKraj.close();
     ui->comboBoxKraj->setCurrentText(ui->leKraj->text());
 
-    //TODO: Posortować.
+
 }
 
 void KontrahentShow::showWojewodztwa()
@@ -133,7 +134,7 @@ void KontrahentShow::showWojewodztwa()
     plikOdczytDodajwojewodztwo.close();
     ui->comboBoxWojewodztwa->setCurrentText(ui->leRegion->text());
 
-    //TODO: Posortować.
+
 }
 void KontrahentShow::showCities()
 {
@@ -177,7 +178,7 @@ void KontrahentShow::on_pushButton_3_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     //int iloscElementowWcombo;
 
-    //TODO: Przypisac automatyczą numeracje WCZYTAJNUMER
+
     //tymczasowo
 
 
@@ -206,11 +207,9 @@ void KontrahentShow::on_pushButton_3_clicked()
     ui->comboBoxPomoc->addItem(ui->leEmail->text());
     ui->comboBoxPomoc->addItem(ui->leUrl->text());
     }
-    //TODO: Sprawdzam czy moge ominac comboBox Pomoc
 
     //plikKontrahent<<ui->
 
-    // TODO: Zobaczc i porównac po id czy jest taki w plikach.
 
     //int QComboBox::findText(const QString &text, Qt::MatchFlags flags) const;
 
@@ -276,8 +275,7 @@ void KontrahentShow::on_pushButton_3_clicked()
 
 void KontrahentShow::on_pushButton_4_clicked()
 {
-    //TODO: Sprawdzić czy dobrze ze wyczysciłem comboBoxaPomoc
-    //TODO: Dlaczego zapisauja się białe pola
+
     //-----------------------------------------
     ui->comboBoxPomoc->clear();
     ui->comboBoxPomoc1->clear();

@@ -280,7 +280,7 @@
    <widget class="QComboBox" name="comboBox_3">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>330</x>
       <y>120</y>
       <width>211</width>
       <height>22</height>
@@ -484,6 +484,16 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLineEdit" name="lineEditNrSeryjny">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>120</y>
+      <width>211</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -512,6 +522,7 @@
    <zorder>LblNumberAnaliz</zorder>
    <zorder>label_5</zorder>
    <zorder>lineEditNumber</zorder>
+   <zorder>lineEditNrSeryjny</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
