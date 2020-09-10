@@ -1,37 +1,71 @@
 #include "urzadzenialistakontrahent.h"
+#include "Timery/timedate.h"
 #include "ui_urzadzenialistakontrahent.h"
+#include <Info/info.h>
+#include <fstream>
 #include <iostream>
 #include <QTableView>
 #include <QTimer>
-#include <fstream>
-#include "Timery/timedate.h"
-
+#include <QtWidgets>
 
 using namespace std;
 
-fstream plikUrzadzeniaKontrahentLista;
+fstream fileDB, plikUrzadzeniaKontrahentLista;
 
-UrzadzeniaListaKontrahent::UrzadzeniaListaKontrahent(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::UrzadzeniaListaKontrahent)
+UrzadzeniaListaKontrahent::UrzadzeniaListaKontrahent(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::UrzadzeniaListaKontrahent)
 {
+    ui->setupUi(this);
 
-    ui->setupUi(this);
-    ui->setupUi(this);
     //---------Sekcja generacji timera
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
     timer->start(1000);
     //===================
     wczytajDane();
-
-
 }
 
 UrzadzeniaListaKontrahent::~UrzadzeniaListaKontrahent()
 {
     delete ui;
 }
+void UrzadzeniaListaKontrahent::on_pushButton_clicked()
+{
+    // Przypisz
+    cout << "przypisz klienta do analziatora" << endl;
+    //pobierz z comboboxa
+
+    int iloscColumn = model->columnCount();
+
+    QModelIndex index = ui->tableView->selectionModel()->currentIndex();
+    int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
+    QVariant tab[iloscColumn];
+    QVariant wyslij;
+    for (int i = 0; i <= iloscColumn-1; i++) {
+        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
+        ui->comboBox_2->addItem(tab[i].toString());
+    }
+
+}
+
+void UrzadzeniaListaKontrahent::on_pushButton_2_clicked()
+{
+    //zamknij
+
+    cout << "Zamknij liste urzadzen z prypisania" << endl;
+    timer->stop();
+    destroy();
+}
+
+void UrzadzeniaListaKontrahent::wyswietl(QVariant p1, QVariant p2, QVariant p3, QVariant p4)
+{
+    ui->comboBox->addItem(p1.toString());
+    ui->comboBox->addItem(p2.toString());
+    ui->comboBox->addItem(p3.toString());
+     ui->comboBox->addItem(p4.toString());
+}
+
 void UrzadzeniaListaKontrahent::wczytajDane()
 {
     // Tworze modele do Qtable
@@ -54,9 +88,10 @@ void UrzadzeniaListaKontrahent::wczytajDane()
     model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
     model->setHeaderData(13, Qt::Horizontal, "Strona URL");
 
-
+    //    setSelectionBehavior(QAbstractItemView::SelectRows);
+    //    setSelectionMode(QAbstractItemView::SingleSelection);
     //---------------------------------------------------------------
-    ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
+    ui->tableView->setColumnHidden(0, true); //Ukrywam kolumne z LP
         //---------------------------------------------------------------
     //model->insertRow(model->rowCount());
 
@@ -110,7 +145,6 @@ void UrzadzeniaListaKontrahent::wczytajDane()
     iloscWierszy();
 
     //TODO: Sprawdzic zaznaczenie całego wiersza
-
 }
 
 void UrzadzeniaListaKontrahent::iloscWierszy()
@@ -153,21 +187,34 @@ void UrzadzeniaListaKontrahent::myfunctiontimer()
     ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
 
     ui->labelDzien->setText(stringDzienTygodnia);
-
-
-}
-void UrzadzeniaListaKontrahent::on_pushButton_clicked()
-{
-    // Przypisz
-
-
 }
 
-void UrzadzeniaListaKontrahent::on_pushButton_2_clicked()
+void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
 {
-    //zamknij
-    timer->stop();
-    destroy();
-//TODO: Dlaczego nie działa button Zamknij
+    // Zapisz
+fileDB.open("C:/Defaults/Pliki/DB.txt", ios::app);
+
+
+int combBox1Size = ui->comboBox->count();
+int combBox1Size2 = ui->comboBox_2->count();
+
+
+string dane1, dane2;
+
+for (int i =0;i<=combBox1Size-1;i++)
+
+{dane1 = ui->comboBox->itemText(i).toStdString();
+
+    fileDB<<dane1 <<endl;
+}
+for (int i =0;i<=combBox1Size2-1;i++)
+
+{dane2 = ui->comboBox_2->itemText(i).toStdString();
+
+    fileDB<<dane2 <<endl;
+}
+fileDB.close();
+ui->comboBox->clear();
+ui->comboBox_2->clear();
 
 }

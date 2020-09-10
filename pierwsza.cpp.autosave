@@ -200,3 +200,8 @@ void Pierwsza::DataiCzas()
     cout << "Wszedłem do daty i czsu" << endl;
 }
 //Info do Gita
+void Pierwsza::on_pushButton_2_clicked()
+{
+    // Informacje o knotrahencie
+    
+}

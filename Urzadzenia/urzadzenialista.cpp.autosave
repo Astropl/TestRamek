@@ -215,4 +215,10 @@ void UrzadzeniaLista::on_pushButton_6_clicked()
 
 
     urzkl ->show();
+    QString sprawdzam ;
+    
+    
+    
+    
+    
 }
