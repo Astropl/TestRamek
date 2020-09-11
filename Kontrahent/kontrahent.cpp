@@ -29,9 +29,27 @@ int checkFlagsVarriableMiasto = 0;
 int checkFlagsVarriableWojewodztwo = 0;
 int checkFlagsVarriableKraj = 0;
 
+QString file1 = "C:/Defaults/Pliki/1.DB.txt";
+QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
+QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
+QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
+QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
+QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
+QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
+QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
+QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
+
 fstream plikKontrahent;
 fstream checkFlags;
 int zmiennaDoHighlandWczytajMiasta = 1;
+
+
 Kontrahent::Kontrahent(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Kontrahent)
@@ -62,8 +80,10 @@ Kontrahent::~Kontrahent()
 }
 
 void Kontrahent::howMuchKontrahent()
-{
-    plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
+{QString file1 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+
+    plikKontrahent.open(file1.toStdString(), ios::in); //plik kontrahent
+     //plikKontrahent.open("C:/Defaults/Pliki/2.Kontrahent.txt", ios::in); //plik kontrahent
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -122,7 +142,7 @@ void Kontrahent::myfunctiontimer()
 void Kontrahent::wczytajKraj()
 {
     //Wczytuje Kraje z pliku
-    plikKontrahent.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::in);
+    plikKontrahent.open(file4.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -142,7 +162,7 @@ void Kontrahent::wczytajKraj()
 void Kontrahent::wczytajMiasta()
 {
     //Wczytuje miasta z pliku
-    plikKontrahent.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::in);
+    plikKontrahent.open(file5.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -160,7 +180,7 @@ void Kontrahent::wczytajMiasta()
 void Kontrahent::wczytajWojewodztwa()
 {
     //Wczytuje miasta z pliku
-    plikKontrahent.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::in);
+    plikKontrahent.open(file6.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -182,7 +202,7 @@ void Kontrahent::on_pushButton_clicked()
     //Zapisz
     cout << "Zapisuje" << endl;
 
-    plikKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
+    plikKontrahent.open(file2.toStdString(), ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
@@ -301,7 +321,7 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
             ui->comboBoxWczytajMiasta->addItem(listaMiast.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt", ios::out | ios::trunc);
+    checkFlags.open(file10.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }
@@ -318,7 +338,7 @@ void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString) //cons
 {
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << " Otrzymanie highland przycisku wczytaj wojewdóztwo" << endl;
-    checkFlagsVarriableWojewodztwo = checkFiles->checkFlagsWojewodztwo(
+    checkFlagsVarriableWojewodztwo = checkFiles->checkFlagsWojewodztwa(
         checkFlagsVarriableWojewodztwo);
     if (checkFlagsVarriableWojewodztwo != 0) {
         cout << "Higladned w Przycisk wczyta Wojewodztwa" << endl;
@@ -336,7 +356,7 @@ void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString) //cons
             ui->comboBoxWczytajWojewodztwa->addItem(listaWojewodztw.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt", ios::out | ios::trunc);
+    checkFlags.open(file12.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }
@@ -362,7 +382,7 @@ void Kontrahent::on_comboBoxWczytajKraj_highlighted(const QString) //const QStri
             ui->comboBoxWczytajKraj->addItem(listaKraj.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInKraj.txt", ios::out | ios::trunc);
+    checkFlags.open(file11.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }

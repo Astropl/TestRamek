@@ -7,6 +7,21 @@
 #include <string>
 using namespace std;
 fstream file;
+QString file1 = "C:/Defaults/Pliki/1.DB.txt";
+QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
+QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
+QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
+QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
+QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
+QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
+QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
+QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
 
 CheckFiles1::CheckFiles1(QWidget *parent)
     : QMainWindow(parent)
@@ -23,58 +38,58 @@ void CheckFiles1::initMkDir()
     mkdir("C:/Defaults");
     mkdir("C:/Defaults/Pliki");
 }
-
-void CheckFiles1::initKontrahent()
+void CheckFiles1::initDB()
 {
-    file.open("C:/Defaults/Pliki/Kontrahent.txt"); //, ios::app
+    file.open(file1.toStdString()); //, ios::app
     if (file.good() == false) {
         cout << "Plik nie istnieje !!!!!";
-        file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::app);
+        file.open(file1.toStdString(), ios::app);
         //exit(0);
     }
     file.close();
 }
+
+
+void CheckFiles1::initKontrahent()
+{
+    file.open(file2.toStdString()); //, ios::app
+    if (file.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        file.open(file2.toStdString(), ios::app);
+        //exit(0);
+    }
+    file.close();
+}
+void CheckFiles1::initUrzadzenie()
+{
+    file.open(file3.toStdString()); //, ios::app
+    if (file.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        file.open(file3.toStdString(), ios::app);
+        //exit(0);
+    }
+    file.close();
+}
+void CheckFiles1::initZapisKraj()
+{
+    file.open(file4.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file4.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file.close();
+}
+
+
+
 void CheckFiles1::initZapisMiasta()
 {
-    file.open("C:/Defaults/Pliki/ZapisMiasta.txt");
+    file.open(file5.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::app);
-    } else {
-        cout << "Plik jest" << endl;
-    }
-    file.close();
-}
-
-void CheckFiles1::initZapisModel()
-{
-    file.open("C:/Defaults/Pliki/ZapisModel.txt");
-    if (file.good() == false) {
-        cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisModel.txt", ios::app);
-    } else {
-        cout << "Plik jest" << endl;
-    }
-    file.close();
-}
-void CheckFiles1::initZapisNrSeryjny()
-{
-    file.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt");
-    if (file.good() == false) {
-        cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisNrSeryjny.txt", ios::app);
-    } else {
-        cout << "Plik jest" << endl;
-    }
-    file.close();
-}
-
-void CheckFiles1::initZapisProducenta()
-{
-    file.open("C:/Defaults/Pliki/ZapisProducenta.txt");
-    if (file.good() == false) {
-        cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisProducenta.txt", ios::app);
+        file.open(file5.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -82,46 +97,54 @@ void CheckFiles1::initZapisProducenta()
 }
 void CheckFiles1::initZapisWojewodztwa()
 {
-    file.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt");
+    file.open(file6.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::app);
+        file.open(file6.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
     file.close();
 }
-void CheckFiles1::initZapisKraj()
+void CheckFiles1::initZapisProducenta()
 {
-    file.open("C:/Defaults/Pliki/ZapisKraj.txt");
+    file.open(file7.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::app);
+        file.open(file7.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
     file.close();
 }
-
-void CheckFiles1::initCheckFlagsInKraj()
+void CheckFiles1::initZapisModel()
 {
-    file.open("C:/Defaults/Pliki/ZapisKraj.txt");
+    file.open(file8.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::app);
+        file.open(file8.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
     file.close();
 }
-
-
+void CheckFiles1::initZapisNrSeryjny()
+{
+    file.open(file9.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file9.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file.close();
+}
 void CheckFiles1::initCheckFlagsInMiasto()
 {
-    file.open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt");
+    file.open(file10.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt", ios::app);
+        file.open(file10.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -130,12 +153,70 @@ void CheckFiles1::initCheckFlagsInMiasto()
     cout << "Plik Check Flags In Miasto Jest." << endl;
 }
 
-void CheckFiles1::initCheckFlagsInWojewodztwo()
+
+
+
+void CheckFiles1::initCheckFlagsInKraj()
 {
-    file.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt");
+    file.open(file11.toStdString());
     if (file.good() == false) {
         cout << "Brak pliku" << endl;
-        file.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt", ios::app);
+        file.open(file11.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+}
+
+
+
+
+void CheckFiles1::initCheckFlagsInWojewodztwa()
+{
+    file.open(file12.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file12.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+}
+void CheckFiles1::initCheckFlagsInKrajKontrahentShow()
+{
+    file.open(file13.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file13.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+}
+void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
+{
+    file.open(file14.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file14.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+}
+void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
+{
+    file.open(file15.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file15.toStdString(), ios::app);
     } else {
         cout << "Plik jest" << endl;
     }
@@ -145,10 +226,10 @@ void CheckFiles1::initCheckFlagsInWojewodztwo()
 }
 
 
-int CheckFiles1::checkFlagsWojewodztwo(int checkFlagsVarriableWojewodztwo)
+int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
 {
-    cout<<" W checkfiles1:: checkFlags Wojewdoztwo"<<endl;
-    file.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwo.txt",
+    cout<<" W checkfiles1:: checkFlags Wojewdoztwa"<<endl;
+    file.open(file12.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
     string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
 
@@ -174,7 +255,7 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 {
     cout << " W CheckFiles1: CheckFlags" << endl;
 
-    file.open("C:/Defaults/Pliki/CheckFlagsInMiasto.txt",
+    file.open(file10.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
     string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
 
@@ -201,7 +282,7 @@ int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
 {
     cout << " W CheckFiles1: CheckFlags" << endl;
 
-    file.open("C:/Defaults/Pliki/CheckFlagsInKraj.txt",
+    file.open(file11.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
     string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
 
@@ -226,16 +307,22 @@ int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
 void CheckFiles1::init()
 {
     initMkDir();
-    initKontrahent();
-    initZapisMiasta();
-    initZapisModel();
-    initZapisNrSeryjny();
-    initZapisProducenta();
-    initZapisWojewodztwa();
+    initDB();//
+    initKontrahent();//
+    initUrzadzenie();//
+    initZapisKraj();//
+    initZapisMiasta();//
+    initZapisWojewodztwa();//
+    initZapisModel();//
+    initZapisNrSeryjny();//
+    initZapisProducenta();//
+   initCheckFlagsInKrajKontrahentShow();
+    initCheckFlagsInMiastoKontrahentShow();
+    initCheckFlagsInWojewodztwoKontrahentShow();
     initCheckFlagsInMiasto();
-    initCheckFlagsInWojewodztwo();
+    initCheckFlagsInWojewodztwa();
     initCheckFlagsInKraj();
-    initUrzadzenie();
+
     CheckSystem *checkSystem = new CheckSystem();
     checkSystem->show();
 
@@ -243,17 +330,7 @@ void CheckFiles1::init()
 
     //Sprawdzam czy pliki istnieją jezeli nie tworzę je.
 
-    //Kontrahent.txt, ZapisMiasta, ZapisModel,ZapisNrSeryjny,ZapisProducenta,ZapisWojewodztwa, CheckFlagsInMiasto.txt
+    //
 }
-void CheckFiles1::initUrzadzenie()
-{
-    file.open("C:/Defaults/Pliki/Urzadzenie.txt"); //, ios::app
-    if (file.good() == false) {
-        cout << "Plik nie istnieje !!!!!";
-        file.open("C:/Defaults/Pliki/Urzadzenie.txt", ios::app);
-        //exit(0);
-    }
-    file.close();
 
-}
 //Info do Gita

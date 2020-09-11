@@ -30,20 +30,7 @@ Ustawienia::~Ustawienia()
 
 QString Ustawienia::pobierzDate(QString aktHour)
 {
-    /*int tm_sec; //Sekundy. Zakres [0..61]
-    int tm_min; //Minuty. Zakres [0..59]
-    int tm_hour; //Godziny. Zakres [0..23]
-    int tm_mday; //Dzień miesiąca. Zakres [1..31]
-    int tm_mon; //Miesiąc. Zakres [0..11]
-    int tm_year = 0; *///Obecny rok. Lata zaczynają się liczyć od roku 1900, czyli: wartość 0 = 1900 rok.
-    //    /*int tm_wday; //Dzień tygodnia. Zakres [0..6]. 0 = Niedziela; 1 = Poniedziałek; itd...
-    //    int tm_yday; //Dzień roku. Zakres [0..365].
-    //    int tm_isdst; //Letnie/zimowe przesunięcie czasowe. Jeśli wartość jest większa od 0 to przesunięcie czasowe jest 'aktywne'. */Jeśli wartość mniejsza od 0 to informacja jest niedostępna.
 
-    //    time_t czas;
-    //    struct tm *data;
-    //    char godzina [80];
-    //    time
 
     time_t czas;
     tm timeinfo;
@@ -75,16 +62,7 @@ QString Ustawienia::pobierzDate(QString aktHour)
               + qStrMin + "." + qStrSek;
 
     return aktHour;
-    //cout<<aktHour<<endl;
 
-    //    cout<<QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien+qStrGodz + ":" + qStrMin + ":" + qStrSek<<endl;
-
-    //    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-    //    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
-
-    //    ui->labelDzien->setText(stringDzienTygodnia)
-
-    //    cout <<tm_year<<endl;//+ "."+ tm_mon ;//+ "."  tm_mday"." tm_hour<<endl;
 }
 
 void Ustawienia::on_pushButton_clicked()
@@ -92,20 +70,22 @@ void Ustawienia::on_pushButton_clicked()
     string stringFile = "Backup/";
     string patchBasic = "C:/Defaults/Pliki/";
 
-//    string tableOfstrings[2] = {"Kontrahent.txt",
-//                                   "CheckFlagsInMiasto.txt"};
 
-    string tableOfstrings[11] = {"Kontrahent.txt",
-                     "CheckFlagsInMiasto.txt",
-                     "CheckFlagsInWojewodztwo.txt",
-                     "Urzadzenie.txt",
-                     "ZapisNrSeryjny.txt",
-                     "ZapisModel.txt",
-                     "ZapisProducenta.txt",
-                     "CheckFlagsInKraj.txt",
-                     "ZapisMiasta.txt",
-                     "ZapisWojewodztwa.txt",
-                     "ZapisKraj.txt"};
+    string tableOfstrings[15] = {"1.DB.txt",
+                                        "2.Kontrahent.txt",
+                                        "3.Urzadzenie.txt",
+                                        "4.ZapisKraj.txt",
+                                        "5.ZapisMiasta.txt",
+                                        "6.ZapisWojewodztwa.txt",
+                                        "7.ZapisProducenta.txt",
+                                        "8.ZapisModel.txt",
+                                        "9.ZapisNrSeryjny.txt",
+                                        "10.CheckFlagsInMiasto.txt",
+                                        "11.CheckFlagsInKraj.txt",
+                                        "12.CheckFlagsInWojewodztwa.txt",
+                                        "13.CheckFlagsInKrajKontrahentShow.txt",
+                                        "14.CheckFlagsInMiastoKontrahentShow.txt",
+                                        "15.CheckFlagsInWojewodztwoKontrahentShow.txt"};
 
     QString aktHours = pobierzDate(aktHour);
     ui->lblData->setText(aktHours);
@@ -118,7 +98,7 @@ void Ustawienia::on_pushButton_clicked()
 
 
     //for (int i = 0;i<=sizeof(fN)-1;i++)
-    int sizeOfTable =11;
+    int sizeOfTable =15;
     for (int i = 0; i < sizeOfTable-1; i++) {
         fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
         fileUstawienia1.open(aktHours2 + tableOfstrings[i], ios::out);

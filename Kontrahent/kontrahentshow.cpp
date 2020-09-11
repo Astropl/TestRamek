@@ -15,6 +15,22 @@ int checkFlagsVarriableMiastoKontrahentShow = 0;
 int checkFlagsVarriableWojewodztwoKontrahentShow =0;
 int checkFlagsVarriableKrajKontrahentShow =0;
 QString tab[13];
+QString file1 = "C:/Defaults/Pliki/1.DB.txt";
+QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
+QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
+QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
+QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
+QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
+QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
+QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
+QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
+
 
 KontrahentShow::KontrahentShow(QWidget *parent)
     : QMainWindow(parent)
@@ -95,7 +111,7 @@ void KontrahentShow::showKraj()
     fstream plikOdczytDodajKraj;
     // wczytuje miasta do comboBoxa
     ui->comboBoxKraj->clear();
-    plikOdczytDodajKraj.open("C:/Defaults/Pliki/ZapisKraj.txt", ios::in);
+    plikOdczytDodajKraj.open(file4.toStdString(), ios::in);
     if (plikOdczytDodajKraj.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -119,7 +135,7 @@ void KontrahentShow::showWojewodztwa()
     fstream plikOdczytDodajwojewodztwo;
     // wczytuje miasta do comboBoxa
     ui->comboBoxWojewodztwa->clear();
-    plikOdczytDodajwojewodztwo.open("C:/Defaults/Pliki/ZapisWojewodztwa.txt", ios::in);
+    plikOdczytDodajwojewodztwo.open(file6.toStdString(), ios::in);
     if (plikOdczytDodajwojewodztwo.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -141,7 +157,7 @@ void KontrahentShow::showCities()
     fstream plikOdczytDodajMiasto;
     // wczytuje miasta do comboBoxa
     ui->comboBoxMiasta->clear();
-    plikOdczytDodajMiasto.open("C:/Defaults/Pliki/ZapisMiasta.txt", ios::in);
+    plikOdczytDodajMiasto.open(file5.toStdString(), ios::in);
     if (plikOdczytDodajMiasto.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
@@ -173,7 +189,7 @@ void KontrahentShow::on_pushButton_3_clicked()
     //Zapisz
     cout << "Zapisuje" << endl;
 
-    //file.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out | ios::app);
+    //file.open("C:/Defaults/Pliki/2.Kontrahent.txt", ios::out | ios::app);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     //int iloscElementowWcombo;
@@ -222,7 +238,7 @@ void KontrahentShow::on_pushButton_3_clicked()
     //file.close();
 
     fstream fileKontrahent;
-    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
+    fileKontrahent.open(file2.toStdString(), ios::in);
     string linia;
     while (getline(fileKontrahent, linia)) {
         ui->comboBoxPomoc1->addItem(linia.c_str());
@@ -258,7 +274,7 @@ void KontrahentShow::on_pushButton_3_clicked()
         ui->comboBoxPomoc1->addItem(ui->comboBoxPomoc->itemText(i));
     }
 
-    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
+    fileKontrahent.open(file2.toStdString(), ios::out);
     //teraz zapisac itemy z comboxaPomoc1
     fileKontrahent.clear();
 
@@ -307,7 +323,7 @@ void KontrahentShow::on_pushButton_4_clicked()
 
     int findPosition = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
     fstream fileKontrahent;
-    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::in);
+    fileKontrahent.open(file2.toStdString(), ios::in);
     string linia;
     while (getline(fileKontrahent, linia)) {
         ui->comboBoxPomoc1->addItem(linia.c_str());
@@ -346,7 +362,7 @@ void KontrahentShow::on_pushButton_4_clicked()
         ui->comboBoxPomoc1->removeItem(findPosition2 - 1);
     }
     // i zapisuje
-    fileKontrahent.open("C:/Defaults/Pliki/Kontrahent.txt", ios::out);
+    fileKontrahent.open(file2.toStdString(), ios::out);
     //teraz zapisac itemy z comboxaPomoc1
     fileKontrahent.clear();
     ui->comboBoxPomoc1->update();
@@ -422,7 +438,7 @@ void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
             ui->comboBoxKraj->addItem(listaKraj.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInKrajKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags.open(file13.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }
@@ -434,7 +450,7 @@ void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
     // Sortowanie wojewodztwo
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj wojewodztwo" << endl;
-    checkFlagsVarriableWojewodztwoKontrahentShow = checkFiles->checkFlagsWojewodztwo(checkFlagsVarriableWojewodztwoKontrahentShow);
+    checkFlagsVarriableWojewodztwoKontrahentShow = checkFiles->checkFlagsWojewodztwa(checkFlagsVarriableWojewodztwoKontrahentShow);
     if (checkFlagsVarriableWojewodztwoKontrahentShow != 0) {
         cout << "textHighlighted" << endl;
         QStringList listaWojewodztwo = QStringList();
@@ -451,7 +467,7 @@ void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
             ui->comboBoxWojewodztwa->addItem(listaWojewodztwo.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInWojewodztwoKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags.open(file15.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }
@@ -480,7 +496,7 @@ void KontrahentShow::on_comboBoxMiasta_highlighted(const QString )
             ui->comboBoxMiasta->addItem(listaMiasto.at(kZmienna));
         }
     }
-    checkFlags.open("C:/Defaults/Pliki/CheckFlagsInMiastoKontrahentShow.txt", ios::out | ios::trunc);
+    checkFlags.open(file14.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
 }

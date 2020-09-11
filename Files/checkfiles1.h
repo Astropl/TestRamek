@@ -14,6 +14,7 @@ public:
 signals:
 public slots:
     void init();
+    void initDB();
     void initMkDir();
     void initKontrahent();
     void initZapisMiasta();
@@ -23,10 +24,13 @@ public slots:
     void initZapisWojewodztwa();
     void initZapisKraj();
     void initCheckFlagsInMiasto();
-    void initCheckFlagsInWojewodztwo();
+    void initCheckFlagsInWojewodztwa();
+    void initCheckFlagsInKrajKontrahentShow();
+    void initCheckFlagsInMiastoKontrahentShow();
+    void initCheckFlagsInWojewodztwoKontrahentShow();
     void initCheckFlagsInKraj();
     int checkFlagsMiasto(int checkFlagsVarriable);
-    int checkFlagsWojewodztwo(int checkFlagsVarriableWojewodztwo);
+    int checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo);
     int checkFlagsKraj(int checkFlagsVarriableKraj);
     void initUrzadzenie();
 };

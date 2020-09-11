@@ -21,6 +21,21 @@ using namespace std;
 
 
 fstream fileDataBase;
+QString file1 = "C:/Defaults/Pliki/1.DB.txt";
+QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
+QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
+QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
+QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
+QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
+QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
+QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
+QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
 
 
 Pierwsza::Pierwsza(QWidget *parent)
@@ -49,7 +64,7 @@ Pierwsza::Pierwsza(QWidget *parent)
         model->setHeaderData(0, Qt::Horizontal, "L.P.");
         model->setHeaderData(1, Qt::Horizontal, "Producent"); //nazwa
         model->setHeaderData(2, Qt::Horizontal, "Model"); // Imie
-         model->setHeaderData(3, Qt::Horizontal, "Nr Seryjny"); // Imie
+        model->setHeaderData(3, Qt::Horizontal, "Nr Seryjny"); // Imie
         model->setHeaderData(4, Qt::Horizontal, "LP Kontrahenta"); //Nazwisko
         model->setHeaderData(5, Qt::Horizontal, "Nazwa");//Kraj
         model->setHeaderData(6, Qt::Horizontal, "Imie");//Region
@@ -85,7 +100,7 @@ ui->tableViewDB->setColumnHidden(4, true);
         //Wczytuje kontrahentow z pliku
 
         //QStandardItem *dodajNumer = new QStandardItem("");
-        fileDataBase.open("C:/Defaults/Pliki/DB.txt", ios::in);
+        fileDataBase.open(file1.toStdString(), ios::in);
         if (fileDataBase.good() == false) {
             cout << "Plik nie istnieje !!!!!";
             //exit(0);
@@ -126,9 +141,7 @@ ui->tableViewDB->setColumnHidden(4, true);
         ui->tableViewDB->sortByColumn(0,
                                     Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
-        //ui->tableView->setRowHeight(1,20);
-        //ui->tableView->setRowHeight(2,20);
-        //ui->tableView->setRowHeight(3,20);
+
         iloscWierszy();
 
         //TODO: Sprawdzic zaznaczenie całego wiersza
@@ -142,12 +155,6 @@ ui->tableViewDB->setColumnHidden(4, true);
         ui->labelTest->setText("Ilosć Kontrahentów: " + qIloscWierszy);
         cout << iloscWierszy;
     }
-
-
-
-
-
-
 
 
 
@@ -200,3 +207,8 @@ void Pierwsza::DataiCzas()
     cout << "Wszedłem do daty i czsu" << endl;
 }
 //Info do Gita
+void Pierwsza::on_pushButton_2_clicked()
+{
+    // Informacje o knotrahencie
+
+}

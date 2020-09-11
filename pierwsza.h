@@ -37,6 +37,9 @@ signals:
 public:
     Ui::Pierwsza *ui;
 
+private slots:
+    void on_pushButton_2_clicked();
+
 private:
     QTimer *timer;
     QStandardItemModel *model;
