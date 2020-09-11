@@ -107,7 +107,7 @@ void KontrahentShow::on_pushButton_clicked()
     //Zmienić region w UI -> Wojewodzwtwo
 }
 void KontrahentShow::showKraj()
-{
+{QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
     // wczytuje kraje do comboBoxa
     fstream plikOdczytDodajKraj;
     // wczytuje miasta do comboBoxa
@@ -131,7 +131,7 @@ void KontrahentShow::showKraj()
 }
 
 void KontrahentShow::showWojewodztwa()
-{
+{QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
     // wczytuje wojewodztwa do comboBoxa
     fstream plikOdczytDodajwojewodztwo;
     // wczytuje miasta do comboBoxa
@@ -154,7 +154,7 @@ void KontrahentShow::showWojewodztwa()
 
 }
 void KontrahentShow::showCities()
-{
+{QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
     fstream plikOdczytDodajMiasto;
     // wczytuje miasta do comboBoxa
     ui->comboBoxMiasta->clear();
@@ -174,7 +174,7 @@ void KontrahentShow::showCities()
     ui->comboBoxMiasta->setCurrentText(ui->leMiasto->text());
 }
 void KontrahentShow::on_pushButton_3_clicked()
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     ui->comboBoxPomoc->clear();
     ui->comboBoxPomoc1->clear();
     //ZAPISZ wszytsko
@@ -291,7 +291,7 @@ void KontrahentShow::on_pushButton_3_clicked()
 }
 
 void KontrahentShow::on_pushButton_4_clicked()
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
 
     //-----------------------------------------
     ui->comboBoxPomoc->clear();
@@ -419,6 +419,7 @@ void KontrahentShow::unblock()
 
 void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
 {fstream checkFlags;
+    QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
     // Sortowanie kraj
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj Kraj" << endl;
@@ -445,7 +446,7 @@ void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
 }
 
 void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
-{
+{QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
     // Sortowanie wojewodztwo
     fstream checkFlags;
     // Sortowanie wojewodztwo
@@ -474,7 +475,7 @@ void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
 }
 
 void KontrahentShow::on_comboBoxMiasta_highlighted(const QString )
-{
+{QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     // Sortowanie Miasta
     fstream checkFlags;
     // Sortowanie wojewodztwo

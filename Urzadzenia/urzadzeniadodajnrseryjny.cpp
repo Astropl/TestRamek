@@ -68,7 +68,7 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_clicked()
 }
 
 void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
-{
+{QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku

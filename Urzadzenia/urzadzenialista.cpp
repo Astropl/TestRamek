@@ -64,7 +64,7 @@ UrzadzeniaLista::~UrzadzeniaLista()
 
 
 void UrzadzeniaLista::wczytajDane()
-{
+{QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     model = new QStandardItemModel(1, 5, this);
     ui->tableView->setModel(model);
     //QModelIndex *index;

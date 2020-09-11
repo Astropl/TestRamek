@@ -123,6 +123,8 @@ void KontrahentDodajKraj::on_pushButton_clicked()
 {
     // Zapisz
     fstream checkFlagsinKraj;
+    QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+    QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
     cout << "Zapisuje " << endl;
     // musze zapisać do pliku
     plikOdczytDodajKraj

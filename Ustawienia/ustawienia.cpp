@@ -99,7 +99,8 @@ void Ustawienia::on_pushButton_clicked()
 
     //for (int i = 0;i<=sizeof(fN)-1;i++)
     int sizeOfTable =15;
-    for (int i = 0; i < sizeOfTable-1; i++) {
+    for (int i = 0; i < sizeOfTable; i++) // int i = 0; i < sizeOfTable-1; i++
+    {
         fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
         fileUstawienia1.open(aktHours2 + tableOfstrings[i], ios::out);
         string linia;

@@ -74,7 +74,7 @@ void UrzadzeniaDodajModel::on_pushButton_clicked()
 }
 
 void UrzadzeniaDodajModel::on_pushButton_2_clicked()
-{
+{QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
     plikOdczyt.open(file8.toStdString(), ios::out | ios::app);

@@ -6,6 +6,7 @@
 #include "kontrahentdodajmiasto.h"
 #include "kontrahentdodajwojewodztwo.h"
 #include "kontrahentshow.h"
+#include "Ustawienia/ustawienia.h"
 #include "mainwindow.h"
 #include "time.h"
 #include "ui_kontrahent.h"
@@ -146,6 +147,7 @@ void Kontrahent::myfunctiontimer()
 void Kontrahent::wczytajKraj()
 {
     //Wczytuje Kraje z pliku
+    QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
     plikKontrahent.open(file4.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
         cout << "Plik nie istnieje !!!!!";
@@ -164,7 +166,8 @@ void Kontrahent::wczytajKraj()
 }
 
 void Kontrahent::wczytajMiasta()
-{
+{QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+
     //Wczytuje miasta z pliku
     plikKontrahent.open(file5.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
@@ -182,7 +185,7 @@ void Kontrahent::wczytajMiasta()
     plikKontrahent.close();
 }
 void Kontrahent::wczytajWojewodztwa()
-{
+{QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
     //Wczytuje miasta z pliku
     plikKontrahent.open(file6.toStdString(), ios::in);
     if (plikKontrahent.good() == false) {
@@ -201,7 +204,7 @@ void Kontrahent::wczytajWojewodztwa()
 }
 
 void Kontrahent::on_pushButton_clicked()
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     string kontrahent;
     //Zapisz
     cout << "Zapisuje" << endl;
@@ -305,7 +308,7 @@ void Kontrahent::on_actionInfo_triggered()
 }
 
 void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QString &arg1)
-{
+{QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
     checkFlagsVarriableMiasto = checkFiles->checkFlagsMiasto(checkFlagsVarriableMiasto);
@@ -339,7 +342,8 @@ void Kontrahent::on_comboBoxWczytajMiasta_highlighted(const QString) //(const QS
 //void Kontrahent::on_comboBoxWczytajMiasta_textHighlighted(const QString) {}
 
 void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString) //const QString &arg1
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+    QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << " Otrzymanie highland przycisku wczytaj wojewdóztwo" << endl;
     checkFlagsVarriableWojewodztwo = checkFiles->checkFlagsWojewodztwa(
@@ -366,7 +370,7 @@ void Kontrahent::on_comboBoxWczytajWojewodztwa_highlighted(const QString) //cons
 }
 
 void Kontrahent::on_comboBoxWczytajKraj_highlighted(const QString) //const QString &arg1
-{
+{QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << " Otrzymanie highland przycisku wczytaj wojewdóztwo" << endl;
     checkFlagsVarriableKraj = checkFiles->checkFlagsKraj(checkFlagsVarriableKraj);
@@ -392,3 +396,9 @@ void Kontrahent::on_comboBoxWczytajKraj_highlighted(const QString) //const QStri
 }
 
 void Kontrahent::on_comboBoxWczytajKraj_activated(const QString) {}
+
+void Kontrahent::on_actionOpcje_triggered()
+{
+    Ustawienia *ustaw = new Ustawienia(this);
+    ustaw->show();
+}

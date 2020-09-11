@@ -83,7 +83,7 @@ void UrzadzeniaListaKontrahent::wyswietl(QVariant p1, QVariant p2, QVariant p3, 
 }
 
 void UrzadzeniaListaKontrahent::wczytajDane()
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     // Tworze modele do Qtable
 
     model = new QStandardItemModel(1, 14, this);

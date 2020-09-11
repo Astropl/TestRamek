@@ -64,6 +64,8 @@ KontrahentDodajWojewodztwo::~KontrahentDodajWojewodztwo()
 
 void KontrahentDodajWojewodztwo::on_pushButton_clicked()
 {fstream checkflagsInWojewodztwo;
+    QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
+    QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
     cout << "Button Zapisz. Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
     plikOdczytDodajWojewodztwa.open(file6.toStdString(), ios::out | ios::trunc);

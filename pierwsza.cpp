@@ -55,7 +55,7 @@ Pierwsza::Pierwsza(QWidget *parent)
 }
     void Pierwsza::wczytajDane()
     {
-
+QString file1 = "C:/Defaults/Pliki/1.DB.txt";
         // Tworze modele do Qtable
 
         model = new QStandardItemModel(1, 17, this); //było 14

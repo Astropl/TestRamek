@@ -152,9 +152,16 @@
     <addaction name="actionO_autorze"/>
     <addaction name="actionLog"/>
    </widget>
+   <widget class="QMenu" name="menuUstawienia">
+    <property name="title">
+     <string>Ustawienia</string>
+    </property>
+    <addaction name="actionOpcja"/>
+   </widget>
    <addaction name="menuPlik"/>
    <addaction name="menuEdycja"/>
    <addaction name="menuInformacje"/>
+   <addaction name="menuUstawienia"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionZapisz">
@@ -195,6 +202,11 @@
   <action name="actionLog">
    <property name="text">
     <string>Log</string>
+   </property>
+  </action>
+  <action name="actionOpcja">
+   <property name="text">
+    <string>Opcja</string>
    </property>
   </action>
  </widget>

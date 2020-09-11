@@ -52,7 +52,7 @@ UrzadzeniaDodajProducenta::~UrzadzeniaDodajProducenta()
 }
 
 void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
-{
+{QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku

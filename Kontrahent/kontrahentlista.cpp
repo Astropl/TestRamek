@@ -65,7 +65,7 @@ KontrahentLista::~KontrahentLista()
     delete ui;
 }
 void KontrahentLista::wczytajDane()
-{
+{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     // Tworze modele do Qtable
 
     model = new QStandardItemModel(1, 14, this);

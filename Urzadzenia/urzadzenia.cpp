@@ -113,7 +113,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
 
 void Urzadzenia::howMuchDevice()
 {
-
+QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
 
     plikUrzadzenia.open(file3.toStdString(), ios::in);
     if (plikUrzadzenia.good() ==false)
@@ -181,7 +181,7 @@ Urzadzenia::~Urzadzenia()
 }
 
 void Urzadzenia::on_BtnUrzaZapisz_clicked()
-{
+{QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     cout << "Zapisz" << endl;
 
     plikUrzadzenia.open(file3.toStdString(),ios::out | ios::app);

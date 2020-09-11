@@ -63,6 +63,8 @@ KontrahentDodajMiasto::~KontrahentDodajMiasto()
 
 void KontrahentDodajMiasto::on_pushButton_clicked() //zapisz
 {fstream checkFlagsinMiasta;
+    QString file10 = "C:/Defaults/Pliki/10.CheckFlagsInMiasto.txt";
+    QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
     cout << "Zapisuje " << endl;
     // musze zapisać do pliku
     plikOdczytDodajMiasto

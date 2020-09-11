@@ -673,8 +673,38 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuPlik">
+    <property name="title">
+     <string>Plik</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuEdycja">
+    <property name="title">
+     <string>Edycja</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuInformacje">
+    <property name="title">
+     <string>Informacje</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuUstawienia">
+    <property name="title">
+     <string>Ustawienia</string>
+    </property>
+    <addaction name="actionOpcje"/>
+   </widget>
+   <addaction name="menuPlik"/>
+   <addaction name="menuEdycja"/>
+   <addaction name="menuInformacje"/>
+   <addaction name="menuUstawienia"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpcje">
+   <property name="text">
+    <string>Opcje</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
