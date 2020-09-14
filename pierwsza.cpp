@@ -58,7 +58,7 @@ Pierwsza::Pierwsza(QWidget *parent)
 QString file1 = "C:/Defaults/Pliki/1.DB.txt";
         // Tworze modele do Qtable
 
-        model = new QStandardItemModel(1, 17, this); //było 14
+        model = new QStandardItemModel(1, 18, this); //było 14
         ui->tableViewDB->setModel(model);
         //QModelIndex *index;
         model->setHeaderData(0, Qt::Horizontal, "L.P.");
@@ -78,7 +78,7 @@ QString file1 = "C:/Defaults/Pliki/1.DB.txt";
         model->setHeaderData(14, Qt::Horizontal, "Telefon");//Strona URL
         model->setHeaderData(15, Qt::Horizontal, "Telefon prywatny");//Telefon prywatny
         model->setHeaderData(16, Qt::Horizontal, "Adres E-mail");//Adres E-mail
-        //model->setHeaderData(17, Qt::Horizontal, "Strona URL");//Strona URL
+        model->setHeaderData(17, Qt::Horizontal, "Strona URL");//Strona URL
 
 
 

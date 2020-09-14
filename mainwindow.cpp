@@ -104,3 +104,10 @@ void MainWindow::on_pushButton_8_clicked()
     UrzadzeniaLista *urzList = new UrzadzeniaLista(this);
     urzList->show();
 }
+
+
+void MainWindow::on_actionOpcja_triggered()
+{
+    Ustawienia *ustaw = new Ustawienia(this);
+    ustaw->show();
+}

@@ -24,7 +24,7 @@
 
 
 using namespace std;
-fstream fileUrzadzeniaLista;
+fstream fileUrzadzeniaLista, fileUrzadzeniaLista2;
 
 UrzadzeniaLista::UrzadzeniaLista(QWidget *parent) :
     QMainWindow(parent),
@@ -64,8 +64,9 @@ UrzadzeniaLista::~UrzadzeniaLista()
 
 
 void UrzadzeniaLista::wczytajDane()
-{QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
-    model = new QStandardItemModel(1, 5, this);
+{QString file3 = "C:/Defaults/Pliki/1.DB.txt";
+    //QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+    model = new QStandardItemModel(1, 17, this);
     ui->tableView->setModel(model);
     //QModelIndex *index;
 
@@ -73,21 +74,28 @@ void UrzadzeniaLista::wczytajDane()
     model->setHeaderData(1, Qt::Horizontal, "Producent");
     model->setHeaderData(2, Qt::Horizontal, "Model");
     model->setHeaderData(3, Qt::Horizontal, "Nr Seryjny");
-    model->setHeaderData(4, Qt::Horizontal, "Kontrahent");
-    //    model->setHeaderData(5, Qt::Horizontal, "Region");
-    //    model->setHeaderData(6, Qt::Horizontal, "Miasto");
-    //    model->setHeaderData(7, Qt::Horizontal, "Kod Pocztowy");
-    //    model->setHeaderData(8, Qt::Horizontal, "Ulica");
-    //    model->setHeaderData(9, Qt::Horizontal, "Nr domu/mieszkania");
-    //    model->setHeaderData(10, Qt::Horizontal, "Telefon");
-    //    model->setHeaderData(11, Qt::Horizontal, "Telefon prywatny");
-    //    model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
-    //    model->setHeaderData(13, Qt::Horizontal, "Strona URL")
+    model->setHeaderData(4, Qt::Horizontal, "L/P");
+
+    model->setHeaderData(5, Qt::Horizontal, "Kontrahent");
+    model->setHeaderData(6, Qt::Horizontal, "Imię");
+    model->setHeaderData(7, Qt::Horizontal, "Nazwisko");
+
+    model->setHeaderData(8, Qt::Horizontal, "Kraj");
+    model->setHeaderData(9, Qt::Horizontal, "Region");
+        model->setHeaderData(10, Qt::Horizontal, "Miasto");
+        model->setHeaderData(10, Qt::Horizontal, "Kod Pocztowy");
+        model->setHeaderData(11, Qt::Horizontal, "Ulica");
+        model->setHeaderData(12, Qt::Horizontal, "Nr domu/mieszkania");
+        model->setHeaderData(13, Qt::Horizontal, "Telefon");
+        model->setHeaderData(14, Qt::Horizontal, "Telefon prywatny");
+        model->setHeaderData(15, Qt::Horizontal, "Adres E-mail");
+        model->setHeaderData(16, Qt::Horizontal, "Strona URL");
     //---------------------------------------------------------------
-    ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
+    //ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
      //---------------------------------------------------------------
     QStandardItem *dodajItem = new QStandardItem("Jakies cos");
 fileUrzadzeniaLista.open(file3.toStdString(), ios::in);
+//fileUrzadzeniaLista2.open(file2.toStdString(), ios::in);
 if (fileUrzadzeniaLista.good() == false)
 {
         cout << "Plik nie istnieje !!!!!";
@@ -99,17 +107,44 @@ if (fileUrzadzeniaLista.good() == false)
  while (getline(fileUrzadzeniaLista, linia)) {
      dodajItem = new QStandardItem(linia.c_str());
 
-     {
-         model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
-     }
+     model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
 
      cout << linia.c_str() << endl;
      nr_lini++;
-     if (nr_lini > 3) {
+//     if (nr_lini == 3) {
+//         nr_lini++;
+//     }
+     if (nr_lini > 17) {
          row = row + 1;
          nr_lini = 0;
      }
  }
+
+ // tutuaj musze dodoac pierwsza kolumne z kontrahenra
+
+// if(fileUrzadzeniaLista2.good()==false)
+// {
+//     cout << "Plik nie istnieje !!!!!";
+//     //exit(0);
+// }
+// linia="";
+// row = 0;
+// nr_lini = 4; // zmiana z int nr_lini = 1;
+// while (getline(fileUrzadzeniaLista2, linia)) {
+//     dodajItem = new QStandardItem(linia.c_str());
+
+//     {
+//         model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
+//     }
+
+//     cout << linia.c_str() << endl;
+//     nr_lini++;
+//     if (nr_lini > 3) {
+//         row = row + 1;
+//         nr_lini = 4;
+//     }
+// }
+
 
  fileUrzadzeniaLista.close();
 
@@ -177,6 +212,8 @@ void UrzadzeniaLista::myfunctiontimer()
 void UrzadzeniaLista::on_pushButton_clicked()
 {
     //Odswiez
+
+    wczytajDane();
 }
 
 void UrzadzeniaLista::on_pushButton_2_clicked()

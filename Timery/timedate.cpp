@@ -21,7 +21,7 @@ void TimeDate::init()
 
 QString TimeDate::changeStringsMin(int minuta3)
 {
-    cout << "Jestem w zegrach od pierwszego timedata. changeStrings" << endl;
+
 
     QString qStrMin3 = QString::number(minuta3);
     if (minuta3 < 10) {

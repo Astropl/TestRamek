@@ -218,21 +218,21 @@ void Urzadzenia::on_comboBox_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
+                         + ", NumerSeryjny: " + ui->label_4->text());
 }
 
 void Urzadzenia::on_comboBox_2_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->comboBox_3->currentText());
+                         + ", NumerSeryjny: "  + ui->label_4->text());
 }
 
 void Urzadzenia::on_comboBox_3_textActivated(const QString )
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText()
                          + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->lineEditNrSeryjny->text());
+                         + ", NumerSeryjny: " + ui->label_4->text());
 }
 
 void Urzadzenia::on_actionDodaj_Model_triggered()
