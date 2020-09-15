@@ -211,6 +211,17 @@ void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
     file.close();
     cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
 }
+
+int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
+{
+
+}
+
+int CheckFiles1::checkFlagsModel(int checkFlagsVarriableModel)
+{
+
+}
+
 void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
 {
     file.open(file15.toStdString());

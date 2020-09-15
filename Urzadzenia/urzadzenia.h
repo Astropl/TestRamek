@@ -56,8 +56,13 @@ private slots:
 
     void on_pushButton_clicked();
     void howMuchDevice();
+    void wczytajProducenta();
+    void wczytajModel();
 
 
+    void on_comboBox_highlighted(const QString );
+
+    void on_comboBox_2_highlighted(const QString &arg1);
 
 private:
     Ui::Urzadzenia *ui;

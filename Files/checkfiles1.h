@@ -32,6 +32,8 @@ public slots:
     int checkFlagsMiasto(int checkFlagsVarriable);
     int checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo);
     int checkFlagsKraj(int checkFlagsVarriableKraj);
+    int checkFlagsProducent(int checkFlagsVarriableProducent);
+    int checkFlagsModel(int checkFlagsVarriableModel);
     void initUrzadzenie();
 };
 

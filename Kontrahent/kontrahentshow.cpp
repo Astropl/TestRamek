@@ -1,21 +1,19 @@
 #include "kontrahentshow.h"
+#include "Files/checkfiles1.h"
+#include "Info/info.h"
 #include "ui_kontrahentshow.h"
 #include <String>
 #include <fstream>
 #include <iostream>
 #include <ostream>
 #include <QString>
-#include "Files/checkfiles1.h"
-#include "Info/info.h"
 
 using namespace std;
 
-
 int checkFlagsVarriableMiastoKontrahentShow = 0;
-int checkFlagsVarriableWojewodztwoKontrahentShow =0;
-int checkFlagsVarriableKrajKontrahentShow =0;
+int checkFlagsVarriableWojewodztwoKontrahentShow = 0;
+int checkFlagsVarriableKrajKontrahentShow = 0;
 QString tab[13];
-
 
 KontrahentShow::KontrahentShow(QWidget *parent)
     : QMainWindow(parent)
@@ -39,7 +37,6 @@ KontrahentShow::KontrahentShow(QWidget *parent)
     QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
     QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
-
 }
 
 KontrahentShow::~KontrahentShow()
@@ -74,10 +71,10 @@ QVariant KontrahentShow::wyswietl(QVariant p1,
     ui->leNazwisko->setText(p4.toString());
     ui->leKraj->setText(p5.toString());
     ui->comboBoxKraj->addItem(p5.toString());
-    ui->comboBoxMiasta->addItem(p7.toString());// tutaj
-    ui->comboBoxWojewodztwa->addItem(p6.toString());// tutaj
-    ui->leRegion->setText(p6.toString());// tutaj
-    ui->leMiasto->setText(p7.toString());// tutaj
+    ui->comboBoxMiasta->addItem(p7.toString());      // tutaj
+    ui->comboBoxWojewodztwa->addItem(p6.toString()); // tutaj
+    ui->leRegion->setText(p6.toString());            // tutaj
+    ui->leMiasto->setText(p7.toString());            // tutaj
     ui->leKod->setText(p8.toString());
     ui->leUlica->setText(p9.toString());
     ui->leNrDomu->setText(p10.toString());
@@ -107,7 +104,8 @@ void KontrahentShow::on_pushButton_clicked()
     //Zmienić region w UI -> Wojewodzwtwo
 }
 void KontrahentShow::showKraj()
-{QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
+{
+    QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
     // wczytuje kraje do comboBoxa
     fstream plikOdczytDodajKraj;
     // wczytuje miasta do comboBoxa
@@ -126,12 +124,11 @@ void KontrahentShow::showKraj()
     }
     plikOdczytDodajKraj.close();
     ui->comboBoxKraj->setCurrentText(ui->leKraj->text());
-
-
 }
 
 void KontrahentShow::showWojewodztwa()
-{QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
+{
+    QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
     // wczytuje wojewodztwa do comboBoxa
     fstream plikOdczytDodajwojewodztwo;
     // wczytuje miasta do comboBoxa
@@ -150,11 +147,10 @@ void KontrahentShow::showWojewodztwa()
     }
     plikOdczytDodajwojewodztwo.close();
     ui->comboBoxWojewodztwa->setCurrentText(ui->leRegion->text());
-
-
 }
 void KontrahentShow::showCities()
-{QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
+{
+    QString file5 = "C:/Defaults/Pliki/5.ZapisMiasta.txt";
     fstream plikOdczytDodajMiasto;
     // wczytuje miasta do comboBoxa
     ui->comboBoxMiasta->clear();
@@ -174,7 +170,8 @@ void KontrahentShow::showCities()
     ui->comboBoxMiasta->setCurrentText(ui->leMiasto->text());
 }
 void KontrahentShow::on_pushButton_3_clicked()
-{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+{
+    QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     ui->comboBoxPomoc->clear();
     ui->comboBoxPomoc1->clear();
     //ZAPISZ wszytsko
@@ -195,38 +192,34 @@ void KontrahentShow::on_pushButton_3_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     //int iloscElementowWcombo;
 
-
     //tymczasowo
-
 
     // sprawdzic czy labele sa puste
     //QString tymcsowet = ui->leNazwa->text();
-    if (ui->leNazwa->text() == "" )
+    if (ui->leNazwa->text() == "")
 
     {
         // pusty
-    }else{
-
-    ui->comboBoxPomoc->addItem(ui->lblNumerPorz->text());
-    ui->comboBoxPomoc->addItem(ui->leNazwa->text());
-    ui->comboBoxPomoc->addItem(ui->leImie->text());
-    ui->comboBoxPomoc->addItem(ui->leNazwisko->text());
-    ui->comboBoxPomoc->addItem(ui->comboBoxKraj->currentText());
-    //Wczytaj wojewodztwo
-    ui->comboBoxPomoc->addItem(ui->comboBoxWojewodztwa->currentText());
-    //Wczytaj miasto
-    ui->comboBoxPomoc->addItem(ui->comboBoxMiasta->currentText());
-    ui->comboBoxPomoc->addItem(ui->leKod->text());
-    ui->comboBoxPomoc->addItem(ui->leUlica->text());
-    ui->comboBoxPomoc->addItem(ui->leNrDomu->text());
-    ui->comboBoxPomoc->addItem(ui->leTelefon->text());
-    ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
-    ui->comboBoxPomoc->addItem(ui->leEmail->text());
-    ui->comboBoxPomoc->addItem(ui->leUrl->text());
+    } else {
+        ui->comboBoxPomoc->addItem(ui->lblNumerPorz->text());
+        ui->comboBoxPomoc->addItem(ui->leNazwa->text());
+        ui->comboBoxPomoc->addItem(ui->leImie->text());
+        ui->comboBoxPomoc->addItem(ui->leNazwisko->text());
+        ui->comboBoxPomoc->addItem(ui->comboBoxKraj->currentText());
+        //Wczytaj wojewodztwo
+        ui->comboBoxPomoc->addItem(ui->comboBoxWojewodztwa->currentText());
+        //Wczytaj miasto
+        ui->comboBoxPomoc->addItem(ui->comboBoxMiasta->currentText());
+        ui->comboBoxPomoc->addItem(ui->leKod->text());
+        ui->comboBoxPomoc->addItem(ui->leUlica->text());
+        ui->comboBoxPomoc->addItem(ui->leNrDomu->text());
+        ui->comboBoxPomoc->addItem(ui->leTelefon->text());
+        ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
+        ui->comboBoxPomoc->addItem(ui->leEmail->text());
+        ui->comboBoxPomoc->addItem(ui->leUrl->text());
     }
 
     //plikKontrahent<<ui->
-
 
     //int QComboBox::findText(const QString &text, Qt::MatchFlags flags) const;
 
@@ -291,7 +284,8 @@ void KontrahentShow::on_pushButton_3_clicked()
 }
 
 void KontrahentShow::on_pushButton_4_clicked()
-{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+{
+    QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
 
     //-----------------------------------------
     ui->comboBoxPomoc->clear();
@@ -319,7 +313,7 @@ void KontrahentShow::on_pushButton_4_clicked()
     ui->comboBoxPomoc->addItem(ui->leTelPryw->text());
     ui->comboBoxPomoc->addItem(ui->leEmail->text());
     ui->comboBoxPomoc->addItem(ui->leUrl->text());
-     //int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
+    //int iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
     //iloscWComboPomoc1 = ui->comboBoxPomoc1->count();
 
     int findPosition = ui->comboBoxPomoc->findText(ui->leNazwa->text(), Qt::MatchContains);
@@ -330,7 +324,7 @@ void KontrahentShow::on_pushButton_4_clicked()
         ui->comboBoxPomoc1->addItem(linia.c_str());
         cout << linia.c_str() << endl;
     }
- fileKontrahent.close();
+    fileKontrahent.close();
 
     ui->label_14->setText(QString::number(findPosition));
     int findPosition2 = ui->comboBoxPomoc1->findText(ui->leNazwa->text(), Qt::MatchContains);
@@ -418,12 +412,14 @@ void KontrahentShow::unblock()
 }
 
 void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
-{fstream checkFlags;
+{
+    fstream checkFlags;
     QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
     // Sortowanie kraj
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj Kraj" << endl;
-    checkFlagsVarriableKrajKontrahentShow = checkFiles->checkFlagsKraj(checkFlagsVarriableKrajKontrahentShow);
+    checkFlagsVarriableKrajKontrahentShow = checkFiles->checkFlagsKraj(
+        checkFlagsVarriableKrajKontrahentShow);
     if (checkFlagsVarriableKrajKontrahentShow != 0) {
         cout << "textHighlighted" << endl;
         QStringList listaKraj = QStringList();
@@ -445,14 +441,16 @@ void KontrahentShow::on_comboBoxKraj_highlighted(const QString)
     checkFlags.close();
 }
 
-void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
-{QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
+void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString)
+{
+    QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
     // Sortowanie wojewodztwo
     fstream checkFlags;
     // Sortowanie wojewodztwo
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj wojewodztwo" << endl;
-    checkFlagsVarriableWojewodztwoKontrahentShow = checkFiles->checkFlagsWojewodztwa(checkFlagsVarriableWojewodztwoKontrahentShow);
+    checkFlagsVarriableWojewodztwoKontrahentShow = checkFiles->checkFlagsWojewodztwa(
+        checkFlagsVarriableWojewodztwoKontrahentShow);
     if (checkFlagsVarriableWojewodztwoKontrahentShow != 0) {
         cout << "textHighlighted" << endl;
         QStringList listaWojewodztwo = QStringList();
@@ -474,14 +472,16 @@ void KontrahentShow::on_comboBoxWojewodztwa_highlighted(const QString )
     checkFlags.close();
 }
 
-void KontrahentShow::on_comboBoxMiasta_highlighted(const QString )
-{QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
+void KontrahentShow::on_comboBoxMiasta_highlighted(const QString)
+{
+    QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     // Sortowanie Miasta
     fstream checkFlags;
     // Sortowanie wojewodztwo
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     cout << "Otrzymanie highland przycisku wczytaj Miasta" << endl;
-    checkFlagsVarriableMiastoKontrahentShow = checkFiles->checkFlagsMiasto(checkFlagsVarriableMiastoKontrahentShow);
+    checkFlagsVarriableMiastoKontrahentShow = checkFiles->checkFlagsMiasto(
+        checkFlagsVarriableMiastoKontrahentShow);
     if (checkFlagsVarriableMiastoKontrahentShow != 0) {
         cout << "textHighlighted" << endl;
         QStringList listaMiasto = QStringList();

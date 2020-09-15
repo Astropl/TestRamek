@@ -6,6 +6,7 @@
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
 #include "Ustawienia/ustawienia.h"
+#include "Files/checkfiles1.h"
 #include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
@@ -22,6 +23,8 @@ QString zaznaczono;
 fstream plikUrzadzenia;
 int iloscUrzadzen =0;
 
+int checkFlagsVariableProducent =0;
+int checkFlagsVariableModel =0;
 
 Urzadzenia::Urzadzenia(QWidget *parent)
     : QMainWindow(parent)
@@ -271,4 +274,61 @@ void Urzadzenia::on_actionOpcje_triggered()
 {
     Ustawienia *ustaw = new Ustawienia(this);
     ustaw->show();
+}
+
+void Urzadzenia::on_comboBox_highlighted(const QString )
+{
+    // Odswiiez producenta
+    fstream checkFlags;
+    QString file16 = "16.CheckFlagsInProducentUrzadzenia.txt";
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
+
+    checkFlagsVariableProducent = checkFiles->checkFlagsProducent(checkFlagsVariableProducent);
+
+    if (checkFlagsVariableProducent != 0) {
+        cout << "textHighlighted" << endl;
+        QStringList listaProducent = QStringList();
+
+        ui->comboBox->clear();
+        wczytajProducenta();
+        int ostatniindex = ui->comboBox->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaProducent.push_back(ui->comboBox->itemText(iZmienna).toUtf8());
+        }
+        sort(listaProducent.begin(), listaProducent.end());
+        ui->comboBox->clear();
+        for (int kZmienna = 0; kZmienna <= listaProducent.count() - 1; kZmienna++) {
+            ui->comboBox->addItem(listaProducent.at(kZmienna));
+        }
+    }
+    checkFlags.open(file16.toStdString(), ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
+
+
+}
+
+void Urzadzenia::wczytajProducenta()
+{QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+    fstream plikKontrahent;
+    //Wczytuje miasta z pliku
+    plikKontrahent.open(file7.toStdString(), ios::in);
+    if (plikKontrahent.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        //exit(0);
+    }
+    string linia;
+    int nr_lini = 1;
+    while (getline(plikKontrahent, linia)) {
+        ui->comboBox->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+
+    plikKontrahent.close();
+
+}
+void Urzadzenia::on_comboBox_2_highlighted(const QString &arg1)
+{
+    // odwiez model.
 }

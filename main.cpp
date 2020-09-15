@@ -29,6 +29,12 @@ int main(int argc, char *argv[])
 //      13.CheckFlagsInKrajKontrahentShow.txt
 //      14.CheckFlagsInMiastoKontrahentShow.txt
 //      15.CheckFlagsInWojewodztwoKontrahentShow.txt
+//      16.CheckFlagsInProducentUrzadzenia.txt
+//      17.CheckFlagsInModelUrzadzenia.txt
+
+//TODO: 16 i 17 dodoac do Check Files i do backupa
+
+
 //CheckFlagsInWojewodztwo();
 //
 //QString file1 = "C:/Defaults/Pliki/1.DB.txt";

@@ -56,7 +56,7 @@ void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikProducent.open(file7.toStdString(), ios::out | ios::app);
+    plikProducent.open(file7.toStdString(), ios::out | ios::trunc); //ios::app);
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajProdcuenta->count();

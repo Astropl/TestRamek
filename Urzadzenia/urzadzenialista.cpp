@@ -64,8 +64,12 @@ UrzadzeniaLista::~UrzadzeniaLista()
 
 
 void UrzadzeniaLista::wczytajDane()
-{QString file3 = "C:/Defaults/Pliki/1.DB.txt";
+{
+    //TODO: zamienic z DB na urzadzenia.
+
+    QString file1 = "C:/Defaults/Pliki/1.DB.txt";
     //QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+    QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     model = new QStandardItemModel(1, 17, this);
     ui->tableView->setModel(model);
     //QModelIndex *index;
@@ -83,13 +87,13 @@ void UrzadzeniaLista::wczytajDane()
     model->setHeaderData(8, Qt::Horizontal, "Kraj");
     model->setHeaderData(9, Qt::Horizontal, "Region");
         model->setHeaderData(10, Qt::Horizontal, "Miasto");
-        model->setHeaderData(10, Qt::Horizontal, "Kod Pocztowy");
-        model->setHeaderData(11, Qt::Horizontal, "Ulica");
-        model->setHeaderData(12, Qt::Horizontal, "Nr domu/mieszkania");
-        model->setHeaderData(13, Qt::Horizontal, "Telefon");
-        model->setHeaderData(14, Qt::Horizontal, "Telefon prywatny");
-        model->setHeaderData(15, Qt::Horizontal, "Adres E-mail");
-        model->setHeaderData(16, Qt::Horizontal, "Strona URL");
+        model->setHeaderData(11, Qt::Horizontal, "Kod Pocztowy");
+        model->setHeaderData(12, Qt::Horizontal, "Ulica");
+        model->setHeaderData(13, Qt::Horizontal, "Nr domu/mieszkania");
+        model->setHeaderData(14, Qt::Horizontal, "Telefon");
+        model->setHeaderData(15, Qt::Horizontal, "Telefon prywatny");
+        model->setHeaderData(16, Qt::Horizontal, "Adres E-mail");
+        model->setHeaderData(17, Qt::Horizontal, "Strona URL");
     //---------------------------------------------------------------
     //ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
      //---------------------------------------------------------------
@@ -114,7 +118,26 @@ if (fileUrzadzeniaLista.good() == false)
 //     if (nr_lini == 3) {
 //         nr_lini++;
 //     }
-     if (nr_lini > 17) {
+     if (nr_lini > 3) {
+         row = row + 1;
+         nr_lini = 0;
+     }
+ }
+
+ // tutuaj wczytuje kontrahentow przypisanych do konkretnych urządzen.
+ row=0;
+ nr_lini=0;
+ while (getline(fileUrzadzeniaLista, linia)) {
+     dodajItem = new QStandardItem(linia.c_str());
+
+     model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
+
+     cout << linia.c_str() << endl;
+     nr_lini++;
+     //     if (nr_lini == 3) {
+     //         nr_lini++;
+     //     }
+     if (nr_lini > 3) {
          row = row + 1;
          nr_lini = 0;
      }
@@ -226,6 +249,43 @@ void UrzadzeniaLista::on_pushButton_2_clicked()
 void UrzadzeniaLista::on_pushButton_3_clicked()
 {
     //Usuń
+    // usunać zaznaczony rząd
+
+    QMessageBox msgBox;
+    if (QMessageBox::question(this, "Ostrzeżenie", "Czy na pewno chcesz usunąć zaznaczony rekord?.", QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
+    //(QMessageBox::Ok)
+    {
+
+
+    int iloscColumn = model->columnCount();
+    QString qIloscColumn;
+    qIloscColumn.setNum(iloscColumn);
+
+    //--------------
+    int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
+    cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+
+    ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
+    QModelIndex index = ui->tableView->selectionModel()->currentIndex();
+    QVariant vartosc = index.sibling(index.row(), index.column()).data();
+    QString QVartsoc = QVariant(vartosc).toString();
+    ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
+
+    QVariant tab[iloscColumn];
+    QVariant wyslij;
+    for (int i = 0; i <= iloscColumn; i++) {
+        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
+    }
+
+    model->removeRows(stringrowDoSize-1,1);
+    //wczytaj ponownie dane
+    iloscWierszy();
+     QMessageBox::information(this, "Ostrzeżenie", "Rekord  usunięty");
+    }
+    else
+    {
+       QMessageBox::information(this, "Ostrzeżenie", "Rekord nie usunięty");
+    }
 }
 
 void UrzadzeniaLista::on_pushButton_4_clicked()

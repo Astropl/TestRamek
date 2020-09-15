@@ -1,8 +1,8 @@
 #include "kontrahentlista.h"
+#include "Timery/timedate.h"
 #include "kontrahentshow.h"
 #include "tableviewlistakontrahentow.h"
 #include "ui_kontrahentlista.h"
-#include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
@@ -29,7 +29,6 @@ string stringDzienTygodniaKontrahentLista;
 string zmiennasKontrahentLista;
 
 fstream plikKontrahentLista;
-
 
 KontrahentLista::KontrahentLista(QWidget *parent)
     : QMainWindow(parent)
@@ -65,7 +64,8 @@ KontrahentLista::~KontrahentLista()
     delete ui;
 }
 void KontrahentLista::wczytajDane()
-{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+{
+    QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     // Tworze modele do Qtable
 
     model = new QStandardItemModel(1, 14, this);
@@ -86,9 +86,8 @@ void KontrahentLista::wczytajDane()
     model->setHeaderData(12, Qt::Horizontal, "Adres E-mail");
     model->setHeaderData(13, Qt::Horizontal, "Strona URL");
 
-
     //---------------------------------------------------------------
-    ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
+    ui->tableView->setColumnHidden(0, true); //Ukrywam kolumne z LP
         //---------------------------------------------------------------
     //model->insertRow(model->rowCount());
 
@@ -183,13 +182,11 @@ void KontrahentLista::myfunctiontimer()
     ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
 
     ui->labelDzien->setText(stringDzienTygodnia);
-
-
 }
 
-
 void KontrahentLista::on_pushButton_2_clicked()
-{timer->stop();
+{
+    timer->stop();
     destroy();
 }
 
@@ -219,27 +216,27 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
     //rzad pokaz
 
     // stringrowDosize: zaznaczony rzad
-//    QVariant tab[iloscColumn];
-//    QVariant wyslij;
-//    for (int i = 0; i <= iloscColumn; i++) {
-//        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
-//    }
+    //    QVariant tab[iloscColumn];
+    //    QVariant wyslij;
+    //    for (int i = 0; i <= iloscColumn; i++) {
+    //        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
+    //    }
 
-//    kontrShow->wyswietl(tab[0],
-//                        tab[1],
-//                        tab[2],
-//                        tab[3],
-//                        tab[4],
-//                        tab[5],
-//                        tab[6],
-//                        tab[7],
-//                        tab[8],
-//                        tab[9],
-//                        tab[10],
-//                        tab[11],
-//                        tab[12],tab[13]);
+    //    kontrShow->wyswietl(tab[0],
+    //                        tab[1],
+    //                        tab[2],
+    //                        tab[3],
+    //                        tab[4],
+    //                        tab[5],
+    //                        tab[6],
+    //                        tab[7],
+    //                        tab[8],
+    //                        tab[9],
+    //                        tab[10],
+    //                        tab[11],
+    //                        tab[12],tab[13]);
 
-//    kontrShow->show();
+    //    kontrShow->show();
 }
 //Info do Gita
 void KontrahentLista::on_pushButton_clicked()
@@ -251,20 +248,20 @@ void KontrahentLista::on_pushButton_clicked()
 void KontrahentLista::on_pushButton_3_clicked()
 {
     // Edycaj /. usuń
-     KontrahentShow *kontrShow = new KontrahentShow(this);
-     int iloscColumn = model->columnCount();
-     QString qIloscColumn;
-     qIloscColumn.setNum(iloscColumn);
+    KontrahentShow *kontrShow = new KontrahentShow(this);
+    int iloscColumn = model->columnCount();
+    QString qIloscColumn;
+    qIloscColumn.setNum(iloscColumn);
 
-     //--------------
-     int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
-     cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+    //--------------
+    int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
+    cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
 
-     ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
-     QModelIndex index = ui->tableView->selectionModel()->currentIndex();
-     QVariant vartosc = index.sibling(index.row(), index.column()).data();
-     QString QVartsoc = QVariant(vartosc).toString();
-     ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
+    ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
+    QModelIndex index = ui->tableView->selectionModel()->currentIndex();
+    QVariant vartosc = index.sibling(index.row(), index.column()).data();
+    QString QVartsoc = QVariant(vartosc).toString();
+    ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
 
     QVariant tab[iloscColumn];
     QVariant wyslij;
@@ -284,7 +281,8 @@ void KontrahentLista::on_pushButton_3_clicked()
                         tab[9],
                         tab[10],
                         tab[11],
-                        tab[12],tab[13]);
+                        tab[12],
+                        tab[13]);
 
     kontrShow->show();
 }
