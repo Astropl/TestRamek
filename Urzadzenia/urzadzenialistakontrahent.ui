@@ -231,6 +231,16 @@
      <string>Zapisz</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>450</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>tableView</zorder>
    <zorder>labelTest</zorder>
    <zorder>scrollArea_8</zorder>
@@ -240,6 +250,7 @@
    <zorder>comboBox</zorder>
    <zorder>comboBox_2</zorder>
    <zorder>pushButton_3</zorder>
+   <zorder>comboBox_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

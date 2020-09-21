@@ -70,7 +70,7 @@ void UrzadzeniaLista::wczytajDane()
     QString file1 = "C:/Defaults/Pliki/1.DB.txt";
     //QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
-    model = new QStandardItemModel(1, 17, this);
+    model = new QStandardItemModel(1, 5, this);
     ui->tableView->setModel(model);
     //QModelIndex *index;
 
@@ -78,22 +78,22 @@ void UrzadzeniaLista::wczytajDane()
     model->setHeaderData(1, Qt::Horizontal, "Producent");
     model->setHeaderData(2, Qt::Horizontal, "Model");
     model->setHeaderData(3, Qt::Horizontal, "Nr Seryjny");
-    model->setHeaderData(4, Qt::Horizontal, "L/P");
+    model->setHeaderData(4, Qt::Horizontal, "Przypisany");
 
-    model->setHeaderData(5, Qt::Horizontal, "Kontrahent");
-    model->setHeaderData(6, Qt::Horizontal, "Imię");
-    model->setHeaderData(7, Qt::Horizontal, "Nazwisko");
+//    model->setHeaderData(5, Qt::Horizontal, "Kontrahent");
+//    model->setHeaderData(6, Qt::Horizontal, "Imię");
+//    model->setHeaderData(7, Qt::Horizontal, "Nazwisko");
 
-    model->setHeaderData(8, Qt::Horizontal, "Kraj");
-    model->setHeaderData(9, Qt::Horizontal, "Region");
-        model->setHeaderData(10, Qt::Horizontal, "Miasto");
-        model->setHeaderData(11, Qt::Horizontal, "Kod Pocztowy");
-        model->setHeaderData(12, Qt::Horizontal, "Ulica");
-        model->setHeaderData(13, Qt::Horizontal, "Nr domu/mieszkania");
-        model->setHeaderData(14, Qt::Horizontal, "Telefon");
-        model->setHeaderData(15, Qt::Horizontal, "Telefon prywatny");
-        model->setHeaderData(16, Qt::Horizontal, "Adres E-mail");
-        model->setHeaderData(17, Qt::Horizontal, "Strona URL");
+//    model->setHeaderData(8, Qt::Horizontal, "Kraj");
+//    model->setHeaderData(9, Qt::Horizontal, "Region");
+//        model->setHeaderData(10, Qt::Horizontal, "Miasto");
+//        model->setHeaderData(11, Qt::Horizontal, "Kod Pocztowy");
+//        model->setHeaderData(12, Qt::Horizontal, "Ulica");
+//        model->setHeaderData(13, Qt::Horizontal, "Nr domu/mieszkania");
+//        model->setHeaderData(14, Qt::Horizontal, "Telefon");
+//        model->setHeaderData(15, Qt::Horizontal, "Telefon prywatny");
+//        model->setHeaderData(16, Qt::Horizontal, "Adres E-mail");
+//        model->setHeaderData(17, Qt::Horizontal, "Strona URL");
     //---------------------------------------------------------------
     //ui->tableView->setColumnHidden(0,true); //Ukrywam kolumne z LP
      //---------------------------------------------------------------
@@ -118,7 +118,7 @@ if (fileUrzadzeniaLista.good() == false)
 //     if (nr_lini == 3) {
 //         nr_lini++;
 //     }
-     if (nr_lini > 3) {
+     if (nr_lini > 4) {
          row = row + 1;
          nr_lini = 0;
      }

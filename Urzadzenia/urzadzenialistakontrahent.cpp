@@ -10,7 +10,7 @@
 
 using namespace std;
 
-fstream fileDB, plikUrzadzeniaKontrahentLista;
+fstream fileDB, plikUrzadzeniaKontrahentLista, fileUrzadzenia;
 
 UrzadzeniaListaKontrahent::UrzadzeniaListaKontrahent(QWidget *parent)
     : QMainWindow(parent)
@@ -58,11 +58,10 @@ void UrzadzeniaListaKontrahent::on_pushButton_clicked()
     int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
     QVariant tab[iloscColumn];
     QVariant wyslij;
-    for (int i = 0; i <= iloscColumn-1; i++) {
+    for (int i = 0; i <= iloscColumn - 1; i++) {
         tab[i] = index.sibling(stringrowDoSize - 1, i).data();
         ui->comboBox_2->addItem(tab[i].toString());
     }
-
 }
 
 void UrzadzeniaListaKontrahent::on_pushButton_2_clicked()
@@ -79,11 +78,12 @@ void UrzadzeniaListaKontrahent::wyswietl(QVariant p1, QVariant p2, QVariant p3, 
     ui->comboBox->addItem(p1.toString());
     ui->comboBox->addItem(p2.toString());
     ui->comboBox->addItem(p3.toString());
-     ui->comboBox->addItem(p4.toString());
+    ui->comboBox->addItem(p4.toString());
 }
 
 void UrzadzeniaListaKontrahent::wczytajDane()
-{QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
+{
+    QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";
     // Tworze modele do Qtable
 
     model = new QStandardItemModel(1, 14, this);
@@ -208,29 +208,46 @@ void UrzadzeniaListaKontrahent::myfunctiontimer()
 void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
 {
     // Zapisz
-fileDB.open("C:/Defaults/Pliki/1.DB.txt", ios::app);
+    ui->comboBox->addItem("Przypisany");
+    fileDB.open("C:/Defaults/Pliki/1.DB.txt", ios::app);
+    // urzadzenia było append
 
+    //TODO: dodoac wczytywanie do comboboxa3 wszystkich urzadzen. A potem dodoac je do combo 1
+    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::in);
+    string linia;
+    int row = 0;
+    int nr_lini = 0; // zmiana z int nr_lini = 1;
+    while (getline(fileUrzadzenia, linia)) {
+        ui->comboBox_3->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+        if (nr_lini > 4) {
+            row = row + 1;
+            nr_lini = 0;
+        }
+    }
+    fileUrzadzenia.close();
+    int combBoxlsize3 = ui->comboBox_3->count();
+    for (int i = 0; i <= combBoxlsize3; i++) {
+        ui->comboBox->addItem(ui->comboBox_3->itemText(i));
+    }
+    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::trunc);
+    int combBox1Size = ui->comboBox->count();
+    int combBox1Size2 = ui->comboBox_2->count();
+    string dane1, dane2;
+    for (int i = 0; i <= combBox1Size - 1; i++) {
+        dane1 = ui->comboBox->itemText(i).toStdString();
 
-int combBox1Size = ui->comboBox->count();
-int combBox1Size2 = ui->comboBox_2->count();
+        fileDB << dane1 << endl;
+        fileUrzadzenia << dane1 << endl;
+    }
+    for (int i = 0; i <= combBox1Size2 - 1; i++) {
+        dane2 = ui->comboBox_2->itemText(i).toStdString();
 
-
-string dane1, dane2;
-
-for (int i =0;i<=combBox1Size-1;i++)
-
-{dane1 = ui->comboBox->itemText(i).toStdString();
-
-    fileDB<<dane1 <<endl;
-}
-for (int i =0;i<=combBox1Size2-1;i++)
-
-{dane2 = ui->comboBox_2->itemText(i).toStdString();
-
-    fileDB<<dane2 <<endl;
-}
-fileDB.close();
-ui->comboBox->clear();
-ui->comboBox_2->clear();
-
+        fileDB << dane2 << endl;
+    }
+    fileDB.close();
+    fileUrzadzenia.close();
+    ui->comboBox->clear();
+    ui->comboBox_2->clear();
 }

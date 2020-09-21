@@ -199,7 +199,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
 
     }
 
-
+    plikUrzadzenia<<""<<endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
     plikUrzadzenia.close();
 }
 
