@@ -227,27 +227,44 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
         }
     }
     fileUrzadzenia.close();
-    int combBoxlsize3 = ui->comboBox_3->count();
-    for (int i = 0; i <= combBoxlsize3; i++) {
-        ui->comboBox->addItem(ui->comboBox_3->itemText(i));
-    }
-    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::trunc);
-    int combBox1Size = ui->comboBox->count();
-    int combBox1Size2 = ui->comboBox_2->count();
-    string dane1, dane2;
-    for (int i = 0; i <= combBox1Size - 1; i++) {
-        dane1 = ui->comboBox->itemText(i).toStdString();
 
-        fileDB << dane1 << endl;
-        fileUrzadzenia << dane1 << endl;
-    }
-    for (int i = 0; i <= combBox1Size2 - 1; i++) {
-        dane2 = ui->comboBox_2->itemText(i).toStdString();
+    QString nrSeryjnyzCB1 = ui->comboBox->itemText(3);
+    //cout<< nrSeryjnyzCB1.toStdString()<<endl;
 
-        fileDB << dane2 << endl;
+    int IntnrSetyjnyzCB2 = ui->comboBox_3->findText(nrSeryjnyzCB1);
+    QString tym1 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2);
+    QString tym2 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2+1);
+    QString tym3 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-1);
+    QString tym4 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-2);
+    QString tym5 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-3);
+
+
+    for (int i =1; i<= ui->comboBox_3->count()-1;i++)
+    {
+        ui->comboBox_3->removeItem(IntnrSetyjnyzCB2+1);
     }
-    fileDB.close();
-    fileUrzadzenia.close();
-    ui->comboBox->clear();
-    ui->comboBox_2->clear();
+
+//    int combBoxlsize3 = ui->comboBox_3->count();
+//    for (int i = 0; i <= combBoxlsize3; i++) {
+//        ui->comboBox->addItem(ui->comboBox_3->itemText(i));
+//    }
+//    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::trunc);
+//    int combBox1Size = ui->comboBox->count();
+//    int combBox1Size2 = ui->comboBox_2->count();
+//    string dane1, dane2;
+//    for (int i = 0; i <= combBox1Size - 1; i++) {
+//        dane1 = ui->comboBox->itemText(i).toStdString();
+
+//        fileDB << dane1 << endl;
+//        fileUrzadzenia << dane1 << endl;
+//    }
+//    for (int i = 0; i <= combBox1Size2 - 1; i++) {
+//        dane2 = ui->comboBox_2->itemText(i).toStdString();
+
+//        fileDB << dane2 << endl;
+//    }
+//    fileDB.close();
+//    fileUrzadzenia.close();
+//    ui->comboBox->clear();
+//    ui->comboBox_2->clear();
 }
