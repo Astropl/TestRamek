@@ -31,8 +31,10 @@ int main(int argc, char *argv[])
 //      15.CheckFlagsInWojewodztwoKontrahentShow.txt
 //      16.CheckFlagsInProducentUrzadzenia.txt
 //      17.CheckFlagsInModelUrzadzenia.txt
-
+//      16.CheckFlagsInProducentUrzadzenia.txt";
+//      17.CheckFlagsInModelUrzadzenia.txt";
 //TODO: 16 i 17 dodoac do Check Files i do backupa
+
 
 
 //CheckFlagsInWojewodztwo();
@@ -52,7 +54,8 @@ int main(int argc, char *argv[])
 //QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
 //QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
 //QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
-
+//QString file16 = "C:/Defaults/Pliki/16.CheckFlagsInProducentUrzadzenia.txt";
+//QString file17 = "C:/Defaults/Pliki/17.CheckFlagsInModelUrzadzenia.txt";
 ////
 //
 //

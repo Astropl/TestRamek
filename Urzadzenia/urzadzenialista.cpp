@@ -65,7 +65,7 @@ UrzadzeniaLista::~UrzadzeniaLista()
 
 void UrzadzeniaLista::wczytajDane()
 {
-    //TODO: zamienic z DB na urzadzenia.
+
 
     QString file1 = "C:/Defaults/Pliki/1.DB.txt";
     //QString file2 = "C:/Defaults/Pliki/2.Kontrahent.txt";

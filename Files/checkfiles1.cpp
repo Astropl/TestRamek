@@ -22,6 +22,9 @@ QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
 QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
 QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
 QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
+QString file16 = "C:/Defaults/Pliki/16.CheckFlagsInProducentUrzadzenia.txt";
+QString file17 = "C:/Defaults/Pliki/17.CheckFlagsInModelUrzadzenia.txt";
+
 
 CheckFiles1::CheckFiles1(QWidget *parent)
     : QMainWindow(parent)
@@ -168,8 +171,30 @@ void CheckFiles1::initCheckFlagsInKraj()
     file << "0" << endl;
     file.close();
 }
-
-
+void CheckFiles1::initCheckFlagsInModelUrzadzenia()
+{
+    file.open(file17.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file17.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+}
+void CheckFiles1::initCheckFlagsInProducentUrzadzenia()
+{
+    file.open(file16.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file16.toStdString(), ios::app);
+    } else {
+        cout << "Plik jest" << endl;
+    }
+    file << "0" << endl;
+    file.close();
+}
 
 
 void CheckFiles1::initCheckFlagsInWojewodztwa()
@@ -214,12 +239,52 @@ void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
 
 int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
 {
+    cout << " W CheckFiles1: CheckFlagsProducent" << endl;
 
+    file.open(file16.toStdString(),
+              ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
+
+    int nr_lini = 1;
+    while (getline(file, linia)) {
+
+        cout << linia << endl;
+        if (linia == "0") {
+            cout << "Linia równa się 0" << endl;
+            return 0;
+        } else if (linia == "1") {
+            cout << "Linia równa się 1" << endl;
+            return 1;
+        }
+        nr_lini++;
+    }
+
+    file.close();
 }
 
 int CheckFiles1::checkFlagsModel(int checkFlagsVarriableModel)
 {
+    cout << " W CheckFiles1: CheckFlagsProducent" << endl;
 
+    file.open(file16.toStdString(),
+              ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
+
+    int nr_lini = 1;
+    while (getline(file, linia)) {
+
+        cout << linia << endl;
+        if (linia == "0") {
+            cout << "Linia równa się 0" << endl;
+            return 0;
+        } else if (linia == "1") {
+            cout << "Linia równa się 1" << endl;
+            return 1;
+        }
+        nr_lini++;
+    }
+
+    file.close();
 }
 
 void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
@@ -235,6 +300,19 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
     file.close();
     cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
 }
+ void CheckFiles1::initCheckFlagsProducent()
+ {
+     file.open(file16.toStdString());
+     if (file.good() == false) {
+         cout << "Brak pliku" << endl;
+         file.open(file16.toStdString(), ios::app);
+     } else {
+         cout << "Plik jest" << endl;
+     }
+     file << "0" << endl;
+     file.close();
+     cout << "Plik Check Flags In Produckt Jest." << endl;
+ }
 
 
 int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
@@ -327,12 +405,19 @@ void CheckFiles1::init()
     initZapisModel();//
     initZapisNrSeryjny();//
     initZapisProducenta();//
-   initCheckFlagsInKrajKontrahentShow();
+    initCheckFlagsInKrajKontrahentShow();
     initCheckFlagsInMiastoKontrahentShow();
     initCheckFlagsInWojewodztwoKontrahentShow();
     initCheckFlagsInMiasto();
     initCheckFlagsInWojewodztwa();
     initCheckFlagsInKraj();
+    initCheckFlagsProducent();
+
+    initCheckFlagsInModelUrzadzenia();
+    initCheckFlagsInProducentUrzadzenia();
+
+
+    // i tak samo jak wyzej ale do modelu
 
     CheckSystem *checkSystem = new CheckSystem();
     checkSystem->show();

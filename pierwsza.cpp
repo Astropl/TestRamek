@@ -58,27 +58,30 @@ Pierwsza::Pierwsza(QWidget *parent)
 QString file1 = "C:/Defaults/Pliki/1.DB.txt";
         // Tworze modele do Qtable
 
-        model = new QStandardItemModel(1, 18, this); //było 14
+        model = new QStandardItemModel(1, 19, this); //było 14
         ui->tableViewDB->setModel(model);
         //QModelIndex *index;
         model->setHeaderData(0, Qt::Horizontal, "L.P.");
         model->setHeaderData(1, Qt::Horizontal, "Producent"); //nazwa
         model->setHeaderData(2, Qt::Horizontal, "Model"); // Imie
         model->setHeaderData(3, Qt::Horizontal, "Nr Seryjny"); // Imie
-        model->setHeaderData(4, Qt::Horizontal, "LP Kontrahenta"); //Nazwisko
-        model->setHeaderData(5, Qt::Horizontal, "Nazwa");//Kraj
-        model->setHeaderData(6, Qt::Horizontal, "Imie");//Region
-        model->setHeaderData(7, Qt::Horizontal, "Nazwisko");//Miasto
-        model->setHeaderData(8, Qt::Horizontal, "Kraj");//Kod Pocztowy
-        model->setHeaderData(9, Qt::Horizontal, "Region");//Ulica
-        model->setHeaderData(10, Qt::Horizontal, "Miasto");//Nr domu/mieszkania
-        model->setHeaderData(11, Qt::Horizontal, "Kod Pocztowy");//Telefon
-        model->setHeaderData(12, Qt::Horizontal, "Ulica");//Telefon prywatny
-        model->setHeaderData(13, Qt::Horizontal, "Nr domu/mieszkania");//Adres E-mail
-        model->setHeaderData(14, Qt::Horizontal, "Telefon");//Strona URL
-        model->setHeaderData(15, Qt::Horizontal, "Telefon prywatny");//Telefon prywatny
-        model->setHeaderData(16, Qt::Horizontal, "Adres E-mail");//Adres E-mail
-        model->setHeaderData(17, Qt::Horizontal, "Strona URL");//Strona URL
+         model->setHeaderData(4, Qt::Horizontal, "Przypisany ?"); // Imie
+          //model->setHeaderData(5, Qt::Horizontal, "Nr Seryjny"); // Imie
+
+        model->setHeaderData(5, Qt::Horizontal, "LP Kontrahenta"); //Nazwisko
+        model->setHeaderData(6, Qt::Horizontal, "Nazwa");//Kraj
+        model->setHeaderData(7, Qt::Horizontal, "Imie");//Region
+        model->setHeaderData(8, Qt::Horizontal, "Nazwisko");//Miasto
+        model->setHeaderData(9, Qt::Horizontal, "Kraj");//Kod Pocztowy
+        model->setHeaderData(10, Qt::Horizontal, "Region");//Ulica
+        model->setHeaderData(11, Qt::Horizontal, "Miasto");//Nr domu/mieszkania
+        model->setHeaderData(12, Qt::Horizontal, "Kod Pocztowy");//Telefon
+        model->setHeaderData(13, Qt::Horizontal, "Ulica");//Telefon prywatny
+        model->setHeaderData(14, Qt::Horizontal, "Nr domu/mieszkania");//Adres E-mail
+        model->setHeaderData(15, Qt::Horizontal, "Telefon");//Strona URL
+        model->setHeaderData(16, Qt::Horizontal, "Telefon prywatny");//Telefon prywatny
+        model->setHeaderData(17, Qt::Horizontal, "Adres E-mail");//Adres E-mail
+        model->setHeaderData(18, Qt::Horizontal, "Strona URL");//Strona URL
 
 
 
@@ -86,8 +89,9 @@ QString file1 = "C:/Defaults/Pliki/1.DB.txt";
         //    setSelectionBehavior(QAbstractItemView::SelectRows);
         //    setSelectionMode(QAbstractItemView::SingleSelection);
         //---------------------------------------------------------------
-        ui->tableViewDB->setColumnHidden(0, true); //Ukrywam kolumne z LP
-ui->tableViewDB->setColumnHidden(4, true);
+        ui->tableViewDB->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
+        ui->tableViewDB->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu
+        ui->tableViewDB->setColumnHidden(5, true); // Ukrywam Kolumnę z LP kontrahenta
             //---------------------------------------------------------------
         //model->insertRow(model->rowCount());
 
@@ -123,7 +127,7 @@ ui->tableViewDB->setColumnHidden(4, true);
             //ui->comboBoxWczytajMiasta->addItem(linia.c_str());
             cout << linia.c_str() << endl;
             nr_lini++;
-            if (nr_lini > 17) {
+            if (nr_lini > 18) {
                 row = row + 1;
                 nr_lini = 0;
             }

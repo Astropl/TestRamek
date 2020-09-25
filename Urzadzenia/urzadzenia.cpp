@@ -328,7 +328,53 @@ void Urzadzenia::wczytajProducenta()
     plikKontrahent.close();
 
 }
-void Urzadzenia::on_comboBox_2_highlighted(const QString &arg1)
+void Urzadzenia::wczytajModel()
+{QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+    fstream plikKontrahent;
+
+    plikKontrahent.open(file8.toStdString(), ios::in);
+    if (plikKontrahent.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        //exit(0);
+    }
+    string linia;
+    int nr_lini = 1;
+    while (getline(plikKontrahent, linia)) {
+        ui->comboBox_2->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+
+    plikKontrahent.close();
+
+}
+void Urzadzenia::on_comboBox_2_highlighted(const QString )
 {
     // odwiez model.
+
+    fstream checkFlags;
+    QString file17 = "17.CheckFlagsInModelUrzadzenia.txt";
+    CheckFiles1 *checkFiles = new CheckFiles1(this);
+
+    checkFlagsVariableModel = checkFiles->checkFlagsModel(checkFlagsVariableModel);
+
+    if (checkFlagsVariableModel != 0) {
+        cout << "textHighlighted" << endl;
+        QStringList listaModel = QStringList();
+
+        ui->comboBox_2->clear();
+        wczytajModel();
+        int ostatniindex = ui->comboBox_2->count() - 1;
+        for (int iZmienna = 0; iZmienna <= ostatniindex; iZmienna++) {
+            listaModel.push_back(ui->comboBox_2->itemText(iZmienna).toUtf8());
+        }
+        sort(listaModel.begin(), listaModel.end());
+        ui->comboBox_2->clear();
+        for (int kZmienna = 0; kZmienna <= listaModel.count() - 1; kZmienna++) {
+            ui->comboBox_2->addItem(listaModel.at(kZmienna));
+        }
+    }
+    checkFlags.open(file17.toStdString(), ios::out | ios::trunc);
+    checkFlags << "0" << endl;
+    checkFlags.close();
 }

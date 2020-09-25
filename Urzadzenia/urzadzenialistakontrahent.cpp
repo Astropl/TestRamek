@@ -239,10 +239,54 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
     QString tym5 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-3);
 
 
-    for (int i =1; i<= ui->comboBox_3->count()-1;i++)
-    {
-        ui->comboBox_3->removeItem(IntnrSetyjnyzCB2+1);
-    }
+//    for (int i =1; i<= ui->comboBox_3->count()-1;i++)
+//    {
+//        ui->comboBox_3->removeItem(IntnrSetyjnyzCB2+1);
+//    }
+ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
+ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
+ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
+ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
+ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
+
+
+//TODO: I teraz z combo1 i cb2 zapisuję w DB. z CB3 zapisuje w urzadzeniach i dodoaje cb1.
+for (int i = 0;i <=ui->comboBox->count()-1;i++)
+{
+    fileDB<<ui->comboBox->itemText(i)
+                  .toStdString()<<endl;
+
+
+}
+for (int i = 0;i <=ui->comboBox_2->count()-1;i++)
+{
+    fileDB<<ui->comboBox_2->itemText(i)
+                  .toStdString()<<endl;
+
+
+}
+fileDB.close();
+fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::out|ios::trunc);
+
+for (int i =0;i<=ui->comboBox_3->count()-1;i++) {
+    fileUrzadzenia<<ui->comboBox_3->itemText(i).toStdString()<<endl;
+}
+fileUrzadzenia.close();
+fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::app);
+
+for (int i =0;i<=ui->comboBox->count()-1;i++) {
+    fileUrzadzenia<<ui->comboBox->itemText(i).toStdString()<<endl;
+}
+fileUrzadzenia.close();
+
+    //TODO: Cos tu nie tak z usuwaniem itemow
+
+
+ui->comboBox->clear();
+ui->comboBox_2->clear();
+ui->comboBox_3->clear();
+
+
 
 //    int combBoxlsize3 = ui->comboBox_3->count();
 //    for (int i = 0; i <= combBoxlsize3; i++) {

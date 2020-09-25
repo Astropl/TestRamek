@@ -29,10 +29,14 @@ public slots:
     void initCheckFlagsInMiastoKontrahentShow();
     void initCheckFlagsInWojewodztwoKontrahentShow();
     void initCheckFlagsInKraj();
+    void initCheckFlagsProducent();
+    void initCheckFlagsInProducentUrzadzenia();
+    void initCheckFlagsInModelUrzadzenia();
     int checkFlagsMiasto(int checkFlagsVarriable);
     int checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo);
     int checkFlagsKraj(int checkFlagsVarriableKraj);
     int checkFlagsProducent(int checkFlagsVarriableProducent);
+
     int checkFlagsModel(int checkFlagsVarriableModel);
     void initUrzadzenie();
 };

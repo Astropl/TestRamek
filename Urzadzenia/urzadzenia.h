@@ -62,7 +62,7 @@ private slots:
 
     void on_comboBox_highlighted(const QString );
 
-    void on_comboBox_2_highlighted(const QString &arg1);
+    void on_comboBox_2_highlighted(const QString);
 
 private:
     Ui::Urzadzenia *ui;
