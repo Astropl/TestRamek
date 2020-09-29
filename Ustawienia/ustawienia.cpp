@@ -71,7 +71,7 @@ void Ustawienia::on_pushButton_clicked()
     string patchBasic = "C:/Defaults/Pliki/";
 
 
-    string tableOfstrings[15] = {"1.DB.txt",
+    string tableOfstrings[17] = {"1.DB.txt",
                                         "2.Kontrahent.txt",
                                         "3.Urzadzenie.txt",
                                         "4.ZapisKraj.txt",
@@ -85,7 +85,10 @@ void Ustawienia::on_pushButton_clicked()
                                         "12.CheckFlagsInWojewodztwa.txt",
                                         "13.CheckFlagsInKrajKontrahentShow.txt",
                                         "14.CheckFlagsInMiastoKontrahentShow.txt",
-                                        "15.CheckFlagsInWojewodztwoKontrahentShow.txt"};
+                                        "15.CheckFlagsInWojewodztwoKontrahentShow.txt",
+                                 "16.CheckFlagsInProducentUrzadzenia.txt",
+                                 "17.CheckFlagsInModelUrzadzenia.txt"
+                                 };
 
     QString aktHours = pobierzDate(aktHour);
     ui->lblData->setText(aktHours);
@@ -97,8 +100,8 @@ void Ustawienia::on_pushButton_clicked()
 
 
 
-    //for (int i = 0;i<=sizeof(fN)-1;i++)
-    int sizeOfTable =15;
+
+    int sizeOfTable =17; //Podać ręcznie
     for (int i = 0; i < sizeOfTable; i++) // int i = 0; i < sizeOfTable-1; i++
     {
         fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
