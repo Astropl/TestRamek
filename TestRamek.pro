@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     #Info/info.cpp \
+    Baza.cpp \
     Files/checkfiles1.cpp \
     Files/checksystem.cpp \
     Kontrahent/kontrahent.cpp \
@@ -44,7 +45,6 @@ SOURCES += \
     Info/info.cpp \
     main.cpp \
     mainwindow.cpp \
-    pierwsza.cpp \
     trzecia.cpp \
 #    urzadzenia.cpp \
 #    urzadzeniadodajmodel.cpp \
@@ -53,6 +53,7 @@ SOURCES += \
 
 HEADERS += \
     #Info/info.h \
+    Baza.h \
     Files/checkfiles1.h \
     Files/checksystem.h \
     Kontrahent/kontrahent.h \
@@ -79,7 +80,6 @@ HEADERS += \
 #    kontrahent.h \
     Info/info.h \
     mainwindow.h \
-    pierwsza.h \
     trzecia.h \
 #    urzadzenia.h \
 #    urzadzeniadodajmodel.h \
@@ -88,6 +88,7 @@ HEADERS += \
 
 FORMS += \
     #Info/info.ui \
+    Baza.ui \
     Files/checksystem.ui \
     Kontrahent/kontrahent.ui \
     Kontrahent/kontrahentdodajkraj.ui \
@@ -107,7 +108,6 @@ FORMS += \
 #    kontrahent.ui \
     Info/info.ui \
     mainwindow.ui \
-    pierwsza.ui \
     trzecia.ui \
 #    urzadzenia.ui \
 #    urzadzeniadodajmodel.ui \

@@ -100,14 +100,14 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>250</y>
+      <x>30</x>
+      <y>180</y>
       <width>281</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Producent: , Model: , Nr Seryjny:</string>
+     <string>Producent: </string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -165,8 +165,8 @@
    <widget class="Line" name="line_5">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>265</y>
+      <x>120</x>
+      <y>480</y>
       <width>341</width>
       <height>16</height>
      </rect>
@@ -178,8 +178,8 @@
    <widget class="Line" name="line_6">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>245</y>
+      <x>120</x>
+      <y>460</y>
       <width>341</width>
       <height>5</height>
      </rect>
@@ -191,8 +191,8 @@
    <widget class="Line" name="line_7">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>245</y>
+      <x>120</x>
+      <y>460</y>
       <width>5</width>
       <height>25</height>
      </rect>
@@ -204,8 +204,8 @@
    <widget class="Line" name="line_8">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>245</y>
+      <x>460</x>
+      <y>460</y>
       <width>3</width>
       <height>25</height>
      </rect>
@@ -494,6 +494,46 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>220</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Model:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>260</y>
+      <width>251</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nr seryjny:</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>170</y>
+      <width>271</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+   </widget>
+   <zorder>groupBox</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -523,6 +563,8 @@
    <zorder>label_5</zorder>
    <zorder>lineEditNumber</zorder>
    <zorder>lineEditNrSeryjny</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

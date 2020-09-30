@@ -111,6 +111,11 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     countriesListModel->insertRow(row);                    // wstawiam dodatkowy wiersz na końcu
     QModelIndex index = countriesListModel->index(row, 0); // pobieram obiekt wstawionego indeksu
     //countriesListModel->setData(index, QVariant("*"));
+
+    ui->pushButton->setEnabled(false);
+    ui->BtnUrzaZapisz->setEnabled(false);
+
+
 }
 
 
@@ -201,6 +206,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
 
     plikUrzadzenia<<""<<endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
     plikUrzadzenia.close();
+    ui->BtnUrzaZapisz->setEnabled(false);
 }
 
 void Urzadzenia::on_BtnUrzaZamknij_clicked()
@@ -219,23 +225,23 @@ void Urzadzenia::on_countriesList_clicked(const QModelIndex &index)
 
 void Urzadzenia::on_comboBox_textActivated(const QString )
 {
-    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
-                         + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->label_4->text());
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
 }
 
 void Urzadzenia::on_comboBox_2_textActivated(const QString )
 {
-    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
-                         + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: "  + ui->label_4->text());
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
 }
 
 void Urzadzenia::on_comboBox_3_textActivated(const QString )
 {
-    ui->label_4->setText("Producent: " + ui->comboBox->currentText()
-                         + ", Model: " + ui->comboBox_2->currentText()
-                         + ", NumerSeryjny: " + ui->label_4->text());
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
 }
 
 void Urzadzenia::on_actionDodaj_Model_triggered()
@@ -269,6 +275,11 @@ void Urzadzenia::on_pushButton_clicked()
     ui->comboBox_4->addItem(ui->comboBox->currentText());
     ui->comboBox_4->addItem(ui->comboBox_2->currentText());
     ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
+    ui->BtnUrzaZapisz->setEnabled(true);
+    ui->pushButton->setEnabled(false);
+    ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
 }
 void Urzadzenia::on_actionOpcje_triggered()
 {
@@ -377,4 +388,6 @@ void Urzadzenia::on_comboBox_2_highlighted(const QString )
     checkFlags.open(file17.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
+    ui->pushButton->setEnabled(true);
+
 }

@@ -6,7 +6,7 @@
 #include "ui_mainwindow.h"
 #include <Info/info.h>
 #include <druga.h>
-#include <pierwsza.h>
+#include <Baza.h>
 #include <trzecia.h>
 #include <QApplication>
 #include <QMainWindow>

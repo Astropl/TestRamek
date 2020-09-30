@@ -126,3 +126,8 @@ void Ustawienia::on_pushButton_clicked()
     cout << "Zapisano: " + aktHours2  << endl;
     QMessageBox::information(this, "Ostrzeżenie", "Kopia Bazy Danych zrobiona.");
 }
+
+void Ustawienia::on_pushButton_2_clicked()
+{
+    destroy();
+}

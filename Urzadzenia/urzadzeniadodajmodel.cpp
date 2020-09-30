@@ -59,7 +59,10 @@ UrzadzeniaDodajModel::~UrzadzeniaDodajModel()
 }
 
 void UrzadzeniaDodajModel::on_pushButton_clicked()
-{ //sprawdzam czy label dodawania modelu jest pusty - zrobione
+{
+    //// DOdaj model/
+
+    //sprawdzam czy label dodawania modelu jest pusty - zrobione
     // Sprawdzić czy elent jest juz na liscie.
     if (ui->lineEditDodajModel->text() != "") {
         cout << "Dodaje model analizatora" << endl;
@@ -74,10 +77,12 @@ void UrzadzeniaDodajModel::on_pushButton_clicked()
 }
 
 void UrzadzeniaDodajModel::on_pushButton_2_clicked()
-{QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+{////Zamknij i zapisz
+
+    QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
-    plikOdczyt.open(file8.toStdString(), ios::out | ios::app);
+    plikOdczyt.open(file8.toStdString(), ios::out | ios::trunc);
 
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;

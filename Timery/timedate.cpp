@@ -1,5 +1,5 @@
 #include "timedate.h"
-#include "pierwsza.h"
+#include "Baza.h"
 #include <cstring>
 #include <ctime>
 #include <iostream>

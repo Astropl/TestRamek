@@ -300,9 +300,9 @@ void UrzadzeniaLista::on_pushButton_5_clicked()
 
 void UrzadzeniaLista::on_pushButton_6_clicked()
 {
+ // Przypisz Kontrahenta
 
 
-    // Przypisz Kontrahenta
     //Wyswietl Tabele kontrahentów.
     // Zaznacz jakiegos
     //Dopisz do TABELI z urzadzeniami
