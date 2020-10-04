@@ -99,3 +99,7 @@ void CheckSystem::init()
     //timer->stop();
 }
 //Info do Gita
+void CheckSystem::on_pushButton_clicked()
+{
+    destroy();
+}

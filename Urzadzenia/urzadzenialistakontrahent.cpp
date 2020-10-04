@@ -135,7 +135,7 @@ void UrzadzeniaListaKontrahent::wczytajDane()
             model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
         }
         //ui->comboBoxWczytajMiasta->addItem(linia.c_str());
-        cout << linia.c_str() << endl;
+        //cout << linia.c_str() << endl;
         nr_lini++;
         if (nr_lini > 13) {
             row = row + 1;
@@ -219,7 +219,7 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
     int nr_lini = 0; // zmiana z int nr_lini = 1;
     while (getline(fileUrzadzenia, linia)) {
         ui->comboBox_3->addItem(linia.c_str());
-        cout << linia.c_str() << endl;
+        //cout << linia.c_str() << endl;
         nr_lini++;
         if (nr_lini > 4) {
             row = row + 1;
@@ -229,86 +229,59 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
     fileUrzadzenia.close();
 
     QString nrSeryjnyzCB1 = ui->comboBox->itemText(3);
-    //cout<< nrSeryjnyzCB1.toStdString()<<endl;
+
 
     int IntnrSetyjnyzCB2 = ui->comboBox_3->findText(nrSeryjnyzCB1);
     QString tym1 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2);
-    QString tym2 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2+1);
-    QString tym3 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-1);
-    QString tym4 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-2);
-    QString tym5 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2-3);
+    QString tym2 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2 + 1);
+    QString tym3 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2 - 1);
+    QString tym4 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2 - 2);
+    QString tym5 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2 - 3);
+
+    ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
+    ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
+    ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
+    ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
+    ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
+
+    //TODO: A moze robic tak ze zapisywac tylko numery przyporządkowane urzadzeniom i kontrahentom ?
+
+    //lblNrUrzaIKontr to numer porzadkowy urzadzenia i kontrahenta
+    QString pierwsza = ui->comboBox->itemText(0);
+    QString druga = ui->comboBox_2->itemText(0);
+    ui->lblNrUrza->setText( pierwsza);
+ ui->lblNrKontr->setText( druga);
 
 
-//    for (int i =1; i<= ui->comboBox_3->count()-1;i++)
-//    {
-//        ui->comboBox_3->removeItem(IntnrSetyjnyzCB2+1);
+
+    //I teraz z combo1 i cb2 zapisuję w DB. z CB3 zapisuje w urzadzeniach i dodoaje cb1.
+//    for (int i = 0; i <= ui->comboBox->count() - 1; i++) {
+//        fileDB << ui->comboBox->itemText(i).toStdString() << endl;
 //    }
-ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
-ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
-ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
-ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
-ui->comboBox_3->removeItem(IntnrSetyjnyzCB2-3);
-
-
-//TODO: I teraz z combo1 i cb2 zapisuję w DB. z CB3 zapisuje w urzadzeniach i dodoaje cb1.
-for (int i = 0;i <=ui->comboBox->count()-1;i++)
-{
-    fileDB<<ui->comboBox->itemText(i)
-                  .toStdString()<<endl;
-
-
-}
-for (int i = 0;i <=ui->comboBox_2->count()-1;i++)
-{
-    fileDB<<ui->comboBox_2->itemText(i)
-                  .toStdString()<<endl;
-
-
-}
-fileDB.close();
-fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::out|ios::trunc);
-
-for (int i =0;i<=ui->comboBox_3->count()-1;i++) {
-    fileUrzadzenia<<ui->comboBox_3->itemText(i).toStdString()<<endl;
-}
-fileUrzadzenia.close();
-fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::app);
-
-for (int i =0;i<=ui->comboBox->count()-1;i++) {
-    fileUrzadzenia<<ui->comboBox->itemText(i).toStdString()<<endl;
-}
-fileUrzadzenia.close();
-
-    //TODO: Cos tu nie tak z usuwaniem itemow
-
-
-ui->comboBox->clear();
-ui->comboBox_2->clear();
-ui->comboBox_3->clear();
-
-
-
-//    int combBoxlsize3 = ui->comboBox_3->count();
-//    for (int i = 0; i <= combBoxlsize3; i++) {
-//        ui->comboBox->addItem(ui->comboBox_3->itemText(i));
+//    for (int i = 0; i <= ui->comboBox_2->count() - 1; i++) {
+//        fileDB << ui->comboBox_2->itemText(i).toStdString() << endl;
 //    }
-//    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::trunc);
-//    int combBox1Size = ui->comboBox->count();
-//    int combBox1Size2 = ui->comboBox_2->count();
-//    string dane1, dane2;
-//    for (int i = 0; i <= combBox1Size - 1; i++) {
-//        dane1 = ui->comboBox->itemText(i).toStdString();
+    fileDB.close();
+ //--------------------
+ fileDB<<ui->lblNrUrza->text().toStdString();
+ fileDB<<ui->lblNrKontr->text().toStdString();
 
-//        fileDB << dane1 << endl;
-//        fileUrzadzenia << dane1 << endl;
-//    }
-//    for (int i = 0; i <= combBox1Size2 - 1; i++) {
-//        dane2 = ui->comboBox_2->itemText(i).toStdString();
 
-//        fileDB << dane2 << endl;
-//    }
-//    fileDB.close();
-//    fileUrzadzenia.close();
-//    ui->comboBox->clear();
-//    ui->comboBox_2->clear();
+ //--------------------------
+    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::out | ios::trunc);
+
+    for (int i = 0; i <= ui->comboBox_3->count() - 1; i++) {
+        fileUrzadzenia << ui->comboBox_3->itemText(i).toStdString() << endl;
+    }
+    fileUrzadzenia.close();
+    fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::app);
+
+    for (int i = 0; i <= ui->comboBox->count() - 1; i++) {
+        fileUrzadzenia << ui->comboBox->itemText(i).toStdString() << endl;
+    }
+    fileUrzadzenia.close();
+
+    ui->comboBox->clear();
+    ui->comboBox_2->clear();
+    ui->comboBox_3->clear();
 }

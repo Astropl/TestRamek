@@ -241,6 +241,32 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="lblNrUrza">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>360</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nr urzadzenia </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNrKontr">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>360</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nr kont</string>
+    </property>
+   </widget>
    <zorder>tableView</zorder>
    <zorder>labelTest</zorder>
    <zorder>scrollArea_8</zorder>
@@ -251,6 +277,8 @@
    <zorder>comboBox_2</zorder>
    <zorder>pushButton_3</zorder>
    <zorder>comboBox_3</zorder>
+   <zorder>lblNrUrza</zorder>
+   <zorder>lblNrKontr</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

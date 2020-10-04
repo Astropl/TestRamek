@@ -307,12 +307,29 @@ void UrzadzeniaLista::on_pushButton_6_clicked()
     // Zaznacz jakiegos
     //Dopisz do TABELI z urzadzeniami
     //Zapisz w pliku BDMain
+//TODO: Sprawdzić czy przypisany
+ QModelIndex index = ui->tableView->selectionModel()->currentIndex();
+ QVariant vartosc = index.sibling(index.row(), index.column()).data();
+ QString QVartsoc = QVariant(vartosc).toString();
+ ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
+ if (QVariant(vartosc).toString() =="Przypisany")
+ {
+     cout<<"Przypisany"<<endl;
+     QMessageBox::information(this, "Ostrzeżenie", "Ten analizator jest juz przypisany do konkretnego kontrahenta. Nie możesz go przypisać do innego.");
 
+ }
+ else
+ {cout<<"nie przypisany"<<endl;
+
+
+
+
+
+ //
 
     UrzadzeniaListaKontrahent * urzkl = new UrzadzeniaListaKontrahent (this);
      int iloscColumn = model->columnCount();
 
-      QModelIndex index = ui->tableView->selectionModel()->currentIndex();
       int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
     QVariant tab[iloscColumn];
     QVariant wyslij;
@@ -327,8 +344,8 @@ void UrzadzeniaLista::on_pushButton_6_clicked()
 
 
     urzkl ->show();
-    QString sprawdzam ;
-
+   // QString sprawdzam ;
+ }
 
 
 
