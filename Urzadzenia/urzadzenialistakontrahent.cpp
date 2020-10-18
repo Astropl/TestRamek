@@ -261,10 +261,13 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
 //    for (int i = 0; i <= ui->comboBox_2->count() - 1; i++) {
 //        fileDB << ui->comboBox_2->itemText(i).toStdString() << endl;
 //    }
+
+ fileDB << ui->lblNrUrza->text().toStdString()<<endl;
+ fileDB << ui->lblNrKontr->text().toStdString()<<endl;
     fileDB.close();
  //--------------------
- fileDB<<ui->lblNrUrza->text().toStdString();
- fileDB<<ui->lblNrKontr->text().toStdString();
+// fileDB<<ui->lblNrUrza->text().toStdString();
+// fileDB<<ui->lblNrKontr->text().toStdString();
 
 
  //--------------------------

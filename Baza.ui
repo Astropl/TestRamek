@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Pierwsza</class>
- <widget class="QMainWindow" name="Pierwsza">
+ <class>Baza</class>
+ <widget class="QMainWindow" name="Baza">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Baza</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="labelTest">
@@ -207,12 +207,65 @@
      <string>Informacje o Kontrahencie</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblUrzadzenie">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>520</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>12345</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblKontrahent">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>540</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>4657658</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>510</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>570</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
    <zorder>scrollArea</zorder>
    <zorder>labelTest</zorder>
    <zorder>pushButton</zorder>
    <zorder>labelDaty</zorder>
    <zorder>tableViewDB</zorder>
    <zorder>pushButton_2</zorder>
+   <zorder>lblUrzadzenie</zorder>
+   <zorder>lblKontrahent</zorder>
+   <zorder>comboBox</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -49,13 +49,13 @@ void MainWindow::CheckIsFileExist()
 
 void MainWindow::on_pushButton_clicked()
 {
-    Pierwsza *pierwsza = new Pierwsza(this);
-pierwsza->show();
+    Baza *baza = new Baza(this);
+baza->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    Pierwsza *druga = new Pierwsza(this);
+    Baza *druga = new Baza(this);
     druga->show();
 }
 

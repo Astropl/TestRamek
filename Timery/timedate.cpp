@@ -19,75 +19,75 @@ void TimeDate::init()
 
 //Wyodrebnię QStringi z minutami i godzinami i resztą
 
-QString TimeDate::changeStringsMin(int minuta3)
+QString TimeDate::changeStringsMin(int minuta4)
 {
 
 
-    QString qStrMin3 = QString::number(minuta3);
-    if (minuta3 < 10) {
-        qStrMin3 = "0" + QString::number(minuta3);
+    QString qStrMin4 = QString::number(minuta4);
+    if (minuta4 < 10) {
+        qStrMin4 = "0" + QString::number(minuta4);
     }
-    return qStrMin3;
+    return qStrMin4;
 }
-QString TimeDate::changeStringsSek(int sekunda3)
+QString TimeDate::changeStringsSek(int sekunda4)
 {
-    QString qStrSek3 = QString::number(sekunda3);
-    if (sekunda3 < 10) {
-        qStrSek3 = "0" + QString::number(sekunda3);
+    QString qStrSek4 = QString::number(sekunda4);
+    if (sekunda4 < 10) {
+        qStrSek4 = "0" + QString::number(sekunda4);
     }
-    return qStrSek3;
+    return qStrSek4;
 }
-QString TimeDate::changeStringsGodz(int godzina3)
+QString TimeDate::changeStringsGodz(int godzina4)
 {
-    QString qStrGodz3 = QString::number(godzina3);
-    if (godzina3 < 10) {
-        qStrGodz3 = "0" + QString::number(godzina3);
+    QString qStrGodz4 = QString::number(godzina4);
+    if (godzina4 < 10) {
+        qStrGodz4 = "0" + QString::number(godzina4);
     }
-    return qStrGodz3;
+    return qStrGodz4;
 }
-QString TimeDate::changeStringsDzien(int dzien3)
+QString TimeDate::changeStringsDzien(int dzien4)
 {
-    QString qStrDzien3 = QString::number(dzien3);
-    if (dzien3 < 10) {
-        qStrDzien3 = "0" + QString::number(dzien3);
+    QString qStrDzien4 = QString::number(dzien4);
+    if (dzien4 < 10) {
+        qStrDzien4 = "0" + QString::number(dzien4);
     }
-    return qStrDzien3;
+    return qStrDzien4;
 }
-QString TimeDate::changeStringsMiesiac(int miesiac3)
+QString TimeDate::changeStringsMiesiac(int miesiac4)
 {
-    QString qStrMiesiac3 = QString::number(miesiac3);
+    QString qStrMiesiac4 = QString::number(miesiac4);
 
-    if (miesiac3 < 10) {
-        qStrMiesiac3 = "0" + QString::number(miesiac3);
+    if (miesiac4 < 10) {
+        qStrMiesiac4 = "0" + QString::number(miesiac4);
     }
-    return qStrMiesiac3;
+    return qStrMiesiac4;
 }
-QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia3)
-{QString stringDzienTygodnia3;
-    switch (dzienTygodnia3) {
+QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia4)
+{QString stringDzienTygodnia4;
+    switch (dzienTygodnia4) {
     case 1:
-         stringDzienTygodnia3 = "Niedziela";
+         stringDzienTygodnia4 = "Niedziela";
         break;
     case 2:
-        stringDzienTygodnia3 = "Poniedziałek";
+        stringDzienTygodnia4 = "Poniedziałek";
         break;
     case 3:
-        stringDzienTygodnia3 = "Wtorek";
+        stringDzienTygodnia4 = "Wtorek";
         break;
     case 4:
-        stringDzienTygodnia3 = "Środa";
+        stringDzienTygodnia4 = "Środa";
         break;
     case 5:
-        stringDzienTygodnia3 = "Czwartek";
+        stringDzienTygodnia4 = "Czwartek";
         break;
     case 6:
-        stringDzienTygodnia3 = "Piątek";
+        stringDzienTygodnia4 = "Piątek";
         break;
     case 7:
-        stringDzienTygodnia3 = "Sobota";
+        stringDzienTygodnia4 = "Sobota";
         break;
     }
-    return stringDzienTygodnia3;
+    return stringDzienTygodnia4;
 }
 
 //Info do Gita
