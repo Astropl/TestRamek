@@ -80,7 +80,7 @@ void CheckFiles1::initZapisKraj()
         cout << "Brak pliku" << endl;
         file.open(file4.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -94,7 +94,7 @@ void CheckFiles1::initZapisMiasta()
         cout << "Brak pliku" << endl;
         file.open(file5.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -105,7 +105,7 @@ void CheckFiles1::initZapisWojewodztwa()
         cout << "Brak pliku" << endl;
         file.open(file6.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -116,7 +116,7 @@ void CheckFiles1::initZapisProducenta()
         cout << "Brak pliku" << endl;
         file.open(file7.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -127,7 +127,7 @@ void CheckFiles1::initZapisModel()
         cout << "Brak pliku" << endl;
         file.open(file8.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -138,7 +138,7 @@ void CheckFiles1::initZapisNrSeryjny()
         cout << "Brak pliku" << endl;
         file.open(file9.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file.close();
 }
@@ -149,7 +149,7 @@ void CheckFiles1::initCheckFlagsInMiasto()
         cout << "Brak pliku" << endl;
         file.open(file10.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -166,7 +166,7 @@ void CheckFiles1::initCheckFlagsInKraj()
         cout << "Brak pliku" << endl;
         file.open(file11.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -178,7 +178,7 @@ void CheckFiles1::initCheckFlagsInModelUrzadzenia()
         cout << "Brak pliku" << endl;
         file.open(file17.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -190,7 +190,7 @@ void CheckFiles1::initCheckFlagsInProducentUrzadzenia()
         cout << "Brak pliku" << endl;
         file.open(file16.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -204,7 +204,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwa()
         cout << "Brak pliku" << endl;
         file.open(file12.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -217,7 +217,7 @@ void CheckFiles1::initCheckFlagsInKrajKontrahentShow()
         cout << "Brak pliku" << endl;
         file.open(file13.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -230,7 +230,7 @@ void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
         cout << "Brak pliku" << endl;
         file.open(file14.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -239,7 +239,7 @@ void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
 
 int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
 {
-    cout << " W CheckFiles1: CheckFlagsProducent" << endl;
+    //cout << " W CheckFiles1: CheckFlagsProducent" << endl;
 
     file.open(file16.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
@@ -248,12 +248,12 @@ int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
     int nr_lini = 1;
     while (getline(file, linia)) {
 
-        cout << linia << endl;
+        //cout << linia << endl;
         if (linia == "0") {
-            cout << "Linia równa się 0" << endl;
+            //cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-            cout << "Linia równa się 1" << endl;
+            //cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;
@@ -264,7 +264,7 @@ int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
 
 int CheckFiles1::checkFlagsModel(int checkFlagsVarriableModel)
 {
-    cout << " W CheckFiles1: CheckFlagsProducent" << endl;
+    //cout << " W CheckFiles1: CheckFlagsProducent" << endl;
 
     file.open(file16.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
@@ -273,12 +273,12 @@ int CheckFiles1::checkFlagsModel(int checkFlagsVarriableModel)
     int nr_lini = 1;
     while (getline(file, linia)) {
 
-        cout << linia << endl;
+        //cout << linia << endl;
         if (linia == "0") {
-            cout << "Linia równa się 0" << endl;
+            //cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-            cout << "Linia równa się 1" << endl;
+            //cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;
@@ -294,7 +294,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
         cout << "Brak pliku" << endl;
         file.open(file15.toStdString(), ios::app);
     } else {
-        cout << "Plik jest" << endl;
+        //cout << "Plik jest" << endl;
     }
     file << "0" << endl;
     file.close();
@@ -307,7 +307,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
          cout << "Brak pliku" << endl;
          file.open(file16.toStdString(), ios::app);
      } else {
-         cout << "Plik jest" << endl;
+        // cout << "Plik jest" << endl;
      }
      file << "0" << endl;
      file.close();
@@ -317,7 +317,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
 
 int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
 {
-    cout<<" W checkfiles1:: checkFlags Wojewdoztwa"<<endl;
+    //cout<<" W checkfiles1:: checkFlags Wojewdoztwa"<<endl;
     file.open(file12.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
     string linia;       // Wczytuje  tutuaj flage do Wczytywania miast
@@ -325,12 +325,12 @@ int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
     int nr_lini = 1;
     while (getline(file, linia)) {
 
-        cout << linia << endl;
+        //cout << linia << endl;
         if (linia == "0") {
-            cout << "Linia równa się 0" << endl;
+            //cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-            cout << "Linia równa się 1" << endl;
+            //cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;
@@ -342,7 +342,7 @@ int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
 }
 int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 {
-    cout << " W CheckFiles1: CheckFlags" << endl;
+    //cout << " W CheckFiles1: CheckFlags" << endl;
 
     file.open(file10.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
@@ -351,12 +351,12 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
     int nr_lini = 1;
     while (getline(file, linia)) {
 
-        cout << linia << endl;
+        //cout << linia << endl;
         if (linia == "0") {
-            cout << "Linia równa się 0" << endl;
+            //cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-            cout << "Linia równa się 1" << endl;
+            //cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;
@@ -369,7 +369,7 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 
 int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
 {
-    cout << " W CheckFiles1: CheckFlags" << endl;
+    //cout << " W CheckFiles1: CheckFlags" << endl;
 
     file.open(file11.toStdString(),
               ios::in); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
@@ -378,12 +378,12 @@ int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
     int nr_lini = 1;
     while (getline(file, linia)) {
 
-        cout << linia << endl;
+        //cout << linia << endl;
         if (linia == "0") {
-            cout << "Linia równa się 0" << endl;
+           // cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-            cout << "Linia równa się 1" << endl;
+           // cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;

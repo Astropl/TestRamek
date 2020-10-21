@@ -69,7 +69,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     int nr_lini = 1;
     while (getline(plikUrzadzenia, linia)) {
         ui->comboBox_2->addItem(linia.c_str());
-        cout << linia.c_str() << endl;
+        //cout << linia.c_str() << endl;
         nr_lini++;
     }
 
@@ -84,7 +84,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     int nr_lini1 = 1;
     while (getline(plikUrzadzenia, linia1)) {
         ui->comboBox->addItem(linia1.c_str());
-        cout << linia1.c_str() << endl;
+        //cout << linia1.c_str() << endl;
         nr_lini1++;
     }
     plikUrzadzenia.close();
@@ -98,7 +98,7 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     int nr_lini2 = 1;
     while (getline(plikUrzadzenia, linia2)) {
         ui->comboBox_3->addItem(linia2.c_str());
-        cout << linia2.c_str() << endl;
+        //cout << linia2.c_str() << endl;
         nr_lini2++;
     }
     plikUrzadzenia.close();
@@ -145,6 +145,10 @@ QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     plikUrzadzenia.close();
     iloscUrzadzen ++;
      cout<<"ilosc Urzadzen z nastepnym: "<< iloscUrzadzen<<endl;
+
+     //TODO: Tutuaj trzeba zamienić string [IdUrzadzenia:6] na cyfre.
+
+
      ui->lineEditNumber->setText(QString::number(iloscUrzadzen));
 
 
@@ -271,7 +275,11 @@ void Urzadzenia::on_actionInformacja_triggered()
 void Urzadzenia::on_pushButton_clicked()
 {
     // Dodaj do comboBoxa
-    ui->comboBox_4->addItem(ui->lineEditNumber->text());
+
+    QString dodajNapis = ui->lineEditNumber->text();
+    QString dodajNapis1 = "[IdUrzadzenia:"+ dodajNapis+"]";
+    ui->comboBox_4->addItem(dodajNapis1);
+    //ui->comboBox_4->addItem(ui->lineEditNumber->text());
     ui->comboBox_4->addItem(ui->comboBox->currentText());
     ui->comboBox_4->addItem(ui->comboBox_2->currentText());
     ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());

@@ -52,7 +52,7 @@ void CheckSystem::updateProgress()
     ui->progressBar->setValue(ui->progressBar->value() + 1);
     valueOfProgress = ui->progressBar->value();
     if (valueOfProgress == 10) {
-        cout << txt1.toStdString() << endl;
+        //cout << txt1.toStdString() << endl;
         ui->textEdit->setText(txt1);
         txt->append(txt1);
 
@@ -61,7 +61,7 @@ void CheckSystem::updateProgress()
 
         ui->textEdit->append(txt2);
         txt->append(txt2);
-        cout << txt2.toStdString() << endl;
+       // cout << txt2.toStdString() << endl;
     } else if (valueOfProgress == 40) {
 
         ui->textEdit->append(txt3);
@@ -78,7 +78,7 @@ void CheckSystem::updateProgress()
 
         ui->textEdit->append(txt6);
         txt->append(txt6);
-        cout << txt6.toStdString() << endl;
+        //cout << txt6.toStdString() << endl;
         timer->stop();
         (this->close());
 
@@ -89,7 +89,7 @@ void CheckSystem::updateProgress()
 }
 void CheckSystem::init()
 { /*QTextEdit *txt = new QTextEdit();*/
-    cout << "Jestem w checksytme i w progress barze" << endl;
+    //cout << "Jestem w checksytme i w progress barze" << endl;
 
     ui->progressBar->setValue(0);
     //QTimer *timer = new QTimer(this);

@@ -236,8 +236,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>510</y>
+      <x>170</x>
+      <y>520</y>
       <width>161</width>
       <height>22</height>
      </rect>
@@ -256,6 +256,36 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>520</y>
+      <width>191</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>600</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_4">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>600</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>scrollArea</zorder>
    <zorder>labelTest</zorder>
    <zorder>pushButton</zorder>
@@ -266,6 +296,9 @@
    <zorder>lblKontrahent</zorder>
    <zorder>comboBox</zorder>
    <zorder>label</zorder>
+   <zorder>comboBox_2</zorder>
+   <zorder>comboBox_3</zorder>
+   <zorder>comboBox_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

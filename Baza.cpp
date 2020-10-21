@@ -96,129 +96,209 @@ void Baza::wczytajDane()
     //ui->labelTest->text(QString::number(iloscWierszy));
 
     QStandardItem *dodajItem = new QStandardItem("Jakies cos");
+    QStandardItem *dodajItem1 = new QStandardItem("Jakies cos");
     //    model->setItem(iloscWierszy,1,dodajItem);
     //    model->setItem(iloscWierszy, 1, dodajItem); // Dodoaje item i od razu wiersz.
 
     //Wczytuje kontrahentow z pliku
+
+    QString tempUrzadz;
+    QString tempUrzadz1;
+    string linia3;
+    string linia2;
+    string linia1;
+    int row3 = 0;
+    int nr_lini3 = 0;
+    int row2 = 0;
+    int nr_lini2 = 0;
+    //int row1 = 0;
+    int nr_lini1 = 0;
+    { // wczytaj urzadzenia
+        fileDataBase3.open(file3.toStdString(), ios::in);
+        if (fileDataBase3.good() == false) {
+            cout << "Plik nie istnieje !!!!!";
+            //exit(0);
+        }
+
+        // zmiana z int nr_lini = 1;
+        cout << "cos sprawdzam1 " << endl;
+        while (getline(fileDataBase3, linia3)) {
+            //cout << "cos sprawdzam z id Urzadzenia " << endl;
+            //ui->comboBox->addItem(linia3.c_str());
+            //ui->lblUrzadzenie->setText(linia3.c_str());
+
+            tempUrzadz = ui->lblUrzadzenie->text();
+            ui->comboBox->addItem(linia3.c_str());
+            //            int ostatni = ui->comboBox->count();
+            //            tempUrzadz1 = ui->comboBox->itemText(ostatni).toStdString();
+        }
+    }
+    fileDataBase3.close();
+
+    // wczytaj kontrahentow
+    fileDataBase2.open(file2.toStdString(), ios::in);
+    if (fileDataBase2.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
+        //exit(0);
+    }
+    // zmiana z int nr_lini = 1;
+    //cout << "cos sprawdzam2 " << endl;
+    while (getline(fileDataBase2, linia2)) {
+        //cout << "cos sprawdzam2 " << endl;
+        //ui->comboBox->addItem(linia3.c_str());
+        //ui->lblKontrahent->setText(linia2.c_str());
+        //string tempKontr = ui->lblKontrahent->text().toStdString();
+        ui->comboBox_2->addItem(linia2.c_str()); //ui->comboBox_2->addItem(linia2.c_str());
+        int ostatni = ui->comboBox_2->count();
+        //string tempKontr1 = ui->comboBox_2->itemText(ostatni).toStdString();
+    }
+
+    fileDataBase2.close();
 
     fileDataBase1.open(file1.toStdString(), ios::in);
     if (fileDataBase1.good() == false) {
         cout << "Plik nie istnieje !!!!!";
         //exit(0);
     }
-    fileDataBase2.open(file2.toStdString(), ios::in);
-    if (fileDataBase2.good() == false) {
-        cout << "Plik nie istnieje !!!!!";
-        //exit(0);
-    }
 
-    string linia1;
-    //int row1 = 0;
-    int nr_lini1 = 0;
     while (getline(fileDataBase1, linia1)) {
         dodajItem = new QStandardItem(linia1.c_str());
         //if (nr_lini > 0)
         if (nr_lini1 == 0) {
             ui->lblUrzadzenie->setText(dodajItem->text());
-            string tempUrzadz1 = ui->lblUrzadzenie->text().toStdString();
-            // wczytaj urzadzenia
-            fileDataBase3.open(file3.toStdString(), ios::in);
-            if (fileDataBase3.good() == false) {
-                cout << "Plik nie istnieje !!!!!";
-                //exit(0);
-            }
-            string linia3;
-            int row3 = 0;
-            int nr_lini3 = 0; // zmiana z int nr_lini = 1;
-            cout << "cos sprawdzam1 " << endl;
-            while (getline(fileDataBase3, linia3)) {
-                cout << "cos sprawdzam3 " << endl;
-                //ui->comboBox->addItem(linia3.c_str());
-                ui->label->setText(linia3.c_str());
-                string tempUrzadz = ui->label->text().toStdString();
-                // sprawdzić czy z combo zgadza sie z linią urzadzenia/
-                if (tempUrzadz == tempUrzadz1) {
-                    cout << "takie same" << endl;
-                    dodajItem = new QStandardItem(tempUrzadz.c_str());
-                    model->setItem(row3, nr_lini3, dodajItem);
-
-
-                    if (nr_lini3 > 18) {
-                        row3 = row3 + 1;
-                        nr_lini3 = 0;
-                    }
-                }
-
-                nr_lini3++;
-                if (nr_lini3 > 1) {
-                    //row = row + 1;
-                    nr_lini3 = 0;
-                }
-            }
-            fileDataBase3.close();
-            linia3 = "";
-            nr_lini3 = 0;
-            row3 = 0;
-            // koniec wczytywania urzadzenia
+            ui->comboBox_3->addItem(linia1.c_str());
 
             nr_lini1++;
         } else if (nr_lini1 == 1) {
-            //model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
             ui->lblKontrahent->setText(dodajItem->text());
+            ui->comboBox_4->addItem(linia1.c_str());
+            string tempKontr1 = ui->lblKontrahent->text().toStdString();
             nr_lini1++;
         }
+        if (nr_lini1 >= 2) {
+            nr_lini1 = 0;
+        }
     }
-    nr_lini1 = 0;
-    linia1 = "";
+    fileDataBase1.close();
 
-    //row1=0;
+    // porownuje i sprawdzam czy sa takie same w combo boxach
 
-    //        //QStandardItem *dodajNumer = new QStandardItem("");
-    //        fileDataBase.open(file1.toStdString(), ios::in);
-    //        if (fileDataBase.good() == false) {
-    //            cout << "Plik nie istnieje !!!!!";
-    //            //exit(0);
-    //        }
-    //        string linia;
-    //        int row = 0;
-    //        int nr_lini = 0; // zmiana z int nr_lini = 1;
+    int iloscWcomboBox4 = ui->comboBox_4->count(); //krótki z DB kontrahenci
+    int iloscWComboBox2 = ui->comboBox_2->count(); //dlugi kontrahneci
+    for (int i = 0; i <= iloscWcomboBox4 - 1; i++) {
+        QString itZComboBoxa4 = ui->comboBox_4->itemText(i);
+        //tempUrzadz1 = ui->lblUrzadzenie->text();
 
-    //        //3 linia to LP - nie wyswietlamy
-    //        while (getline(fileDataBase, linia)) {
-    //            dodajItem = new QStandardItem(linia.c_str());
-    //            //if (nr_lini > 0)
-    ////            if (nr_lini ==3)
-    ////            {
-    ////                nr_lini++;
-    ////            }else
-    //            {
-    //                model->setItem(row, nr_lini, dodajItem); //row, nr_lini - 2, dodajItem
-    //            }
-    //            //ui->comboBoxWczytajMiasta->addItem(linia.c_str());
-    //            cout << linia.c_str() << endl;
-    //            nr_lini++;
-    //            if (nr_lini > 18) {
-    //                row = row + 1;
-    //                nr_lini = 0;
-    //            }
-    //        }
+        for (int z = 0; z <= iloscWComboBox2 - 1; z++) {
+            QString itZComboBoxa2 = ui->comboBox_2->itemText(z);
 
-    //        fileDataBase.close();
+            if (itZComboBoxa2 == itZComboBoxa4) {
+                cout << "Znalazłem" << endl;
+                cout << itZComboBoxa2.toStdString() << endl;
+                for (int k = 0; k < 14; k++) {
+                    int naKtorejPozycji = ui->comboBox_2->findText(itZComboBoxa2);
+                    cout << " Pozycja nr" << naKtorejPozycji << endl;
+                    QString tym1 = ui->comboBox_2->itemText(naKtorejPozycji + k);
+                    //                    QString tym2 = ui->comboBox_2->itemText(naKtorejPozycji+1);
+                    //                    QString tym3 = ui->comboBox_2->itemText(naKtorejPozycji+2);
+                    //                    QString tym4 = ui->comboBox_2->itemText(naKtorejPozycji+3);
+                    //                    QString tym5 = ui->comboBox_2->itemText(naKtorejPozycji+4);
+                    //                    QString tym6 = ui->comboBox_2->itemText(naKtorejPozycji+5);
+                    //                    QString tym7 = ui->comboBox_2->itemText(naKtorejPozycji+6);
+                    //                    QString tym8 = ui->comboBox_2->itemText(naKtorejPozycji+7);
+                    //                    QString tym9 = ui->comboBox_2->itemText(naKtorejPozycji+8);
+                    //                    QString tym10 = ui->comboBox_2->itemText(naKtorejPozycji+9);
+                    //                   QString tym11 = ui->comboBox_2->itemText(naKtorejPozycji+10);
+                    //                    QString tym12 = ui->comboBox_2->itemText(naKtorejPozycji+11);
+                    //                    QString tym13 = ui->comboBox_2->itemText(naKtorejPozycji+12);
+                    //                    QString tym14 = ui->comboBox_2->itemText(naKtorejPozycji+13);
+                    //                    QString tym15 = ui->comboBox_2->itemText(naKtorejPozycji+14);
+                    dodajItem = new QStandardItem(tym1);
+                    model->setItem(row3, nr_lini3 + k + 5, dodajItem);
+                }
+                row3++;
+            }
+        }
+        //        if (tempUrzadz1 == itZComboBoxa3) {
+        //            cout << "Znalazłem" << endl;
+        //            cout << tempUrzadz1.toStdString() << endl;
 
-    // pobierz ilosc rzedów
-    int rowDoSize = model->rowCount();
-    for (int i = 0; i <= rowDoSize; i++) {
-        ui->tableViewDB->setRowHeight(i, 20);
+        //            //TODO: dodoac po koleji wszytskie item z comboboxa do listy
+        //            int naKtorejPozycji = ui->comboBox_2->findText(tempUrzadz1);
+        //            dodajItem = new QStandardItem(itZComboBoxa2);
+
+        //            for (int x = naKtorejPozycji; x <= naKtorejPozycji + 10; x++) {
+        //                model->setItem(row3, nr_lini3, dodajItem);
+
+        //                cout << "Wyswietlam po koleji od znalezionej pozycji" << naKtorejPozycji << endl;
+        //            }
+        //            row3++;
     }
-    ui->tableViewDB->horizontalHeader()->setSectionResizeMode(
-        QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
-    ui->tableViewDB->sortByColumn(0,
-                                  Qt::SortOrder(
-                                      0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
+    row3 = 0;
+    //Tutaj dodoaj urzadzenia do Listy
+    // a moze tutaj uda sie dodoac urzadzenia do listy
 
-    iloscWierszy();
+    int iloscWcomboBox3 = ui->comboBox_3->count(); //CB4krótki z DB kontrahenci
+    int iloscWComboBox = ui->comboBox->count();    //CB2dlugi kontrahneci
+    for (int i = 0; i <= iloscWcomboBox3 - 1; i++) {
+        QString itZComboBoxa3 = ui->comboBox_3->itemText(i);
+        //tempUrzadz1 = ui->lblUrzadzenie->text();
 
-    //TODO: Sprawdzic zaznaczenie całego wiersza
+        for (int z = 0; z <= iloscWComboBox - 1; z++) {
+            QString itZComboBoxa = ui->comboBox->itemText(z);
+
+            if (itZComboBoxa == itZComboBoxa3) {
+                cout << "Znalazłem" << endl;
+                cout << itZComboBoxa.toStdString() << endl;
+                for (int k = 0; k < 5; k++) {
+                    int naKtorejPozycji = ui->comboBox->findText(itZComboBoxa);
+                    cout << " Pozycja nr" << naKtorejPozycji << endl;
+                    QString tym2 = ui->comboBox->itemText(naKtorejPozycji + k);
+
+                    dodajItem = new QStandardItem(tym2);
+                    model->setItem(row3, nr_lini3 + k, dodajItem);
+                }
+                row3++;
+            }
+        }
+    }
+
+    //-----------------------------
+    //    row3=0;
+    //    for(int f=0;f<5;f++){
+    //    QString itZComboBoxa = ui->comboBox->itemText(f);
+    //    int naKtorejPozycji1 = ui->comboBox->findText(itZComboBoxa);
+    //    cout << " Pozycja nr" << naKtorejPozycji1 << endl;
+    //    QString tym2 = ui->comboBox->itemText(naKtorejPozycji1 +f);
+
+    //    dodajItem1 = new QStandardItem(tym2);
+    //    model->setItem(row3, nr_lini3+f, dodajItem1);
+    //-----------------------------------------
+
+//fileDataBase3.close();
+// pobierz ilosc rzedów
+int rowDoSize = model->rowCount();
+for (int i = 0; i <= rowDoSize; i++) {
+    ui->tableViewDB->setRowHeight(i, 20);
+}
+ui->tableViewDB->horizontalHeader()->setSectionResizeMode(
+    QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
+ui->tableViewDB->sortByColumn(0,
+                              Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
+
+iloscWierszy();
+row3 = 0;
+nr_lini3 = 0;
+row2 = 0;
+nr_lini2 = 0;
+//int row1 = 0;
+nr_lini1 = 0;
+tempUrzadz = "";
+tempUrzadz1 = "";
+linia3 = "";
+linia2 = "";
+linia1 = "";
+//TODO: Sprawdzic zaznaczenie całego wiersza
 }
 
 void Baza::iloscWierszy()
@@ -271,7 +351,7 @@ Baza::~Baza()
 }
 
 void Baza::on_pushButton_clicked()
-{
+{ //Zamknij
     timer->stop();
 
     destroy();

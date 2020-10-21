@@ -17,12 +17,6 @@
 
 
 
-
-
-
-
-
-
 using namespace std;
 fstream fileUrzadzeniaLista, fileUrzadzeniaLista2;
 
