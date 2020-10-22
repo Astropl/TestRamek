@@ -1,9 +1,9 @@
 #ifndef CHECKFILES1_H
 #define CHECKFILES1_H
 
-#include <QMainWindow>
-#include <string>
 #include <cstring>
+#include <string>
+#include <QMainWindow>
 
 class CheckFiles1 : public QMainWindow
 {
@@ -42,4 +42,4 @@ public slots:
 };
 
 #endif // CHECKFILES1_H
-//Info do Gita
+       //Info do Gita

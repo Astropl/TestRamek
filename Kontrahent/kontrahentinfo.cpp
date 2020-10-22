@@ -1,9 +1,9 @@
 #include "kontrahentinfo.h"
 #include "ui_kontrahentinfo.h"
 
-KontrahentInfo::KontrahentInfo(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::KontrahentInfo)
+KontrahentInfo::KontrahentInfo(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::KontrahentInfo)
 {
     ui->setupUi(this);
 }
@@ -16,5 +16,4 @@ KontrahentInfo::~KontrahentInfo()
 void KontrahentInfo::on_pushButton_clicked()
 {
     destroy();
-
 }

@@ -1,9 +1,9 @@
 #include "info.h"
 #include "ui_info.h"
 
-Info::Info(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Info)
+Info::Info(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Info)
 {
     ui->setupUi(this);
 }

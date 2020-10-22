@@ -9,7 +9,6 @@
 #include <QStandardItemModel>
 #include <QTableView>
 
-
 namespace Ui {
 class Baza;
 }
@@ -24,15 +23,12 @@ public:
 
 public slots:
     void on_pushButton_clicked();
-//    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
     void myfunctiontimer();
     void DataiCzas();
     void wczytajDane();
     void iloscWierszy();
 
 signals:
-
-    //void intZegary();
 
 public:
     Ui::Baza *ui;
@@ -47,4 +43,4 @@ private:
 };
 
 #endif // PIERWSZA_H
-//Info do Gita
+       //Info do Gita

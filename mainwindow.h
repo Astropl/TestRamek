@@ -4,7 +4,9 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -17,30 +19,20 @@ public:
 
 private slots:
     void CheckIsFileExist();
-
     void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
-
     void on_pushButton_3_clicked();
-
     void on_pushButton_4_clicked();
-
     void on_pushButton_5_clicked();
-
     void on_pushButton_6_clicked();
-
     void on_pushButton_7_clicked();
-
     void on_actionO_programie_triggered();
     void on_actionOpcje_triggered();
-
     void on_pushButton_8_clicked();
-
     void on_actionOpcja_triggered();
 
 private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
-//Info do Gita
+       //Info do Gita

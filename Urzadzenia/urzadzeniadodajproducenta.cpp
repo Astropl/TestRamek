@@ -52,7 +52,8 @@ UrzadzeniaDodajProducenta::~UrzadzeniaDodajProducenta()
 }
 
 void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
-{QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+{
+    QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
@@ -60,7 +61,7 @@ void UrzadzeniaDodajProducenta::on_pushButton_2_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajProdcuenta->count();
-    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
         plikProducent << ui->comboBoxDodajProdcuenta->itemText(i).toStdString() << endl;

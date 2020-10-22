@@ -2,9 +2,9 @@
 #include "ui_druga.h"
 #include <Info/info.h>
 
-Druga::Druga(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Druga)
+Druga::Druga(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Druga)
 {
     ui->setupUi(this);
 }
@@ -16,6 +16,6 @@ Druga::~Druga()
 
 void Druga::on_pushButton_clicked()
 {
-        destroy();
+    destroy();
 }
 //Info do Gita

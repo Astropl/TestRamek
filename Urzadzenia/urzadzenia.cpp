@@ -1,13 +1,13 @@
 #include "urzadzenia.h"
+#include "Files/checkfiles1.h"
+#include "Timery/timedate.h"
+#include "Ustawienia/ustawienia.h"
 #include "mainwindow.h"
 #include "time.h"
 #include "ui_urzadzenia.h"
 #include "urzadzeniadodajmodel.h"
 #include "urzadzeniadodajnrseryjny.h"
 #include "urzadzeniadodajproducenta.h"
-#include "Ustawienia/ustawienia.h"
-#include "Files/checkfiles1.h"
-#include "Timery/timedate.h"
 #include <Info/info.h>
 #include <ctime>
 #include <fstream>
@@ -21,10 +21,10 @@ using namespace std;
 string stringLabela4 = ("Producent: , Model: , Nr. Seryjny: ");
 QString zaznaczono;
 fstream plikUrzadzenia;
-int iloscUrzadzen =0;
+int iloscUrzadzen = 0;
 
-int checkFlagsVariableProducent =0;
-int checkFlagsVariableModel =0;
+int checkFlagsVariableProducent = 0;
+int checkFlagsVariableModel = 0;
 
 Urzadzenia::Urzadzenia(QWidget *parent)
     : QMainWindow(parent)
@@ -108,84 +108,77 @@ Urzadzenia::Urzadzenia(QWidget *parent)
     ui->countriesList->setModel(countriesListModel);
     int row = countriesListModel->rowCount(); // pobieram liczbę wierszy
 
-    countriesListModel->insertRow(row);                    // wstawiam dodatkowy wiersz na końcu
-    QModelIndex index = countriesListModel->index(row, 0); // pobieram obiekt wstawionego indeksu
+    countriesListModel->insertRow(row); // wstawiam dodatkowy wiersz na końcu
+                                        // QModelIndex index = countriesListModel->index(row, 0);
+    // pobieram obiekt wstawionego indeksu
     //countriesListModel->setData(index, QVariant("*"));
 
     ui->pushButton->setEnabled(false);
     ui->BtnUrzaZapisz->setEnabled(false);
-
-
 }
-
 
 void Urzadzenia::howMuchDevice()
 {
-QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+    QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
 
     plikUrzadzenia.open(file3.toStdString(), ios::in);
-    if (plikUrzadzenia.good() ==false)
-    {
-        cout<<"Plik nie istnieje";
-
+    if (plikUrzadzenia.good() == false) {
+        cout << "Plik nie istnieje";
     }
     string linia;
 
-    int nr_lini = 1;
-    while (getline(plikUrzadzenia, linia))
-    {
-        iloscUrzadzen ++;
-        cout << linia.c_str()<<endl;
+    int nr_lini = 0;
+    while (getline(plikUrzadzenia, linia)) {
+        iloscUrzadzen++;
+        cout << linia.c_str() << endl;
         nr_lini++;
     }
-    cout<<"ilosc Urzadzen wczytanych stringów: "<< iloscUrzadzen<<endl;
-    iloscUrzadzen = iloscUrzadzen /4;
-     cout<<"ilosc Urzadzen po 4: "<< iloscUrzadzen<<endl;
-    ui->LblNumberAnaliz->setText(QString::number(iloscUrzadzen));
+
+    cout << "ilosc Urzadzen wczytanych stringów: " << iloscUrzadzen << endl;
+    iloscUrzadzen = (iloscUrzadzen / 5); //5 to ilosc wierszy dla urzadzenia
+    cout << "ilosc Urzadzen po 5: " << iloscUrzadzen << endl;
+    ui->LblNumberAnaliz->setText(QString::number(iloscUrzadzen + 2));
     plikUrzadzenia.close();
-    iloscUrzadzen ++;
-     cout<<"ilosc Urzadzen z nastepnym: "<< iloscUrzadzen<<endl;
+    //iloscUrzadzen ++;
+    cout << "ilosc Urzadzen z nastepnym: " << iloscUrzadzen + 1 << endl;
 
-     //TODO: Tutuaj trzeba zamienić string [IdUrzadzenia:6] na cyfre.
+    //TODO: Tutuaj trzeba zamienić string [IdUrzadzenia:6] na cyfre.
 
-
-     ui->lineEditNumber->setText(QString::number(iloscUrzadzen));
-
-
+    ui->lineEditNumber->setText(QString::number(iloscUrzadzen + 1));
 }
 void Urzadzenia::myfunctiontimer()
-{time_t czas;
-        tm timeinfo;
-        QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
+{
+    time_t czas;
+    tm timeinfo;
+    QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
 
-        TimeDate *timeDate = new TimeDate();
+    TimeDate *timeDate = new TimeDate();
 
-        time(&czas);
-        timeinfo = *localtime(&czas);
-        int godzina = timeinfo.tm_hour;
-        int minuta = timeinfo.tm_min;
-        int sekunda = timeinfo.tm_sec;
-        int dzien = timeinfo.tm_mday;
-        int miesiac = timeinfo.tm_mon;
-        int rok = timeinfo.tm_year;
-        int dzienTygodnia = timeinfo.tm_wday;
-        miesiac = miesiac + 1;
-        rok = rok + 1900;
-        dzienTygodnia = dzienTygodnia + 1;
+    time(&czas);
+    timeinfo = *localtime(&czas);
+    int godzina = timeinfo.tm_hour;
+    int minuta = timeinfo.tm_min;
+    int sekunda = timeinfo.tm_sec;
+    int dzien = timeinfo.tm_mday;
+    int miesiac = timeinfo.tm_mon;
+    int rok = timeinfo.tm_year;
+    int dzienTygodnia = timeinfo.tm_wday;
+    miesiac = miesiac + 1;
+    rok = rok + 1900;
+    dzienTygodnia = dzienTygodnia + 1;
 
-        qStrMin = timeDate->changeStringsMin(minuta);
-        qStrSek = timeDate->changeStringsSek(sekunda);
-        qStrDzien = timeDate->changeStringsDzien(dzien);
-        qStrGodz = timeDate->changeStringsGodz(godzina);
-        qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
-        stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
+    qStrMin = timeDate->changeStringsMin(minuta);
+    qStrSek = timeDate->changeStringsSek(sekunda);
+    qStrDzien = timeDate->changeStringsDzien(dzien);
+    qStrGodz = timeDate->changeStringsGodz(godzina);
+    qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
+    stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
 
-        ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
-        ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
+    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
 
-        ui->labelDzien->setText(stringDzienTygodnia);
+    ui->labelDzien->setText(stringDzienTygodnia);
 }
-
 
 Urzadzenia::~Urzadzenia()
 {
@@ -193,28 +186,24 @@ Urzadzenia::~Urzadzenia()
 }
 
 void Urzadzenia::on_BtnUrzaZapisz_clicked()
-{QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+{
+    QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     cout << "Zapisz" << endl;
 
-    plikUrzadzenia.open(file3.toStdString(),ios::out | ios::app);
+    plikUrzadzenia.open(file3.toStdString(), ios::out | ios::app);
 
-
-
-
-
-    for (int i=0;i<=ui->comboBox_4->count()-1;i++) {
-        plikUrzadzenia<<ui->comboBox_4->itemText(i).toStdString()<<endl;
-
-
+    for (int i = 0; i <= ui->comboBox_4->count() - 1; i++) {
+        plikUrzadzenia << ui->comboBox_4->itemText(i).toStdString() << endl;
     }
 
-    plikUrzadzenia<<""<<endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
+    plikUrzadzenia << "" << endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
     plikUrzadzenia.close();
     ui->BtnUrzaZapisz->setEnabled(false);
 }
 
 void Urzadzenia::on_BtnUrzaZamknij_clicked()
-{timer->stop();
+{
+    timer->stop();
     destroy();
 }
 
@@ -227,25 +216,25 @@ void Urzadzenia::on_countriesList_clicked(const QModelIndex &index)
     ui->label_4->setText(zaznaczono + " " + ui->comboBox->currentText());
 }
 
-void Urzadzenia::on_comboBox_textActivated(const QString )
+void Urzadzenia::on_comboBox_textActivated(const QString)
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText());
-    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
-    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
+    ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
 }
 
-void Urzadzenia::on_comboBox_2_textActivated(const QString )
+void Urzadzenia::on_comboBox_2_textActivated(const QString)
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText());
-    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
-    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
+    ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
 }
 
-void Urzadzenia::on_comboBox_3_textActivated(const QString )
+void Urzadzenia::on_comboBox_3_textActivated(const QString)
 {
     ui->label_4->setText("Producent: " + ui->comboBox->currentText());
-    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
-    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
+    ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
+    ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
 }
 
 void Urzadzenia::on_actionDodaj_Model_triggered()
@@ -268,26 +257,63 @@ void Urzadzenia::on_actionDodaj_Numer_Seryjny_triggered()
 
 void Urzadzenia::on_actionInformacja_triggered()
 {
-    Info *info= new Info(this);
+    Info *info = new Info(this);
     info->show();
 }
 //Info do Gita
 void Urzadzenia::on_pushButton_clicked()
 {
+    ui->comboBox_3->clear();
     // Dodaj do comboBoxa
+    // Sprawdzić czysą takie same numery seryjne juz zapisany i dodawanay
+    //-------------------
+    QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
+    cout << "Dodoaj i sprawdz czy jest taki numer seryjny" << endl;
 
-    QString dodajNapis = ui->lineEditNumber->text();
-    QString dodajNapis1 = "[IdUrzadzenia:"+ dodajNapis+"]";
-    ui->comboBox_4->addItem(dodajNapis1);
-    //ui->comboBox_4->addItem(ui->lineEditNumber->text());
-    ui->comboBox_4->addItem(ui->comboBox->currentText());
-    ui->comboBox_4->addItem(ui->comboBox_2->currentText());
-    ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
-    ui->BtnUrzaZapisz->setEnabled(true);
-    ui->pushButton->setEnabled(false);
-    ui->label_4->setText("Producent: " + ui->comboBox->currentText());
-    ui->label_6->setText("Model: "+ ui->comboBox_2->currentText());
-    ui->label_7->setText("Numer Seryjny: "+ui->lineEditNrSeryjny->text());
+    plikUrzadzenia.open(file3.toStdString(), ios::in);
+    string linia = "";
+    int nr_lini = 0;
+    while (getline(plikUrzadzenia, linia)) {
+        //iloscUrzadzen++;
+        ui->comboBox_3->addItem(linia.c_str());
+
+        cout << linia.c_str() << endl;
+        nr_lini++;
+    }
+    linia = "";
+    plikUrzadzenia.close();
+    plikUrzadzenia.open(file3.toStdString(), ios::out| ios::app);
+
+    for (int i = 0; i <= ui->comboBox_3->count() - 1; i++) {
+        QString nrSeryjny = ui->comboBox_3->itemText(i);
+        QString nrSeryjnyZLini = ui->lineEditNrSeryjny->text();
+        if (nrSeryjnyZLini == nrSeryjny) {
+            cout << "Jest taki numer" << endl;
+            QMessageBox::information(this,
+                                     "Ostrzeżenie",
+                                     "Analizator o takim numerze seryjnym już jest w bazie");
+
+        } else {
+            cout<<"Dodaje i zapisuje"<<endl;
+
+            ui->BtnUrzaZapisz->setEnabled(false);
+            //-----------------
+
+            QString dodajNapis = ui->lineEditNumber->text();
+            QString dodajNapis1 = "[IdUrzadzenia:" + dodajNapis + "]";
+            ui->comboBox_4->addItem(dodajNapis1);
+            //ui->comboBox_4->addItem(ui->lineEditNumber->text());
+            ui->comboBox_4->addItem(ui->comboBox->currentText());
+            ui->comboBox_4->addItem(ui->comboBox_2->currentText());
+            ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
+            ui->BtnUrzaZapisz->setEnabled(true);
+            ui->pushButton->setEnabled(false);
+            ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+            ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
+            ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
+        }
+    }
+     plikUrzadzenia.close();
 }
 void Urzadzenia::on_actionOpcje_triggered()
 {
@@ -295,7 +321,7 @@ void Urzadzenia::on_actionOpcje_triggered()
     ustaw->show();
 }
 
-void Urzadzenia::on_comboBox_highlighted(const QString )
+void Urzadzenia::on_comboBox_highlighted(const QString)
 {
     // Odswiiez producenta
     fstream checkFlags;
@@ -323,12 +349,11 @@ void Urzadzenia::on_comboBox_highlighted(const QString )
     checkFlags.open(file16.toStdString(), ios::out | ios::trunc);
     checkFlags << "0" << endl;
     checkFlags.close();
-
-
 }
 
 void Urzadzenia::wczytajProducenta()
-{QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
+{
+    QString file7 = "C:/Defaults/Pliki/7.ZapisProducenta.txt";
     fstream plikKontrahent;
     //Wczytuje miasta z pliku
     plikKontrahent.open(file7.toStdString(), ios::in);
@@ -345,10 +370,10 @@ void Urzadzenia::wczytajProducenta()
     }
 
     plikKontrahent.close();
-
 }
 void Urzadzenia::wczytajModel()
-{QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
+{
+    QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
     fstream plikKontrahent;
 
     plikKontrahent.open(file8.toStdString(), ios::in);
@@ -365,9 +390,8 @@ void Urzadzenia::wczytajModel()
     }
 
     plikKontrahent.close();
-
 }
-void Urzadzenia::on_comboBox_2_highlighted(const QString )
+void Urzadzenia::on_comboBox_2_highlighted(const QString)
 {
     // odwiez model.
 
@@ -397,5 +421,4 @@ void Urzadzenia::on_comboBox_2_highlighted(const QString )
     checkFlags << "0" << endl;
     checkFlags.close();
     ui->pushButton->setEnabled(true);
-
 }

@@ -2,8 +2,8 @@
 #include "ui_urzadzeniadodajmodel.h"
 #include <fstream>
 #include <iostream>
-#include <QMessageBox>
 #include <QFile>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -14,7 +14,7 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
     , ui(new Ui::UrzadzeniaDodajModel)
 {
     ui->setupUi(this);
-    cout<<"Wczytac itemy z pliku"<<endl;
+    cout << "Wczytac itemy z pliku" << endl;
 
     //---------------------------------------------------------
     QString file1 = "C:/Defaults/Pliki/1.DB.txt";
@@ -33,20 +33,17 @@ UrzadzeniaDodajModel::UrzadzeniaDodajModel(QWidget *parent)
     QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
 
-    plikOdczyt.open(file8.toStdString(),ios::in);
-    if(plikOdczyt.good()==false)
-    {
-        cout<<"Plik nie istnieje !!!!!";
+    plikOdczyt.open(file8.toStdString(), ios::in);
+    if (plikOdczyt.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
         //exit(0);
     }
     string linia;
     int nr_lini = 1;
-    while (getline(plikOdczyt,linia))
-    {
-
-         ui->comboBoxDodajModel->addItem(linia.c_str()) ;
-            cout<<linia.c_str()<<endl;
-       nr_lini ++;
+    while (getline(plikOdczyt, linia)) {
+        ui->comboBoxDodajModel->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
     }
     plikOdczyt.close();
 
@@ -77,7 +74,7 @@ void UrzadzeniaDodajModel::on_pushButton_clicked()
 }
 
 void UrzadzeniaDodajModel::on_pushButton_2_clicked()
-{////Zamknij i zapisz
+{ ////Zamknij i zapisz
 
     QString file8 = "C:/Defaults/Pliki/8.ZapisModel.txt";
     cout << "Zapisuje i wychodze z okienka" << endl;
@@ -88,10 +85,10 @@ void UrzadzeniaDodajModel::on_pushButton_2_clicked()
     int iloscElementowWcombo;
 
     iloscElementowWcombo = ui->comboBoxDodajModel->count();
-    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
-       plikOdczyt << ui->comboBoxDodajModel->itemText(i).toStdString() << endl;
+        plikOdczyt << ui->comboBoxDodajModel->itemText(i).toStdString() << endl;
     }
     plikOdczyt.close();
     //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały

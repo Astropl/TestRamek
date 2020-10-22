@@ -5,13 +5,13 @@
 
 class TableViewListaKontrahentow : public QAbstractTableModel
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     TableViewListaKontrahentow(QObject *parent);
-    int rowCount(const QModelIndex &parent = QModelIndex()) const ;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 };
 
 #endif // TABLEVIEWLISTAKONTRAHENTOW_H
-//Info do Gita
+       //Info do Gita

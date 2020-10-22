@@ -18,19 +18,15 @@ CheckSystem::CheckSystem(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CheckSystem)
 {
-    setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint); //Flaga okienka na wierzchu.
+    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint); //Flaga okienka na wierzchu.
     ui->setupUi(this);
     setWindowTitle("Check System");
     //setFocus(true);
     //setAttribute(Qt::WA_ShowWithoutActivating);
 
-
-
-
     init();
-//    MainWindow w;
-//    w.show();
-
+    //    MainWindow w;
+    //    w.show();
 }
 
 CheckSystem::~CheckSystem()
@@ -56,32 +52,25 @@ void CheckSystem::updateProgress()
         ui->textEdit->setText(txt1);
         txt->append(txt1);
 
-
     } else if (valueOfProgress == 20) {
-
         ui->textEdit->append(txt2);
         txt->append(txt2);
-       // cout << txt2.toStdString() << endl;
+        // cout << txt2.toStdString() << endl;
     } else if (valueOfProgress == 40) {
-
         ui->textEdit->append(txt3);
         txt->append(txt3);
     } else if (valueOfProgress == 60) {
-
         ui->textEdit->append(txt4);
         txt->append(txt4);
     } else if (valueOfProgress == 80) {
-
         ui->textEdit->append(txt5);
         txt->append(txt5);
     } else if (valueOfProgress >= 100) {
-
         ui->textEdit->append(txt6);
         txt->append(txt6);
         //cout << txt6.toStdString() << endl;
         timer->stop();
         (this->close());
-
 
         //exit(0);
         return;

@@ -25,19 +25,12 @@ QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt
 QString file16 = "C:/Defaults/Pliki/16.CheckFlagsInProducentUrzadzenia.txt";
 QString file17 = "C:/Defaults/Pliki/17.CheckFlagsInModelUrzadzenia.txt";
 
-
 CheckFiles1::CheckFiles1(QWidget *parent)
     : QMainWindow(parent)
 {}
 
 void CheckFiles1::initMkDir()
-{/*//TODO: Dodoac pliki do Katalogów
-    CheckFlagsInMiastoKontrahentShow
-        CheckFlagsInWojewodztwoKontrahentShow
-            CheckFlagsInKrajKontrahentShow*/
-
-
-
+{
     mkdir("C:/Defaults");
     mkdir("C:/Defaults/Pliki");
 }
@@ -51,7 +44,6 @@ void CheckFiles1::initDB()
     }
     file.close();
 }
-
 
 void CheckFiles1::initKontrahent()
 {
@@ -84,8 +76,6 @@ void CheckFiles1::initZapisKraj()
     }
     file.close();
 }
-
-
 
 void CheckFiles1::initZapisMiasta()
 {
@@ -156,9 +146,6 @@ void CheckFiles1::initCheckFlagsInMiasto()
     cout << "Plik Check Flags In Miasto Jest." << endl;
 }
 
-
-
-
 void CheckFiles1::initCheckFlagsInKraj()
 {
     file.open(file11.toStdString());
@@ -195,7 +182,6 @@ void CheckFiles1::initCheckFlagsInProducentUrzadzenia()
     file << "0" << endl;
     file.close();
 }
-
 
 void CheckFiles1::initCheckFlagsInWojewodztwa()
 {
@@ -247,7 +233,6 @@ int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
 
     int nr_lini = 1;
     while (getline(file, linia)) {
-
         //cout << linia << endl;
         if (linia == "0") {
             //cout << "Linia równa się 0" << endl;
@@ -272,7 +257,6 @@ int CheckFiles1::checkFlagsModel(int checkFlagsVarriableModel)
 
     int nr_lini = 1;
     while (getline(file, linia)) {
-
         //cout << linia << endl;
         if (linia == "0") {
             //cout << "Linia równa się 0" << endl;
@@ -300,20 +284,19 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
     file.close();
     cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
 }
- void CheckFiles1::initCheckFlagsProducent()
- {
-     file.open(file16.toStdString());
-     if (file.good() == false) {
-         cout << "Brak pliku" << endl;
-         file.open(file16.toStdString(), ios::app);
-     } else {
+void CheckFiles1::initCheckFlagsProducent()
+{
+    file.open(file16.toStdString());
+    if (file.good() == false) {
+        cout << "Brak pliku" << endl;
+        file.open(file16.toStdString(), ios::app);
+    } else {
         // cout << "Plik jest" << endl;
-     }
-     file << "0" << endl;
-     file.close();
-     cout << "Plik Check Flags In Produckt Jest." << endl;
- }
-
+    }
+    file << "0" << endl;
+    file.close();
+    cout << "Plik Check Flags In Produckt Jest." << endl;
+}
 
 int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
 {
@@ -324,7 +307,6 @@ int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
 
     int nr_lini = 1;
     while (getline(file, linia)) {
-
         //cout << linia << endl;
         if (linia == "0") {
             //cout << "Linia równa się 0" << endl;
@@ -337,8 +319,6 @@ int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)
     }
 
     file.close();
-
-
 }
 int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 {
@@ -350,7 +330,6 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
 
     int nr_lini = 1;
     while (getline(file, linia)) {
-
         //cout << linia << endl;
         if (linia == "0") {
             //cout << "Linia równa się 0" << endl;
@@ -363,9 +342,7 @@ int CheckFiles1::checkFlagsMiasto(int checkFlagsVarriableMiasto)
     }
 
     file.close();
-
 }
-
 
 int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
 {
@@ -377,34 +354,32 @@ int CheckFiles1::checkFlagsKraj(int checkFlagsVarriableKraj)
 
     int nr_lini = 1;
     while (getline(file, linia)) {
-
         //cout << linia << endl;
         if (linia == "0") {
-           // cout << "Linia równa się 0" << endl;
+            // cout << "Linia równa się 0" << endl;
             return 0;
         } else if (linia == "1") {
-           // cout << "Linia równa się 1" << endl;
+            // cout << "Linia równa się 1" << endl;
             return 1;
         }
         nr_lini++;
     }
 
     file.close();
-
 }
 
 void CheckFiles1::init()
 {
     initMkDir();
-    initDB();//
-    initKontrahent();//
-    initUrzadzenie();//
-    initZapisKraj();//
-    initZapisMiasta();//
-    initZapisWojewodztwa();//
-    initZapisModel();//
-    initZapisNrSeryjny();//
-    initZapisProducenta();//
+    initDB();               //
+    initKontrahent();       //
+    initUrzadzenie();       //
+    initZapisKraj();        //
+    initZapisMiasta();      //
+    initZapisWojewodztwa(); //
+    initZapisModel();       //
+    initZapisNrSeryjny();   //
+    initZapisProducenta();  //
     initCheckFlagsInKrajKontrahentShow();
     initCheckFlagsInMiastoKontrahentShow();
     initCheckFlagsInWojewodztwoKontrahentShow();
@@ -415,7 +390,6 @@ void CheckFiles1::init()
 
     initCheckFlagsInModelUrzadzenia();
     initCheckFlagsInProducentUrzadzenia();
-
 
     // i tak samo jak wyzej ale do modelu
 

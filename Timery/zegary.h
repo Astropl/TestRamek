@@ -9,23 +9,17 @@ class Zegary : public QObject
 public:
     explicit Zegary(QObject *parent = nullptr);
 
-
 public slots:
-     int myfunctiontimer();
-     //int zmianaLabela(int sekunda);
+    int myfunctiontimer();
+
 signals:
     void textChanged(QString);
-
     void intZegary();
     void uruchom();
-//    void someFunctionThatChangesText (const QString& newtext)
-//    {
-//        emit textChanged(newtext);
-//    }
-private:
 
+private:
     QTimer *timer;
 };
 
 #endif // ZEGARY_H
-//Info do Gita
+       //Info do Gita

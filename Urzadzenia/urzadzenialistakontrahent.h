@@ -1,9 +1,9 @@
 #ifndef URZADZENIALISTAKONTRAHENT_H
 #define URZADZENIALISTAKONTRAHENT_H
 
-#include <QMainWindow>
 #include <QDialog>
 #include <QItemDelegate>
+#include <QMainWindow>
 
 #include <QStandardItemModel>
 #include <QTableView>
@@ -23,12 +23,11 @@ public slots:
     void wczytajDane();
     void iloscWierszy();
     void myfunctiontimer();
- void wyswietl(QVariant p1,QVariant p2,QVariant p3,QVariant p4);
+    void wyswietl(QVariant p1, QVariant p2, QVariant p3, QVariant p4);
 private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-
 
     void on_pushButton_3_clicked();
 

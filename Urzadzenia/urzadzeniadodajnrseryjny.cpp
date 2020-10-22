@@ -68,7 +68,8 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_clicked()
 }
 
 void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
-{QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
+{
+    QString file9 = "C:/Defaults/Pliki/9.ZapisNrSeryjny.txt";
     // Zapisz i zamknij
     cout << "Zapisuje i wychodze z okienka" << endl;
     // musze zapisać do pliku
@@ -76,7 +77,7 @@ void UrzadzeniaDodajNrSeryjny::on_pushButton_2_clicked()
     // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
     iloscElementowWcombo = ui->comboBoxDodajNrSeryjny->count();
-    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
         plikNrSeryjny << ui->comboBoxDodajNrSeryjny->itemText(i).toStdString() << endl;

@@ -19,8 +19,8 @@ public:
     explicit KontrahentLista(QWidget *parent = 0);
     ~KontrahentLista();
 public slots:
-//    int zmianaLabela(
-//        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    //    int zmianaLabela(
+    //        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
     void wczytajDane();
     void myfunctiontimer();
     void iloscWierszy();
@@ -44,4 +44,4 @@ private:
 };
 
 #endif // KONTRAHENTLISTA_H
-//Info do Gita
+       //Info do Gita

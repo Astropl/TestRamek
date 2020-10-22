@@ -17,12 +17,10 @@ public:
 
 private slots:
     void on_pushButton_2_clicked();
-
     void on_pushButton_clicked();
 
 private:
     Ui::UrzadzeniaDodajProducenta *ui;
 };
 
-#endif // URZADZENIADODAJPRODUCENTA_H
-//Info do Gita
+#endif

@@ -17,16 +17,16 @@ public:
 
 public slots:
 
-//    int zmianaLabela(
-//        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+    //    int zmianaLabela(
+    //        int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
     void myfunctiontimer();
     void wczytajMiasta();
     void wczytajWojewodztwa();
-        //void DataiCzas();
+    //void DataiCzas();
     void wczytajKraj();
 
-        private slots :
-            void on_pushButton_clicked();
+private slots:
+    void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -37,10 +37,10 @@ public slots:
     void on_actionOpcje_triggered();
     //void on_lineEditWczytajNazwa_1_editingFinished();
 
-    void on_lineEditWczytajNazwa_1_textChanged(const QString ); //(const QString &arg1)
+    void on_lineEditWczytajNazwa_1_textChanged(const QString); //(const QString &arg1)
 
     void on_actionInfo_triggered();
-    void howMuchKontrahent ();
+    void howMuchKontrahent();
 
     //void on_comboBoxWczytajMiasta_activated(const QString &arg1);
 
@@ -51,8 +51,7 @@ public slots:
     //void on_comboBoxWczytajMiasta_textHighlighted(const QString );
     //void on_comboBoxWczytajMiasta_textHighlighted(const QString );
     void on_comboBoxWczytajWojewodztwa_highlighted(const QString);
-    void on_comboBoxWczytajKraj_highlighted(const QString );
-
+    void on_comboBoxWczytajKraj_highlighted(const QString);
 
     void on_comboBoxWczytajKraj_activated(const QString);
 
@@ -62,4 +61,4 @@ private:
 };
 
 #endif // KONTRAHENT_H
-//Info do Gita
+       //Info do Gita

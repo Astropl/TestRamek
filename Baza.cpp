@@ -87,16 +87,16 @@ void Baza::wczytajDane()
     //---------------------------------------------------------------
     //TODO: ukrywam 3 linie
 
-    //ui->tableViewDB->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
-    //ui->tableViewDB->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu
-    //ui->tableViewDB->setColumnHidden(5, true); // Ukrywam Kolumnę z LP kontrahenta
+    ui->tableViewDB->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
+    ui->tableViewDB->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu
+    ui->tableViewDB->setColumnHidden(5, true); // Ukrywam Kolumnę z LP kontrahenta
     //---------------------------------------------------------------
     //model->insertRow(model->rowCount());
 
     //ui->labelTest->text(QString::number(iloscWierszy));
 
     QStandardItem *dodajItem = new QStandardItem("Jakies cos");
-    QStandardItem *dodajItem1 = new QStandardItem("Jakies cos");
+    //QStandardItem *dodajItem1 = new QStandardItem("Jakies cos");
     //    model->setItem(iloscWierszy,1,dodajItem);
     //    model->setItem(iloscWierszy, 1, dodajItem); // Dodoaje item i od razu wiersz.
 
@@ -109,8 +109,8 @@ void Baza::wczytajDane()
     string linia1;
     int row3 = 0;
     int nr_lini3 = 0;
-    int row2 = 0;
-    int nr_lini2 = 0;
+    //int row2 = 0;
+    //int nr_lini2 = 0;
     //int row1 = 0;
     int nr_lini1 = 0;
     { // wczytaj urzadzenia
@@ -149,7 +149,7 @@ void Baza::wczytajDane()
         //ui->lblKontrahent->setText(linia2.c_str());
         //string tempKontr = ui->lblKontrahent->text().toStdString();
         ui->comboBox_2->addItem(linia2.c_str()); //ui->comboBox_2->addItem(linia2.c_str());
-        int ostatni = ui->comboBox_2->count();
+        //int ostatni = ui->comboBox_2->count();
         //string tempKontr1 = ui->comboBox_2->itemText(ostatni).toStdString();
     }
 
@@ -193,56 +193,24 @@ void Baza::wczytajDane()
             QString itZComboBoxa2 = ui->comboBox_2->itemText(z);
 
             if (itZComboBoxa2 == itZComboBoxa4) {
-                cout << "Znalazłem" << endl;
-                cout << itZComboBoxa2.toStdString() << endl;
                 for (int k = 0; k < 14; k++) {
                     int naKtorejPozycji = ui->comboBox_2->findText(itZComboBoxa2);
                     cout << " Pozycja nr" << naKtorejPozycji << endl;
                     QString tym1 = ui->comboBox_2->itemText(naKtorejPozycji + k);
-                    //                    QString tym2 = ui->comboBox_2->itemText(naKtorejPozycji+1);
-                    //                    QString tym3 = ui->comboBox_2->itemText(naKtorejPozycji+2);
-                    //                    QString tym4 = ui->comboBox_2->itemText(naKtorejPozycji+3);
-                    //                    QString tym5 = ui->comboBox_2->itemText(naKtorejPozycji+4);
-                    //                    QString tym6 = ui->comboBox_2->itemText(naKtorejPozycji+5);
-                    //                    QString tym7 = ui->comboBox_2->itemText(naKtorejPozycji+6);
-                    //                    QString tym8 = ui->comboBox_2->itemText(naKtorejPozycji+7);
-                    //                    QString tym9 = ui->comboBox_2->itemText(naKtorejPozycji+8);
-                    //                    QString tym10 = ui->comboBox_2->itemText(naKtorejPozycji+9);
-                    //                   QString tym11 = ui->comboBox_2->itemText(naKtorejPozycji+10);
-                    //                    QString tym12 = ui->comboBox_2->itemText(naKtorejPozycji+11);
-                    //                    QString tym13 = ui->comboBox_2->itemText(naKtorejPozycji+12);
-                    //                    QString tym14 = ui->comboBox_2->itemText(naKtorejPozycji+13);
-                    //                    QString tym15 = ui->comboBox_2->itemText(naKtorejPozycji+14);
                     dodajItem = new QStandardItem(tym1);
                     model->setItem(row3, nr_lini3 + k + 5, dodajItem);
                 }
                 row3++;
             }
         }
-        //        if (tempUrzadz1 == itZComboBoxa3) {
-        //            cout << "Znalazłem" << endl;
-        //            cout << tempUrzadz1.toStdString() << endl;
-
-        //            //TODO: dodoac po koleji wszytskie item z comboboxa do listy
-        //            int naKtorejPozycji = ui->comboBox_2->findText(tempUrzadz1);
-        //            dodajItem = new QStandardItem(itZComboBoxa2);
-
-        //            for (int x = naKtorejPozycji; x <= naKtorejPozycji + 10; x++) {
-        //                model->setItem(row3, nr_lini3, dodajItem);
-
-        //                cout << "Wyswietlam po koleji od znalezionej pozycji" << naKtorejPozycji << endl;
-        //            }
-        //            row3++;
+        //row3++;
     }
     row3 = 0;
-    //Tutaj dodoaj urzadzenia do Listy
-    // a moze tutaj uda sie dodoac urzadzenia do listy
 
     int iloscWcomboBox3 = ui->comboBox_3->count(); //CB4krótki z DB kontrahenci
     int iloscWComboBox = ui->comboBox->count();    //CB2dlugi kontrahneci
     for (int i = 0; i <= iloscWcomboBox3 - 1; i++) {
         QString itZComboBoxa3 = ui->comboBox_3->itemText(i);
-        //tempUrzadz1 = ui->lblUrzadzenie->text();
 
         for (int z = 0; z <= iloscWComboBox - 1; z++) {
             QString itZComboBoxa = ui->comboBox->itemText(z);
@@ -263,42 +231,29 @@ void Baza::wczytajDane()
         }
     }
 
-    //-----------------------------
-    //    row3=0;
-    //    for(int f=0;f<5;f++){
-    //    QString itZComboBoxa = ui->comboBox->itemText(f);
-    //    int naKtorejPozycji1 = ui->comboBox->findText(itZComboBoxa);
-    //    cout << " Pozycja nr" << naKtorejPozycji1 << endl;
-    //    QString tym2 = ui->comboBox->itemText(naKtorejPozycji1 +f);
+    int rowDoSize = model->rowCount();
+    for (int i = 0; i <= rowDoSize; i++) {
+        ui->tableViewDB->setRowHeight(i, 20);
+    }
+    ui->tableViewDB->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
+    ui->tableViewDB->sortByColumn(0,
+                                  Qt::SortOrder(
+                                      0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
-    //    dodajItem1 = new QStandardItem(tym2);
-    //    model->setItem(row3, nr_lini3+f, dodajItem1);
-    //-----------------------------------------
+    iloscWierszy();
+    row3 = 0;
+    nr_lini3 = 0;
+    //row2 = 0;
+    //nr_lini2 = 0;
 
-//fileDataBase3.close();
-// pobierz ilosc rzedów
-int rowDoSize = model->rowCount();
-for (int i = 0; i <= rowDoSize; i++) {
-    ui->tableViewDB->setRowHeight(i, 20);
-}
-ui->tableViewDB->horizontalHeader()->setSectionResizeMode(
-    QHeaderView::ResizeToContents); // Rozszerza kolumny do najdłuzszego itema w kolumnie.
-ui->tableViewDB->sortByColumn(0,
-                              Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
-
-iloscWierszy();
-row3 = 0;
-nr_lini3 = 0;
-row2 = 0;
-nr_lini2 = 0;
-//int row1 = 0;
-nr_lini1 = 0;
-tempUrzadz = "";
-tempUrzadz1 = "";
-linia3 = "";
-linia2 = "";
-linia1 = "";
-//TODO: Sprawdzic zaznaczenie całego wiersza
+    nr_lini1 = 0;
+    tempUrzadz = "";
+    tempUrzadz1 = "";
+    linia3 = "";
+    linia2 = "";
+    linia1 = "";
+    //TODO: Sprawdzic zaznaczenie całego wiersza
 }
 
 void Baza::iloscWierszy()

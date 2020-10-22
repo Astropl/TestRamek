@@ -30,8 +30,6 @@ Ustawienia::~Ustawienia()
 
 QString Ustawienia::pobierzDate(QString aktHour)
 {
-
-
     time_t czas;
     tm timeinfo;
     QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
@@ -62,7 +60,6 @@ QString Ustawienia::pobierzDate(QString aktHour)
               + qStrMin + "." + qStrSek;
 
     return aktHour;
-
 }
 
 void Ustawienia::on_pushButton_clicked()
@@ -70,25 +67,23 @@ void Ustawienia::on_pushButton_clicked()
     string stringFile = "Backup/";
     string patchBasic = "C:/Defaults/Pliki/";
 
-
     string tableOfstrings[17] = {"1.DB.txt",
-                                        "2.Kontrahent.txt",
-                                        "3.Urzadzenie.txt",
-                                        "4.ZapisKraj.txt",
-                                        "5.ZapisMiasta.txt",
-                                        "6.ZapisWojewodztwa.txt",
-                                        "7.ZapisProducenta.txt",
-                                        "8.ZapisModel.txt",
-                                        "9.ZapisNrSeryjny.txt",
-                                        "10.CheckFlagsInMiasto.txt",
-                                        "11.CheckFlagsInKraj.txt",
-                                        "12.CheckFlagsInWojewodztwa.txt",
-                                        "13.CheckFlagsInKrajKontrahentShow.txt",
-                                        "14.CheckFlagsInMiastoKontrahentShow.txt",
-                                        "15.CheckFlagsInWojewodztwoKontrahentShow.txt",
+                                 "2.Kontrahent.txt",
+                                 "3.Urzadzenie.txt",
+                                 "4.ZapisKraj.txt",
+                                 "5.ZapisMiasta.txt",
+                                 "6.ZapisWojewodztwa.txt",
+                                 "7.ZapisProducenta.txt",
+                                 "8.ZapisModel.txt",
+                                 "9.ZapisNrSeryjny.txt",
+                                 "10.CheckFlagsInMiasto.txt",
+                                 "11.CheckFlagsInKraj.txt",
+                                 "12.CheckFlagsInWojewodztwa.txt",
+                                 "13.CheckFlagsInKrajKontrahentShow.txt",
+                                 "14.CheckFlagsInMiastoKontrahentShow.txt",
+                                 "15.CheckFlagsInWojewodztwoKontrahentShow.txt",
                                  "16.CheckFlagsInProducentUrzadzenia.txt",
-                                 "17.CheckFlagsInModelUrzadzenia.txt"
-                                 };
+                                 "17.CheckFlagsInModelUrzadzenia.txt"};
 
     QString aktHours = pobierzDate(aktHour);
     ui->lblData->setText(aktHours);
@@ -98,10 +93,7 @@ void Ustawienia::on_pushButton_clicked()
 
     _mkdir(aktHours2.c_str());
 
-
-
-
-    int sizeOfTable =17; //Podać ręcznie
+    int sizeOfTable = 17;                 //Podać ręcznie
     for (int i = 0; i < sizeOfTable; i++) // int i = 0; i < sizeOfTable-1; i++
     {
         fileUstawienia.open(patchBasic + tableOfstrings[i], ios::in);
@@ -119,11 +111,10 @@ void Ustawienia::on_pushButton_clicked()
 
         fileUstawienia.close();
         fileUstawienia1.close();
-
     }
     //    QMessageBox msgBox;
     //    msgBox.setText("Kopia Bazy Danych zrobiona");
-    cout << "Zapisano: " + aktHours2  << endl;
+    cout << "Zapisano: " + aktHours2 << endl;
     QMessageBox::information(this, "Ostrzeżenie", "Kopia Bazy Danych zrobiona.");
 }
 

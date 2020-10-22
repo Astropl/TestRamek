@@ -502,4 +502,3 @@ void KontrahentShow::on_comboBoxMiasta_highlighted(const QString)
     checkFlags << "0" << endl;
     checkFlags.close();
 }
-//TODO: Dodoac pliki nowe CheckFlags do poczatku i sprawdzenia

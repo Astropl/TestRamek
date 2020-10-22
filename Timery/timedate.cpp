@@ -12,17 +12,12 @@ using namespace std;
 TimeDate::TimeDate(QObject *parent)
     : QObject(parent)
 {}
-void TimeDate::init()
-{
-
-}
+void TimeDate::init() {}
 
 //Wyodrebnię QStringi z minutami i godzinami i resztą
 
 QString TimeDate::changeStringsMin(int minuta4)
 {
-
-
     QString qStrMin4 = QString::number(minuta4);
     if (minuta4 < 10) {
         qStrMin4 = "0" + QString::number(minuta4);
@@ -63,10 +58,11 @@ QString TimeDate::changeStringsMiesiac(int miesiac4)
     return qStrMiesiac4;
 }
 QString TimeDate::changeStringsDzienTygodnia(int dzienTygodnia4)
-{QString stringDzienTygodnia4;
+{
+    QString stringDzienTygodnia4;
     switch (dzienTygodnia4) {
     case 1:
-         stringDzienTygodnia4 = "Niedziela";
+        stringDzienTygodnia4 = "Niedziela";
         break;
     case 2:
         stringDzienTygodnia4 = "Poniedziałek";

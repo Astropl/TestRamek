@@ -2,10 +2,9 @@
 #include "ui_trzecia.h"
 #include <Info/info.h>
 
-
-Trzecia::Trzecia(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::Trzecia)
+Trzecia::Trzecia(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Trzecia)
 {
     ui->setupUi(this);
 }

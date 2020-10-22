@@ -155,9 +155,6 @@ void UrzadzeniaListaKontrahent::wczytajDane()
     ui->tableView->sortByColumn(0,
                                 Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
-    //ui->tableView->setRowHeight(1,20);
-    //ui->tableView->setRowHeight(2,20);
-    //ui->tableView->setRowHeight(3,20);
     iloscWierszy();
 
     //TODO: Sprawdzic zaznaczenie całego wiersza
@@ -212,7 +209,6 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
     fileDB.open("C:/Defaults/Pliki/1.DB.txt", ios::app);
     // urzadzenia było append
 
-    //TODO: dodoac wczytywanie do comboboxa3 wszystkich urzadzen. A potem dodoac je do combo 1
     fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::in);
     string linia;
     int row = 0;
@@ -230,7 +226,6 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
 
     QString nrSeryjnyzCB1 = ui->comboBox->itemText(3);
 
-
     int IntnrSetyjnyzCB2 = ui->comboBox_3->findText(nrSeryjnyzCB1);
     QString tym1 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2);
     QString tym2 = ui->comboBox_3->itemText(IntnrSetyjnyzCB2 + 1);
@@ -244,33 +239,16 @@ void UrzadzeniaListaKontrahent::on_pushButton_3_clicked()
     ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
     ui->comboBox_3->removeItem(IntnrSetyjnyzCB2 - 3);
 
-    //TODO: A moze robic tak ze zapisywac tylko numery przyporządkowane urzadzeniom i kontrahentom ?
-
-    //lblNrUrzaIKontr to numer porzadkowy urzadzenia i kontrahenta
     QString pierwsza = ui->comboBox->itemText(0);
     QString druga = ui->comboBox_2->itemText(0);
-    ui->lblNrUrza->setText( pierwsza);
- ui->lblNrKontr->setText( druga);
+    ui->lblNrUrza->setText(pierwsza);
+    ui->lblNrKontr->setText(druga);
 
-
-
-    //I teraz z combo1 i cb2 zapisuję w DB. z CB3 zapisuje w urzadzeniach i dodoaje cb1.
-//    for (int i = 0; i <= ui->comboBox->count() - 1; i++) {
-//        fileDB << ui->comboBox->itemText(i).toStdString() << endl;
-//    }
-//    for (int i = 0; i <= ui->comboBox_2->count() - 1; i++) {
-//        fileDB << ui->comboBox_2->itemText(i).toStdString() << endl;
-//    }
-
- fileDB << ui->lblNrUrza->text().toStdString()<<endl;
- fileDB << ui->lblNrKontr->text().toStdString()<<endl;
+    fileDB << ui->lblNrUrza->text().toStdString() << endl;
+    fileDB << ui->lblNrKontr->text().toStdString() << endl;
     fileDB.close();
- //--------------------
-// fileDB<<ui->lblNrUrza->text().toStdString();
-// fileDB<<ui->lblNrKontr->text().toStdString();
+    ;
 
-
- //--------------------------
     fileUrzadzenia.open("C:/Defaults/Pliki/3.Urzadzenie.txt", ios::out | ios::trunc);
 
     for (int i = 0; i <= ui->comboBox_3->count() - 1; i++) {

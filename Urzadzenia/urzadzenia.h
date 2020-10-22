@@ -24,44 +24,26 @@ public:
     ~Urzadzenia();
 
 public slots:
-//    int zmianaLabela(int godzina, int minuta, int sekunda, int dzien, int miesiac, int rok, int dzienTygodnia);
+
     void myfunctiontimer();
-    //void DataiCzas();
 
 private slots:
     void on_BtnUrzaZapisz_clicked();
-
     void on_BtnUrzaZamknij_clicked();
-
     void on_countriesList_clicked(const QModelIndex &index);
-
-    //void on_comboBox_textActivated(const QString &arg1);
-    void on_comboBox_textActivated(const QString );
-
-    //void on_comboBox_2_textActivated(const QString &arg1);
-
-    //void on_comboBox_3_textActivated(const QString &arg1);
-    void on_comboBox_2_textActivated(const QString );
-
-    void on_comboBox_3_textActivated(const QString );
-
+    void on_comboBox_textActivated(const QString);
+    void on_comboBox_2_textActivated(const QString);
+    void on_comboBox_3_textActivated(const QString);
     void on_actionDodaj_Model_triggered();
-
     void on_actionDodaj_Producenta_triggered();
-
     void on_actionDodaj_Numer_Seryjny_triggered();
-
     void on_actionInformacja_triggered();
     void on_actionOpcje_triggered();
-
     void on_pushButton_clicked();
     void howMuchDevice();
     void wczytajProducenta();
     void wczytajModel();
-
-
-    void on_comboBox_highlighted(const QString );
-
+    void on_comboBox_highlighted(const QString);
     void on_comboBox_2_highlighted(const QString);
 
 private:
@@ -69,5 +51,4 @@ private:
     QTimer *timer;
 };
 
-#endif // URZADZENIA_H
-//Info do Gita
+#endif

@@ -2,20 +2,18 @@
 #include "ui_kontrahentdodajwojewodztwo.h"
 #include <fstream>
 #include <iostream>
-#include <QMessageBox>
+#include <QApplication>
 #include <QFile>
 #include <QMessageBox>
-#include <QApplication>
 #include <QtWidgets>
 
 using namespace std;
 
 fstream plikOdczytDodajWojewodztwa;
 
-
-KontrahentDodajWojewodztwo::KontrahentDodajWojewodztwo(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::KontrahentDodajWojewodztwo)
+KontrahentDodajWojewodztwo::KontrahentDodajWojewodztwo(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::KontrahentDodajWojewodztwo)
 {
     ui->setupUi(this);
     QString file1 = "C:/Defaults/Pliki/1.DB.txt";
@@ -33,28 +31,24 @@ KontrahentDodajWojewodztwo::KontrahentDodajWojewodztwo(QWidget *parent) :
     QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
     QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
-    cout<<"Wczytac itemy z pliku"<<endl;
+    cout << "Wczytac itemy z pliku" << endl;
 
     //---------------------------------------------------------
 
-    plikOdczytDodajWojewodztwa.open(file6.toStdString(),ios::in);
-    if(plikOdczytDodajWojewodztwa.good()==false)
-    {
-        cout<<"Plik nie istnieje !!!!!";
+    plikOdczytDodajWojewodztwa.open(file6.toStdString(), ios::in);
+    if (plikOdczytDodajWojewodztwa.good() == false) {
+        cout << "Plik nie istnieje !!!!!";
         //exit(0);
     }
     string linia;
     int nr_lini = 1;
-    while (getline(plikOdczytDodajWojewodztwa,linia))
-    {
-
-        ui->comboBoxDodajWojewodztwa->addItem(linia.c_str()) ;
-        cout<<linia.c_str()<<endl;
-        nr_lini ++;
+    while (getline(plikOdczytDodajWojewodztwa, linia)) {
+        ui->comboBoxDodajWojewodztwa->addItem(linia.c_str());
+        cout << linia.c_str() << endl;
+        nr_lini++;
     }
     plikOdczytDodajWojewodztwa.close();
     //ui->comboBoxDodajMiasto->sor
-
 }
 
 KontrahentDodajWojewodztwo::~KontrahentDodajWojewodztwo()
@@ -63,7 +57,8 @@ KontrahentDodajWojewodztwo::~KontrahentDodajWojewodztwo()
 }
 
 void KontrahentDodajWojewodztwo::on_pushButton_clicked()
-{fstream checkflagsInWojewodztwo;
+{
+    fstream checkflagsInWojewodztwo;
     QString file12 = "C:/Defaults/Pliki/12.CheckFlagsInWojewodztwa.txt";
     QString file6 = "C:/Defaults/Pliki/6.ZapisWojewodztwa.txt";
     cout << "Button Zapisz. Zapisuje i wychodze z okienka" << endl;
@@ -74,21 +69,21 @@ void KontrahentDodajWojewodztwo::on_pushButton_clicked()
     int iloscElementowWcombo;
 
     iloscElementowWcombo = ui->comboBoxDodajWojewodztwa->count();
-    for (int i = 0; i <= iloscElementowWcombo-1; i++) {
+    for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
         //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
-        plikOdczytDodajWojewodztwa << ui->comboBoxDodajWojewodztwa->itemText(i).toStdString() << endl;
+        plikOdczytDodajWojewodztwa << ui->comboBoxDodajWojewodztwa->itemText(i).toStdString()
+                                   << endl;
     }
     plikOdczytDodajWojewodztwa.close();
-    checkflagsInWojewodztwo.open(file12.toStdString(),
-                                 ios::in
-                                     | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
-    checkflagsInWojewodztwo<<"1";
+    checkflagsInWojewodztwo
+        .open(file12.toStdString(),
+              ios::in
+                  | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
+    checkflagsInWojewodztwo << "1";
     checkflagsInWojewodztwo.close();
     //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
     //ui->comboBoxDodajMiasto->rep
-
-
 }
 
 void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
@@ -98,12 +93,10 @@ void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
 
     int iloscElementowWcombo = ui->comboBoxDodajWojewodztwa->count();
 
-    if (ui->lineEditDodajWojewodztwa->text() !="")
-    {
-        cout<<"Dodoaje Wojewdoztwo"<<endl;
-        for (int i=0;i<=iloscElementowWcombo;i++)
-        {
-            QVariant zmienna1 =(ui->lineEditDodajWojewodztwa->text());
+    if (ui->lineEditDodajWojewodztwa->text() != "") {
+        cout << "Dodoaje Wojewdoztwo" << endl;
+        for (int i = 0; i <= iloscElementowWcombo; i++) {
+            QVariant zmienna1 = (ui->lineEditDodajWojewodztwa->text());
             cout << "Wyswietlam po koleji itemy z comboboxa dodaj wojewodztwo" << endl;
             cout << ui->comboBoxDodajWojewodztwa->itemText(i).toStdString() << endl;
             ;
@@ -112,37 +105,34 @@ void KontrahentDodajWojewodztwo::on_pushButton_2_clicked()
                      << ui->comboBoxDodajWojewodztwa->itemText(i).toStdString() << endl;
                 porownanieWojewodztw = false;
 
-        }else
-            {
-            msgBox.setText("Te województwo jest juz na liscie");
-            QMessageBox::information(this, "Ostrzeżenie", "Te województwo już znajduje się na liście.");
-            porownanieWojewodztw = true;
+            } else {
+                msgBox.setText("Te województwo jest juz na liscie");
+                QMessageBox::information(this,
+                                         "Ostrzeżenie",
+                                         "Te województwo już znajduje się na liście.");
+                porownanieWojewodztw = true;
 
-            break;
+                break;
+            }
         }
-    }
-    if (porownanieWojewodztw==false)
-    {
-        cout<<"dodaje wojewodztwo"<<endl;
-        QString dodajWojewodztwo = ui->lineEditDodajWojewodztwa->text();
-        ui->comboBoxDodajWojewodztwa->addItem(dodajWojewodztwo);
+        if (porownanieWojewodztw == false) {
+            cout << "dodaje wojewodztwo" << endl;
+            QString dodajWojewodztwo = ui->lineEditDodajWojewodztwa->text();
+            ui->comboBoxDodajWojewodztwa->addItem(dodajWojewodztwo);
+            ui->lineEditDodajWojewodztwa->setText("");
+
+        } else {
+            //wyswietl info ze pusty label
+            QMessageBox::information(this,
+                                     "Ostrzeżenie",
+                                     "Nie możesz wprowdzić pustego województwa.");
+        }
+        ui->comboBoxDodajWojewodztwa->setDuplicatesEnabled(
+            false); // ustawiam aby nie było duplikatów
         ui->lineEditDodajWojewodztwa->setText("");
-
-    }else
-    {
-        //wyswietl info ze pusty label
-        QMessageBox::information(this, "Ostrzeżenie", "Nie możesz wprowdzić pustego województwa.");
     }
-    ui->comboBoxDodajWojewodztwa->setDuplicatesEnabled(false); // ustawiam aby nie było duplikatów
-    ui->lineEditDodajWojewodztwa->setText("");
-    }
-
-
-
-
 }
 //Info do Gita
-
 
 void KontrahentDodajWojewodztwo::on_pushButton_3_clicked()
 {
@@ -150,9 +140,6 @@ void KontrahentDodajWojewodztwo::on_pushButton_3_clicked()
     //Usuń zaznaczony item
 
     ui->comboBoxDodajWojewodztwa->removeItem(ui->comboBoxDodajWojewodztwa->currentIndex());
-
-
-
 }
 
 void KontrahentDodajWojewodztwo::on_pushButton_4_clicked()

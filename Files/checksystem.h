@@ -16,12 +16,11 @@ public:
     ~CheckSystem();
 public slots:
 
-
     void init();
     void updateProgress();
 
 private slots:
-//    void on_progressBar_valueChanged(int value);
+    //    void on_progressBar_valueChanged(int value);
 
     void on_pushButton_clicked();
 
@@ -30,4 +29,4 @@ private:
 };
 
 #endif // CHECKSYSTEM_H
-//Info do Gita
+       //Info do Gita

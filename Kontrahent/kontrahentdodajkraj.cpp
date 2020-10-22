@@ -8,11 +8,9 @@ using namespace std;
 
 fstream plikOdczytDodajKraj;
 
-
-
-KontrahentDodajKraj::KontrahentDodajKraj(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::KontrahentDodajKraj)
+KontrahentDodajKraj::KontrahentDodajKraj(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::KontrahentDodajKraj)
 {
     ui->setupUi(this);
     QString file1 = "C:/Defaults/Pliki/1.DB.txt";
@@ -30,9 +28,9 @@ KontrahentDodajKraj::KontrahentDodajKraj(QWidget *parent) :
     QString file13 = "C:/Defaults/Pliki/13.CheckFlagsInKrajKontrahentShow.txt";
     QString file14 = "C:/Defaults/Pliki/14.CheckFlagsInMiastoKontrahentShow.txt";
     QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
-    plikOdczytDodajKraj.open(file4.toStdString(),ios::in);
-    if (plikOdczytDodajKraj.good() == false)
-    {cout<<"Plik nie istnieje!!!";
+    plikOdczytDodajKraj.open(file4.toStdString(), ios::in);
+    if (plikOdczytDodajKraj.good() == false) {
+        cout << "Plik nie istnieje!!!";
     }
     string linia;
 
@@ -42,19 +40,14 @@ KontrahentDodajKraj::KontrahentDodajKraj(QWidget *parent) :
         cout << linia.c_str() << endl;
         nr_lini++;
     }
-    //plikOdczytDodajMiasto.clear();
 
     plikOdczytDodajKraj.close();
-    //ui->comboBoxDodajMiasto->sor
 }
 
 KontrahentDodajKraj::~KontrahentDodajKraj()
 {
     delete ui;
 }
-
-
-
 
 void KontrahentDodajKraj::on_pushButton_2_clicked()
 {
@@ -64,10 +57,8 @@ void KontrahentDodajKraj::on_pushButton_2_clicked()
     //sprawdzam czy label dodawania modelu jest pusty - zrobione
     // Sprawdzić czy elent jest juz na liscie.
 
-    // Pobrac ilosc elementów z ComboBoxa
     int iloscElementowwCombo = ui->comboBoxDodajKraj->count();
     // Zrobic cos aby najpierw sprawdzało czy jest puste a potm przeszukiwało itemy z comboxa
-
 
     if (ui->lineEditDodajKraj->text() != "") {
         cout << "Dodaje Kraj" << endl;
@@ -84,24 +75,25 @@ void KontrahentDodajKraj::on_pushButton_2_clicked()
 
                 //Wrzucic do tabeli. Przeleciec tabele. jezeli bedzie wyraz z listy zakonczyc. Jezeli nie dodoać do combo boa.
 
-
             } else {
                 msgBox.setText("Ten Kraj jezst juz na liscie");
-                QMessageBox::information(this, "Ostrzeżenie", "Ten Kraj już znajduje się na liście.");
+                QMessageBox::information(this,
+                                         "Ostrzeżenie",
+                                         "Ten Kraj już znajduje się na liście.");
                 porownanieKraj = true;
 
                 break;
             }
         }
 
-        if (porownanieKraj==false) // domyslnie true?
+        if (porownanieKraj == false) // domyslnie true?
         {
             cout << "dodoaje Kraj" << endl;
             QString dodajKraj = ui->lineEditDodajKraj->text();
             ui->comboBoxDodajKraj->addItem(dodajKraj);
             ui->lineEditDodajKraj->setText("");
-        }else{
-            cout<<"Przeszukałem wszytskie Kraje. Jest na liscie."<<endl;
+        } else {
+            cout << "Przeszukałem wszytskie Kraje. Jest na liscie." << endl;
         }
     } else {
         //wyswietl info ze pusty label
@@ -109,14 +101,6 @@ void KontrahentDodajKraj::on_pushButton_2_clicked()
     }
     ui->comboBoxDodajKraj->setDuplicatesEnabled(false); // ustawiam aby nie było duplikatów
     ui->lineEditDodajKraj->setText("");
-
-
-// zrobic petle i sprawdac czy text wprowadzony juz jest po kazdym elemenecie.
-// jezeli jest wyswiwtlic msgbox ze juz jest.
-
-//Próbuje srotowania
-//string  items[] = ui->comboBoxDodajMiasto->count();
-
 }
 
 void KontrahentDodajKraj::on_pushButton_clicked()
@@ -126,18 +110,16 @@ void KontrahentDodajKraj::on_pushButton_clicked()
     QString file4 = "C:/Defaults/Pliki/4.ZapisKraj.txt";
     QString file11 = "C:/Defaults/Pliki/11.CheckFlagsInKraj.txt";
     cout << "Zapisuje " << endl;
-    // musze zapisać do pliku
+
     plikOdczytDodajKraj
         .open(file4.toStdString(),
               ios::out
                   | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
 
-    // musze teraz zrobic petle i zapisac itemy z comboboxa
     int iloscElementowWcombo;
 
     iloscElementowWcombo = ui->comboBoxDodajKraj->count();
     for (int i = 0; i <= iloscElementowWcombo - 1; i++) {
-        //  petla wczytująca liste z combo
         cout << iloscElementowWcombo << endl;
         plikOdczytDodajKraj << ui->comboBoxDodajKraj->itemText(i).toStdString() << endl;
     }
@@ -147,15 +129,8 @@ void KontrahentDodajKraj::on_pushButton_clicked()
         .open(file11.toStdString(),
               ios::in
                   | ios::trunc); //ios::app dopisuje a ios::trunc zawartos usunieta i zastąpiona nową.
-    checkFlagsinKraj<<"1";
+    checkFlagsinKraj << "1";
     checkFlagsinKraj.close();
-
-
-    //ui->Jak zrobic aby comboxy na urzadzeniach się odswiezały
-    //ui->comboBoxDodajMiasto->rep
-    //destroy();
-
-
 }
 
 void KontrahentDodajKraj::on_pushButton_3_clicked()
@@ -168,5 +143,4 @@ void KontrahentDodajKraj::on_pushButton_4_clicked()
 {
     // Zamknij
     destroy();
-
 }

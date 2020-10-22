@@ -70,7 +70,7 @@ void KontrahentLista::wczytajDane()
 
     model = new QStandardItemModel(1, 14, this);
     ui->tableView->setModel(model);
-    //QModelIndex *index;
+
     model->setHeaderData(0, Qt::Horizontal, "L.P.");
     model->setHeaderData(1, Qt::Horizontal, "Nazwa");
     model->setHeaderData(2, Qt::Horizontal, "Imię");
@@ -89,17 +89,11 @@ void KontrahentLista::wczytajDane()
     //---------------------------------------------------------------
     ui->tableView->setColumnHidden(0, true); //Ukrywam kolumne z LP
         //---------------------------------------------------------------
-    //model->insertRow(model->rowCount());
-
-    //ui->labelTest->text(QString::number(iloscWierszy));
 
     QStandardItem *dodajItem = new QStandardItem("Jakies cos");
-    //    model->setItem(iloscWierszy,1,dodajItem);
-    //    model->setItem(iloscWierszy, 1, dodajItem); // Dodoaje item i od razu wiersz.
 
     //Wczytuje kontrahentow z pliku
 
-    //QStandardItem *dodajNumer = new QStandardItem("");
     plikKontrahentLista.open(file2.toStdString(), ios::in);
     if (plikKontrahentLista.good() == false) {
         cout << "Plik nie istnieje !!!!!";
@@ -135,9 +129,6 @@ void KontrahentLista::wczytajDane()
     ui->tableView->sortByColumn(0,
                                 Qt::SortOrder(0)); // Pierwsza cyfea mowi od jakiej kolumny sortujemy
 
-    //ui->tableView->setRowHeight(1,20);
-    //ui->tableView->setRowHeight(2,20);
-    //ui->tableView->setRowHeight(3,20);
     iloscWierszy();
 }
 
@@ -193,11 +184,6 @@ void KontrahentLista::on_pushButton_2_clicked()
 void KontrahentLista::on_tableView_activated(const QModelIndex)
 {
     //ui->tableView->set
-    //    QTableView listaKontrahentów;
-
-    //  TableViewListaKontrahentow myModel(0);
-    //  listaKontrahentów.setModel(&myModel);
-    //  listaKontrahentów.show();
 }
 
 void KontrahentLista::on_tableView_doubleClicked(const QModelIndex) //(const QModelIndex &index)
@@ -214,29 +200,6 @@ void KontrahentLista::on_tableView_clicked(const QModelIndex) //(const QModelInd
     //    msgBox.exec();
     QString pierwszazmienna = "Cos ik tam jest";
     //rzad pokaz
-
-    // stringrowDosize: zaznaczony rzad
-    //    QVariant tab[iloscColumn];
-    //    QVariant wyslij;
-    //    for (int i = 0; i <= iloscColumn; i++) {
-    //        tab[i] = index.sibling(stringrowDoSize - 1, i).data();
-    //    }
-
-    //    kontrShow->wyswietl(tab[0],
-    //                        tab[1],
-    //                        tab[2],
-    //                        tab[3],
-    //                        tab[4],
-    //                        tab[5],
-    //                        tab[6],
-    //                        tab[7],
-    //                        tab[8],
-    //                        tab[9],
-    //                        tab[10],
-    //                        tab[11],
-    //                        tab[12],tab[13]);
-
-    //    kontrShow->show();
 }
 //Info do Gita
 void KontrahentLista::on_pushButton_clicked()

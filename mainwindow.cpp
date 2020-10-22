@@ -4,9 +4,9 @@
 #include "Urzadzenia/urzadzenialista.h"
 #include "Ustawienia/ustawienia.h"
 #include "ui_mainwindow.h"
+#include <Baza.h>
 #include <Info/info.h>
 #include <druga.h>
-#include <Baza.h>
 #include <trzecia.h>
 #include <QApplication>
 #include <QMainWindow>
@@ -24,16 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-
-
-
     //-----------------
     ui->setupUi(this);
     //------------
- CheckIsFileExist();
-
-
-
+    CheckIsFileExist();
 }
 
 MainWindow::~MainWindow()
@@ -50,7 +44,7 @@ void MainWindow::CheckIsFileExist()
 void MainWindow::on_pushButton_clicked()
 {
     Baza *baza = new Baza(this);
-baza->show();
+    baza->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -97,14 +91,12 @@ void MainWindow::on_actionO_programie_triggered()
 }
 //Info do Gita
 
-
 void MainWindow::on_pushButton_8_clicked()
 {
     //Lista Urzadzeń w tabeli jak w kontrahnet
     UrzadzeniaLista *urzList = new UrzadzeniaLista(this);
     urzList->show();
 }
-
 
 void MainWindow::on_actionOpcja_triggered()
 {

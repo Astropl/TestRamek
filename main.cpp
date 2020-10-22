@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 //#include "Files/checksystemfiles1.h"
 #include "Files/checkfiles1.h"
-#include <QMessageBox>
 #include <QApplication>
+#include <QMessageBox>
 #include <QtWidgets>
 
 int main(int argc, char *argv[])
@@ -33,9 +33,6 @@ int main(int argc, char *argv[])
 //      17.CheckFlagsInModelUrzadzenia.txt
 //      16.CheckFlagsInProducentUrzadzenia.txt";
 //      17.CheckFlagsInModelUrzadzenia.txt";
-//TODO: 16 i 17 dodoac do Check Files i do backupa
-
-
 
 //CheckFlagsInWojewodztwo();
 //
