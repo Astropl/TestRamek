@@ -1,7 +1,10 @@
 #include "kontrahentinfo.h"
 #include "ui_kontrahentinfo.h"
-
+#include "Timery/timedate.h"
 #include "iostream"
+#include <ctime>
+#include <QTimer>
+
 
 using namespace std;
 
@@ -10,6 +13,12 @@ KontrahentInfo::KontrahentInfo(QWidget *parent)
     , ui(new Ui::KontrahentInfo)
 {
     ui->setupUi(this);
+    ui->labelZegara->setText(" cos tam");
+    //---------Sekcja generacji timera
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(myfunctiontimer()));
+    timer->start(1000);
+    //===================
 }
 
 KontrahentInfo::~KontrahentInfo()
@@ -21,6 +30,48 @@ void KontrahentInfo::on_pushButton_clicked()
 {
     destroy();
 }
+void KontrahentInfo::myfunctiontimer()
+{
+    time_t czas;
+    tm timeinfo;
+
+    QString qStrMin, qStrGodz, qStrSek, qStrDzien, qStrMiesiac, stringDzienTygodnia;
+
+    TimeDate *timeDate = new TimeDate();
+
+    time(&czas);
+    timeinfo = *localtime(&czas);
+    int godzina = timeinfo.tm_hour;
+    int minuta = timeinfo.tm_min;
+    int sekunda = timeinfo.tm_sec;
+    int dzien = timeinfo.tm_mday;
+    int miesiac = timeinfo.tm_mon;
+    int rok = timeinfo.tm_year;
+    int dzienTygodnia = timeinfo.tm_wday;
+    miesiac = miesiac + 1;
+    rok = rok + 1900;
+    dzienTygodnia = dzienTygodnia + 1;
+
+    qStrMin = timeDate->changeStringsMin(minuta);
+    qStrSek = timeDate->changeStringsSek(sekunda);
+    qStrDzien = timeDate->changeStringsDzien(dzien);
+    qStrGodz = timeDate->changeStringsGodz(godzina);
+    qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
+    stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
+
+    ui->labelZegara->setText(qStrGodz + ":" + qStrMin + ":" + qStrSek);
+    ui->labelDaty->setText(QString::number(rok) + "." + qStrMiesiac + "." + qStrDzien);
+
+    ui->labelDzien->setText(stringDzienTygodnia);
+
+    wczytajDane();
+
+}
+void KontrahentInfo::wczytajDane()
+{
+
+}
+
 
 void KontrahentInfo::wyswietl(QVariant p1,
                               QVariant p2,
@@ -62,4 +113,13 @@ void KontrahentInfo::wyswietl(QVariant p1,
     ui->lblTelDodat_2->setText(p17.toString());
     ui->lblEmail_2->setText(p18.toString());
     ui->lblUrl_2->setText(p19.toString());
+}
+void KontrahentInfo::on_pushButton_2_clicked()
+{
+    // Dodaj Wpis
+}
+
+void KontrahentInfo::on_pushButton_3_clicked()
+{
+    // Zapis
 }
