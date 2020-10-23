@@ -63,3 +63,12 @@ void KontrahentInfo::wyswietl(QVariant p1,
     ui->lblEmail_2->setText(p18.toString());
     ui->lblUrl_2->setText(p19.toString());
 }
+void KontrahentInfo::on_pushButton_2_clicked()
+{
+    // Dodaj Wpis
+}
+
+void KontrahentInfo::on_pushButton_3_clicked()
+{
+    // Zapis
+}

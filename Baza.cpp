@@ -321,5 +321,53 @@ void Baza::on_pushButton_2_clicked()
 {
     // Informacje o knotrahencie
     KontrahentInfo *kontrInfo = new KontrahentInfo(this);
-    kontrInfo->show();
+    int iloscColumn = model->columnCount();
+    QString qIloscColumn;
+    qIloscColumn.setNum(iloscColumn);
+
+    //--------------
+    int stringrowDoSize = (ui->tableViewDB->currentIndex().row()) + 1;
+    cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+
+    //ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
+    QModelIndex index = ui->tableViewDB->selectionModel()->currentIndex();
+    QVariant vartosc = index.sibling(index.row(), index.column()).data();
+    QString QVartsoc = QVariant(vartosc).toString();
+    //ui->label->setText(QVartsoc); //Pokazuje kliknietą komórkę.
+    //Sprawdzam czy jest kliknięta komórka
+
+    if (QVartsoc == "") {
+        cout << "Pusty. Nie wykonujemy" << endl;
+
+        QMessageBox::information(this, "Ostrzeżenie", "Zaznacz jakieś rekordy.");
+
+    } else {
+        QVariant tab[iloscColumn];
+        QVariant wyslij;
+        for (int i = 0; i <= iloscColumn; i++) {
+            tab[i] = index.sibling(stringrowDoSize - 1, i).data();
+        }
+
+        kontrInfo->wyswietl(tab[0],
+                            tab[1],
+                            tab[2],
+                            tab[3],
+                            tab[4],
+                            tab[5],
+                            tab[6],
+                            tab[7],
+                            tab[8],
+                            tab[9],
+                            tab[10],
+                            tab[11],
+                            tab[12],
+                            tab[13],
+                            tab[14],
+                            tab[15],
+                            tab[16],
+                            tab[17],
+                            tab[18]);
+
+        kontrInfo->show();
+    }
 }

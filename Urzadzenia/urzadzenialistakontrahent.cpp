@@ -40,6 +40,9 @@ UrzadzeniaListaKontrahent::UrzadzeniaListaKontrahent(QWidget *parent)
     QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
 
     wczytajDane();
+
+    ui->pushButton_3->setEnabled(false);
+    ui->pushButton->setEnabled(true);
 }
 
 UrzadzeniaListaKontrahent::~UrzadzeniaListaKontrahent()
@@ -62,6 +65,8 @@ void UrzadzeniaListaKontrahent::on_pushButton_clicked()
         tab[i] = index.sibling(stringrowDoSize - 1, i).data();
         ui->comboBox_2->addItem(tab[i].toString());
     }
+    ui->pushButton_3->setEnabled(true);
+    ui->pushButton->setEnabled(false);
 }
 
 void UrzadzeniaListaKontrahent::on_pushButton_2_clicked()
