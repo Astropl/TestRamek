@@ -137,7 +137,7 @@ void Urzadzenia::howMuchDevice()
     cout << "ilosc Urzadzen wczytanych stringów: " << iloscUrzadzen << endl;
     iloscUrzadzen = (iloscUrzadzen / 5); //5 to ilosc wierszy dla urzadzenia
     cout << "ilosc Urzadzen po 5: " << iloscUrzadzen << endl;
-    ui->LblNumberAnaliz->setText(QString::number(iloscUrzadzen + 2));
+    ui->LblNumberAnaliz->setText(QString::number(iloscUrzadzen));
     plikUrzadzenia.close();
     //iloscUrzadzen ++;
     cout << "ilosc Urzadzen z nastepnym: " << iloscUrzadzen + 1 << endl;
@@ -186,7 +186,7 @@ Urzadzenia::~Urzadzenia()
 }
 
 void Urzadzenia::on_BtnUrzaZapisz_clicked()
-{
+{ //ZAPISZ
     QString file3 = "C:/Defaults/Pliki/3.Urzadzenie.txt";
     cout << "Zapisz" << endl;
 
@@ -196,7 +196,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
         plikUrzadzenia << ui->comboBox_4->itemText(i).toStdString() << endl;
     }
 
-    plikUrzadzenia << "" << endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
+    //plikUrzadzenia << "" << endl; //- Tutuaj wrzucam pustą linię na info o przypsianiu
     plikUrzadzenia.close();
     ui->BtnUrzaZapisz->setEnabled(false);
 }
@@ -204,6 +204,7 @@ void Urzadzenia::on_BtnUrzaZapisz_clicked()
 void Urzadzenia::on_BtnUrzaZamknij_clicked()
 {
     timer->stop();
+    iloscUrzadzen = 0;
     destroy();
 }
 
@@ -263,6 +264,8 @@ void Urzadzenia::on_actionInformacja_triggered()
 //Info do Gita
 void Urzadzenia::on_pushButton_clicked()
 {
+    // DODAJ
+
     ui->comboBox_3->clear();
     // Dodaj do comboBoxa
     // Sprawdzić czysą takie same numery seryjne juz zapisany i dodawanay
@@ -282,38 +285,44 @@ void Urzadzenia::on_pushButton_clicked()
     }
     linia = "";
     plikUrzadzenia.close();
-    plikUrzadzenia.open(file3.toStdString(), ios::out| ios::app);
-
+    //plikUrzadzenia.open(file3.toStdString(), ios::out| ios::app);
+    bool IsNrSeryjnySame;
     for (int i = 0; i <= ui->comboBox_3->count() - 1; i++) {
         QString nrSeryjny = ui->comboBox_3->itemText(i);
         QString nrSeryjnyZLini = ui->lineEditNrSeryjny->text();
         if (nrSeryjnyZLini == nrSeryjny) {
-            cout << "Jest taki numer" << endl;
-            QMessageBox::information(this,
-                                     "Ostrzeżenie",
-                                     "Analizator o takim numerze seryjnym już jest w bazie");
-
+            IsNrSeryjnySame = true;
         } else {
-            cout<<"Dodaje i zapisuje"<<endl;
-
-            ui->BtnUrzaZapisz->setEnabled(false);
-            //-----------------
-
-            QString dodajNapis = ui->lineEditNumber->text();
-            QString dodajNapis1 = "[IdUrzadzenia:" + dodajNapis + "]";
-            ui->comboBox_4->addItem(dodajNapis1);
-            //ui->comboBox_4->addItem(ui->lineEditNumber->text());
-            ui->comboBox_4->addItem(ui->comboBox->currentText());
-            ui->comboBox_4->addItem(ui->comboBox_2->currentText());
-            ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
-            ui->BtnUrzaZapisz->setEnabled(true);
-            ui->pushButton->setEnabled(false);
-            ui->label_4->setText("Producent: " + ui->comboBox->currentText());
-            ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
-            ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
+            IsNrSeryjnySame = false;
         }
     }
-     plikUrzadzenia.close();
+    if (IsNrSeryjnySame == true) {
+        cout << "Jest taki numer" << endl;
+        QMessageBox::information(this,
+                                 "Ostrzeżenie",
+                                 "Analizator o takim numerze seryjnym już jest w bazie");
+    } else {
+        cout << "Dodaje i zapisuje" << endl;
+
+        ui->BtnUrzaZapisz->setEnabled(false);
+        //-----------------
+
+        QString dodajNapis = ui->lineEditNumber->text();
+        QString dodajNapis1 = "[IdUrzadzenia:" + dodajNapis + "]";
+        ui->comboBox_4->addItem(dodajNapis1);
+        //ui->comboBox_4->addItem(ui->lineEditNumber->text());
+        ui->comboBox_4->addItem(ui->comboBox->currentText());
+        ui->comboBox_4->addItem(ui->comboBox_2->currentText());
+        ui->comboBox_4->addItem(ui->lineEditNrSeryjny->text());
+        ui->comboBox_4->addItem(""); // pusta linia do przypisania
+        ui->BtnUrzaZapisz->setEnabled(true);
+        ui->pushButton->setEnabled(false);
+        ui->label_4->setText("Producent: " + ui->comboBox->currentText());
+        ui->label_6->setText("Model: " + ui->comboBox_2->currentText());
+        ui->label_7->setText("Numer Seryjny: " + ui->lineEditNrSeryjny->text());
+
+    }
+    //plikUrzadzenia.close();
 }
 void Urzadzenia::on_actionOpcje_triggered()
 {

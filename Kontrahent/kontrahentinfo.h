@@ -38,6 +38,7 @@ public slots:
                   QVariant p19);
     void myfunctiontimer();
     void wczytajDane();
+    void showTable();
 
 private slots:
     void on_pushButton_clicked();

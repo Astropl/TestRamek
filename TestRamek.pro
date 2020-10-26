@@ -28,6 +28,7 @@ SOURCES += \
     Kontrahent/kontrahentdodajmiasto.cpp \
     Kontrahent/kontrahentdodajwojewodztwo.cpp \
     Kontrahent/kontrahentinfo.cpp \
+    Kontrahent/kontrahentinfododajwpis.cpp \
     Kontrahent/kontrahentlista.cpp \
     Kontrahent/kontrahentshow.cpp \
     Kontrahent/tableviewlistakontrahentow.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     Kontrahent/kontrahentdodajmiasto.h \
     Kontrahent/kontrahentdodajwojewodztwo.h \
     Kontrahent/kontrahentinfo.h \
+    Kontrahent/kontrahentinfododajwpis.h \
     Kontrahent/kontrahentlista.h \
     Kontrahent/kontrahentshow.h \
     Kontrahent/tableviewlistakontrahentow.h \
@@ -95,6 +97,7 @@ FORMS += \
     Kontrahent/kontrahentdodajmiasto.ui \
     Kontrahent/kontrahentdodajwojewodztwo.ui \
     Kontrahent/kontrahentinfo.ui \
+    Kontrahent/kontrahentinfododajwpis.ui \
     Kontrahent/kontrahentlista.ui \
     Kontrahent/kontrahentshow.ui \
     Urzadzenia/urzadzenia.ui \
