@@ -143,7 +143,7 @@ void CheckFiles1::initCheckFlagsInMiasto()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Miasto Jest." << endl;
+
 }
 
 void CheckFiles1::initCheckFlagsInKraj()
@@ -194,7 +194,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwa()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+
 }
 void CheckFiles1::initCheckFlagsInKrajKontrahentShow()
 {
@@ -207,7 +207,7 @@ void CheckFiles1::initCheckFlagsInKrajKontrahentShow()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+
 }
 void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
 {
@@ -220,7 +220,7 @@ void CheckFiles1::initCheckFlagsInMiastoKontrahentShow()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+
 }
 
 int CheckFiles1::checkFlagsProducent(int checkFlagsVarriableProducent)
@@ -282,7 +282,7 @@ void CheckFiles1::initCheckFlagsInWojewodztwoKontrahentShow()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Wojewodztwo Jest." << endl;
+
 }
 void CheckFiles1::initCheckFlagsProducent()
 {
@@ -295,7 +295,7 @@ void CheckFiles1::initCheckFlagsProducent()
     }
     file << "0" << endl;
     file.close();
-    cout << "Plik Check Flags In Produckt Jest." << endl;
+//    cout << "Plik Check Flags In Produckt Jest." << endl;
 }
 
 int CheckFiles1::checkFlagsWojewodztwa(int checkFlagsVarriableWojewodztwo)

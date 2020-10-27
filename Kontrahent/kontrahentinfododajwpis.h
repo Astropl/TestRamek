@@ -24,6 +24,10 @@ private slots:
     void on_pushButton_clicked();
 
     void on_checkBox_stateChanged(int arg1);
+    void checkedCheckBox();
+
+    void uncheckedCheckBox();
+    void setDate();
 
 public:
     void init();

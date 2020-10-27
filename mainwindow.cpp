@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     //-----------------
     ui->setupUi(this);
     //------------
+    cout <<"START"<<endl;
     CheckIsFileExist();
 }
 

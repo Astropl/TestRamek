@@ -292,6 +292,8 @@ void Urzadzenia::on_pushButton_clicked()
         QString nrSeryjnyZLini = ui->lineEditNrSeryjny->text();
         if (nrSeryjnyZLini == nrSeryjny) {
             IsNrSeryjnySame = true;
+            i=ui->comboBox_3->count();
+            break;
         } else {
             IsNrSeryjnySame = false;
         }
