@@ -244,7 +244,7 @@ void UrzadzeniaLista::on_pushButton_3_clicked()
 
         //--------------
         int stringrowDoSize = (ui->tableView->currentIndex().row()) + 1;
-        cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+        //cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
 
         ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
         QModelIndex index = ui->tableView->selectionModel()->currentIndex();

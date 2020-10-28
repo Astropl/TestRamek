@@ -134,7 +134,7 @@ void KontrahentInfo::wyswietl(QVariant p1,
                               QVariant p18,
                               QVariant p19)
 {
-    cout << "Jestem w kontrahent Info Wyswietl" << endl;
+    //cout << "Jestem w kontrahent Info Wyswietl" << endl;
     QVariant przypisanyZp5 = p5; // info o przypisaniu analizatora do kontr.
     ui->lblUrzad_2->setText(p1.toString());
     ui->lblProduc_2->setText(p2.toString());

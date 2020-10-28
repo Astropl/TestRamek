@@ -121,7 +121,7 @@ void Baza::wczytajDane()
         }
 
         // zmiana z int nr_lini = 1;
-        cout << "cos sprawdzam1 " << endl;
+        //cout << "cos sprawdzam1 " << endl;
         while (getline(fileDataBase3, linia3)) {
             //cout << "cos sprawdzam z id Urzadzenia " << endl;
             //ui->comboBox->addItem(linia3.c_str());
@@ -195,7 +195,7 @@ void Baza::wczytajDane()
             if (itZComboBoxa2 == itZComboBoxa4) {
                 for (int k = 0; k < 14; k++) {
                     int naKtorejPozycji = ui->comboBox_2->findText(itZComboBoxa2);
-                    cout << " Pozycja nr" << naKtorejPozycji << endl;
+                    //cout << " Pozycja nr" << naKtorejPozycji << endl;
                     QString tym1 = ui->comboBox_2->itemText(naKtorejPozycji + k);
                     dodajItem = new QStandardItem(tym1);
                     model->setItem(row3, nr_lini3 + k + 5, dodajItem);
@@ -216,11 +216,11 @@ void Baza::wczytajDane()
             QString itZComboBoxa = ui->comboBox->itemText(z);
 
             if (itZComboBoxa == itZComboBoxa3) {
-                cout << "Znalazłem" << endl;
-                cout << itZComboBoxa.toStdString() << endl;
+                //cout << "Znalazłem" << endl;
+                //cout << itZComboBoxa.toStdString() << endl;
                 for (int k = 0; k < 5; k++) {
                     int naKtorejPozycji = ui->comboBox->findText(itZComboBoxa);
-                    cout << " Pozycja nr" << naKtorejPozycji << endl;
+                    //cout << " Pozycja nr" << naKtorejPozycji << endl;
                     QString tym2 = ui->comboBox->itemText(naKtorejPozycji + k);
 
                     dodajItem = new QStandardItem(tym2);
@@ -327,7 +327,7 @@ void Baza::on_pushButton_2_clicked()
 
     //--------------
     int stringrowDoSize = (ui->tableViewDB->currentIndex().row()) + 1;
-    cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
+    //cout << "Zaznaczony rzad to: " << stringrowDoSize << endl;
 
     //ui->label_2->setText(QString::number(iloscColumn) + " " + QString::number(stringrowDoSize));
     QModelIndex index = ui->tableViewDB->selectionModel()->currentIndex();

@@ -49,5 +49,4 @@ private:
     Ui::KontrahentShow *ui;
 };
 
-#endif // KONTRAHENTSHOW_H \
-       //Info do Gita
+#endif

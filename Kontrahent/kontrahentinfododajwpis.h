@@ -28,12 +28,17 @@ private slots:
 
     void uncheckedCheckBox();
     void setDate();
+    void myfunctiontimer();
+    //int myfunctiontimerDoDaty(int godzina,int minuta,int sekunda,int dzien,int miesiac,int rok,int dzienTygodnia);
+
+    void on_comboBox_currentTextChanged(const QString &arg1);
 
 public:
     void init();
 private:
     Ui::KontrahentInfoDodajWpis *ui;
     QStandardItemModel *model;
+    QTimer *timer;
 };
 
 #endif // KONTRAHENTINFODODAJWPIS_H

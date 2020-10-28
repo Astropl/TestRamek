@@ -396,7 +396,7 @@ void CheckFiles1::init()
     CheckSystem *checkSystem = new CheckSystem();
     checkSystem->show();
 
-    cout << "Jestem w CheckFiles" << endl;
+    //cout << "Jestem w CheckFiles" << endl;
 
     //Sprawdzam czy pliki istnieją jezeli nie tworzę je.
 

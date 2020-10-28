@@ -53,6 +53,8 @@ int main(int argc, char *argv[])
 //QString file15 = "C:/Defaults/Pliki/15.CheckFlagsInWojewodztwoKontrahentShow.txt";
 //QString file16 = "C:/Defaults/Pliki/16.CheckFlagsInProducentUrzadzenia.txt";
 //QString file17 = "C:/Defaults/Pliki/17.CheckFlagsInModelUrzadzenia.txt";
+//QString file18 = "C:/Defaults/Pliki/18.WpisKontrahentInfo.txt";
 ////
 //
 //
+//TODO: dodoac file 18 do checkfiles
