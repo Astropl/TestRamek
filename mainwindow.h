@@ -17,6 +17,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void InitDB();
+
 private slots:
     void CheckIsFileExist();
     void on_pushButton_clicked();

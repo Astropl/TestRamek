@@ -19,6 +19,7 @@ public:
     void DatabaseConnect();
     void DatabaseInit();
     void DatabasePopulate();
+    void init();
 
 private:
     Ui::DBMain *ui;

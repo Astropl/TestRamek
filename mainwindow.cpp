@@ -3,6 +3,7 @@
 #include "Kontrahent/kontrahentlista.h"
 #include "Urzadzenia/urzadzenialista.h"
 #include "Ustawienia/ustawienia.h"
+#include "DataBase/dbmain.h"
 #include "ui_mainwindow.h"
 #include <Baza.h>
 #include <Info/info.h>
@@ -29,17 +30,24 @@ MainWindow::MainWindow(QWidget *parent)
     //------------
     cout <<"START"<<endl;
     CheckIsFileExist();
+    InitDB();
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::CheckIsFileExist()
 {
     CheckFiles1 *checkFiles = new CheckFiles1(this);
     checkFiles->init();
+}
+
+void MainWindow::InitDB()
+{
+    DBMain *dbInit = new DBMain(this);
+    dbInit->init();
 }
 
 void MainWindow::on_pushButton_clicked()

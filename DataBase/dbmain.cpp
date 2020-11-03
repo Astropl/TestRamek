@@ -32,13 +32,20 @@ void DBMain::DatabaseConnect()
         QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
 
         //db.setDatabaseName("C:/Users/pawel/Downloads/SQLiteStudio-3.2.1/SQLiteStudio/rower77");
-        db.setDatabaseName("rower77.db");
+        db.setDatabaseName("test10.db");
         if(!db.open())
             qWarning() << "MainWindow::DatabaseConnect - ERROR: " << db.lastError().text();
     }
     else
         qWarning() << "MainWindow::DatabaseConnect - ERROR: no driver " << DRIVER << " available";
 }
+void DBMain::init()
+{
+    DatabaseConnect();
+    DatabaseInit();
+    DatabasePopulate();
+}
+
 
 void DBMain::DatabaseInit()
 {
