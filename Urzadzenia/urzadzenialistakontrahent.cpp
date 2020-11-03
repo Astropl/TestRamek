@@ -162,7 +162,7 @@ void UrzadzeniaListaKontrahent::wczytajDane()
 
     iloscWierszy();
 
-    //TODO: Sprawdzic zaznaczenie całego wiersza
+
 }
 
 void UrzadzeniaListaKontrahent::iloscWierszy()

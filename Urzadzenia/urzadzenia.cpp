@@ -142,7 +142,7 @@ void Urzadzenia::howMuchDevice()
     //iloscUrzadzen ++;
     cout << "ilosc Urzadzen z nastepnym: " << iloscUrzadzen + 1 << endl;
 
-    //TODO: Tutuaj trzeba zamienić string [IdUrzadzenia:6] na cyfre.
+
 
     ui->lineEditNumber->setText(QString::number(iloscUrzadzen + 1));
 }

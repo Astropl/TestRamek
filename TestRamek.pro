@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     #Info/info.cpp \
     Baza.cpp \
+    DataBase/dbmain.cpp \
     Files/checkfiles1.cpp \
     Files/checksystem.cpp \
     Kontrahent/kontrahent.cpp \
@@ -55,6 +56,7 @@ SOURCES += \
 HEADERS += \
     #Info/info.h \
     Baza.h \
+    DataBase/dbmain.h \
     Files/checkfiles1.h \
     Files/checksystem.h \
     Kontrahent/kontrahent.h \
@@ -91,6 +93,7 @@ HEADERS += \
 FORMS += \
     #Info/info.ui \
     Baza.ui \
+    DataBase/dbmain.ui \
     Files/checksystem.ui \
     Kontrahent/kontrahent.ui \
     Kontrahent/kontrahentdodajkraj.ui \
@@ -121,5 +124,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    DataBase/Test.txt
 
 

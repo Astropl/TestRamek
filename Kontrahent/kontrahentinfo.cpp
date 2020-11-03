@@ -62,7 +62,7 @@ void KontrahentInfo::showTable()
     //    setSelectionBehavior(QAbstractItemView::SelectRows);
     //    setSelectionMode(QAbstractItemView::SingleSelection);
     //---------------------------------------------------------------
-    //TODO: ukrywam 3 linie
+    //NOTE: ukrywam 3 linie
 
 //    ui->tableView->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
 //    ui->tableView->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu

@@ -85,7 +85,7 @@ void Baza::wczytajDane()
     //    setSelectionBehavior(QAbstractItemView::SelectRows);
     //    setSelectionMode(QAbstractItemView::SingleSelection);
     //---------------------------------------------------------------
-    //TODO: ukrywam 3 linie
+    //NOTE: ukrywam 3 linie
 
     ui->tableViewDB->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
     ui->tableViewDB->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu
@@ -253,7 +253,7 @@ void Baza::wczytajDane()
     linia3 = "";
     linia2 = "";
     linia1 = "";
-    //TODO: Sprawdzic zaznaczenie całego wiersza
+
 }
 
 void Baza::iloscWierszy()
