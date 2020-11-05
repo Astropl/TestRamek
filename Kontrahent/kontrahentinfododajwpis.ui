@@ -402,6 +402,32 @@ przypomnienia:</string>
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>130</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>IdUrz:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>160</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>IdKontr</string>
+    </property>
+   </widget>
    <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
    <zorder>label</zorder>
@@ -422,6 +448,8 @@ przypomnienia:</string>
    <zorder>label_11</zorder>
    <zorder>scrollArea_8</zorder>
    <zorder>labelDaty</zorder>
+   <zorder>label_12</zorder>
+   <zorder>label_13</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

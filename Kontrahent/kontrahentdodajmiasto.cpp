@@ -44,7 +44,7 @@ KontrahentDodajMiasto::KontrahentDodajMiasto(QWidget *parent)
     int nr_lini = 1;
     while (getline(plikOdczytDodajMiasto, linia)) {
         ui->comboBoxDodajMiasto->addItem(linia.c_str());
-        cout << linia.c_str() << endl;
+        //cout << linia.c_str() << endl;
         nr_lini++;
     }
 

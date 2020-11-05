@@ -31,10 +31,13 @@ private slots:
     void myfunctiontimer();
     //int myfunctiontimerDoDaty(int godzina,int minuta,int sekunda,int dzien,int miesiac,int rok,int dzienTygodnia);
 
-    void on_comboBox_currentTextChanged(const QString &arg1);
+    void on_comboBox_currentTextChanged(const QString);
 
 public:
     void init();
+    QString setSettingsId(QString IdUrz, QString IdKontr );
+
+
 private:
     Ui::KontrahentInfoDodajWpis *ui;
     QStandardItemModel *model;

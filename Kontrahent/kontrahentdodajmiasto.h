@@ -26,5 +26,5 @@ private:
     Ui::KontrahentDodajMiasto *ui;
 };
 
-#endif // KONTRAHENTDODAJMIASTO_H \
+#endif // KONTRAHENTDODAJMIASTO_H
        //Info do Gita

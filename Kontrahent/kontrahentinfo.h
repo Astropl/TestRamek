@@ -39,6 +39,7 @@ public slots:
     void myfunctiontimer();
     void wczytajDane();
     void showTable();
+    void pobierzDane();
 
 private slots:
     void on_pushButton_clicked();

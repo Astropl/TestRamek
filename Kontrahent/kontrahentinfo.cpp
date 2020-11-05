@@ -5,7 +5,7 @@
 #include "iostream"
 #include <ctime>
 #include <QTimer>
-
+#include <fstream>
 
 using namespace std;
 
@@ -43,33 +43,15 @@ void KontrahentInfo::showTable()
     model->setHeaderData(2, Qt::Horizontal, "Temat");        // Imie
     model->setHeaderData(3, Qt::Horizontal, "Treść");   // Imie
     model->setHeaderData(4, Qt::Horizontal, "Przypomnienie"); // Imie
-        //model->setHeaderData(5, Qt::Horizontal, "Nr Seryjny"); // Imie
-//    model->setHeaderData(5, Qt::Horizontal, "LP Kontrahenta");      //Nazwisko
-//    model->setHeaderData(6, Qt::Horizontal, "Nazwa");               //Kraj
-//    model->setHeaderData(7, Qt::Horizontal, "Imie");                //Region
-//    model->setHeaderData(8, Qt::Horizontal, "Nazwisko");            //Miasto
-//    model->setHeaderData(9, Qt::Horizontal, "Kraj");                //Kod Pocztowy
-//    model->setHeaderData(10, Qt::Horizontal, "Region");             //Ulica
-//    model->setHeaderData(11, Qt::Horizontal, "Miasto");             //Nr domu/mieszkania
-//    model->setHeaderData(12, Qt::Horizontal, "Kod Pocztowy");       //Telefon
-//    model->setHeaderData(13, Qt::Horizontal, "Ulica");              //Telefon prywatny
-//    model->setHeaderData(14, Qt::Horizontal, "Nr domu/mieszkania"); //Adres E-mail
-//    model->setHeaderData(15, Qt::Horizontal, "Telefon");            //Strona URL
-//    model->setHeaderData(16, Qt::Horizontal, "Telefon prywatny");   //Telefon prywatny
-//    model->setHeaderData(17, Qt::Horizontal, "Adres E-mail");       //Adres E-mail
-//    model->setHeaderData(18, Qt::Horizontal, "Strona URL");         //Strona URL
 
-    //    setSelectionBehavior(QAbstractItemView::SelectRows);
-    //    setSelectionMode(QAbstractItemView::SingleSelection);
-    //---------------------------------------------------------------
-    //NOTE: ukrywam 3 linie
+//TODO: Zrobic wpisywanie i wczytywanie z DBWpisu
+  // otworzyc fstream
+    // wczytac linie
+    // jesli lnia bedzie sie rówanała labelowi z IdUrz i IdKont to wczytac dalej + 11 linii
 
-//    ui->tableView->setColumnHidden(0, true); //Ukrywam kolumne z LP urzadzenia
-//    ui->tableView->setColumnHidden(4, true); // Ukrywam Kolumnę z info o przypsianiu
-//    ui->tableView->setColumnHidden(5, true); // Ukrywam Kolumnę z LP kontrahenta
-//    //---------------------------------------------------------------
-    //model->insertRow(model->rowCount());
 }
+
+
 
 void KontrahentInfo::myfunctiontimer()
 {
@@ -154,11 +136,46 @@ void KontrahentInfo::wyswietl(QVariant p1,
     ui->lblTelDodat_2->setText(p17.toString());
     ui->lblEmail_2->setText(p18.toString());
     ui->lblUrl_2->setText(p19.toString());
+    pobierzDane();
+
+
 }
+    void KontrahentInfo::pobierzDane()
+    {
+        QString file18 = "C:/Defaults/Pliki/18.WpisKontrahentInfo.txt";
+        fstream wpisDoBazy;
+
+        wpisDoBazy.open(file18.toStdString(),ios::in);
+        if (wpisDoBazy.good() == false) {
+            cout << "Plik nie istnieje !!!!!";
+            //exit(0);
+        }
+        string linia;
+        QString IdUrz, IdKont, IdUrzKont;
+        IdUrz=ui->lblUrzad_2->text();
+        IdKont = ui->lblNrKontrahent_2->text();
+        IdUrzKont = ("{IdUrzadzenia# "+IdUrz+IdKont+"}");
+        int nr_lini = 1;
+        while (getline(wpisDoBazy, linia)) {
+            //ui->comboBoxDodajMiasto->addItem(linia.c_str());
+            //cout << linia.c_str() << endl;
+            if (linia.c_str()==IdUrzKont)
+            {
+                cout<<"JESTTTTT"<<endl;
+                //Dodoac do tabeli
+            }
+            nr_lini++;
+        }
+
+        wpisDoBazy.close();
+    }
+
 void KontrahentInfo::on_pushButton_2_clicked()
 {
     // Dodaj Wpis
     KontrahentInfoDodajWpis *kontrDodajWpis = new KontrahentInfoDodajWpis (this);
+    kontrDodajWpis->setSettingsId(ui->lblUrzad_2->text(),ui->lblNrKontrahent_2->text());
+
     kontrDodajWpis ->show();
 }
 

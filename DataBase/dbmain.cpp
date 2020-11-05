@@ -1,11 +1,14 @@
 #include "dbmain.h"
 #include "ui_dbmain.h"
 #include <QDebug>
+#include <iostream>
 
 #include <QSqlDatabase>
 #include <QSqlDriver>
 #include <QSqlError>
 #include <QSqlQuery>
+
+using namespace std;
 
 DBMain::DBMain(QWidget *parent) :
     QMainWindow(parent),
@@ -13,9 +16,10 @@ DBMain::DBMain(QWidget *parent) :
 {
     ui->setupUi(this);
     // -- DATABASE INIT --
-    DatabaseConnect();
-    DatabaseInit();
-    DatabasePopulate();
+//    DatabaseConnect();
+//    DatabaseInit();
+//    DatabasePopulate();
+//    init();
 
 }
 
@@ -25,40 +29,34 @@ DBMain::~DBMain()
 }
 void DBMain::DatabaseConnect()
 {
+
+}
+void DBMain::init()
+{// DatabaseConnect()
+    cout<<"jestem w Init DB"<<endl;
     const QString DRIVER("QSQLITE");
 
     if(QSqlDatabase::isDriverAvailable(DRIVER))
     {
         QSqlDatabase db = QSqlDatabase::addDatabase(DRIVER);
 
-        //db.setDatabaseName("C:/Users/pawel/Downloads/SQLiteStudio-3.2.1/SQLiteStudio/rower77");
-        db.setDatabaseName("test10.db");
+        db.setDatabaseName("C:/Users/pawel/Documents/Cplusplus/TestRamek/TestRamek/DataBase/asterixals.db");
+        //db.setDatabaseName("asterixals.db");
+        db.open("asterixals.db","true");
         if(!db.open())
-            qWarning() << "MainWindow::DatabaseConnect - ERROR: " << db.lastError().text();
+            qWarning() << "1.MainWindow::DatabaseConnect - ERROR: " << db.lastError().text();
     }
     else
-        qWarning() << "MainWindow::DatabaseConnect - ERROR: no driver " << DRIVER << " available";
-}
-void DBMain::init()
-{
-    DatabaseConnect();
-    DatabaseInit();
-    DatabasePopulate();
-}
-
-
-void DBMain::DatabaseInit()
-{
+        qWarning() << "2.MainWindow::DatabaseConnect - ERROR: no driver " << DRIVER << " available";
+    // DatabaseConnect()
+    //    DatabaseInit();
     QSqlQuery query("CREATE TABLE people (id INTEGER PRIMARY KEY, name TEXT)");
 
     if(!query.isActive())
         qWarning() << "MainWindow::DatabaseInit - ERROR: " << query.lastError().text();
-
-}
-
-void DBMain::DatabasePopulate()
-{
-    QSqlQuery query;
+    //    DatabaseInit();
+    //    DatabasePopulate();
+    ////QSqlQuery query;
 
     if(!query.exec("INSERT INTO people(name) VALUES('Eddie Guerrero')"))
         qWarning() << "MainWindow::DatabasePopulate - ERROR: " << query.lastError().text();
@@ -80,4 +78,21 @@ void DBMain::DatabasePopulate()
         qWarning() << "MainWindow::DatabasePopulate - ERROR: " << query.lastError().text();
     if(!query.exec("INSERT INTO people(name) VALUES('Hayley Moore')"))
         qWarning() << "MainWindow::DatabasePopulate - ERROR: " << query.lastError().text();
+    //    DatabasePopulate();
+
+//    DatabaseConnect();
+//    DatabaseInit();
+//    DatabasePopulate();
+}
+
+
+void DBMain::DatabaseInit()
+{
+
+
+}
+
+void DBMain::DatabasePopulate()
+{
+
 }

@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #ifndef DBMAIN_H
 #define DBMAIN_H
 
@@ -15,7 +15,8 @@ class DBMain : public QMainWindow
 public:
     explicit DBMain(QWidget *parent = nullptr);
     ~DBMain();
-
+//private:
+public slots:
     void DatabaseConnect();
     void DatabaseInit();
     void DatabasePopulate();

@@ -31,7 +31,7 @@ private slots:
     void on_actionO_programie_triggered();
     void on_actionOpcje_triggered();
     void on_pushButton_8_clicked();
-    void on_actionOpcja_triggered();
+
 
 private:
     Ui::MainWindow *ui;

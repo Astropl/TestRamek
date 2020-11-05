@@ -72,6 +72,7 @@ KontrahentInfoDodajWpis::~KontrahentInfoDodajWpis()
 void KontrahentInfoDodajWpis::on_pushButton_2_clicked()
 {
     //Zapisz
+    QString IdUrzKont = ui->label_12->text() + ui->label_13->text();
     if (przypomnienie ==true)
     {
         przypomnienieId ="True";
@@ -80,9 +81,11 @@ void KontrahentInfoDodajWpis::on_pushButton_2_clicked()
     {ui->comboBox->setCurrentIndex(-1);
         przypomnienieId="false";
     }
+
     QString file18 = "C:/Defaults/Pliki/18.WpisKontrahentInfo.txt";
     fileWpis.open(file18.toStdString(), ios::out | ios::app);
     fileWpis << "{#NrWpisu# " + ui->label_2->text().toStdString() + "}" << endl;
+    fileWpis << "{#IdUrzadzenia# " + IdUrzKont.toStdString() + "}"<<endl;
     fileWpis << "{#Data: Rok# " + ui->label_4->text().toStdString() + "}" << endl;
     fileWpis << "{#Data: Miesiac# " + ui->label_5->text().toStdString() + "}" << endl;
     fileWpis << "{#Data: Dzien# " + ui->label_6->text().toStdString() + "}" << endl;
@@ -211,7 +214,7 @@ void KontrahentInfoDodajWpis::myfunctiontimer()
 //    qStrMiesiac = timeDate->changeStringsMiesiac(miesiac);
 //    stringDzienTygodnia = timeDate->changeStringsDzienTygodnia(dzienTygodnia);
 //}
-void KontrahentInfoDodajWpis::on_comboBox_currentTextChanged(const QString &arg1)
+void KontrahentInfoDodajWpis::on_comboBox_currentTextChanged(const QString ) //(const QString &arg1)
 {
     if (ui->comboBox->currentText().toStdString()=="Co 1 dzień")
     {
@@ -239,4 +242,10 @@ void KontrahentInfoDodajWpis::on_comboBox_currentTextChanged(const QString &arg1
         rok=rok+1;
         cout<<"Plus 1 rok"<<rok<<endl;
     }
+}
+QString KontrahentInfoDodajWpis::setSettingsId(QString IdUrz, QString IdKontr )
+{
+    ui->label_12->setText(IdUrz);
+    ui->label_13->setText(IdKontr);
+    return 0;
 }

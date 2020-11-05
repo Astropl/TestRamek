@@ -107,7 +107,7 @@ void MainWindow::on_pushButton_8_clicked()
     urzList->show();
 }
 
-void MainWindow::on_actionOpcja_triggered()
+void MainWindow::on_actionOpcje_triggered()
 {
     Ustawienia *ustaw = new Ustawienia(this);
     ustaw->show();
